@@ -5136,18 +5136,16 @@
             ? 'Best match for ' + topPickReasons.slice(0, 2).join(' & ')
             : 'Highest overall match for your sleep profile');
 
-      // Find the TRUE top pick across all tiers
+      // Top pick is always the highest-scoring gold mattress, by product rule.
+      // Silver/Bronze still show their own tier-internal matches but never claim the badge.
       let globalTopPick = null;
       let globalTopScore = -1;
-      let globalTopTier = 'gold';
-      ['gold', 'silver', 'bronze'].forEach(tier => {
-        MATTRESSES[tier].forEach(m => {
-          if (scores[m.id] > globalTopScore) {
-            globalTopScore = scores[m.id];
-            globalTopPick = m.id;
-            globalTopTier = tier;
-          }
-        });
+      const globalTopTier = 'gold';
+      MATTRESSES.gold.forEach(m => {
+        if (scores[m.id] > globalTopScore) {
+          globalTopScore = scores[m.id];
+          globalTopPick = m.id;
+        }
       });
 
       let firstTierCardCount = 0;
