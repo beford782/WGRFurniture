@@ -75,8 +75,14 @@ Flag any question customization requests as requiring a config migration first.
 
 ### Domain Lock
 A domain lock at the top of the `<script>` block restricts where the app runs.
-Allowed domains: `beford782.github.io`, `localhost`, `127.0.0.1`, and `''` (local file access).
-If deploying to a new domain, add it to the `allowed` array around line 3607.
+Allowed hosts: `beford782.github.io`, `localhost`, `127.0.0.1`.
+If deploying to a new domain, add it to the `allowed` array around line 3824.
+
+Opening `index.html` via `file://` is **not supported** — the domain lock rejects
+empty hostname, and even if it didn't, browser CORS blocks `fetch()` of
+`data/*.json` on the file protocol. For local development, serve the repo root
+over HTTP (e.g. `python -m http.server 8000`, `npx http-server`, or VS Code's
+Live Server) and open `http://localhost:8000/`.
 
 ### Data files
 - `data/mattresses.csv` — source of truth for mattress lineup, edit this
