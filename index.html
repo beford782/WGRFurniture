@@ -1582,6 +1582,299 @@
       .noct-dream-code-value { font-size: 30px; }
     }
 
+    /* === 5c-2a Handoff screen — class definitions === */
+    /* Defined but not yet applied. Markup wiring follows in 5c-2b. */
+    .noct-handoff {
+      width: 100%;
+      color: var(--color-text);
+      font-family: var(--font-serif);
+    }
+
+    .noct-handoff__intro {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .noct-handoff__eyebrow {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 10px;
+    }
+
+    .noct-handoff__title {
+      font-family: var(--font-serif);
+      font-size: 26px;
+      font-weight: 400;
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--color-text);
+      margin-bottom: 6px;
+    }
+
+    .noct-handoff__title em {
+      font-style: italic;
+      color: var(--color-accent);
+    }
+
+    .noct-handoff__subtitle {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+
+    /* DREAM code hero — full-bleed band, breaks parent's 1.25rem padding */
+    .noct-handoff-hero {
+      margin-left: -1.25rem;
+      margin-right: -1.25rem;
+      margin-bottom: 24px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      background:
+        linear-gradient(180deg, var(--gold-glow), transparent),
+        var(--color-surface);
+      border-top: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+      border-bottom: 1px solid color-mix(in srgb, var(--color-accent) 40%, transparent);
+      transition: background 0.25s ease;
+    }
+
+    .noct-handoff-hero__label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .noct-handoff-hero__code {
+      font-family: var(--font-serif);
+      font-style: normal;
+      font-size: 2.4rem;
+      font-weight: 400;
+      letter-spacing: 0.15em;
+      line-height: 1;
+      color: var(--color-accent);
+      margin-bottom: 10px;
+      -webkit-user-select: all;
+      user-select: all;
+    }
+
+    .noct-handoff-hero__hint {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      color: var(--color-text-subtle);
+    }
+
+    .noct-handoff-hero--copied {
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--color-accent) 22%, transparent), var(--gold-glow)),
+        var(--color-surface);
+    }
+
+    /* Customer context card */
+    .noct-handoff-context {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+
+    .noct-handoff-context__label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 12px;
+    }
+
+    .noct-handoff-context__row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 6px 0;
+      border-bottom: 0.5px solid var(--color-border);
+    }
+
+    .noct-handoff-context__row:last-child {
+      border-bottom: none;
+    }
+
+    .noct-handoff-context__key {
+      font-family: var(--font-sans);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--color-text-subtle);
+      flex-shrink: 0;
+    }
+
+    .noct-handoff-context__value {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--color-text);
+      text-align: right;
+    }
+
+    /* Sales cheat sheet */
+    .noct-handoff-cheatsheet {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      margin-bottom: 20px;
+    }
+
+    .noct-handoff-cheatsheet__title {
+      font-family: var(--font-serif);
+      font-size: 1rem;
+      color: var(--color-text);
+      margin-bottom: 10px;
+    }
+
+    .noct-handoff-cheatsheet__list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .noct-handoff-cheatsheet__item {
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      line-height: 1.5;
+      color: var(--color-text-muted);
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .noct-handoff-cheatsheet__item::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--color-accent);
+    }
+
+    /* Saved picks list */
+    .noct-handoff-picks {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .noct-handoff-pick {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius);
+      padding: 14px 16px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      grid-template-rows: auto auto auto;
+      column-gap: 16px;
+      row-gap: 4px;
+    }
+
+    .noct-handoff-pick__rank {
+      grid-column: 1 / 2;
+      grid-row: 1;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+
+    .noct-handoff-pick__name {
+      grid-column: 1 / 2;
+      grid-row: 2;
+      font-family: var(--font-serif);
+      font-size: 1.05rem;
+      color: var(--color-text);
+      line-height: 1.2;
+    }
+
+    .noct-handoff-pick__why {
+      grid-column: 1 / 2;
+      grid-row: 3;
+      font-family: var(--font-sans);
+      font-size: 0.78rem;
+      line-height: 1.45;
+      color: var(--color-text-muted);
+    }
+
+    .noct-handoff-pick__price {
+      grid-column: 2;
+      grid-row: 1 / span 3;
+      align-self: center;
+      text-align: right;
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--color-accent);
+    }
+
+    /* Action buttons — match .noct-email button conventions */
+    .noct-handoff-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      padding: 8px 0 4px;
+    }
+
+    .noct-handoff-btn {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      padding: 12px 28px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+    }
+
+    .noct-handoff-btn--ghost {
+      background: transparent;
+      color: var(--color-text-muted);
+      border: 1px solid var(--color-border);
+    }
+
+    .noct-handoff-btn--ghost:hover {
+      border-color: var(--color-accent);
+      color: var(--color-text);
+    }
+
+    .noct-handoff-btn--primary {
+      background: transparent;
+      color: var(--color-text);
+      border: 1px solid var(--color-accent);
+    }
+
+    .noct-handoff-btn--primary:hover {
+      background: var(--color-accent);
+      color: var(--color-bg);
+    }
+
     /* ===== LOADING SPLASH ===== */
     .splash {
       position: fixed;
