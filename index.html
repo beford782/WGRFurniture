@@ -1831,6 +1831,97 @@
       color: var(--color-accent);
     }
 
+    /* 5d: Differentiation blocks (Lead / Demo / Close + RSA Note + missing-content
+       placeholder). All span the full grid width so they don't collapse into the
+       parent's metadata columns. Stacked below the existing header (photo + rank/name/
+       why + price) via auto-row placement. */
+    .noct-handoff-pick__lead,
+    .noct-handoff-pick__demo,
+    .noct-handoff-pick__close,
+    .noct-handoff-pick__rsa-note,
+    .noct-handoff-pick__missing {
+      grid-column: 1 / -1;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--color-text);
+      margin-top: 14px;
+    }
+
+    .noct-handoff-pick__lead strong,
+    .noct-handoff-pick__demo strong,
+    .noct-handoff-pick__close strong,
+    .noct-handoff-pick__rsa-note strong {
+      display: block;
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+    }
+
+    /* RSA Note — internal coaching, visually distinct from customer-facing pitch */
+    .noct-handoff-pick__rsa-note {
+      padding: 12px 14px;
+      background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+      border-left: 2px solid color-mix(in srgb, var(--color-accent) 50%, transparent);
+    }
+
+    /* Dev-only placeholder for picks with no SUBBRAND_NOTES content */
+    .noct-handoff-pick__missing {
+      font-style: italic;
+      font-size: 12px;
+      color: var(--color-text-subtle);
+      padding: 10px 12px;
+      background: color-mix(in srgb, var(--color-accent) 4%, transparent);
+      border-left: 2px solid color-mix(in srgb, var(--color-text-subtle) 30%, transparent);
+    }
+
+    /* 5d: Brand panel — recessive section under picks, deduped by manufacturerBrand,
+       only emits entries for brands present in BRAND_NOTES (Bel-O-Pedic absent). */
+    .noct-handoff-brand-panel {
+      margin-top: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-border);
+    }
+
+    .noct-handoff-brand-panel__heading {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 18px;
+    }
+
+    .noct-handoff-brand-panel__entry {
+      margin-bottom: 18px;
+    }
+
+    .noct-handoff-brand-panel__entry:last-child {
+      margin-bottom: 0;
+    }
+
+    .noct-handoff-brand-panel__name {
+      font-family: var(--font-sans);
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      margin-bottom: 6px;
+    }
+
+    .noct-handoff-brand-panel__story {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.55;
+      color: var(--color-text);
+    }
+
     /* Action buttons — match .noct-email button conventions */
     .noct-handoff-actions {
       display: flex;
@@ -5655,6 +5746,16 @@
       return host === 'localhost' || host === '127.0.0.1' || host.startsWith('192.168.') || host === '';
     }
 
+    // 5d: Prose renderer for differentiation content. Escapes HTML, then converts
+    // *italic* markdown markers (the spec content uses these for emphasis on
+    // "sleep-*in*-the-mattress" / "sleep-*on*-the-mattress" / *finish* / *layers*)
+    // into <em> tags so they render as italic-brass per Nocturnal styling.
+    // Apply only to prose strings (lead/demo/close/rsaNote/story), never to
+    // identifiers or labels.
+    function renderPitchProse(text) {
+      return escapeHtml(text || '').replace(/\*([^*]+)\*/g, '<em>$1</em>');
+    }
+
     // ===== SVG ICON LIBRARY =====
     function icon(name, size) {
       size = size || 24;
@@ -8228,90 +8329,9 @@
       if (countEl) countEl.textContent = total;
     };
 
-    // Salesperson sales cheat sheet — one entry per profile archetype.
-    // Three bullets: what to say first, what to physically demo, how to close.
-    const PROFILE_SALES_NOTES = {
-      'The Ache Fighter': {
-        lead: "Acknowledge the pain directly — \"Back and hip pain together is tough. Let's end it tonight.\"",
-        demo: 'Lay them on a zoned-support mattress for 2+ minutes. Let them feel the pressure relief vs. their current bed.',
-        close: 'Pain relief is urgent. Reinforce the trial period and return policy — remove decision risk.'
-      },
-      'The Back Saver': {
-        lead: 'Back pain usually means their current mattress lost its support. Frame the visit as fixing that.',
-        demo: 'Firmness test — have them lie on 3 firmness levels. Ask which one lets them breathe easiest.',
-        close: 'Wellness framing — this is an investment in their spine, not just a purchase.'
-      },
-      'The Heat Beater': {
-        lead: "\"You'll want to feel the difference between foam and hybrid.\" Touch test first before any sales pitch.",
-        demo: 'Back-of-hand on memory foam vs. a cooling hybrid for 60 seconds. They should feel warmth difference.',
-        close: 'Quantify the benefit — "No more 2am flipping to the cool side of the pillow."'
-      },
-      'The Cozy Nester': {
-        lead: 'They want warmth without overheating. Show a hybrid with a memory foam top.',
-        demo: 'Have them lie fully (not sitting) for 2 minutes — let them feel the cocoon effect.',
-        close: 'Cozy framing — "This is the bed you\'ll never want to leave in the morning."'
-      },
-      'The Peacekeeper': {
-        lead: 'Partner-disturbance problems are fixable. Frame it as a relationship quality-of-life win.',
-        demo: 'Bounce test — have them lie on one side while you press and release on the other. Zero transfer.',
-        close: '"You\'ll both sleep better, which means you\'ll both feel better." Relationship ROI.'
-      },
-      'The Space Sharer': {
-        lead: 'With kids and/or pets in bed, durability and motion isolation are everything.',
-        demo: 'Show edge support — sit on the edge, demonstrate no roll-off. Talk about coil count and warranty.',
-        close: 'Long-haul framing — "This has to last until the kids stop needing you at 3am."'
-      },
-      'The Cloud Chaser': {
-        lead: 'They like to sink in. Bring them to the plushest model you have first.',
-        demo: '5-minute side-sleep test on a plush top. Shoulders and hips should feel supported, not bottomed out.',
-        close: 'Luxury / indulgence framing — "You deserve to love your bed."'
-      },
-      'The Rock Solid': {
-        lead: "They know what they want. Don't waste time on plush — lead with firm.",
-        demo: 'Press down on surface to show give/resistance. Compare a true firm to a medium — most people\'s "firm" is actually medium.',
-        close: 'Support framing — "Proper firm isn\'t hard, it\'s supportive. Your body will thank you in week one."'
-      },
-      'The Night Owl': {
-        lead: 'Adjustable base changes everything for snoring/reflux. Lead with that, not the mattress.',
-        demo: 'Raise the head 30° on an adjustable base. Have them feel how much easier breathing becomes.',
-        close: 'Health + partner framing — "Your partner will thank you in the first week."'
-      },
-      'The Restorer': {
-        lead: 'Lead with dignity — ease of getting in and out of bed. No one wants to feel "old."',
-        demo: 'Lie-to-sit test on a higher-profile mattress with good edge support.',
-        close: '"You\'ve earned comfortable sleep. You shouldn\'t have to struggle to get in bed."'
-      },
-      'The Comeback': {
-        lead: 'The sagging they mentioned IS the reason their sleep has been off. Name it.',
-        demo: 'Walk them to their sagged model if in showroom. Then lie on a new model — feel the flat, level support.',
-        close: 'Quality construction framing — "This is built to stay flat for 10+ years."'
-      },
-      'The Fresh Start': {
-        lead: 'Allergies change the whole purchase. Lead with cover materials and certifications.',
-        demo: 'Show fabric, explain anti-microbial construction. Mention washable covers if applicable.',
-        close: 'Clean-sleep framing — "A fresh start starts with what you breathe on all night."'
-      },
-      'The Goldilocks': {
-        lead: "They know their preferences. Don't over-explain — skip to the premium options.",
-        demo: 'Quality cues — stitching, cover material, coil construction. Let them touch the details.',
-        close: 'Quality appreciation — "If you\'re picky, these are the models that never disappoint."'
-      },
-      'The Dreamer': {
-        lead: 'This is the fun part — they\'re not fixing anything, just upgrading. Lean into the excitement.',
-        demo: 'Walk them across the Gold tier. Let them feel the differences between 3-4 models.',
-        close: 'Aspirational — "Every night can feel like a hotel bed."'
-      },
-      'The Steady Sleeper': {
-        lead: 'Medium is the sweet spot — comfortable for every position. Frame it as versatile.',
-        demo: 'Show adaptability — have them try side, then back, on the same mattress.',
-        close: 'Versatility framing — "This handles tonight, tomorrow, and 7 years from now."'
-      },
-      'The Connoisseur': {
-        lead: 'Specific tastes, unclear profile. Ask open questions first — what did they love / hate about their last mattress?',
-        demo: 'Component demo — open a cover, show layers and coils. Talk construction.',
-        close: 'Discerning-buyer framing — "You\'re not buying a mattress, you\'re investing in sleep."'
-      }
-    };
+    // 5d: PROFILE_SALES_NOTES removed in 5d-3. The per-profile cheat sheet was
+    // replaced by per-pick SUBBRAND_NOTES differentiation content rendered in
+    // showSavedPicks() (see getPitchContent helper). Spec: docs/5d-content-spec.md.
 
     // Salesperson context labels (S6)
     const TRIGGER_LABELS = {
@@ -8375,10 +8395,8 @@
       if (qualityLbl) pills.push((_esC ? 'Duerme ' : 'Sleeps ') + qualityLbl);
       pills.push(issuesLbl);
 
-      // 5d: PROFILE_SALES_NOTES rendering replaced by per-pick SUBBRAND_NOTES
-      // lookup inside showSavedPicks() (see getPitchContent helper). The
-      // PROFILE_SALES_NOTES constant is left in place; dead-code removal
-      // deferred to a future cleanup pass.
+      // 5d: Cheat-sheet block removed. Per-pick SUBBRAND_NOTES differentiation
+      // (rendered in showSavedPicks via getPitchContent) replaced PROFILE_SALES_NOTES.
       var notesHtml = '';
 
       el.innerHTML =
@@ -8445,12 +8463,12 @@
           if (pitchContent) {
             if (pitchContent.format === 'full') {
               differentiationHtml =
-                '<div class="noct-handoff-pick__lead"><strong>LEAD WITH:</strong> ' + escapeHtml(pitchContent.lead) + '</div>'
-                + '<div class="noct-handoff-pick__demo"><strong>DEMO HOOK:</strong> ' + escapeHtml(pitchContent.demo) + '</div>'
-                + '<div class="noct-handoff-pick__close"><strong>CLOSE ANGLE:</strong> ' + escapeHtml(pitchContent.close) + '</div>';
+                '<div class="noct-handoff-pick__lead"><strong>LEAD WITH:</strong> ' + renderPitchProse(pitchContent.lead) + '</div>'
+                + '<div class="noct-handoff-pick__demo"><strong>DEMO HOOK:</strong> ' + renderPitchProse(pitchContent.demo) + '</div>'
+                + '<div class="noct-handoff-pick__close"><strong>CLOSE ANGLE:</strong> ' + renderPitchProse(pitchContent.close) + '</div>';
             } else if (pitchContent.format === 'coaching') {
               differentiationHtml =
-                '<div class="noct-handoff-pick__rsa-note"><strong>RSA NOTE:</strong> ' + escapeHtml(pitchContent.rsaNote) + '</div>';
+                '<div class="noct-handoff-pick__rsa-note"><strong>RSA NOTE:</strong> ' + renderPitchProse(pitchContent.rsaNote) + '</div>';
             }
           } else if (isDevelopmentMode()) {
             differentiationHtml =
@@ -8488,7 +8506,7 @@
           orderedBrands.forEach(function(brand) {
             html += '<div class="noct-handoff-brand-panel__entry">'
               + '<div class="noct-handoff-brand-panel__name">' + escapeHtml(brand) + '</div>'
-              + '<div class="noct-handoff-brand-panel__story">' + escapeHtml(BRAND_NOTES[brand].story) + '</div>'
+              + '<div class="noct-handoff-brand-panel__story">' + renderPitchProse(BRAND_NOTES[brand].story) + '</div>'
               + '</div>';
           });
           html += '</div>';
