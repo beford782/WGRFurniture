@@ -2196,6 +2196,64 @@
       background: var(--color-surface-alt);
     }
 
+    /* === Step 4: rules for renderer-populated content (brief, action buttons) === */
+    .hf2-brief {
+      margin: 0.5rem 0 1.5rem;
+    }
+    .hf2-brief__row {
+      font-family: var(--font-sans);
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+    .hf2-brief__row:not(:last-child) {
+      margin-bottom: 0.25rem;
+    }
+    /* Discount reveal button — pre-reveal copy left-aligned, "Reveal for
+       customer →" right-aligned inside a single tap target. Disabled until
+       step 5 wires the slot-machine animation. */
+    .hf2-discount-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: transparent;
+      border: 1px solid var(--color-accent);
+      border-radius: 6px;
+      padding: 0.85rem 1rem;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 0.95rem;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .hf2-discount-btn:hover:not(:disabled) {
+      background: var(--gold-glow);
+    }
+    .hf2-discount-btn:disabled {
+      opacity: 0.5;
+      cursor: default;
+    }
+    /* Send picks CTA — primary brass action, fires showEmailCapture on tap. */
+    .hf2-send-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-accent);
+      border: 0;
+      border-radius: 6px;
+      padding: 0.85rem 1.5rem;
+      color: var(--color-bg);
+      font-family: inherit;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .hf2-send-btn:hover {
+      background: var(--color-accent-hover);
+    }
+
     /* === 5c-2c Floating selections pill === */
     .noct-picks-pill {
       position: fixed;
@@ -5581,27 +5639,28 @@
   <!-- No .active class so it's invisible by default. Preview via showScreen('hf2Screen'). -->
   <div class="screen" id="hf2Screen">
 
-    <!-- 1. RSA attribution strip + closed picker panel (hidden attribute toggled by step-4 JS). -->
+    <!-- 1. RSA attribution strip + closed picker panel. Renderer (renderHf2RsaStrip
+         / renderHf2RsaPanel) populates label/name/list; click toggles the `hidden`
+         attribute on the panel. event.stopPropagation prevents the document-level
+         outside-click listener from immediately closing the panel on the same tap. -->
     <div class="hf2-rsa-strip">
-      <button class="hf2-rsa-strip__btn">
-        <span class="hf2-rsa-strip__label">helping:</span>
-        <span class="hf2-rsa-strip__name">Maria Hernandez</span>
+      <button class="hf2-rsa-strip__btn" id="hf2RsaStripBtn" type="button"
+              onclick="event.stopPropagation(); toggleHf2RsaPanel();"
+              ontouchend="event.preventDefault(); event.stopPropagation(); toggleHf2RsaPanel();">
+        <span class="hf2-rsa-strip__label"></span>
+        <span class="hf2-rsa-strip__name"></span>
         <span class="hf2-rsa-strip__chevron">▾</span>
       </button>
-      <div class="hf2-rsa-panel" hidden>
-        <ul class="hf2-rsa-panel__list">
-          <li class="hf2-rsa-panel__item hf2-rsa-panel__item--current">Maria Hernandez</li>
-          <li class="hf2-rsa-panel__item">Carlos Rivera</li>
-          <li class="hf2-rsa-panel__item">Diana Chen</li>
-        </ul>
-        <button class="hf2-rsa-panel__add">+ add salesperson</button>
+      <div class="hf2-rsa-panel" id="hf2RsaPanel" hidden>
+        <ul class="hf2-rsa-panel__list"></ul>
+        <button class="hf2-rsa-panel__add" type="button"></button>
       </div>
     </div>
 
-    <!-- 2. Customer brief — placeholder divs. No step-2 CSS for these classes; step 4 owns the layout. -->
+    <!-- 2. Customer brief — empty anchors, populated by renderHf2Brief. -->
     <div class="hf2-brief">
-      <div class="hf2-brief__row">queen · back pain · restless sleep</div>
-      <div class="hf2-brief__row">Hot sleeper · side · partner-sensitive · medium firm</div>
+      <div class="hf2-brief__row" id="hf2BriefWho"></div>
+      <div class="hf2-brief__row" id="hf2BriefProfile"></div>
     </div>
 
     <!-- 3. Timeline rail with three steps (Lead with / For the close / Close). -->
@@ -5613,43 +5672,8 @@
           <h3>Lead with</h3>
         </div>
         <div class="hf2-timeline-step__body">
-
-          <div class="hf2-pick hf2-pick--gold">
-            <div class="hf2-pick__tier">gold · cool premium</div>
-            <div class="hf2-pick__name">Spring Air · Caitlin</div>
-            <div class="hf2-pick__reason">She runs hot, sleeps on her side with shoulder pain. Copper cooling + multi-foam pressure relief on a zoned coil — exactly what she described.</div>
-            <div class="hf2-pick__chips">
-              <span class="hf2-chip">copper cool cover</span>
-              <span class="hf2-chip">3-foam pressure stack</span>
-              <span class="hf2-chip">zoned 948-coil</span>
-              <span class="hf2-chip">premium build</span>
-            </div>
-          </div>
-
-          <div class="hf2-pick">
-            <div class="hf2-pick__tier">silver · sleep-in</div>
-            <div class="hf2-pick__name">Spring Air · Hailey</div>
-            <div class="hf2-pick__reason">If the Caitlin feels like more bed than she wants — H-collection sinks her in deeper, three-foam stack contours the shoulder.</div>
-            <div class="hf2-pick__chips">
-              <span class="hf2-chip">phase-change cover</span>
-              <span class="hf2-chip">triple foam stack</span>
-              <span class="hf2-chip">Back Supporter coils</span>
-              <span class="hf2-chip">sink-in feel</span>
-            </div>
-          </div>
-
-          <div class="hf2-pick">
-            <div class="hf2-pick__tier">bronze · core hybrid</div>
-            <div class="hf2-pick__name">Restonic · Veronica</div>
-            <div class="hf2-pick__reason">If she wants more cradle than the Caitlin — gel foam sinks deeper, Marvelous Middle holds the lumbar.</div>
-            <div class="hf2-pick__chips">
-              <span class="hf2-chip">cool gel foam</span>
-              <span class="hf2-chip">Marvelous Middle</span>
-              <span class="hf2-chip">pocketed coils</span>
-              <span class="hf2-chip">cooling cover</span>
-            </div>
-          </div>
-
+          <!-- Picks populated by renderHf2Picks (top-1-per-tier from _resultsState). -->
+          <div id="hf2PicksList"></div>
         </div>
       </div>
 
@@ -5659,7 +5683,12 @@
           <h3>For the close</h3>
         </div>
         <div class="hf2-timeline-step__body">
-          <button>DREAM discount  —  Reveal for customer →</button>
+          <!-- Pre-reveal copy intentionally omits the percentage per decision H.
+               disabled + no onclick — step 5 wires the slot-machine reveal. -->
+          <button class="hf2-discount-btn" id="hf2DiscountBtn" type="button" disabled>
+            <span>DREAM discount</span>
+            <span>Reveal for customer →</span>
+          </button>
         </div>
       </div>
 
@@ -5669,7 +5698,8 @@
           <h3>Close</h3>
         </div>
         <div class="hf2-timeline-step__body">
-          <button>Send picks to Sarah</button>
+          <!-- Label and click handler bound by renderHf2SendButton. -->
+          <button class="hf2-send-btn" id="hf2SendBtn" type="button"></button>
         </div>
       </div>
 
@@ -8686,130 +8716,340 @@
         + '</div>';
     }
 
+    // === Handoff v2 renderer (step 4) ============================================
+    // showSavedPicks is the routing chokepoint — every entry point (header pill,
+    // accCartBar, picks badge, internal calls) goes through it. Replacing the body
+    // re-targets all of them to hf2Screen without per-call-site updates. The old
+    // savedPicksScreen markup stays in DOM (per spec) but becomes unreachable
+    // through normal flow; a future commit can clean it up.
     window.showSavedPicks = function() {
-      renderCustomerContextCard();
-
-      // Wire real DREAM code into hero (replaces the DREAM--- placeholder)
-      var codeEl = document.getElementById('handoffDreamCode');
-      if (codeEl && analytics && analytics.sessionId) {
-        codeEl.textContent = generateDreamCode(analytics.sessionId).code;
-      }
-
-      var list = document.getElementById('savedPicksList');
-      if (!list) return;
-      var html = '';
-
-      // Mattresses
-      var _esH = currentLang === 'es';
-      if (window._savedPicks.length === 0) {
-        html += '<div style="text-align:center; color:var(--color-text-muted); font-size:0.82rem; padding:1rem 0;">' + (_esH ? 'No hay colchones guardados — toca "Me Interesa" en cualquier colchón.' : 'No mattresses saved yet — tap a Save button on any mattress.') + '</div>';
-      } else {
-        // 5d: Order full-pitch picks before coaching-only picks regardless of save order.
-        // Save order is preserved on window._savedPicks itself (mutation-free .slice).
-        // Picks with no SUBBRAND_NOTES content sort with full-pitch (rare/error-state;
-        // putting them last would visually demote a pick for the wrong reason).
-        var orderedPicks = window._savedPicks.slice().sort(function(a, b) {
-          var aContent = getPitchContent(a);
-          var bContent = getPitchContent(b);
-          var aIsCoaching = aContent && aContent.format === 'coaching' ? 1 : 0;
-          var bIsCoaching = bContent && bContent.format === 'coaching' ? 1 : 0;
-          return aIsCoaching - bIsCoaching;
-        });
-
-        html += orderedPicks.map(function(p, i) {
-          var pickLabel = (_esH ? 'SELECCIÓN #' : 'PICK #') + (i + 1);
-          var matchLine = p.pct + '% ' + (_esH ? 'Compatibilidad' : 'Match') + ' &middot; ' + p.firmFeel;
-          var photo = p.imageUrl
-            ? '<img class="noct-handoff-pick__photo" src="' + p.imageUrl + '" alt="">'
-            : '';
-          var price = p.tier
-            ? '<div class="noct-handoff-pick__price">' + priceTierSymbol(p.tier) + '</div>'
-            : '<div class="noct-handoff-pick__price"></div>';
-
-          // 5d: Per-pick differentiation block. Full-pitch picks emit
-          // Lead/Demo/Close; coaching-only picks emit a single RSA Note.
-          // Empty content: dev shows placeholder; production renders nothing.
-          // Italic markers (*word*) ship as literal asterisks in this pass —
-          // sub-prompt 3 handles styling + asterisk-to-em conversion.
-          var pitchContent = getPitchContent(p);
-          var differentiationHtml = '';
-          if (pitchContent) {
-            if (pitchContent.format === 'full') {
-              differentiationHtml =
-                '<div class="noct-handoff-pick__lead"><strong data-i18n="handoff.lead_with">LEAD WITH:</strong> ' + renderPitchProse(pitchContent.lead) + '</div>'
-                + '<div class="noct-handoff-pick__demo"><strong data-i18n="handoff.demo_hook">DEMO HOOK:</strong> ' + renderPitchProse(pitchContent.demo) + '</div>'
-                + '<div class="noct-handoff-pick__close"><strong data-i18n="handoff.close_angle">CLOSE ANGLE:</strong> ' + renderPitchProse(pitchContent.close) + '</div>';
-            } else if (pitchContent.format === 'coaching') {
-              differentiationHtml =
-                '<div class="noct-handoff-pick__rsa-note"><strong data-i18n="handoff.rsa_note">RSA NOTE:</strong> ' + renderPitchProse(pitchContent.rsaNote) + '</div>';
-            }
-          } else if (isDevelopmentMode()) {
-            differentiationHtml =
-              '<div class="noct-handoff-pick__missing">Coaching content not yet drafted for this mattress. Discuss build features with the customer based on the spec sheet.</div>';
-          }
-
-          return '<article class="noct-handoff-pick" data-pick-id="' + p.id + '">'
-            + photo
-            + '<div class="noct-handoff-pick__rank">' + pickLabel + '</div>'
-            + '<div class="noct-handoff-pick__name">' + p.name + '</div>'
-            + '<div class="noct-handoff-pick__why">' + p.brand + '<br>' + matchLine + '</div>'
-            + price
-            + '<button class="noct-handoff-pick__remove" onclick="window._removePick(\'' + p.id + '\')" ontouchend="event.preventDefault();window._removePick(\'' + p.id + '\');" aria-label="' + (_esH ? 'Eliminar selección' : 'Remove this pick') + '">&times;</button>'
-            + differentiationHtml
-            + '</article>';
-        }).join('');
-
-        // 5d: Brand panel — deduped by pick.manufacturerBrand, only brands
-        // with BRAND_NOTES entries. Bel-O-Pedic and other brands without
-        // entries simply don't appear (no error, no placeholder). See spec
-        // "Renderer Behavior Decisions → Bel-O-Pedic brand panel".
-        // Iterates orderedPicks so panel order matches pick order.
-        // Language cascade: BRAND_NOTES_ES (when Spanish) → BRAND_NOTES → skip.
-        function brandStoryFor(brand) {
-          if (currentLang === 'es' && BRAND_NOTES_ES[brand]) return BRAND_NOTES_ES[brand];
-          return BRAND_NOTES[brand] || null;
-        }
-        var seenBrands = {};
-        var orderedBrands = [];
-        orderedPicks.forEach(function(pick) {
-          var brand = pick && pick.manufacturerBrand;
-          if (brand && !seenBrands[brand] && brandStoryFor(brand)) {
-            seenBrands[brand] = true;
-            orderedBrands.push(brand);
-          }
-        });
-        if (orderedBrands.length > 0) {
-          html += '<div class="noct-handoff-brand-panel">'
-            + '<div class="noct-handoff-brand-panel__heading">' + (_esH ? 'Sobre estas marcas' : 'About these brands') + '</div>';
-          orderedBrands.forEach(function(brand) {
-            html += '<div class="noct-handoff-brand-panel__entry">'
-              + '<div class="noct-handoff-brand-panel__name">' + escapeHtml(brand) + '</div>'
-              + '<div class="noct-handoff-brand-panel__story">' + renderPitchProse(brandStoryFor(brand).story) + '</div>'
-              + '</div>';
-          });
-          html += '</div>';
-        }
-      }
-
-      // Accessories from cart
-      var accs = Object.values(window._accCart || {});
-      if (accs.length > 0) {
-        html += '<div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:600; margin-top:0.75rem; margin-bottom:0.5rem;">' + (_esH ? 'Accesorios' : 'Accessories') + '</div>';
-        html += '<div style="display:flex; flex-wrap:wrap; gap:0.5rem;">';
-        html += accs.map(function(a) {
-          return '<div style="display:flex; align-items:center; gap:0.5rem; background:rgba(255,255,255,0.05); border:1px solid rgba(212,168,75,0.25); border-radius:8px; padding:0.4rem 0.75rem;">'
-            + (a.imageUrl ? '<img src="' + a.imageUrl + '" style="width:36px; height:30px; object-fit:cover; border-radius:4px;">' : '')
-            + '<div>'
-            + '<div style="font-size:0.75rem; font-weight:600; color:var(--cream);">' + a.name + '</div>'
-            + '<div style="font-size:0.62rem; color:var(--cream-dim);">' + a.category + '</div>'
-            + '</div></div>';
-        }).join('');
-        html += '</div>';
-      }
-
-      list.innerHTML = html;
-      showScreen('savedPicksScreen');
+      renderHf2();
+      showScreen('hf2Screen');
     };
+
+    function renderHf2() {
+      renderHf2Brief();
+      renderHf2Picks();
+      renderHf2DiscountButton();
+      renderHf2SendButton();
+      renderHf2RsaStrip();
+      renderHf2RsaPanel();
+    }
+
+    // ---- Customer brief ------------------------------------------------------
+    function renderHf2Brief() {
+      var who = document.getElementById('hf2BriefWho');
+      var profile = document.getElementById('hf2BriefProfile');
+      // Who row: mattress size · sleep_issues (joined). Empty issues → just size.
+      var size = answerLabelFor('mattress_size', answers.mattress_size);
+      var issues = (answers.sleep_issues || []).map(function(id) {
+        return answerLabelFor('sleep_issues', id);
+      });
+      var whoParts = [size].concat(issues).filter(function(p) { return p && p.length; });
+      if (who) who.textContent = whoParts.join(' · ');
+      // Profile row: sleep_position · health_conditions · firmness. Graceful empty handling.
+      var position = answerLabelFor('sleep_position', answers.sleep_position);
+      var conditions = (answers.health_conditions || []).map(function(id) {
+        return answerLabelFor('health_conditions', id);
+      });
+      var firmness = answerLabelFor('firmness', answers.firmness);
+      var profileParts = [position].concat(conditions, [firmness])
+        .filter(function(p) { return p && p.length; });
+      if (profile) profile.textContent = profileParts.join(' · ');
+    }
+
+    // Resolve a human-readable label for a single quiz answer ID.
+    // QUESTIONS options have label as either a plain string or {en, es} object.
+    function answerLabelFor(questionId, optionId) {
+      if (!optionId) return '';
+      if (typeof QUESTIONS === 'undefined') return optionId;
+      var q = QUESTIONS.find(function(qq) { return qq.id === questionId; });
+      if (!q || !q.options) return optionId;
+      var opt = q.options.find(function(o) { return o.id === optionId; });
+      if (!opt) return optionId;
+      if (typeof opt.label === 'string') return opt.label;
+      if (opt.label && typeof opt.label === 'object') {
+        return opt.label[currentLang] || opt.label.en || optionId;
+      }
+      return optionId;
+    }
+
+    // ---- Picks ---------------------------------------------------------------
+    // Top-1-per-tier from the scoring engine's _resultsState (populated when
+    // the customer reaches the results screen). Distinct from the legacy
+    // window._savedPicks, which is user-curated; the redesign is RSA-pitch-focused
+    // and shows the algorithm's recommendations.
+    function renderHf2Picks() {
+      var list = document.getElementById('hf2PicksList');
+      if (!list) return;
+      list.innerHTML = '';
+      var state = (typeof _resultsState !== 'undefined' && _resultsState) ? _resultsState : null;
+      if (!state || !state.tierData) return;
+      ['gold', 'silver', 'bronze'].forEach(function(tier) {
+        var topInTier = (state.tierData[tier] || [])[0];
+        if (!topInTier) return;
+        var fullMattress = (MATTRESSES && MATTRESSES[tier] || []).find(function(m) {
+          return m.id === topInTier.id;
+        });
+        if (!fullMattress) return;
+        list.appendChild(renderHf2Pick(fullMattress, tier));
+      });
+    }
+
+    // Templated pivot-reason archetype labels for silver/bronze. Lowercase per
+    // the small-caps-via-letter-spacing rule on .hf2-pick__tier (and consistent
+    // with the tier tag's own lowercase format).
+    var HF2_ARCHETYPE_LABELS = {
+      'sleep-in':     'sleep-in',
+      'sleep-on':     'sleep-on',
+      'guest/kid':    'guest-room',
+      'core hybrid':  'core-hybrid',
+      'house hybrid': 'house-hybrid',
+      'house foam':   'all-foam'
+    };
+
+    function renderHf2Pick(m, tier) {
+      var card = document.createElement('div');
+      card.className = 'hf2-pick' + (tier === 'gold' ? ' hf2-pick--gold' : '');
+
+      var tierTag = document.createElement('div');
+      tierTag.className = 'hf2-pick__tier';
+      // Lowercase content; brass small-caps appearance comes from CSS letter-spacing.
+      tierTag.textContent = tier + ' · ' + (m.archetype || '');
+      card.appendChild(tierTag);
+
+      var name = document.createElement('div');
+      name.className = 'hf2-pick__name';
+      name.textContent = (m.brand || '') + ' · ' + (m.name || '');
+      card.appendChild(name);
+
+      var reason = document.createElement('div');
+      reason.className = 'hf2-pick__reason';
+      reason.textContent = hf2ReasonFor(m, tier);
+      card.appendChild(reason);
+
+      // Chips from displayBadges (m.tags / m.tags_es). Per Decision A1, ship
+      // with existing taxonomic chips; pitch-shaped chip authoring is deferred
+      // to a future content pass informed by RSA field data.
+      var chipSource = (currentLang === 'es' && Array.isArray(m.tags_es) && m.tags_es.length > 0)
+        ? m.tags_es : (m.tags || []);
+      if (chipSource.length > 0) {
+        var chipsEl = document.createElement('div');
+        chipsEl.className = 'hf2-pick__chips';
+        chipSource.forEach(function(c) {
+          var chip = document.createElement('span');
+          chip.className = 'hf2-chip';
+          chip.textContent = c;
+          chipsEl.appendChild(chip);
+        });
+        card.appendChild(chipsEl);
+      }
+      return card;
+    }
+
+    // Decision B4 — gold uses authored topPickReason (bilingual already);
+    // silver/bronze use templated [archetype-label] alternative — [highlight].
+    function hf2ReasonFor(m, tier) {
+      if (tier === 'gold') {
+        if (m.topPickReason) {
+          var r = m.topPickReason[currentLang] || m.topPickReason.en;
+          if (r) return r;
+        }
+        return (currentLang === 'es' && m.highlight_es) ? m.highlight_es : (m.highlight || '');
+      }
+      var label = HF2_ARCHETYPE_LABELS[m.archetype] || m.archetype || '';
+      var hl = (currentLang === 'es' && m.highlight_es) ? m.highlight_es : (m.highlight || '');
+      if (!label) return hl;
+      var altWord = currentLang === 'es' ? 'alternativa' : 'alternative';
+      return label + ' ' + altWord + ' — ' + hl;
+    }
+
+    // ---- Action buttons ------------------------------------------------------
+    // Discount button: disabled, no onclick. Step 5 wires the slot-machine reveal.
+    function renderHf2DiscountButton() {
+      var btn = document.getElementById('hf2DiscountBtn');
+      if (!btn) return;
+      btn.disabled = true;
+    }
+
+    // Send button: bind to existing showEmailCapture flow. Label uses customer's
+    // first name from analytics.profileName when available.
+    function renderHf2SendButton() {
+      var btn = document.getElementById('hf2SendBtn');
+      if (!btn) return;
+      var es = currentLang === 'es';
+      var firstName = '';
+      if (analytics && analytics.profileName) {
+        firstName = String(analytics.profileName).trim().split(/\s+/)[0] || '';
+      }
+      btn.textContent = firstName
+        ? ((es ? 'Enviar selecciones a ' : 'Send picks to ') + firstName)
+        : (es ? 'Enviar selecciones' : 'Send picks');
+      btn.onclick = function() { showEmailCapture(); };
+    }
+
+    // ---- RSA strip + picker panel -------------------------------------------
+    function getHf2StoreKey() {
+      return (STORE_CONFIG && STORE_CONFIG.storeKey) || 'unknown';
+    }
+    function getHf2DeviceRsa() {
+      try {
+        return localStorage.getItem('dreamfinder.' + getHf2StoreKey() + '.deviceRsa') || '';
+      } catch (e) { return ''; }
+    }
+    function setHf2DeviceRsa(name) {
+      try {
+        localStorage.setItem('dreamfinder.' + getHf2StoreKey() + '.deviceRsa', name);
+      } catch (e) {}
+    }
+    function getHf2UserAddedRsaList() {
+      try {
+        var raw = localStorage.getItem('dreamfinder.' + getHf2StoreKey() + '.rsaList');
+        if (!raw) return [];
+        var parsed = JSON.parse(raw);
+        return Array.isArray(parsed) ? parsed : [];
+      } catch (e) { return []; }
+    }
+    function persistHf2UserAddedRsa(name) {
+      var list = getHf2UserAddedRsaList();
+      var seeded = (STORE_CONFIG && Array.isArray(STORE_CONFIG.rsaList)) ? STORE_CONFIG.rsaList : [];
+      var lower = name.trim().toLowerCase();
+      // Case-insensitive dedup against config-seeded names AND existing user additions.
+      var existsAlready = seeded.concat(list).some(function(n) {
+        return n && n.toLowerCase() === lower;
+      });
+      if (existsAlready) return;
+      list.push(name.trim());
+      try {
+        localStorage.setItem('dreamfinder.' + getHf2StoreKey() + '.rsaList', JSON.stringify(list));
+      } catch (e) {}
+    }
+    // Merged roster: config-seeded names first (canonical roster), runtime
+    // additions after. Case-insensitive dedup so the same person added at
+    // runtime doesn't appear twice if the seed has a normalized variant.
+    function getHf2MergedRsaList() {
+      var seeded = (STORE_CONFIG && Array.isArray(STORE_CONFIG.rsaList)) ? STORE_CONFIG.rsaList.slice() : [];
+      var added = getHf2UserAddedRsaList();
+      var seen = {};
+      var result = [];
+      seeded.concat(added).forEach(function(n) {
+        if (!n) return;
+        var key = n.toLowerCase();
+        if (seen[key]) return;
+        seen[key] = true;
+        result.push(n);
+      });
+      return result;
+    }
+
+    function renderHf2RsaStrip() {
+      var btn = document.getElementById('hf2RsaStripBtn');
+      if (!btn) return;
+      var es = currentLang === 'es';
+      var current = getHf2DeviceRsa();
+      var label = btn.querySelector('.hf2-rsa-strip__label');
+      var name = btn.querySelector('.hf2-rsa-strip__name');
+      var chevron = btn.querySelector('.hf2-rsa-strip__chevron');
+      if (current) {
+        if (label) label.textContent = es ? 'ayudando:' : 'helping:';
+        if (name) name.textContent = ' ' + current;
+      } else {
+        if (label) label.textContent = es ? 'selecciona vendedor' : 'select salesperson';
+        if (name) name.textContent = '';
+      }
+      if (chevron) chevron.textContent = '▾';
+    }
+
+    function renderHf2RsaPanel() {
+      var panel = document.getElementById('hf2RsaPanel');
+      if (!panel) return;
+      var listEl = panel.querySelector('.hf2-rsa-panel__list');
+      var addBtn = panel.querySelector('.hf2-rsa-panel__add');
+      if (!listEl || !addBtn) return;
+      listEl.innerHTML = '';
+      var current = (getHf2DeviceRsa() || '').toLowerCase();
+      var roster = getHf2MergedRsaList();
+      roster.forEach(function(rsaName) {
+        var li = document.createElement('li');
+        li.className = 'hf2-rsa-panel__item';
+        if (current && rsaName.toLowerCase() === current) {
+          li.classList.add('hf2-rsa-panel__item--current');
+        }
+        li.textContent = rsaName;
+        li.onclick = function() { selectHf2Rsa(rsaName); };
+        listEl.appendChild(li);
+      });
+      var es = currentLang === 'es';
+      addBtn.textContent = es ? '+ agregar vendedor' : '+ add salesperson';
+      addBtn.onclick = addHf2Rsa;
+    }
+
+    // iOS Safari can fire both touchend and click on a single tap. The button's
+    // ontouchend uses event.preventDefault() to suppress the synthetic click,
+    // but that suppression isn't bulletproof across Safari versions. Coalesce
+    // user-driven toggle calls within 300ms so a double-fire doesn't flip the
+    // panel twice (net no-op). Programmatic 'open'/'close' calls bypass the
+    // debounce — selectHf2Rsa needs to close immediately after a selection.
+    var _hf2LastToggleTs = 0;
+    window.toggleHf2RsaPanel = function(forceState) {
+      if (forceState === undefined) {
+        var now = Date.now();
+        if (now - _hf2LastToggleTs < 300) return;
+        _hf2LastToggleTs = now;
+      }
+      var panel = document.getElementById('hf2RsaPanel');
+      if (!panel) return;
+      if (forceState === 'open') {
+        panel.removeAttribute('hidden');
+      } else if (forceState === 'close') {
+        panel.setAttribute('hidden', '');
+      } else if (panel.hasAttribute('hidden')) {
+        panel.removeAttribute('hidden');
+      } else {
+        panel.setAttribute('hidden', '');
+      }
+    };
+
+    function selectHf2Rsa(name) {
+      if (!name) return;
+      setHf2DeviceRsa(name);
+      renderHf2RsaStrip();
+      renderHf2RsaPanel();
+      window.toggleHf2RsaPanel('close');
+    }
+
+    // Add-RSA via prompt(). Validates: null (cancel), empty, whitespace-only
+    // all reject without writing. Successful add auto-selects the new name —
+    // intentional for the floor case (RSA adds themselves at start of shift,
+    // immediately owns this device). Edge case: a manager doing bulk roster
+    // setup will end up with the device assigned to whoever they typed last;
+    // that's acceptable since the manager will reassign or hand off the
+    // device anyway. Floor flow stays fast — no confirmation prompt.
+    function addHf2Rsa() {
+      var es = currentLang === 'es';
+      var promptText = es
+        ? 'Nombre del vendedor para agregar a la lista:'
+        : 'Salesperson name to add to the list:';
+      var raw = window.prompt(promptText);
+      if (raw === null) return;
+      var name = raw.trim();
+      if (!name) return;
+      persistHf2UserAddedRsa(name);
+      selectHf2Rsa(name);
+    }
+
+    // Outside-click closes the panel. Registered once on document; checks the
+    // event target against the strip and panel to avoid closing on the trigger
+    // tap (the strip button uses event.stopPropagation as a belt-and-suspenders
+    // guard, but this check handles cases where stopPropagation is bypassed).
+    document.addEventListener('click', function(event) {
+      var panel = document.getElementById('hf2RsaPanel');
+      if (!panel || panel.hasAttribute('hidden')) return;
+      var strip = document.getElementById('hf2RsaStripBtn');
+      if (panel.contains(event.target)) return;
+      if (strip && strip.contains(event.target)) return;
+      window.toggleHf2RsaPanel('close');
+    });
 
     window._removePick = function(id) {
       window._savedPicks = window._savedPicks.filter(function(p) { return p.id !== id; });
