@@ -1979,44 +1979,54 @@
       padding: 1.25rem;
     }
 
-    /* Timeline rail: vertical line on the left, three steps stacked beside dots */
-    .hf2-timeline {
-      position: relative;
-      padding-left: 32px;
-    }
-    .hf2-timeline::before {
-      content: '';
-      position: absolute;
-      left: 12px;
-      top: 6px;
-      bottom: 6px;
-      width: 1px;
-      background: var(--color-border);
-    }
+    /* Step list: three sequential steps (Lead with / For the close / Close)
+       marked by numbered tokens. Replaces an earlier rail+dot concept that
+       hit a non-deterministic CSS cascade issue across multiple diagnostic
+       passes; numbered tokens communicate sequence inherently without a
+       connective rail. */
     .hf2-timeline-step {
-      position: relative;
       padding-bottom: 1.75rem;
     }
     .hf2-timeline-step:last-child {
       padding-bottom: 0;
     }
-    .hf2-timeline-step__dot {
-      position: absolute;
-      left: -26px;
-      top: 6px;
-      width: 12px;
-      height: 12px;
+    /* Step header — number token + label, vertically centered. */
+    .hf2-timeline-step__header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 0.75rem;
+    }
+    /* Numbered step token — 26px circle with step number in Georgia serif.
+       Filled variant for the active step ("Lead with"); outlined variant
+       for pending steps ("For the close", "Close"). */
+    .hf2-step-num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
+      font-family: var(--font-serif);
+      font-size: 0.9rem;
+      font-weight: 600;
+      line-height: 1;
       box-sizing: border-box;
-      background: var(--color-bg);
     }
-    .hf2-timeline-step__dot--filled {
+    .hf2-step-num--filled {
       background: var(--color-accent);
-      border: 1px solid var(--color-accent);
+      color: var(--color-bg);
     }
-    .hf2-timeline-step__dot--outlined {
-      background: var(--color-bg);
+    .hf2-step-num--outlined {
+      background: transparent;
       border: 1px solid var(--color-accent);
+      color: var(--color-accent);
+    }
+    /* Step body — left padding matches token width (26px) + gap (12px) so
+       content visually aligns under the label, not under the token. */
+    .hf2-timeline-step__body {
+      padding-left: 38px;
     }
 
     /* Pick block: base styling for silver/bronze; gold gets the brass left accent */
@@ -5598,9 +5608,11 @@
     <div class="hf2-timeline">
 
       <div class="hf2-timeline-step">
-        <span class="hf2-timeline-step__dot hf2-timeline-step__dot--filled"></span>
-        <div class="hf2-timeline-step__body">
+        <div class="hf2-timeline-step__header">
+          <span class="hf2-step-num hf2-step-num--filled">1</span>
           <h3>Lead with</h3>
+        </div>
+        <div class="hf2-timeline-step__body">
 
           <div class="hf2-pick hf2-pick--gold">
             <div class="hf2-pick__tier">gold · cool premium</div>
@@ -5642,17 +5654,21 @@
       </div>
 
       <div class="hf2-timeline-step">
-        <span class="hf2-timeline-step__dot hf2-timeline-step__dot--outlined"></span>
-        <div class="hf2-timeline-step__body">
+        <div class="hf2-timeline-step__header">
+          <span class="hf2-step-num hf2-step-num--outlined">2</span>
           <h3>For the close</h3>
+        </div>
+        <div class="hf2-timeline-step__body">
           <button>DREAM discount  —  Reveal for customer →</button>
         </div>
       </div>
 
       <div class="hf2-timeline-step">
-        <span class="hf2-timeline-step__dot hf2-timeline-step__dot--outlined"></span>
-        <div class="hf2-timeline-step__body">
+        <div class="hf2-timeline-step__header">
+          <span class="hf2-step-num hf2-step-num--outlined">3</span>
           <h3>Close</h3>
+        </div>
+        <div class="hf2-timeline-step__body">
           <button>Send picks to Sarah</button>
         </div>
       </div>
