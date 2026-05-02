@@ -6,6 +6,10 @@ function doPost(e) {
     var isEs = data.lang === 'es';
 
     // --- Log to Google Sheet ---
+    // rsa appended at the end (right-of-last column) per the
+    // append-don't-insert strategy documented in docs/gas-rsa-field-addition.md.
+    // Inserting mid-row would force every other column to re-index. Sheet
+    // operator must add a corresponding "rsa" column header to match.
     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
     sheet.appendRow([
       new Date(),
@@ -15,7 +19,8 @@ function doPost(e) {
       data.dreamCode || '',
       data.lang || 'en',
       (data.allMatches || []).map(function(m) { return m.name + ' (' + m.matchPct + '%)'; }).join(', '),
-      (data.accessories || []).map(function(a) { return a.name; }).join(', ')
+      (data.accessories || []).map(function(a) { return a.name; }).join(', '),
+      (data.rsa || '').toString()
     ]);
 
     // --- Send email with fallback ---
@@ -87,6 +92,16 @@ function buildSimpleHtml(data, firstName, isEs) {
   var discount = data.discount || 5;
   var sleepProfile = data.sleepProfile || '';
 
+  // Inline HTML escape for the RSA name — it's free-text input via the device
+  // picker prompt, more exposed to injection than other interpolated fields
+  // (which come from controlled sources: validated form inputs, predefined
+  // data files). Following the existing trust-the-client convention for those
+  // fields and adding surgical defense only for rsa keeps this commit focused;
+  // a broader Code.gs escape audit is a separate concern.
+  var rsa = (data.rsa || '').toString().trim().replace(/[&<>"']/g, function(ch) {
+    return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[ch];
+  });
+
   // Nocturnal palette \u2014 exact hex from index.html :root
   var c = {
     bg: '#14171C',
@@ -118,6 +133,7 @@ function buildSimpleHtml(data, firstName, isEs) {
     matchSuffix: 'compatibilidad',
     accLabel: 'ACCESORIOS RECOMENDADOS',
     footerLine1: 'Lleva este correo a tu tienda Bel Furniture',
+    helpedBy: rsa ? 'Atendido por ' + rsa + ' en Bel Furniture' : '',
     footerLine2: 'Tu ' + discount + '% de descuento te est\u00e1 esperando',
     footerHint: 'Sin caducidad \u00b7 Solo en tienda'
   } : {
@@ -133,6 +149,7 @@ function buildSimpleHtml(data, firstName, isEs) {
     matchSuffix: 'match',
     accLabel: 'RECOMMENDED ACCESSORIES',
     footerLine1: 'Bring this email to your Bel Furniture store',
+    helpedBy: rsa ? 'Helped by ' + rsa + ' at Bel Furniture' : '',
     footerLine2: 'Your ' + discount + '% discount is waiting',
     footerHint: 'No expiration \u00b7 In-store only'
   };
@@ -240,6 +257,7 @@ function buildSimpleHtml(data, firstName, isEs) {
     // Footer
     + '<tr><td style="padding:24px 32px 36px;text-align:center;border-top:1px solid ' + c.border + ';">'
     + '<div style="font-family:' + sans + ';font-size:13px;color:' + c.textMuted + ';margin-bottom:8px;">' + L.footerLine1 + '</div>'
+    + (L.helpedBy ? '<div style="font-family:' + sans + ';font-size:13px;color:' + c.textMuted + ';margin-bottom:8px;">' + L.helpedBy + '</div>' : '')
     + '<div style="font-family:' + serif + ';font-size:18px;color:' + c.accent + ';font-style:italic;line-height:1.3;">' + L.footerLine2 + '</div>'
     + '<div style="font-family:' + sans + ';font-size:11px;letter-spacing:1.5px;color:' + c.textSubtle + ';text-transform:uppercase;margin-top:14px;">' + L.footerHint + '</div>'
     + '</td></tr>'
