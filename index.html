@@ -2241,6 +2241,19 @@
       opacity: 0.5;
       cursor: default;
     }
+    /* Post-reveal state — discount has been revealed; button now displays the
+       code and percentage as a persistent reference. Full opacity (vs. the
+       disabled-state 50%), no hover, cursor:default to signal info-only. */
+    .hf2-discount-btn--revealed {
+      opacity: 1;
+      cursor: default;
+    }
+    /* Doubled-class selector matches the base :hover:not(:disabled) specificity
+       (0,0,3,0); later-in-source wins the cascade. Suppresses the gold-glow
+       hover on the revealed state. */
+    .hf2-discount-btn.hf2-discount-btn--revealed:hover {
+      background: transparent;
+    }
     /* Send picks CTA — primary brass action, fires showEmailCapture on tap. */
     .hf2-send-btn {
       display: inline-flex;
@@ -3827,8 +3840,20 @@
       position: fixed;
       inset: 0;
       background: var(--navy);
-      z-index: 50;
-      display: flex;
+      /* Above cart bar (50), rsa-panel (50), picks pill (100) — overlay must
+         paint over all hf2Screen UI chrome (and savedPicksScreen during the
+         parallel-shipping window). Bumped from 50 in step 5 — pre-existing
+         latent ordering issue with sibling fixed/sticky elements at z-index 50. */
+      z-index: 200;
+      /* Hidden by default. Overlay is only made visible by playSlotMachineReveal()
+         which sets overlay.style.display = 'flex' inline at the start of the
+         animation and resets to 'none' at the end. Pre-step-5 this was display:flex
+         because the inline animation auto-fired on showResults() and dismissed
+         itself; with that auto-fire removed (step 5 retargets reveal to the
+         hf2Screen RSA tap), the default must be hidden — otherwise the overlay
+         paints navy over results screen on first render (black-page regression
+         that reverted commit 697dc9f → 06dfdda). */
+      display: none;
       align-items: center;
       justify-content: center;
       transition: opacity 0.6s ease;
@@ -5696,8 +5721,10 @@
         </div>
         <div class="hf2-timeline-step__body">
           <!-- Pre-reveal copy intentionally omits the percentage per decision H.
-               disabled + no onclick — step 5 wires the slot-machine reveal. -->
-          <button class="hf2-discount-btn" id="hf2DiscountBtn" type="button" disabled>
+               renderHf2DiscountButton wires the click handler; on tap, fires
+               playSlotMachineReveal() and transitions the button to the
+               --revealed state showing dreamCode + percentage. -->
+          <button class="hf2-discount-btn" id="hf2DiscountBtn" type="button">
             <span>DREAM discount</span>
             <span>Reveal for customer →</span>
           </button>
@@ -7712,57 +7739,13 @@
       if (analytics) analytics.log('save_pick_toggle', { mattressId: mattressId, tier: foundTier, saved: willBeSaved });
     };
 
-    window.showResults = function() {
-      document.getElementById('progressFill').style.width = '100%';
-      var calc = calculateScores();
-      var scores = calc.scores;
-
-      // Analytics (preserved side effects)
-      analytics.completedAt = Date.now();
-      analytics.answers = Object.assign({}, answers);
-      analytics.resultsViewed = true;
-      analytics.log('results_viewed');
-
-      // Compute top 3 per tier (qualified = >=60% of tier max). Annotate each
-      // survivor with `score` and `pct` so render functions and the save toggle
-      // can read them directly without holding onto the scores map.
-      var tierData = { gold: [], silver: [], bronze: [] };
-      ['gold','silver','bronze'].forEach(function(tier) {
-        var sorted = MATTRESSES[tier].slice().sort(function(a, b){ return scores[b.id] - scores[a.id]; });
-        var maxScore = Math.max.apply(null, sorted.map(function(m){ return scores[m.id]; }).concat([1]));
-        var qualified = sorted.filter(function(m){ return Math.round((scores[m.id] / maxScore) * 100) >= 60; });
-        tierData[tier] = qualified.slice(0, 3).map(function(m){
-          return Object.assign({}, m, {
-            score: scores[m.id],
-            pct: Math.round((scores[m.id] / maxScore) * 100)
-          });
-        });
-      });
-
-      // analytics.topPick is always Gold #1 by product rule. Email + handoff
-      // consume analytics.topPick / analytics.allMatches; preserve those fields.
-      var goldTop3 = tierData.gold;
-      if (goldTop3.length > 0) {
-        analytics.topPick = {
-          name: goldTop3[0].name,
-          brand: goldTop3[0].brand,
-          tier: 'gold',
-          matchPct: goldTop3[0].pct
-        };
-        analytics.allMatches = goldTop3.map(function(m){
-          return { name: m.name, brand: m.brand, subBrand: m.subBrand, matchPct: m.pct, imageUrl: m.imageUrl || '' };
-        });
-      } else {
-        analytics.topPick = null;
-        analytics.allMatches = [];
-      }
-
-      _resultsState = { scores: scores, activeTier: 'gold', tierData: tierData };
-
-      _renderResults();
-      showScreen('resultsScreen');
-
-      // ---- Discount Reveal: Slot Machine ----
+    // Slot-machine discount reveal animation. Extracted from inline showResults
+    // in step 5 so the hf2Screen "Reveal for customer →" tap target can fire it.
+    // Originally auto-fired on quiz completion; now RSA-tap-triggered on the
+    // handoff screen. Visual behavior preserved byte-for-byte from the original
+    // implementation — reads dreamCode + percentage from generateDreamCode(
+    // analytics.sessionId) and the count-up target from STORE_DISCOUNT.
+    function playSlotMachineReveal() {
       const overlay = document.getElementById('discountRevealOverlay');
       const ring    = document.getElementById('revealRing');
       const intro   = document.getElementById('revealIntro');
@@ -7955,6 +7938,62 @@
 
         }, 300);
       }, 900);
+    }
+
+    window.showResults = function() {
+      document.getElementById('progressFill').style.width = '100%';
+      var calc = calculateScores();
+      var scores = calc.scores;
+
+      // Analytics (preserved side effects)
+      analytics.completedAt = Date.now();
+      analytics.answers = Object.assign({}, answers);
+      analytics.resultsViewed = true;
+      analytics.log('results_viewed');
+
+      // Compute top 3 per tier (qualified = >=60% of tier max). Annotate each
+      // survivor with `score` and `pct` so render functions and the save toggle
+      // can read them directly without holding onto the scores map.
+      var tierData = { gold: [], silver: [], bronze: [] };
+      ['gold','silver','bronze'].forEach(function(tier) {
+        var sorted = MATTRESSES[tier].slice().sort(function(a, b){ return scores[b.id] - scores[a.id]; });
+        var maxScore = Math.max.apply(null, sorted.map(function(m){ return scores[m.id]; }).concat([1]));
+        var qualified = sorted.filter(function(m){ return Math.round((scores[m.id] / maxScore) * 100) >= 60; });
+        tierData[tier] = qualified.slice(0, 3).map(function(m){
+          return Object.assign({}, m, {
+            score: scores[m.id],
+            pct: Math.round((scores[m.id] / maxScore) * 100)
+          });
+        });
+      });
+
+      // analytics.topPick is always Gold #1 by product rule. Email + handoff
+      // consume analytics.topPick / analytics.allMatches; preserve those fields.
+      var goldTop3 = tierData.gold;
+      if (goldTop3.length > 0) {
+        analytics.topPick = {
+          name: goldTop3[0].name,
+          brand: goldTop3[0].brand,
+          tier: 'gold',
+          matchPct: goldTop3[0].pct
+        };
+        analytics.allMatches = goldTop3.map(function(m){
+          return { name: m.name, brand: m.brand, subBrand: m.subBrand, matchPct: m.pct, imageUrl: m.imageUrl || '' };
+        });
+      } else {
+        analytics.topPick = null;
+        analytics.allMatches = [];
+      }
+
+      _resultsState = { scores: scores, activeTier: 'gold', tierData: tierData };
+
+      _renderResults();
+      showScreen('resultsScreen');
+
+      // Discount reveal animation no longer auto-fires here — moved to
+      // RSA-tap-triggered playSlotMachineReveal() called from the hf2Screen
+      // discount button (see renderHf2DiscountButton). The discount stays
+      // unrevealed until the RSA chooses to reveal it during the close.
 
       // Log full analytics summary
       analytics.log('session_summary', analytics.getSummary());
@@ -8877,11 +8916,34 @@
     }
 
     // ---- Action buttons ------------------------------------------------------
-    // Discount button: disabled, no onclick. Step 5 wires the slot-machine reveal.
+    // Discount button: pre-reveal state shows "DREAM discount / Reveal for
+    // customer →". Tap fires the slot-machine animation and transitions the
+    // button to the --revealed state showing the code + percentage. Idempotent
+    // across screen revisits within a session — startOver() clears the
+    // --revealed class so a fresh quiz session re-renders the pre-reveal state.
     function renderHf2DiscountButton() {
       var btn = document.getElementById('hf2DiscountBtn');
       if (!btn) return;
-      btn.disabled = true;
+      // Idempotency: preserve post-reveal state across screen revisits (e.g.,
+      // RSA taps cart bar then returns to handoff). startOver clears the class.
+      if (btn.classList.contains('hf2-discount-btn--revealed')) return;
+      var es = currentLang === 'es';
+      var leftSpan = btn.querySelectorAll('span')[0];
+      var rightSpan = btn.querySelectorAll('span')[1];
+      if (leftSpan)  leftSpan.textContent  = es ? 'Descuento DREAM'           : 'DREAM discount';
+      if (rightSpan) rightSpan.textContent = es ? 'Revelar para el cliente →' : 'Reveal for customer →';
+      btn.disabled = false;
+      btn.onclick = function() {
+        // Clear handler synchronously before firing the animation so iOS
+        // double-fire (touchend + synthetic click both invoking onclick) can't
+        // re-trigger. Subsequent invocations hit a null handler.
+        btn.onclick = null;
+        btn.classList.add('hf2-discount-btn--revealed');
+        var dreamCode = generateDreamCode(analytics.sessionId);
+        if (leftSpan)  leftSpan.textContent  = dreamCode.code;
+        if (rightSpan) rightSpan.textContent = dreamCode.percentage + (es ? '% de descuento' : '% off');
+        playSlotMachineReveal();
+      };
     }
 
     // Send button: bind to existing showEmailCapture flow. Static label — at
@@ -9152,6 +9214,11 @@
       if (dcBox) dcBox.style.display = '';
       const dcVal = document.getElementById('dreamCodeValue');
       if (dcVal) dcVal.textContent = '';
+
+      // Clear hf2 discount button reveal state — next renderHf2DiscountButton
+      // call restores the pre-reveal copy with the new session's dreamCode.
+      const hf2DiscBtn = document.getElementById('hf2DiscountBtn');
+      if (hf2DiscBtn) hf2DiscBtn.classList.remove('hf2-discount-btn--revealed');
 
       showScreen('welcomeScreen');
     };
