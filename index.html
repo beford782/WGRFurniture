@@ -8945,6 +8945,13 @@
       list.innerHTML = '';
       var state = (typeof _resultsState !== 'undefined' && _resultsState) ? _resultsState : null;
       if (!state || !state.tierData) return;
+      // 5d differentiation ordering: full-pitch vs coaching variant is enforced
+      // by tier — gold/silver are always full-pitch (Spring Air premium and
+      // H/K silvers), bronze can be either (Spring Air Back Supporter or
+      // Restonic ComfortCare → full-pitch; any Bel-O-Pedic → coaching). Never
+      // the reverse. If scoring ever lands a coaching-only sub-brand on gold
+      // or silver, that's a scoring bug, not a render concern — no in-renderer
+      // reorder. Spec: docs/5d-content-spec.md.
       ['gold', 'silver', 'bronze'].forEach(function(tier) {
         var topInTier = (state.tierData[tier] || [])[0];
         if (!topInTier) return;
@@ -8967,6 +8974,39 @@
       'house hybrid': 'house-hybrid',
       'house foam':   'all-foam'
     };
+
+    // 5d differentiation content per pick. Reads getPitchContent (~6146); routes
+    // to full-pitch (3 stacked blocks: lead/demo/close) or coaching-only (single
+    // rsaNote block) by content.format. Empty content shows __missing placeholder
+    // in dev (isDevelopmentMode at ~6157), renders nothing in production.
+    // Uses the surviving .noct-handoff-pick__* classes (1838-1880); sub-prompt 3
+    // will rename to a card-agnostic prefix in a separate commit.
+    // Spec: docs/5d-content-spec.md.
+    function renderHf2PickDiff(m) {
+      var content = getPitchContent(m);
+      var es = currentLang === 'es';
+      var labels = es
+        ? { lead: 'Lleva con', demo: 'Demo', close: 'Cierre', rsaNote: 'Nota para vendedor' }
+        : { lead: 'Lead with', demo: 'Demo hook', close: 'Close angle', rsaNote: 'RSA note' };
+      if (!content) {
+        if (isDevelopmentMode()) {
+          return '<div class="noct-handoff-pick__missing">⚠ pitch content missing: '
+            + escapeHtml(m.subBrand || '(no subBrand)')
+            + '</div>';
+        }
+        return '';
+      }
+      if (content.format === 'full') {
+        return '<div class="noct-handoff-pick__lead"><strong>' + labels.lead + '</strong>' + renderPitchProse(content.lead) + '</div>'
+             + '<div class="noct-handoff-pick__demo"><strong>' + labels.demo + '</strong>' + renderPitchProse(content.demo) + '</div>'
+             + '<div class="noct-handoff-pick__close"><strong>' + labels.close + '</strong>' + renderPitchProse(content.close) + '</div>';
+      }
+      if (content.format === 'coaching') {
+        return '<div class="noct-handoff-pick__rsa-note"><strong>' + labels.rsaNote + '</strong>'
+             + renderPitchProse(content.rsaNote) + '</div>';
+      }
+      return '';
+    }
 
     function renderHf2Pick(m, tier) {
       var card = document.createElement('div');
@@ -9004,6 +9044,12 @@
         });
         card.appendChild(chipsEl);
       }
+      // 5d differentiation block — appended inside the card so the tier border
+      // embraces the pitch reasoning (gold border surrounds the full case,
+      // not just the headline). renderHf2PickDiff returns '' for empty content
+      // in production, so insertAdjacentHTML is conditional.
+      var diffHtml = renderHf2PickDiff(m);
+      if (diffHtml) card.insertAdjacentHTML('beforeend', diffHtml);
       return card;
     }
 
