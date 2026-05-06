@@ -8937,10 +8937,24 @@
     }
 
     // ---- Picks ---------------------------------------------------------------
-    // Top-1-per-tier from the scoring engine's _resultsState (populated when
-    // the customer reaches the results screen). Distinct from the legacy
-    // window._savedPicks, which is user-curated; the redesign is RSA-pitch-focused
-    // and shows the algorithm's recommendations.
+    // One pick per tier for the RSA handoff. Resolution order per tier:
+    //   1. window._savedPicks — most-recently-saved entry whose tier matches
+    //      (customer's explicit selection from results-screen card or drawer).
+    //   2. _resultsState.tierData[tier][0] — algorithm's top-scoring mattress
+    //      in that tier (fallback when customer didn't save anything for the tier).
+    // User intent overrides algorithm so the handoff reflects what the customer
+    // actually said they're interested in.
+
+    function getSavedPickForTier(tier) {
+      var saved = window._savedPicks;
+      if (!Array.isArray(saved) || saved.length === 0) return null;
+      for (var i = saved.length - 1; i >= 0; i--) {
+        var p = saved[i];
+        if (p && p.tier === tier && p.id) return p;
+      }
+      return null;
+    }
+
     function renderHf2Picks() {
       var list = document.getElementById('hf2PicksList');
       if (!list) return;
@@ -8955,10 +8969,13 @@
       // or silver, that's a scoring bug, not a render concern — no in-renderer
       // reorder. Spec: docs/5d-content-spec.md.
       ['gold', 'silver', 'bronze'].forEach(function(tier) {
-        var topInTier = (state.tierData[tier] || [])[0];
-        if (!topInTier) return;
+        var savedForTier = getSavedPickForTier(tier);
+        var sourceId = savedForTier
+          ? savedForTier.id
+          : ((state.tierData[tier] || [])[0] || {}).id;
+        if (!sourceId) return;
         var fullMattress = (MATTRESSES && MATTRESSES[tier] || []).find(function(m) {
-          return m.id === topInTier.id;
+          return m.id === sourceId;
         });
         if (!fullMattress) return;
         list.appendChild(renderHf2Pick(fullMattress, tier));
