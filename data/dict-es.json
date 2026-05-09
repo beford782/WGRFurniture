@@ -66,7 +66,7 @@
   "email.sent_subtitle": "Revisa tu bandeja de entrada para tus resultados personalizados.",
   "email.discount_label": "Tu Código de Descuento",
   "email.discount_hint": "Muestra este código a tu especialista de sueño · <span style=\"color:var(--gold); font-weight:600;\" id=\"dreamCodePct\"></span> DE DESC.",
-  "email.start_new": "↺ Iniciar Nuevo Cliente",
+  "email.start_new": "↺ Nuevo Cliente",
 
   "accessories.analysis_label": "Análisis de Perfil de Sueño",
   "accessories.title": "Tu Sistema Completo de Sueño",

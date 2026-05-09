@@ -6203,7 +6203,7 @@
         <div class="noct-email-confirmation-subtitle" id="emailConfirmationSubtitle">Check your inbox for your personalized results.</div>
       </div>
 
-      <button class="noct-email-secondary js-start-over" id="emailStartOver" ontouchend="event.preventDefault();window.startOver();">&#8634; Start New Customer</button>
+      <button class="noct-email-secondary js-start-over" id="emailStartOver" ontouchend="event.preventDefault();window.startOver();" data-i18n="email.start_new">&#8634; Start New Customer</button>
     </div>
   </div>
 
@@ -8512,7 +8512,6 @@
         ? 'Revisa tu bandeja de entrada para ver tus resultados personalizados.'
         : 'Check your inbox for your personalized results.');
 
-      setText('emailStartOver', es ? '↺ Nuevo Cliente' : '↺ Start New Customer');
     }
 
     window.showEmailCapture = function() {
