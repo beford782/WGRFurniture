@@ -5766,6 +5766,17 @@
     .drawer-pitch-toggle:hover { background: rgba(212,168,75,0.08); }
     #drawerPitchSection .drawer-pitch-box { display: none; }
     #drawerPitchSection.is-expanded .drawer-pitch-box { display: block; }
+    /* Clamp each pitch block's prose body to 3 lines so the expanded view
+       stays scannable. The block label (<strong>) renders above the clamped
+       prose unaffected; source content in SUBBRAND_NOTES is unchanged, only
+       the drawer presentation is shortened. */
+    .drawer-pitch-box .drawer-pitch-prose {
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-top: 0.2rem;
+    }
     /* 5d-3: brand panel below pitch — recessive separator, no container chrome.
        Pitch fires on every drawer-open; brand fires only when an RSA fields a
        brand question. Frequency asymmetry → visual asymmetry. */
@@ -6362,7 +6373,7 @@
       <div id="drawerPitchSection" style="display:none;">
         <div class="drawer-pitch-header">
           <div class="drawer-pitch-header__meta">
-            <div class="drawer-section-label" data-i18n="drawer.pitch_heading">Walk them through it</div>
+            <div class="drawer-section-label" data-i18n="drawer.pitch_heading">Helpful talking points</div>
             <div class="drawer-pitch-summary" id="drawerPitchSummary"></div>
           </div>
           <button class="drawer-pitch-toggle" id="drawerPitchToggle" type="button"
@@ -9638,9 +9649,12 @@
     function renderPitchHtml(m) {
       var content = getPitchContent(m);
       var es = currentLang === 'es';
+      // Customer-safe labels — the drawer is hybrid (RSA reads while customer
+      // may look on), so block labels avoid sales-process terminology. Source
+      // SUBBRAND_NOTES content unchanged; only the presentation labels.
       var labels = es
-        ? { lead: 'Lleva con', demo: 'Demo', close: 'Cierre', rsaNote: 'Nota para vendedor' }
-        : { lead: 'Lead with', demo: 'Demo hook', close: 'Close angle', rsaNote: 'RSA note' };
+        ? { lead: 'Por qué encaja', demo: 'Prueba esto', close: 'Punto clave', rsaNote: 'Nota útil' }
+        : { lead: 'Fit story',      demo: 'Try this',    close: 'Key takeaway', rsaNote: 'Helpful note' };
       if (!content) {
         if (isDevelopmentMode()) {
           return '<div class="noct-handoff-pitch__missing">⚠ pitch content missing: '
@@ -9649,14 +9663,20 @@
         }
         return '';
       }
+      // Prose wrapped in .drawer-pitch-prose so CSS line-clamp targets just the
+      // body text, not the block label. Clamps to 3 lines per block to keep
+      // the drawer scannable without removing source content.
+      function _proseBlock(text) {
+        return '<span class="drawer-pitch-prose">' + renderPitchProse(text) + '</span>';
+      }
       if (content.format === 'full') {
-        return '<div class="noct-handoff-pitch__lead"><strong>' + labels.lead + '</strong>' + renderPitchProse(content.lead) + '</div>'
-             + '<div class="noct-handoff-pitch__demo"><strong>' + labels.demo + '</strong>' + renderPitchProse(content.demo) + '</div>'
-             + '<div class="noct-handoff-pitch__close"><strong>' + labels.close + '</strong>' + renderPitchProse(content.close) + '</div>';
+        return '<div class="noct-handoff-pitch__lead"><strong>' + labels.lead + '</strong>' + _proseBlock(content.lead) + '</div>'
+             + '<div class="noct-handoff-pitch__demo"><strong>' + labels.demo + '</strong>' + _proseBlock(content.demo) + '</div>'
+             + '<div class="noct-handoff-pitch__close"><strong>' + labels.close + '</strong>' + _proseBlock(content.close) + '</div>';
       }
       if (content.format === 'coaching') {
         return '<div class="noct-handoff-pitch__rsa-note"><strong>' + labels.rsaNote + '</strong>'
-             + renderPitchProse(content.rsaNote) + '</div>';
+             + _proseBlock(content.rsaNote) + '</div>';
       }
       return '';
     }
@@ -10476,20 +10496,21 @@
         pitchSection.style.display = '';
         pitchSection.classList.remove('is-expanded');
 
-        // Summary line reflects pitch format. Spanish strings inline since the
-        // text is dynamic per-pitch-type and toggle label flips on expand.
+        // Summary line reflects pitch format using customer-safe labels.
+        // Spanish strings inline since the text is dynamic per-pitch-type
+        // and the toggle label flips on expand.
         var _pitchContent = getPitchContent(m);
         var _esPitch = currentLang === 'es';
         var _pitchSummary = '';
         if (_pitchContent && _pitchContent.format === 'full') {
-          _pitchSummary = _esPitch ? 'Lleva con · Demo · Cierre' : 'Lead with · Demo hook · Close angle';
+          _pitchSummary = _esPitch ? 'Por qué encaja · Prueba esto · Punto clave' : 'Fit story · Try this · Key takeaway';
         } else if (_pitchContent && _pitchContent.format === 'coaching') {
-          _pitchSummary = _esPitch ? 'Nota para el vendedor' : 'RSA coaching note';
+          _pitchSummary = _esPitch ? 'Nota útil' : 'Helpful note';
         }
         var _summaryEl = document.getElementById('drawerPitchSummary');
         if (_summaryEl) _summaryEl.textContent = _pitchSummary;
         var _toggleEl = document.getElementById('drawerPitchToggle');
-        if (_toggleEl) _toggleEl.textContent = _esPitch ? 'Mostrar guion' : 'Show script';
+        if (_toggleEl) _toggleEl.textContent = _esPitch ? 'Ver consejos' : 'Show tips';
       } else {
         pitchEl.innerHTML = '';
         pitchSection.style.display = 'none';
@@ -10530,8 +10551,8 @@
       var es = currentLang === 'es';
       var expanded = section.classList.toggle('is-expanded');
       btn.textContent = expanded
-        ? (es ? 'Ocultar guion' : 'Hide script')
-        : (es ? 'Mostrar guion' : 'Show script');
+        ? (es ? 'Ocultar consejos' : 'Hide tips')
+        : (es ? 'Ver consejos' : 'Show tips');
     };
 
     window.drawerNav = function(direction) {
