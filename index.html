@@ -1312,6 +1312,58 @@
       border-color: var(--color-accent);
     }
 
+    /* Result cards are the tap surface for the drawer. Cursor and a quiet
+       border-color hover hint at the affordance without making the cards feel
+       like sales chrome. The actual click is routed by the delegated handler
+       at the bottom of the page script; cards stay plain div elements. */
+    .noct-toppick,
+    .noct-support-card {
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: border-color 0.18s ease, transform 0.18s ease;
+    }
+    .noct-toppick:hover,
+    .noct-support-card:hover {
+      border-color: var(--color-accent);
+    }
+    .noct-toppick:active,
+    .noct-support-card:active {
+      transform: scale(0.998);
+    }
+
+    /* Sub-cluster wrapping "View details" + "Save" so save stays right-aligned
+       with details immediately to its left, while the stock label remains in
+       its original left position via the parent's space-between. */
+    .noct-card-action-cluster {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Secondary tap affordance — quieter than .noct-save-btn so save remains
+       the primary action. No inline handler; clicks bubble to the delegated
+       card-tap path which opens the mattress drawer. */
+    .noct-card-details {
+      background: transparent;
+      color: var(--color-text-subtle);
+      border: none;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.05em;
+      padding: 8px 4px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: color 0.15s ease;
+    }
+    .noct-card-details:hover {
+      color: var(--color-accent);
+    }
+    .noct-card-details:focus-visible {
+      outline: 2px solid var(--color-accent);
+      outline-offset: 2px;
+      color: var(--color-accent);
+    }
+
     .noct-results-footer {
       text-align: center;
       padding-top: 32px;
@@ -4277,6 +4329,15 @@
         opacity: 0.7 !important;
         transform: none !important;
       }
+      .noct-toppick,
+      .noct-support-card,
+      .noct-card-details {
+        transition: none !important;
+      }
+      .noct-toppick:active,
+      .noct-support-card:active {
+        transform: none !important;
+      }
     }
 
     /* === Results transition overlay ===
@@ -6396,7 +6457,7 @@
     <div class="noct-results">
       <div class="noct-results-eyebrow" id="resultsEyebrow">Your matches</div>
       <h1 class="noct-results-headline" id="resultsHeadline">Your <span class="accent">perfect matches</span> are ready</h1>
-      <p class="noct-results-subhead" id="resultsSubhead">Ask your sleep specialist to walk you through each option.</p>
+      <p class="noct-results-subhead" id="resultsSubhead">Tap any match to see why it fits, then ask your sleep specialist to compare your options.</p>
 
       <div class="noct-tier-tabs" id="tierTabs"></div>
       <div class="noct-tier-descriptor" id="tierDescriptor"></div>
@@ -8446,8 +8507,8 @@
         ? 'Tus <span class="accent">mejores opciones</span> están listas'
         : 'Your <span class="accent">perfect matches</span> are ready';
       document.getElementById('resultsSubhead').textContent = es
-        ? 'Pídele a tu especialista del sueño que te explique cada opción.'
-        : 'Ask your sleep specialist to walk you through each option.';
+        ? 'Toca cualquier opción para ver por qué encaja y pide a tu especialista que compare tus opciones.'
+        : 'Tap any match to see why it fits, then ask your sleep specialist to compare your options.';
       document.getElementById('buildSystemBtn').textContent = es ? 'Crea Tu Sistema de Sueño →' : 'Build Your Sleep System →';
       document.getElementById('resultsFooterHint').textContent = es ? 'Tu Pase de Ahorro aplica a todo.' : 'Your Savings Pass applies to everything.';
     }
@@ -8520,6 +8581,15 @@
         + escapeHtml(saveButtonLabel(isSaved))
         + '</button>';
 
+      // Secondary affordance — the entire card is tappable via the delegated
+      // document-level click handler (see "Mattress result cards → open drawer"
+      // at the bottom of this script). The details button has no inline
+      // handler; clicks bubble through and the card-tap path opens the drawer.
+      // Visual cue only — save remains the primary action.
+      var detailsBtn = '<button type="button" class="noct-card-details">'
+        + (es ? 'Ver detalles →' : 'View match details →')
+        + '</button>';
+
       var html = '<div class="noct-toppick" data-id="' + escapeHtml(m.id) + '" data-tier="' + escapeHtml(tier) + '">'
         + img
         + '<div class="noct-toppick-body">'
@@ -8534,7 +8604,10 @@
         +   '<div class="noct-toppick-priorities">' + prioritiesHtml + '</div>'
         +   '<div class="noct-toppick-actions">'
         +     '<div class="noct-toppick-stock">' + escapeHtml(stockText) + '</div>'
-        +     saveBtn
+        +     '<div class="noct-card-action-cluster">'
+        +       detailsBtn
+        +       saveBtn
+        +     '</div>'
         +   '</div>'
         + '</div>'
         + '</div>';
@@ -8573,6 +8646,10 @@
           + escapeHtml(saveButtonLabel(isSaved))
           + '</button>';
 
+        var detailsBtn = '<button type="button" class="noct-card-details">'
+          + (es ? 'Ver detalles →' : 'View details →')
+          + '</button>';
+
         return '<div class="noct-support-card" data-id="' + escapeHtml(m.id) + '" data-tier="' + escapeHtml(tier) + '">'
           + img
           + '<div class="noct-support-body">'
@@ -8586,7 +8663,10 @@
           +   '<div class="noct-support-priorities">' + chipsHtml + '</div>'
           +   '<div class="noct-support-actions">'
           +     '<div class="noct-support-stock">' + escapeHtml(stockText) + '</div>'
-          +     saveBtn
+          +     '<div class="noct-card-action-cluster">'
+          +       detailsBtn
+          +       saveBtn
+          +     '</div>'
           +   '</div>'
           + '</div>'
           + '</div>';
