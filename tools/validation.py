@@ -24,6 +24,8 @@ so it is unit-testable with plain dicts. ASCII console output. Run `--self-test`
 
 from __future__ import annotations
 
+import csv
+import json
 import os
 import re
 import sys
@@ -421,6 +423,122 @@ def validate_sales_notes(raw_tabs, *, languages=None) -> ValidationReport:
     return r
 
 
+# -- V3: post-emit output validation ------------------------------------------
+
+def _parse_allowed_hosts_js(path: str):
+    text = open(path, encoding="utf-8").read()
+    m = re.search(r"__DF_ALLOWED_HOSTS\s*=\s*(\[.*?\])\s*;", text, re.DOTALL)
+    if not m:
+        raise ValueError("no __DF_ALLOWED_HOSTS assignment found")
+    return json.loads(m.group(1))
+
+
+def _csv_header(path: str):
+    with open(path, encoding="utf-8-sig", newline="") as f:
+        return next(csv.reader(f), [])
+
+
+def validate_generated_outputs(output_dir: str, *, build_json: bool = True,
+                               languages=None) -> ValidationReport:
+    """Validate the bundle the converter just wrote. `build_json` should reflect
+    whether build-data.ps1 actually ran (and thus mattresses.json should exist)."""
+    r = ValidationReport()
+    data = os.path.join(output_dir, "data")
+
+    def load_json(path, label):
+        if not os.path.exists(path):
+            r.add_error(f"{label}: missing ({path})")
+            return None
+        try:
+            with open(path, encoding="utf-8") as f:
+                return json.load(f)
+        except (ValueError, OSError) as e:
+            r.add_error(f"{label}: invalid JSON ({e})")
+            return None
+
+    config = load_json(os.path.join(data, "store-config.json"), "store-config.json")
+
+    # allowed-hosts.js array must equal store-config.allowedHosts
+    ah_path = os.path.join(data, "allowed-hosts.js")
+    if not os.path.exists(ah_path):
+        r.add_error(f"allowed-hosts.js: missing ({ah_path})")
+    else:
+        try:
+            arr = _parse_allowed_hosts_js(ah_path)
+        except (ValueError, OSError) as e:
+            r.add_error(f"allowed-hosts.js: parse failure ({e})")
+        else:
+            if config is not None and arr != config.get("allowedHosts"):
+                r.add_error(f"allowed-hosts.js array {arr} != store-config.allowedHosts "
+                            f"{config.get('allowedHosts')}")
+
+    # mattresses.csv header == live EN contract
+    en_path = os.path.join(data, "mattresses.csv")
+    if not os.path.exists(en_path):
+        r.add_error(f"mattresses.csv: missing ({en_path})")
+    else:
+        exp = schema.get_column_headers("Mattresses", lang="")
+        if _csv_header(en_path) != exp:
+            r.add_error("mattresses.csv: header does not match the live schema contract")
+
+    # mattresses-es.csv: validate header if present (the converter omits it when
+    # there is no Spanish copy, so absence is not an error).
+    es_path = os.path.join(data, "mattresses-es.csv")
+    if os.path.exists(es_path):
+        if _csv_header(es_path) != list(schema.MATTRESSES_ES_CSV_COLUMNS):
+            r.add_error("mattresses-es.csv: header does not match the ES schema contract")
+    elif languages and "es" in languages:
+        r.add_warning("mattresses-es.csv absent (languages includes 'es'; ok if no "
+                      "Spanish mattress copy was provided)")
+
+    # accessories.json: top-level array, each item has id/name/category/image
+    acc = load_json(os.path.join(data, "accessories.json"), "accessories.json")
+    if acc is not None:
+        if not isinstance(acc, list):
+            r.add_error("accessories.json: top-level is not a JSON array")
+        else:
+            for i, a in enumerate(acc):
+                if not isinstance(a, dict):
+                    r.add_error(f"accessories.json[{i}]: not an object")
+                    continue
+                for k in ("id", "name", "category", "image"):
+                    if k not in a:
+                        r.add_error(f"accessories.json[{i}]: missing {k!r}")
+                if _blank(a.get("image")):
+                    r.add_error(f"accessories.json[{i}] ({a.get('id')}): image is empty")
+
+    # manifest.json: required keys
+    man = load_json(os.path.join(output_dir, "manifest.json"), "manifest.json")
+    if man is not None:
+        for k in ("name", "short_name", "description", "start_url",
+                  "display", "orientation", "background_color", "theme_color"):
+            if k not in man:
+                r.add_error(f"manifest.json: missing key {k!r}")
+
+    # mattresses.json: structural sanity (only when build-json actually produced it)
+    if build_json:
+        mj = load_json(os.path.join(data, "mattresses.json"), "mattresses.json")
+        if mj is not None:
+            images_dir = os.path.join(output_dir, "images", "mattresses")
+            check_imgs = os.path.isdir(images_dir)
+            for tier in ("gold", "silver", "bronze"):
+                if tier not in mj:
+                    r.add_error(f"mattresses.json: missing tier {tier!r}")
+                elif not isinstance(mj[tier], list):
+                    r.add_error(f"mattresses.json: tier {tier!r} is not a list")
+                else:
+                    for m in mj[tier]:
+                        for k in ("id", "name", "imageUrl"):
+                            if k not in m:
+                                r.add_error(f"mattresses.json {tier} item missing {k!r}")
+                        if _blank(m.get("imageUrl")):
+                            r.add_error(f"mattresses.json ({m.get('id')}): imageUrl is empty")
+                        elif check_imgs and not os.path.exists(os.path.join(output_dir, m.get("imageUrl"))):
+                            r.add_warning(f"mattresses.json ({m.get('id')}): imageUrl "
+                                          f"{m.get('imageUrl')!r} not found on disk")
+    return r
+
+
 # -- Entrypoint ---------------------------------------------------------------
 
 def validate_bundle_inputs(raw_tabs, store_config, manifest=None, *,
@@ -686,6 +804,107 @@ def _self_test() -> int:
     rr = validate_mattresses(t, languages=langs)
     check("ES missing mattress copy -> warning (not error)",
           rr.ok and any("no Spanish (ES) copy" in w for w in rr.warnings))
+
+    # ---- V3: post-emit output validation ----
+    import tempfile
+
+    def _write(path, text):
+        with open(path, "w", encoding="utf-8", newline="") as f:
+            f.write(text)
+
+    def _write_good_output(d, *, with_es=True, with_mj=False):
+        data = os.path.join(d, "data")
+        os.makedirs(data, exist_ok=True)
+        _write(os.path.join(data, "store-config.json"),
+               json.dumps({"storeName": "Acme", "allowedHosts": ["acme.github.io"]}))
+        _write(os.path.join(data, "allowed-hosts.js"),
+               'window.__DF_ALLOWED_HOSTS = ["acme.github.io"];\n')
+        with open(os.path.join(data, "mattresses.csv"), "w", encoding="utf-8", newline="") as f:
+            csv.writer(f).writerow(schema.get_column_headers("Mattresses", lang=""))
+        if with_es:
+            with open(os.path.join(data, "mattresses-es.csv"), "w", encoding="utf-8", newline="") as f:
+                csv.writer(f).writerow(list(schema.MATTRESSES_ES_CSV_COLUMNS))
+        _write(os.path.join(data, "accessories.json"), json.dumps(
+            [{"id": "a1", "name": {"en": "P"}, "category": {"en": "Pillows"},
+              "image": "images/accessories/a1.jpg"}]))
+        _write(os.path.join(d, "manifest.json"), json.dumps(
+            {"name": "n", "short_name": "s", "description": "d", "start_url": "/x/",
+             "display": "standalone", "orientation": "landscape",
+             "background_color": "#000", "theme_color": "#000"}))
+        if with_mj:
+            _write(os.path.join(data, "mattresses.json"), json.dumps(
+                {"gold": [{"id": "g1", "name": "A", "imageUrl": "images/mattresses/a.jpg"}],
+                 "silver": [], "bronze": []}))
+        return d
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        check("post-emit valid output passes (build_json=False)",
+              validate_generated_outputs(d, build_json=False, languages=["en", "es"]).ok)
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        os.remove(os.path.join(d, "data", "store-config.json"))
+        check("post-emit missing store-config -> error",
+              any("store-config.json: missing" in e
+                  for e in validate_generated_outputs(d, build_json=False).errors))
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        _write(os.path.join(d, "data", "store-config.json"), "{not valid json")
+        check("post-emit invalid JSON -> error",
+              any("invalid JSON" in e
+                  for e in validate_generated_outputs(d, build_json=False).errors))
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        _write(os.path.join(d, "data", "allowed-hosts.js"),
+               'window.__DF_ALLOWED_HOSTS = ["other.github.io"];\n')
+        check("post-emit allowed-hosts mismatch -> error",
+              any("allowed-hosts.js array" in e
+                  for e in validate_generated_outputs(d, build_json=False).errors))
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        _write(os.path.join(d, "data", "allowed-hosts.js"), "// no assignment here\n")
+        check("post-emit allowed-hosts parse failure -> error",
+              any("parse failure" in e
+                  for e in validate_generated_outputs(d, build_json=False).errors))
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        with open(os.path.join(d, "data", "mattresses.csv"), "w", encoding="utf-8", newline="") as f:
+            csv.writer(f).writerow(["wrong", "header"])
+        check("post-emit mattresses.csv header mismatch -> error",
+              any("mattresses.csv: header" in e
+                  for e in validate_generated_outputs(d, build_json=False).errors))
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        man = json.load(open(os.path.join(d, "manifest.json"), encoding="utf-8"))
+        del man["theme_color"]
+        _write(os.path.join(d, "manifest.json"), json.dumps(man))
+        check("post-emit manifest missing key -> error",
+              any("manifest.json: missing key" in e
+                  for e in validate_generated_outputs(d, build_json=False).errors))
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d, with_mj=False)
+        check("post-emit mattresses.json missing when build_json=True -> error",
+              any("mattresses.json: missing" in e
+                  for e in validate_generated_outputs(d, build_json=True).errors))
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d, with_mj=False)
+        check("post-emit mattresses.json not required when build_json=False",
+              validate_generated_outputs(d, build_json=False, languages=["en", "es"]).ok)
+
+    with tempfile.TemporaryDirectory() as d:
+        _write_good_output(d)
+        _write(os.path.join(d, "data", "accessories.json"), json.dumps({"not": "array"}))
+        check("post-emit accessories.json wrong shape -> error",
+              any("top-level is not a JSON array" in e
+                  for e in validate_generated_outputs(d, build_json=False).errors))
 
     print(f"\nSelf-test: {passed} passed, {failed} failed")
     return 0 if failed == 0 else 1

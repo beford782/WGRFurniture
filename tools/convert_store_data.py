@@ -384,15 +384,16 @@ def normalize_images(source_root, output_dir, mattress_stems, accessory_stems, q
 
 def run_build_data(output_dir):
     """Invoke <output-dir>/build-data.ps1 to regenerate mattresses.json.
-    Warn + skip (never fail the emit) if PowerShell or the script is absent."""
+    Warn + skip (never fail the emit) if PowerShell or the script is absent.
+    Returns True iff build-data.ps1 ran and produced data/mattresses.json."""
     script = os.path.join(output_dir, "build-data.ps1")
     if not os.path.exists(script):
         print(f"[build-json] skipped: {script} not found.")
-        return
+        return False
     ps = shutil.which("pwsh") or shutil.which("powershell")
     if not ps:
         print("[build-json] skipped: no pwsh/powershell on PATH.")
-        return
+        return False
     print(f"[build-json] running {os.path.basename(ps)} -File {script}")
     proc = subprocess.run(
         [ps, "-NoProfile", "-ExecutionPolicy", "Bypass", "-File", script],
@@ -404,6 +405,8 @@ def run_build_data(output_dir):
               f"(CSV/JSON output is still valid).")
         if proc.stderr.strip():
             print("  " + proc.stderr.strip().replace("\n", "\n  "))
+        return False
+    return os.path.exists(os.path.join(output_dir, "data", "mattresses.json"))
 
 
 def main(argv=None) -> int:
@@ -532,10 +535,23 @@ def main(argv=None) -> int:
     elif args.source_images and args.skip_image_normalization:
         print("[images] skipped (--skip-image-normalization).")
 
+    built = False
     if not args.skip_build_json:
-        run_build_data(args.output_dir)
+        built = run_build_data(args.output_dir)
     else:
         print("[build-json] skipped (--skip-build-json).")
+
+    # Post-emit validation: verify the bundle we just wrote (V3). Generated files
+    # are NOT deleted on failure (useful for debugging a post-emit problem).
+    if do_validate:
+        post = validation.validate_generated_outputs(
+            args.output_dir, build_json=built, languages=config.get("languages"))
+        if post.errors or post.warnings:
+            print(post.summary())
+        if post.blocking(warnings_as_errors=args.warnings_as_errors):
+            print("[validate] post-emit validation failed (files were written; "
+                  "see above).")
+            return 1
 
     print("Done.")
     return 0
