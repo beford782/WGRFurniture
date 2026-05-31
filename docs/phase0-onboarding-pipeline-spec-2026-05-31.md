@@ -288,7 +288,7 @@ All are config/codegen changes, not scoring/touch/architecture.
 *reproduce Bel's own committed bundle* from a Bel workbook.
 
 - **Fixture (decided 2026-05-31):** **generate** the Bel workbook from the
-  committed `data/`+config by a checked-in script (`tests/fixtures/build_bel_fixture.*`),
+  committed `data/`+config by a checked-in script (`tests/fixtures/build_bel_workbook.py`),
   rather than relying only on an opaque binary `.xlsx`. The generator reads the
   current committed `data/store-config.json`, `data/mattresses.csv`(+`-es`),
   `data/accessories.json`, `manifest.json` and emits the workbook, so the fixture
@@ -309,6 +309,44 @@ All are config/codegen changes, not scoring/touch/architecture.
   guard philosophy).
 - **Budget note:** authoring the round-tripping Bel workbook is the bulk of the
   cost. With speed off the table this is in-scope, not stretch.
+
+### S1 harness structure (approved 2026-05-31)
+
+**Files (all under `tests/`, which is tracked — only `docs/` is gitignored):**
+- `tests/fixtures/workbook_schema.py` — **shared workbook tab/column schema**. The
+  **single source of truth** for which tabs exist and which columns each carries.
+  The Bel fixture generator consumes it now; the `create_template.py` rewrite (S7)
+  consumes the *same* module later. Neither defines tabs/columns independently —
+  this is what keeps the golden-bundle test proving the *real* onboarding path
+  rather than a parallel one that has silently drifted from the retailer template.
+- `tests/fixtures/build_bel_workbook.py` — script-generated Bel workbook fixture.
+  Reads the committed `data/store-config.json`, `data/mattresses.csv`(+`-es`),
+  `data/accessories.json`, `manifest.json` and emits a workbook whose tabs/columns
+  come from `workbook_schema.py`.
+- `tests/golden/canonical.py` — canonical compare helpers + the curated allow-list.
+- `tests/golden/run_golden.py` — temp-workspace runner.
+
+**Decisions:**
+- **Commit the generators/helpers, not the generated `.xlsx`.** The workbook is
+  emitted into a temp workspace (never committed); a binary `.xlsx` can't be diffed
+  and silently rots.
+- **Generator self-verifies by round-trip:** emit → read back → reconstruct →
+  deep-equal the committed `data/`. This proves fixture faithfulness before the
+  converter exists.
+- **Temp-workspace isolation:** the harness copies scripts + `data/` + `images/`
+  into a tempdir and runs there; it never targets repo `data/` (`build-data.ps1` is
+  `$PSScriptRoot`-bound and would mutate the tree / trip the pre-commit hook).
+  Shell out to `pwsh`/`powershell` reusing the detection in `tools/hooks/pre-commit`.
+- **Canonical comparison** (no byte compare): JSON = parse + key-order-insensitive
+  deep-equal (numbers numeric, strings verbatim); CSV = parse by column name, row
+  order semantic, tolerate line-endings/quoting/empty-cell noise; images (S4) =
+  filename/extension/presence/dimensions, never JPEG bytes; `allowed-hosts.js` (S6)
+  = extract array, compare to `store-config.allowedHosts`.
+- **Staged activation:** the end-to-end golden target starts **expected-failing /
+  skipped** until the converter rewrite lands, then flips each comparison to
+  **required** incrementally — **S2** CSV, **S3** store-config/accessories, **S4**
+  `mattresses.json` + images, **S5** `manifest.json`, **S6** `allowed-hosts.js`.
+- **No CI wiring in S1** — locally runnable only.
 
 ---
 
