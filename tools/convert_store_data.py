@@ -1,13 +1,16 @@
 #!/usr/bin/env python3
-"""DreamFinder Store Data Converter - mattresses + config/accessories (S2 + S3).
+"""DreamFinder Store Data Converter - full bundle (S2-S6).
 
 Reads a completed onboarding workbook (.xlsx) and emits the data files the live
 app consumes:
 
     <output-dir>/data/mattresses.csv        (English - the live CSV contract)   [S2]
     <output-dir>/data/mattresses-es.csv     (Spanish - only when ES content)     [S2]
-    <output-dir>/data/store-config.json     (16 committed top-level keys)         [S3]
+    <output-dir>/data/store-config.json     (17 committed top-level keys)         [S3/S6]
     <output-dir>/data/accessories.json      (bilingual array, preserved order)    [S3]
+    <output-dir>/data/allowed-hosts.js      (M1 domain-lock allowlist)            [S6]
+    <output-dir>/images/...                 (normalized JPG, with --source-images) [S4]
+    <output-dir>/manifest.json              (PWA manifest)                        [S5]
 
 and, unless skipped, shells out to <output-dir>/build-data.ps1 to regenerate
 <output-dir>/data/mattresses.json from the CSVs (the existing, trusted path).
@@ -22,10 +25,11 @@ Design (docs/phase0-onboarding-pipeline-spec-2026-05-31.md sections 3/4):
     CSV contract). store-config.json / accessories.json are built from the shared
     tools/workbook_schema.py column->path mapping (single source of truth, also
     used by the fixture generator and the future create_template rewrite).
-  * NOT emitted here (later phases): image normalization (S4), mattresses.json
-    content (built via build-data.ps1; compared in S4), manifest.json (S5),
-    allowed-hosts.js (S6). allowedHosts is intentionally absent from store-config
-    until S6; rsaList defaults to [].
+  * store-config.allowedHosts is the M1 source of truth; it is projected into
+    data/allowed-hosts.js (window.__DF_ALLOWED_HOSTS) which index.html loads
+    synchronously before its domain-lock IIFE. rsaList defaults to [].
+  * Image normalization (S4) requires --source-images; mattresses.json is built
+    by build-data.ps1 (the trusted path), not written here.
   * build-data.ps1 runs from <output-dir> (its $PSScriptRoot scopes it to the
     output workspace), so it never touches the repo's data/ unless --output-dir is
     the repo itself.
@@ -59,8 +63,8 @@ STORE_INFO_LISTS = {"languages", "allowedHosts"}
 # canonical comparison is parse-based and order-insensitive.
 STORE_CONFIG_KEY_ORDER = [
     "storeName", "storeKey", "languages", "logo", "colors", "gasUrl",
-    "publicAssetRoot", "brands", "rsaList", "text", "text_es", "discount",
-    "voice", "voice_es", "salesNotes", "salesNotes_es",
+    "publicAssetRoot", "allowedHosts", "brands", "rsaList", "text", "text_es",
+    "discount", "voice", "voice_es", "salesNotes", "salesNotes_es",
 ]
 
 # Per-accessory key order (committed Bel order) - readability only.
@@ -209,8 +213,6 @@ def build_store_config(wb):
         key = col.key
         if key.startswith("manifest."):
             continue  # manifest.json is S5
-        if key == "allowedHosts":
-            continue  # S6 (absent from committed store-config until then)
         cell = si.get(col.name)
         if key in STORE_INFO_LISTS:
             value = [s.strip() for s in _s(cell).split(",") if s.strip()]
@@ -298,6 +300,14 @@ def write_json(path, obj):
     with open(path, "w", encoding="utf-8", newline="") as f:
         json.dump(obj, f, indent=2, ensure_ascii=False)
         f.write("\n")
+
+
+def write_allowed_hosts_js(path, hosts):
+    """Project store-config.allowedHosts into the M1 domain-lock allowlist JS
+    (loaded synchronously by index.html before the main script). JSON serialization
+    keeps the array JS-safe; trailing semicolon + newline."""
+    with open(path, "w", encoding="utf-8", newline="") as f:
+        f.write("window.__DF_ALLOWED_HOSTS = " + json.dumps(hosts) + ";\n")
 
 
 # -- image normalization (S4) -------------------------------------------------
@@ -435,6 +445,10 @@ def main(argv=None) -> int:
         cfg_path = os.path.join(data_dir, "store-config.json")
         write_json(cfg_path, config)
         print(f"  wrote {cfg_path} ({len(config)} top-level keys)")
+
+        ah_path = os.path.join(data_dir, "allowed-hosts.js")
+        write_allowed_hosts_js(ah_path, config.get("allowedHosts", []))
+        print(f"  wrote {ah_path} ({config.get('allowedHosts', [])})")
 
         accessories = build_accessories(wb)
         acc_path = os.path.join(data_dir, "accessories.json")

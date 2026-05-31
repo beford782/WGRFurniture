@@ -14,6 +14,7 @@
   },
   "gasUrl": "https://script.google.com/macros/s/AKfycbzLL1Lq6-g2WXglYBrsrfhKRtp0qJSDwfgkS14MLYbJVLkV5idrc7a2cH0jVSdbGDYd/exec",
   "publicAssetRoot": "https://beford782.github.io/DreamFinder/",
+  "allowedHosts": ["beford782.github.io"],
   "brands": [
     { "name": "Restonic",    "logo": "images/brands/restonic.jpg" },
     { "name": "Spring Air",  "logo": "images/brands/spring-air.jpg" },

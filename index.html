@@ -6616,6 +6616,11 @@
     </div>
   </div>
 
+  <!-- M1 domain-lock allowlist: generated per-store, loaded synchronously before
+       the main script so the domain-lock IIFE can read window.__DF_ALLOWED_HOSTS.
+       Source of truth: data/store-config.json "allowedHosts". -->
+  <script src="./data/allowed-hosts.js"></script>
+
   <script>
     // ===== DOMAIN LOCK =====
     // Renders an inline-style error page if the host isn't in the allowed list.
@@ -6624,7 +6629,7 @@
     // properties may be unreliable. This is the one place those literals survive
     // post-tokenization. Do not migrate to var().
     (function() {
-      var allowed = ['beford782.github.io', 'localhost', '127.0.0.1'];
+      var allowed = (window.__DF_ALLOWED_HOSTS || []).concat(['localhost', '127.0.0.1']);
       var host = location.hostname;
       if (!allowed.some(function(d) { return host === d || host.endsWith('.' + d); })) {
         document.documentElement.innerHTML = '<body style="background:#0d1730;color:#d4a84b;font-family:sans-serif;display:flex;align-items:center;justify-content:center;height:100vh;margin:0;text-align:center;"><div><div style="font-size:2rem;margin-bottom:1rem;">🌙</div><div style="font-size:1.1rem;font-weight:600;">DreamFinder</div><div style="font-size:0.8rem;margin-top:0.5rem;opacity:0.6;">Unauthorized domain</div></div></body>';
