@@ -1,155 +1,128 @@
 {
-  "storeName": "Bel Furniture",
-  "storeKey": "bel",
-  "languages": ["en", "es"],
+  "storeName": "WG&R Furniture",
+  "storeKey": "wgr",
+  "languages": [
+    "en"
+  ],
   "logo": {
-    "main": "bel",
+    "main": "WG&R",
     "sub": "furniture"
   },
   "colors": {
-    "storePrimary": "#8B1A1A",
-    "storePrimaryLight": "#a52525",
-    "storePrimaryGlow": "rgba(139, 26, 26, 0.15)",
+    "storePrimary": "#B12D15",
+    "storePrimaryLight": "#C8402A",
+    "storePrimaryGlow": "rgba(177,45,21,0.15)",
     "accent": "#B8935D"
   },
-  "gasUrl": "https://script.google.com/macros/s/AKfycbzLL1Lq6-g2WXglYBrsrfhKRtp0qJSDwfgkS14MLYbJVLkV5idrc7a2cH0jVSdbGDYd/exec",
-  "publicAssetRoot": "https://beford782.github.io/DreamFinder/",
-  "allowedHosts": ["beford782.github.io"],
+  "gasUrl": "",
+  "publicAssetRoot": "https://beford782.github.io/WGRFurniture/",
+  "allowedHosts": [
+    "beford782.github.io"
+  ],
   "brands": [
-    { "name": "Restonic",    "logo": "images/brands/restonic.jpg" },
-    { "name": "Spring Air",  "logo": "images/brands/spring-air.jpg" },
-    { "name": "Bel-O-Pedic", "logo": "images/brands/bel-o-pedic.jpg" }
+    {
+      "name": "Tempur-Pedic",
+      "logo": ""
+    },
+    {
+      "name": "Stearns & Foster",
+      "logo": ""
+    },
+    {
+      "name": "PranaSleep",
+      "logo": ""
+    },
+    {
+      "name": "Purple",
+      "logo": ""
+    },
+    {
+      "name": "Beautyrest",
+      "logo": ""
+    },
+    {
+      "name": "King Koil",
+      "logo": ""
+    },
+    {
+      "name": "Sealy",
+      "logo": ""
+    },
+    {
+      "name": "Casper",
+      "logo": ""
+    },
+    {
+      "name": "Astor Park",
+      "logo": ""
+    },
+    {
+      "name": "Nectar",
+      "logo": ""
+    },
+    {
+      "name": "DreamCloud",
+      "logo": ""
+    },
+    {
+      "name": "WG&R Factory Direct",
+      "logo": ""
+    }
   ],
   "rsaList": [],
   "text": {
-    "pageTitle": "DreamFinder — Bel Furniture Sleep Quiz",
-    "metaDescription": "Take the DreamFinder sleep quiz at Bel Furniture and get personalized mattress recommendations.",
-    "ogTitle": "DreamFinder — Bel Furniture",
-    "trustSignal": "Proudly serving Texas families for over twenty-five years",
-    "heritage": "EST. 2001 · TEXAS",
+    "pageTitle": "DreamFinder - WG&R Furniture Sleep Quiz",
+    "metaDescription": "Take the WG&R Sleep Shop quiz and get personalized mattress recommendations.",
+    "ogTitle": "DreamFinder - WG&R Furniture",
+    "trustSignal": "Northeast Wisconsin's #1 furniture & mattress retailer since 1946",
+    "heritage": "EST. 1946 - EMPLOYEE-OWNED - WISCONSIN",
     "emailPrivacy": "We'll only use your email to send your results.",
-    "privacyPolicyContact": "To have your information removed, contact your local Bel Furniture store.",
-    "inStockText": "In Stock at Bel Furniture",
-    "emailHeader": "Bel Furniture × DreamFinder",
-    "emailSubtext": "Bring this email to your Bel Furniture store",
-    "locationLabel": "Texas"
+    "privacyPolicyContact": "",
+    "inStockText": "In stock at WG&R",
+    "emailHeader": "WG&R Furniture x DreamFinder",
+    "emailSubtext": "Your personalized mattress matches",
+    "locationLabel": "Northeast Wisconsin"
   },
   "text_es": {
-    "pageTitle": "DreamFinder — Prueba de Sueño de Bel Furniture",
-    "metaDescription": "Toma la prueba de sueño DreamFinder en Bel Furniture y recibe recomendaciones personalizadas de colchones.",
-    "ogTitle": "DreamFinder — Bel Furniture",
-    "trustSignal": "Sirviendo con orgullo a las familias de Texas por más de veinticinco años",
-    "heritage": "EST. 2001 · TEXAS",
-    "emailPrivacy": "Solo usaremos tu correo para enviarte tus resultados.",
-    "privacyPolicyContact": "Para eliminar tu información, comunícate con tu tienda local de Bel Furniture.",
-    "inStockText": "Disponible en Bel Furniture",
-    "emailHeader": "Bel Furniture × DreamFinder",
-    "emailSubtext": "Lleva este correo a tu tienda Bel Furniture",
-    "locationLabel": "Texas"
+    "pageTitle": "",
+    "metaDescription": "",
+    "ogTitle": "",
+    "trustSignal": "",
+    "heritage": "",
+    "emailPrivacy": "",
+    "privacyPolicyContact": "",
+    "inStockText": "",
+    "emailHeader": "",
+    "emailSubtext": "",
+    "locationLabel": ""
   },
   "discount": {
     "codePrefix": "DREAM",
     "codeDigits": 3
   },
   "voice": {
-    "eyebrow": "Personalized mattress finder",
-    "headlineMain": "Sleep Better",
-    "headlineAccent": "Tonight.",
-    "subCopyBefore": "A few quick questions. Three mattresses matched to how you actually sleep. Plus ",
-    "subCopyAccent": "a private savings pass",
-    "subCopyAfter": " — unlocked at the end.",
-    "ctaPrimary": "Find my match & unlock savings",
-    "timeEstimate": "≈ 4 minutes"
+    "eyebrow": "WG&R Sleep Shop",
+    "headlineMain": "Let's find your",
+    "headlineAccent": "best night's sleep",
+    "subCopyBefore": "Answer a few quick questions and we'll match you to the right mattress - backed by our ",
+    "subCopyAccent": "125-Night Sleep Guarantee",
+    "subCopyAfter": ".",
+    "ctaPrimary": "Start the Sleep Quiz",
+    "timeEstimate": "Takes about 2 minutes"
   },
   "voice_es": {
-    "eyebrow": "Buscador personalizado de colchón",
-    "headlineMain": "Duerme Mejor",
-    "headlineAccent": "Esta Noche.",
-    "subCopyBefore": "Unas preguntas rápidas. Tres colchones elegidos según cómo duermes. Y ",
-    "subCopyAccent": "un pase de ahorro privado",
-    "subCopyAfter": " — desbloqueado al final.",
-    "ctaPrimary": "Encuentra tu colchón y ahorra",
-    "timeEstimate": "≈ 4 minutos"
+    "eyebrow": "",
+    "headlineMain": "",
+    "headlineAccent": "",
+    "subCopyBefore": "",
+    "subCopyAccent": "",
+    "subCopyAfter": "",
+    "ctaPrimary": "",
+    "timeEstimate": ""
   },
   "salesNotes": {
-    "subBrands": {
-      "Copper": {
-        "format": "full",
-        "lead": "Multiple specialty pressure-relief foams stacked over a zoned pocket coil — Serene foam, copper memory foam, gel memory foam — finished with the copper-infused cool cover. The cooling and the pressure relief are both real, not marketing.",
-        "demo": "Have them lie on it for two full minutes. Touch the cover yourself first, then have them touch it ten minutes in — that copper yarn is what makes it stay cool when standard cooling fabrics warm up. While they're down, ask if they can feel the foam contour without the bed swallowing them. That's the zoned coil doing the work underneath.",
-        "close": "Most mattresses with even half these features — copper cooling, multi-foam pressure relief, zoned coil — retail well above the Copper collection's price. The copper-infused cool cover is what makes this one totally unique. There isn't another mattress in the showroom with that combination."
-      },
-      "Fleur de Lis": {
-        "format": "full",
-        "lead": "This is the natural-materials build — silk and wool in the cover, multiple layers of latex and Serene foam, and Back Supporter dual-gauge coils underneath. It's premium for a different reason than the Camryn: customers pick the Fleur de Lis when they care about what's inside the mattress, not just how it feels.",
-        "demo": "Have them lie on it for two minutes. Touch the silk-and-wool damask yourself first, then have them touch it ten minutes in — wool moves moisture differently than synthetic knits, it doesn't trap heat, which is what hot sleepers actually feel mid-night. While they're down, push down on the surface with your hand near them: latex pushes back through the hand-tufted cover instead of foam sinking. Then have them shift to their back and feel the firmer center coils engage at the lumbar — that's the Back Supporter dual-gauge doing the work, targeted spinal support no other premium has on the floor.",
-        "close": "The materials are what make this last, and the hand-tufting locks them there — buttons mechanically hold the layers so nothing shifts over years. Latex, wool, and tufted construction don't break down like polyfoam stacks; Fleur de Lis customers are buying a mattress they'll still want in 15 years. Most premium mattresses in this range are foam-heavy with shorter useful life — the Fleur de Lis is the longevity play in the Spring Air showroom."
-      },
-      "Last Mattress": {
-        "format": "full",
-        "lead": "This is the engineered build for support and longevity — every foam layer is denser and more substantial than a typical mattress, locked in place by hand-tufting, and backed by a lifetime warranty. You still get all the premium pieces — phase-change cool cover, Talalay latex, Serene foam, individually pocketed coils for motion separation — but the story here is structure. Customers pick the Last Mattress when they sleep hard on a bed and want it to still feel right in twenty years.",
-        "demo": "Touch the cover yourself first and have them touch it before they lie down — that phase-change cool-to-the-touch fabric is something they'll feel right away, and it sets up the rest of the demo. Once they're down for two full minutes, press your hand into the surface next to them — the foam pushes back instead of sinking, which is the density at work; these layers don't pack out the way standard polyfoam does. Have them roll all the way to the edge of the bed and feel that the surface stays solid — 1575 individually encased coils give edge-to-edge stability with no collapse where most beds soften first. Then run your hand across the tufting — those buttons are mechanically locking the layers in place, which is what makes the lifetime warranty real.",
-        "close": "The name isn't a brand exercise, it's the literal claim — denser foams, hand-tufting, and a lifetime warranty mean this bed is built to outlast every other premium on the floor. Most mattresses in this range carry 10-year warranties because that's about how long their foam lasts; Last Mattress carries lifetime because the build is engineered to that standard. These customers are buying once and never thinking about a mattress again — that's the trade, and it's a real one."
-      },
-      "Back Supporter Hybrid (Phase Change)": {
-        "format": "full",
-        "lead": "This is the pressure-relief-forward Silver — three layers of specialty foam (Hyper Soft, Serene, and Gel memory foam) under a smooth phase-change cooling cover, sitting on Back Supporter dual-gauge coils. Customers pick the H-collection when they want to settle deeper into the mattress and feel the foam doing the work.",
-        "demo": "Have them lie down for two full minutes. Touch the cover yourself first and have them touch it ten minutes in — phase-change material stays cool the whole night, not just at first contact. While they're down, ask them to notice how their shoulders and hips feel — that's three layers of specialty foam contouring underneath, which is over three times the comfort foam most Silver-tier mattresses carry. Then have them shift to their back and press your hand into the lumbar zone — they'll feel the firmer center coils pushing back; that's the Back Supporter dual-gauge giving extra support exactly where the spine needs it.",
-        "close": "This is the sleep-*in*-the-mattress feel for the customer who wants foam cradling them, who wakes up with shoulder or hip soreness, who likes that cocooned feeling. Most Silver hybrids give you cooling *or* multi-foam pressure relief; the H-collection gives you both, with Back Supporter coils underneath for spinal alignment. It's the most pressure-relief-rich Silver on the floor."
-      },
-      "Back Supporter Hybrid (PCM Ice)": {
-        "format": "full",
-        "lead": "This is the sleep-on-top Silver — a quilted PCM cooling cover and gel memory foam over Back Supporter dual-gauge coils. Customers pick the K-collection when they want cooling and support without sinking deep into the mattress; the quilting gives a more responsive surface than a smoothtop, so you feel like you're sleeping on the bed rather than in it.",
-        "demo": "Have them lie down for two full minutes. Touch the cover yourself first and have them touch it ten minutes in — the PCM cooling stays cool through the night, not just at first contact. Ask them how much they feel themselves sinking — that quilted top with a lighter foam stack is what keeps them on the surface, especially helpful if they shift positions a lot or felt like the H-collection swallowed them. Then have them shift to their back and feel the firmer center coils engage at the lumbar — Back Supporter is doing structural work right at the surface where they can feel it directly.",
-        "close": "This is the sleep-*on*-the-mattress feel for the customer who shifts positions a lot, who hated their last memory-foam bed because it felt like quicksand, who wants cooling and support without the deep cradle. The K-collection delivers Back Supporter spinal alignment in a quilted build that keeps you on top. If a customer was close on the H-collection but felt it was too much sink, this is the Silver that solves it."
-      },
-      "Back Supporter": {
-        "format": "full",
-        "lead": "This is the traditional innerspring built around the original Spring Air signature — Back Supporter dual-gauge coils with the Marvelous Middle, finished with Cool Foam and Polygel for surface comfort. It's a straightforward, proven build with no specialty cooling cover, no memory foam layers, and no individually pocketed coils. That makes it the right fit for guest rooms, kids' rooms, and second bedrooms — places where you want a quality mattress with the Spring Air name on it without paying for features the room doesn't need.",
-        "demo": "Have them lie down for two full minutes and shift to their back. Press your hand into the lumbar zone — they'll feel the firmer center coils pushing back harder than the head and foot zones; that's the Marvelous Middle, 25% more support right where the spine needs it. Have them roll to their side and notice that the surface still cushions at the shoulder and hip — that's the Cool Foam with Polygel doing the comfort work. If the quiz showed them shopping for a guest room, kid's room, or second bedroom, this mattress is the right answer for that job. If they're a couple shopping for their main bedroom, walk them up to the Silver Back Supporter Hybrids — same Marvelous Middle coil, with pocketed motion separation that's the difference between sleeping through your partner shifting and waking up at 3 AM.",
-        "close": "Spring Air has been making Back Supporter mattresses since 1926 — the Marvelous Middle is the engineering they're known for, and this is the cleanest expression of it. The Bronze innerspring is the right answer for the right room: a guest room that needs to feel welcoming, a kid's room that doesn't need premium cooling, a starter bed for a college apartment. For a couple's main bedroom, point them up to the Silver Back Supporter Hybrids — same Marvelous Middle coil, with pocketed motion separation and a cooling cover that actually matter when two people share a bed every night."
-      },
-      "Reserve": {
-        "format": "full",
-        "lead": "This is the natural-materials build — New Zealand wool, multiple layers of latex and Serene foam, and micro-coils on top of the main coil system. It's premium for a different reason than the Camryn: customers pick the Reserve when they care about what's inside the mattress, not just how it feels.",
-        "demo": "Have them lie on it for two minutes. Wool moves moisture differently than synthetic cooling — it doesn't conduct heat away, it stays dry, which is what hot sleepers actually feel mid-night. While they're down, push down on the surface with your hand near them: the latex pushes back instead of memory-foam sinking. That's the responsive contour. Have them shift positions and feel how the micro-coils adjust before the main coil even engages.",
-        "close": "The materials are what make this last. Latex, wool, and micro-coils don't break down like polyfoam stacks — Reserve customers are buying a mattress they'll still want in 15 years. Most premium mattresses in this range are foam-heavy with shorter useful life. The Reserve is the longevity play in the showroom."
-      },
-      "ComfortCare Hybrid": {
-        "format": "full",
-        "lead": "This is the value hybrid — pocketed coils for motion separation, cool gel foam for pressure relief, and a luxurious cooling cover, all built around the Restonic Marvelous Middle for 25% more center support. Customers pick the ComfortCare when they want real hybrid features for a main bedroom without paying Silver-tier prices; it's the most bed you can get at this price point on the floor.",
-        "demo": "Have them lie down for two full minutes. Touch the cover yourself first and have them touch it ten minutes in — the cooling cover wicks moisture and heat, which is what they'll feel through the night. Press your hand into the lumbar zone while they're on their back — they'll feel the firmer center coils pushing back harder than the head and foot zones; that's the Marvelous Middle, the engineering Restonic has been known for since 1938. Then have one person sit and shift on the edge while the other lies still on the opposite side — pocketed coils move independently, so the partner barely feels it. That's the difference between this and a traditional innerspring.",
-        "close": "Most Bronze mattresses cut corners somewhere — no pocketed coils, no cooling cover, no real comfort layer. The ComfortCare keeps all three and adds the Marvelous Middle on top. For a couple shopping main bedroom on a Bronze budget, this is the answer; you're getting Silver-tier features at the right price because Restonic builds the value hybrid better than anyone else in the showroom."
-      },
-      "Value Hybrid": {
-        "format": "coaching",
-        "rsaNote": "Construction-equivalent to the Restonic ComfortCare Hybrid (Veronica/Mechelle) at a similar feature level. Lead with the ComfortCare when both are saved; bring in the Ariana or Catalina when the customer's budget requires the additional discount these typically carry, or when the ComfortCare isn't in stock in the firmness or size needed. Same demo moves apply — pocketed coil motion test, cooling cover touch, lumbar press for center support — but skip the brand heritage close, which doesn't carry on the Bel-O-Pedic label."
-      },
-      "Charcoal": {
-        "format": "coaching",
-        "rsaNote": "Cooling-led hybrid with charcoal-infused memory foam and an ICE yarn cooling cover. Distinct from the other Bel-O-Pedic Bronzes in that the cooling story has a specific tech (charcoal foam) the customer can hold onto. Bucca (Cushion Firm) and Tiffany (Plush) — no medium option in the collection. Lead with the Restonic ComfortCare or Spring Air Silver hybrids when both are saved; bring in the Charcoal when the customer specifically wants charcoal/cooling-themed product or when budget and stock direct here. Demo moves: cooling cover touch test (the ICE yarn does feel cool to the touch), pocketed coil motion test, and on Tiffany specifically the deep-sink test for plush sleepers — the 3-inch charcoal foam top is a noticeable cradle. 10-year warranty on both."
-      },
-      "7-Zone": {
-        "format": "coaching",
-        "rsaNote": "Wool-quilted hybrid with 7-zone ergonomic foam targeting head, shoulders, hips, and knees, sitting on ~900 foam-encased pocket coils. The 7-zone story is the differentiator — most Bronze hybrids have flat foam layers; this one has zoned cushioning that targets pressure points. Cleobella (Plush) and Cleodora (Firm) — dual firmness, no medium option in the collection. Lead with Restonic ComfortCare Hybrid when both are saved; bring in 7-Zone when the customer flags shoulder or hip pain in the quiz, or when they specifically respond to the wool-quilted cover (some customers cross-shop natural materials and the wool quilting reads to them as a budget version of the Fleur de Lis or Reserve story — honest framing: it's a quilted wool *finish*, not wool *layers*, but the sleep-surface feel is genuinely different from synthetic knits). Demo moves: wool quilt touch test (cool, dry, breathable feel different from poly-knit), pressure-point press into shoulder and hip zones (RSA presses next to the customer to demonstrate that those zones cushion deeper than the lumbar zone — that's the 7-zone foam doing its job), and pocketed coil motion test. 10-year warranty."
-      },
-      "Cooling Hybrid": {
-        "format": "coaching",
-        "rsaNote": "Standard cooling hybrid line — cooling cover, comfort foams, and individually wrapped pocket coils. Four firmness/build combinations covering most use cases: Daybreak (Medium, Euro Top, Silver), Rejuvenation (Plush, Silver), Serenity (Firm, Bronze), Sunset (Firm, Euro Top, Bronze). Lead with Spring Air or Restonic equivalents when both are saved — these are recommended last and don't carry a distinctive cooling tech story the way the Charcoal collection does. Bring in when budget and stock direct here, or when the customer specifically wants a Euro Top build (Daybreak or Sunset) which the rest of the showroom doesn't offer at this tier. Demo moves: cooling cover touch, pocketed coil motion test, and on Daybreak/Sunset specifically, point out the 15-inch profile and Euro Top finish — taller mattresses read as premium to a lot of customers and the Euro Top gives a softer surface transition than a smoothtop. 10-year warranty."
-      },
-      "Memory Foam": {
-        "format": "coaching",
-        "rsaNote": "All-foam construction (no coils) with medical-grade 4lb memory foam and a knit cooling cover. Single firmness — Tranquil (Firm, score 8) — and the only all-foam mattress in the showroom. Lead with the Restonic ComfortCare Hybrid or the Spring Air Bronze Innerspring when both are saved; bring in the Tranquil only when the customer specifically wants memory-foam construction with no coils, has a platform bed or adjustable base they want a foam-only mattress for, or is shopping for a setup where motion isolation matters more than airflow. Demo moves: cooling cover touch (knit cooling fabric, conducts heat away), the slow-contour press test on the 4lb foam (it's denser than typical memory foam, so the rebound is slower and more controlled — a real feel difference from cheap foam), and the no-bounce/full-motion-absorption test for couples or restless sleepers. Note that because there's no coil system, this won't have the edge stability of any hybrid on the floor — RSA should pre-empt that if the customer sits on the edge first. 10-year warranty."
-      }
-    },
-    "brands": {
-      "Spring Air": {
-        "story": "Family-owned, making mattresses since 1926. Famous for the Back Supporter — the original engineering trick of putting firmer center coils in the spring system to give the lumbar region 25% more support than the head and foot zones. Over 100 years of building one mattress engineering principle better than anyone else."
-      },
-      "Restonic": {
-        "story": "Family-owned, making mattresses since 1938. Famous for the Marvelous Middle — extra support engineered into the center of the spring or coil unit, the same lumbar-targeting principle as Spring Air's Back Supporter but Restonic's own build approach."
-      }
-    }
+    "subBrands": {},
+    "brands": {}
   },
   "salesNotes_es": {
     "subBrands": {},

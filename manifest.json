@@ -1,22 +1,10 @@
 {
-  "name": "DreamFinder — Bel Furniture",
+  "name": "DreamFinder - WG&R Furniture",
   "short_name": "DreamFinder",
-  "description": "Personalized sleep consultation for Bel Furniture",
-  "start_url": "/DreamFinder/",
+  "description": "Personalized sleep consultation for WG&R Furniture",
+  "start_url": "/WGRFurniture/",
   "display": "standalone",
   "orientation": "landscape",
   "background_color": "#0f1f33",
-  "theme_color": "#0f1f33",
-  "icons": [
-    {
-      "src": "icon-192.png",
-      "sizes": "192x192",
-      "type": "image/png"
-    },
-    {
-      "src": "icon-512.png",
-      "sizes": "512x512",
-      "type": "image/png"
-    }
-  ]
+  "theme_color": "#0f1f33"
 }

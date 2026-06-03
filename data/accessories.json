@@ -1,55 +1,317 @@
 [
-  { "id": "base-bt3000", "name": {"en": "BT3000 Power Base", "es": "Base Eléctrica BT3000"}, "category": {"en": "Foundations & Support", "es": "Bases y Soportes"}, "price": 899,
-    "image": "images/accessories/base-bt3000.jpg",
-    "description": {"en": "Head & foot adjustment, wireless remote, USB ports, massage, under-bed LED lighting — 850lb capacity", "es": "Ajuste de cabeza y pies, control inalámbrico, puertos USB, masaje, luces LED — capacidad de 850 lbs"},
+  {
+    "id": "base-bedtech-relax",
+    "name": {
+      "en": "BedTech Relax Lifestyle Base",
+      "es": ""
+    },
+    "category": {
+      "en": "Foundations & Support",
+      "es": ""
+    },
+    "price": 899,
+    "image": "images/accessories/base-bedtech-relax.jpg",
+    "description": {
+      "en": "Adjustable power base with head & foot articulation, wireless remote, and memory positions.",
+      "es": ""
+    },
     "subType": "adjustable",
-    "matchTags": ["snoring", "back_pain"], "matchScores": { "back_pain": 4, "snoring": 4, "premium": 3 } },
-
-  { "id": "base-foundation", "name": {"en": "Regular Foundation", "es": "Base Estándar"}, "category": {"en": "Foundations & Support", "es": "Bases y Soportes"}, "price": 111,
-    "image": "images/accessories/base-foundation.jpg",
-    "description": {"en": "Standard-height foundation — sturdy platform support that replaces a traditional box spring", "es": "Base de altura estándar — soporte de plataforma resistente que reemplaza un box spring tradicional"},
+    "matchTags": [
+      "snoring",
+      "reflux",
+      "back_pain",
+      "all_positions"
+    ],
+    "matchScores": {
+      "back_pain": 4,
+      "snoring": 4,
+      "premium": 3
+    }
+  },
+  {
+    "id": "base-tempur-ergo-smart",
+    "name": {
+      "en": "TEMPUR-Ergo Smart 3.0 Base",
+      "es": ""
+    },
+    "category": {
+      "en": "Foundations & Support",
+      "es": ""
+    },
+    "price": 2099,
+    "image": "images/accessories/base-tempur-ergo-smart.jpg",
+    "description": {
+      "en": "Smart adjustable base with app control, head & foot adjustment, and sleep tracking.",
+      "es": ""
+    },
+    "subType": "adjustable",
+    "matchTags": [
+      "snoring",
+      "reflux",
+      "back_pain"
+    ],
+    "matchScores": {
+      "back_pain": 4,
+      "snoring": 4,
+      "premium": 3
+    }
+  },
+  {
+    "id": "base-purple-premium-plus",
+    "name": {
+      "en": "Purple Premium Plus Smart Base",
+      "es": ""
+    },
+    "category": {
+      "en": "Foundations & Support",
+      "es": ""
+    },
+    "price": 1595,
+    "image": "images/accessories/base-purple-premium-plus.jpg",
+    "description": {
+      "en": "Smart adjustable base with app control and full head & foot articulation.",
+      "es": ""
+    },
+    "subType": "adjustable",
+    "matchTags": [
+      "snoring",
+      "reflux",
+      "back_pain"
+    ],
+    "matchScores": {
+      "back_pain": 4,
+      "snoring": 4,
+      "premium": 3
+    }
+  },
+  {
+    "id": "foundation-wgr-slate",
+    "name": {
+      "en": "WG&R Factory Direct Slate Foundation",
+      "es": ""
+    },
+    "category": {
+      "en": "Foundations & Support",
+      "es": ""
+    },
+    "price": 179,
+    "image": "images/accessories/foundation-wgr-slate.jpg",
+    "description": {
+      "en": "Sturdy standard-height foundation - solid platform support for any mattress.",
+      "es": ""
+    },
     "subType": "foundation",
-    "matchTags": ["all"], "matchScores": { "default": 2 } },
-
-  { "id": "base-lowprofile", "name": {"en": "Low Profile Foundation", "es": "Base de Perfil Bajo"}, "category": {"en": "Foundations & Support", "es": "Bases y Soportes"}, "price": 142,
-    "image": "images/accessories/base-lowprofile.jpg",
-    "description": {"en": "Reduced height foundation — ideal for taller mattresses or platform-style bed frames", "es": "Base de altura reducida — ideal para colchones altos o marcos de cama estilo plataforma"},
+    "matchTags": [
+      "all"
+    ],
+    "matchScores": {
+      "default": 2
+    }
+  },
+  {
+    "id": "foundation-wgr-slate-lowpro",
+    "name": {
+      "en": "WG&R Slate Low-Profile Foundation",
+      "es": ""
+    },
+    "category": {
+      "en": "Foundations & Support",
+      "es": ""
+    },
+    "price": 179,
+    "image": "images/accessories/foundation-wgr-slate-lowpro.jpg",
+    "description": {
+      "en": "Reduced-height foundation - ideal for taller mattresses or a low-profile look.",
+      "es": ""
+    },
     "subType": "low_profile",
-    "matchTags": ["all"], "matchScores": { "default": 2 } },
-
-  { "id": "base-bunkie", "name": {"en": "Bunkie Board", "es": "Tabla Bunkie"}, "category": {"en": "Foundations & Support", "es": "Bases y Soportes"}, "price": 76,
-    "image": "images/accessories/base-bunkie.jpg",
-    "description": {"en": "Ultra-slim 2\" support board — distributes weight evenly, perfect for platform beds & bunk beds", "es": "Tabla de soporte ultra delgada de 2\" — distribuye el peso uniformemente, perfecta para camas de plataforma y literas"},
+    "matchTags": [
+      "all"
+    ],
+    "matchScores": {
+      "default": 2
+    }
+  },
+  {
+    "id": "bunkie-wgr",
+    "name": {
+      "en": "WG&R Factory Direct Bunkie Board",
+      "es": ""
+    },
+    "category": {
+      "en": "Foundations & Support",
+      "es": ""
+    },
+    "price": 59,
+    "image": "images/accessories/bunkie-wgr.jpg",
+    "description": {
+      "en": "Slim 2-inch support board for platform and bunk beds.",
+      "es": ""
+    },
     "subType": "bunkie",
-    "matchTags": ["all"], "matchScores": { "default": 1 } },
-
-  { "id": "pillow-activedry", "name": {"en": "Active Dry Pillow", "es": "Almohada Active Dry"}, "category": {"en": "Pillows", "es": "Almohadas"}, "price": 120,
-    "image": "images/accessories/pillow-activedry.jpg",
-    "description": {"en": "Moisture-wicking memory foam blend with knife-edge multi-level support — all sleep positions", "es": "Tela que absorbe la humedad con espuma de memoria transpirable — mantiene la cabeza y el cuello frescos y secos"},
-    "matchTags": ["cooling", "all_positions"], "matchScores": { "default": 2, "cooling": 2, "hot": 2, "position_side": 1, "position_back": 2, "position_stomach": 1 } },
-
-  { "id": "pillow-activecool", "name": {"en": "Active Cool Pillow", "es": "Almohada Active Cool"}, "category": {"en": "Pillows", "es": "Almohadas"}, "price": 160,
-    "image": "images/accessories/pillow-activecool.jpg",
-    "description": {"en": "Advanced active cooling fabric with premium memory foam clusters — conforms to head, neck & shoulders", "es": "Gel de enfriamiento con ventilación — disipa el calor activamente para un sueño fresco toda la noche"},
-    "matchTags": ["hot_sleeper", "cooling"], "matchScores": { "cooling": 4, "hot": 4, "position_side": 2, "position_back": 2 } },
-
-  { "id": "pillow-copper-regular", "name": {"en": "Copper Ice Pillow", "es": "Almohada Copper Ice"}, "category": {"en": "Pillows", "es": "Almohadas"}, "price": 0,
-    "image": "images/accessories/copper-ice-regular.jpg",
-    "description": {"en": "Copper-infused pillow with cooling technology for natural temperature regulation and pressure relief", "es": "Almohada infundida con cobre y tecnología de enfriamiento para regulación natural de temperatura y alivio de presión"},
-    "matchTags": ["cooling", "hot_sleeper", "allergies", "all_positions"], "matchScores": { "cooling": 3, "hot": 3, "position_side": 2, "position_back": 2, "position_stomach": 2, "allergies": 2, "default": 10 } },
-
-  { "id": "pillow-copper-surround", "name": {"en": "Copper Ice Surround Pillow", "es": "Almohada Copper Ice Surround"}, "category": {"en": "Pillows", "es": "Almohadas"}, "price": 0,
-    "image": "images/accessories/copper-ice-surround.jpg",
-    "description": {"en": "Contoured copper-infused pillow designed to cradle the head and neck for restorative, aligned sleep", "es": "Almohada contorneada infundida con cobre diseñada para acunar la cabeza y el cuello para un sueño alineado y reparador"},
-    "matchTags": ["cooling", "back_pain", "allergies"], "matchScores": { "cooling": 3, "hot": 3, "position_side": 3, "position_back": 2, "position_stomach": 1, "back_pain": 3, "allergies": 2, "default": 9 } },
-
-  { "id": "protector-activedry", "name": {"en": "Active Dry Protector", "es": "Protector Active Dry"}, "category": {"en": "Protectors", "es": "Protectores"}, "price": 100,
-    "image": "images/accessories/protector-activedry.jpg",
-    "description": {"en": "Waterproof & breathable — wicks moisture so you stay cool and dry, extends mattress life", "es": "Barrera impermeable con tela transpirable — protege contra derrames y alérgenos sin retener calor"},
-    "matchTags": ["all"], "matchScores": { "default": 3, "cooling": 1 } },
-
-  { "id": "protector-activecool", "name": {"en": "Active Cool Protector", "es": "Protector Active Cool"}, "category": {"en": "Protectors", "es": "Protectores"}, "price": 200,
-    "image": "images/accessories/protector-activecool.jpg",
-    "description": {"en": "Advanced cooling + waterproof protection — hypoallergenic, helps you stay in deeper sleep stages longer", "es": "Capa impermeable con enfriamiento — combina protección del colchón con regulación de temperatura"},
-    "matchTags": ["hot_sleeper", "cooling"], "matchScores": { "cooling": 4, "hot": 4, "default": 2 } }
+    "matchTags": [
+      "all"
+    ],
+    "matchScores": {
+      "default": 1
+    }
+  },
+  {
+    "id": "pillow-tempur-breeze-prolo",
+    "name": {
+      "en": "TEMPUR-Breeze ProLo 2.0 Pillow",
+      "es": ""
+    },
+    "category": {
+      "en": "Pillows",
+      "es": ""
+    },
+    "price": 225,
+    "image": "images/accessories/pillow-tempur-breeze-prolo.jpg",
+    "description": {
+      "en": "Cooling low-profile TEMPUR pillow for back and stomach sleepers.",
+      "es": ""
+    },
+    "matchTags": [
+      "cooling",
+      "hot_sleeper",
+      "all"
+    ],
+    "matchScores": {
+      "cooling": 3,
+      "hot": 3,
+      "position_back": 2,
+      "position_stomach": 1
+    }
+  },
+  {
+    "id": "pillow-tempur-proadjust",
+    "name": {
+      "en": "TEMPUR-Adapt ProAdjust Pillow",
+      "es": ""
+    },
+    "category": {
+      "en": "Pillows",
+      "es": ""
+    },
+    "price": 125,
+    "image": "images/accessories/pillow-tempur-proadjust.jpg",
+    "description": {
+      "en": "Adjustable-fill TEMPUR pillow that customizes to any sleep position.",
+      "es": ""
+    },
+    "matchTags": [
+      "all",
+      "all_positions"
+    ],
+    "matchScores": {
+      "default": 2,
+      "position_side": 1,
+      "position_back": 1,
+      "position_stomach": 1
+    }
+  },
+  {
+    "id": "pillow-cooltech-graphite",
+    "name": {
+      "en": "Healthy Sleep Cool-Tech Graphite Pillow",
+      "es": ""
+    },
+    "category": {
+      "en": "Pillows",
+      "es": ""
+    },
+    "price": 109,
+    "image": "images/accessories/pillow-cooltech-graphite.jpg",
+    "description": {
+      "en": "Graphite-infused cooling pillow that draws heat away all night.",
+      "es": ""
+    },
+    "matchTags": [
+      "cooling",
+      "hot_sleeper"
+    ],
+    "matchScores": {
+      "cooling": 4,
+      "hot": 4,
+      "position_side": 1,
+      "position_back": 2
+    }
+  },
+  {
+    "id": "protector-purple-waterproof",
+    "name": {
+      "en": "Purple Waterproof Protector",
+      "es": ""
+    },
+    "category": {
+      "en": "Protectors",
+      "es": ""
+    },
+    "price": 119,
+    "image": "images/accessories/protector-purple-waterproof.jpg",
+    "description": {
+      "en": "Waterproof protector that guards your mattress while staying breathable.",
+      "es": ""
+    },
+    "matchTags": [
+      "all",
+      "allergies"
+    ],
+    "matchScores": {
+      "default": 1,
+      "allergies": 2
+    }
+  },
+  {
+    "id": "protector-healthy-sleep-encasement",
+    "name": {
+      "en": "Healthy Sleep Premium Encasement",
+      "es": ""
+    },
+    "category": {
+      "en": "Protectors",
+      "es": ""
+    },
+    "price": 79,
+    "image": "images/accessories/protector-healthy-sleep-encasement.jpg",
+    "description": {
+      "en": "Full-zip encasement - allergen and dust-mite barrier on all six sides.",
+      "es": ""
+    },
+    "matchTags": [
+      "allergies",
+      "all"
+    ],
+    "matchScores": {
+      "default": 1,
+      "allergies": 3
+    }
+  },
+  {
+    "id": "protector-tempur-breeze",
+    "name": {
+      "en": "TEMPUR-Protect Breeze Protector",
+      "es": ""
+    },
+    "category": {
+      "en": "Protectors",
+      "es": ""
+    },
+    "price": 249,
+    "image": "images/accessories/protector-tempur-breeze.jpg",
+    "description": {
+      "en": "Cooling protector that adds a breathable layer of protection.",
+      "es": ""
+    },
+    "matchTags": [
+      "cooling",
+      "hot_sleeper",
+      "all"
+    ],
+    "matchScores": {
+      "cooling": 3,
+      "hot": 2
+    }
+  }
 ]

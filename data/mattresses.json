@@ -2,1776 +2,1018 @@
     "gold":  [
                  {
                      "id":  "g1",
-                     "name":  "Caitlin",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Copper",
+                     "name":  "Adapt 2.0 Medium",
+                     "brand":  "Tempur-Pedic",
+                     "subBrand":  "Adapt",
                      "pitchKey":  "",
-                     "archetype":  "cool premium",
+                     "archetype":  "Adaptive memory-foam flagship",
                      "displayPriority":  1,
-                     "firmness":  2,
-                     "firmnessLabel":  "Plush",
-                     "locallyMade":  true,
+                     "firmness":  5,
+                     "firmnessLabel":  "Medium",
+                     "locallyMade":  false,
                      "features":  [
-                                      "plush",
-                                      "cooling",
-                                      "pressureRelief",
-                                      "hybrid",
-                                      "motionIsolation",
-                                      "copper",
-                                      "antiViral",
-                                      "antiBacterial",
-                                      "antiMicrobial",
-                                      "antiInflammatory",
-                                      "soft",
-                                      "memory",
-                                      "hypoallergenic"
+                                      "pressurerelief",
+                                      "motionisolation",
+                                      "support",
+                                      "medium"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Copper",
-                                  "Cooling"
+                                  "Memory Foam",
+                                  "Pressure Relief",
+                                  "Medium"
                               ],
-                     "highlight":  "Copper-infused cooling for clean and gentle sleep",
+                     "highlight":  "Molds to you for deep pressure relief",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Cobre",
-                                     "Enfriamiento"
+
                                  ],
-                     "highlight_es":  "Enfriamiento con cobre para un sueño limpio y suave",
-                     "imageUrl":  "images/mattresses/caitlin.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/adapt 2.0 medium.jpg",
                      "reasons":  {
-                                     "default":  "Copper-infused cooling with motion isolating specialty foams for clean, cool, gentle sleep",
-                                     "cooling":  "NatuVerex copper infusion draws heat away",
-                                     "support":  "Five-zone, 948 coil-count pocketed coils",
-                                     "durability":  "Premium foams and premium spring",
-                                     "plush":  "Welcoming, soft plush feel for side sleepers",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Copper Memory Foam and Hyper-Gel Foam"
+                                     "default":  "Memory foam that molds to your body for deep pressure relief."
                                  },
                      "reasons_es":  {
-                                        "default":  "Enfriamiento con cobre e infusión de espumas especiales que aíslan el movimiento para un sueño limpio, fresco y suave",
-                                        "cooling":  "La infusión de cobre NatuVerex disipa el calor",
-                                        "support":  "Resortes encapsulados de cinco zonas, 948 unidades",
-                                        "durability":  "Espumas y resortes premium",
-                                        "plush":  "Sensación suave y acogedora para quienes duermen de lado",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Espuma de memoria con cobre y espuma Hyper-Gel"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Plush comfort with copper-infused foam that pulls heat away from your body all night.",
-                                           "es":  "Comodidad suave con espuma infundida con cobre que aleja el calor de tu cuerpo toda la noche."
+                                           "en":  "TEMPUR material molds to you for pressure relief and zero motion transfer.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g2",
-                     "name":  "Celine",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Copper",
+                     "name":  "Pro Breeze 2.0 Medium Hybrid",
+                     "brand":  "Tempur-Pedic",
+                     "subBrand":  "Pro Breeze",
                      "pitchKey":  "",
-                     "archetype":  "cool premium",
+                     "archetype":  "Cooling adaptive hybrid",
                      "displayPriority":  1,
                      "firmness":  5,
                      "firmnessLabel":  "Medium",
-                     "locallyMade":  true,
+                     "locallyMade":  false,
                      "features":  [
-                                      "medium",
                                       "cooling",
-                                      "pressureRelief",
+                                      "pressurerelief",
+                                      "support",
                                       "hybrid",
-                                      "motionIsolation",
-                                      "copper",
-                                      "antiViral",
-                                      "antiBacterial",
-                                      "antiMicrobial",
-                                      "antiInflammatory",
-                                      "memory",
-                                      "hypoallergenic"
+                                      "medium"
                                   ],
                      "tags":  [
+                                  "Cooling",
                                   "Hybrid",
-                                  "Copper",
-                                  "Cooling"
+                                  "Medium"
                               ],
-                     "highlight":  "Copper-infused cooling for clean and gentle sleep",
+                     "highlight":  "Adaptive comfort, hybrid support, all-night cooling",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Cobre",
-                                     "Enfriamiento"
+
                                  ],
-                     "highlight_es":  "Enfriamiento con cobre para un sueño limpio y suave",
-                     "imageUrl":  "images/mattresses/celine.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/pro breeze 2.0 medium hybrid.jpg",
                      "reasons":  {
-                                     "durability":  "Premium foams and premium spring",
-                                     "default":  "Copper-infused cooling with motion isolating foam for clean, cool, gentle sleep",
-                                     "cooling":  "NatuVerex copper infusion draws heat away",
-                                     "support":  "Five-zone, 948 coil-count pocketed coils",
-                                     "medium":  "Perfect medium feel for most sleepers",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Copper Memory Foam and Hyper-Gel Foam"
+                                     "default":  "Adaptive foam comfort with hybrid bounce and all-night cooling."
                                  },
                      "reasons_es":  {
-                                        "durability":  "Espumas y resortes premium",
-                                        "default":  "Enfriamiento con cobre y espuma aislante de movimiento para un sueño limpio, fresco y suave",
-                                        "cooling":  "La infusión de cobre NatuVerex disipa el calor",
-                                        "support":  "Resortes encapsulados de cinco zonas, 948 unidades",
-                                        "medium":  "Sensación media perfecta para la mayoría",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Espuma de memoria con cobre y espuma Hyper-Gel"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Balanced feel with copper cooling — the middle ground between sink and support.",
-                                           "es":  "Sensación equilibrada con enfriamiento de cobre — el punto medio entre hundirse y soporte."
+                                           "en":  "Sleeps cooler with TEMPUR comfort and responsive hybrid support.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g3",
-                     "name":  "Camryn",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Copper",
+                     "name":  "Luxe Breeze 2.0 Firm",
+                     "brand":  "Tempur-Pedic",
+                     "subBrand":  "Luxe Breeze",
                      "pitchKey":  "",
-                     "archetype":  "cool premium",
+                     "archetype":  "Top-tier cooling firmness",
                      "displayPriority":  1,
-                     "firmness":  9,
+                     "firmness":  7,
                      "firmnessLabel":  "Firm",
-                     "locallyMade":  true,
+                     "locallyMade":  false,
                      "features":  [
-                                      "firm",
                                       "cooling",
-                                      "pressureRelief",
-                                      "hybrid",
-                                      "motionIsolation",
-                                      "copper",
-                                      "antiViral",
-                                      "antiBacterial",
-                                      "antiMicrobial",
-                                      "antiInflammatory",
-                                      "memory",
-                                      "hypoallergenic"
+                                      "support",
+                                      "firm",
+                                      "pressurerelief"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Copper",
-                                  "Cooling"
+                                  "Cooling",
+                                  "Firm",
+                                  "Pressure Relief"
                               ],
-                     "highlight":  "Copper-infused cooling for clean and gentle sleep",
+                     "highlight":  "Our coolest TEMPUR, firm and supported",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Cobre",
-                                     "Enfriamiento"
+
                                  ],
-                     "highlight_es":  "Enfriamiento con cobre para un sueño limpio y suave",
-                     "imageUrl":  "images/mattresses/camryn.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/luxe breeze 2.0 firm.jpg",
                      "reasons":  {
-                                     "firm":  "Extra firm for stomach sleepers and larger builds",
-                                     "default":  "Copper-infused cooling with motion isolating foam for clean, cool, gentle sleep",
-                                     "cooling":  "NatuVerex copper infusion draws heat away",
-                                     "support":  "Five-zone, 948 coil-count pocketed coils",
-                                     "durability":  "Premium foams and premium spring",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Copper Memory Foam and Hyper-Gel Foam"
+                                     "default":  "Our coolest sleep with firm, fully-supported comfort."
                                  },
                      "reasons_es":  {
-                                        "firm":  "Extra firme para quienes duermen boca abajo y personas de mayor contextura",
-                                        "default":  "Enfriamiento con cobre y espuma aislante de movimiento para un sueño limpio, fresco y suave",
-                                        "cooling":  "La infusión de cobre NatuVerex disipa el calor",
-                                        "support":  "Resortes encapsulados de cinco zonas, 948 unidades",
-                                        "durability":  "Espumas y resortes premium",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Espuma de memoria con cobre y espuma Hyper-Gel"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Firm support with copper-infused cooling — solid underneath, cool on top.",
-                                           "es":  "Soporte firme con enfriamiento de cobre — sólido por debajo, fresco por encima."
+                                           "en":  "Our coolest TEMPUR with firm, fully-supported all-night comfort.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g4",
-                     "name":  "Athena",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Last Mattress",
+                     "name":  "Lux Estate Firm",
+                     "brand":  "Stearns \u0026 Foster",
+                     "subBrand":  "Lux Estate",
                      "pitchKey":  "",
-                     "archetype":  "engineered premium",
+                     "archetype":  "Handcrafted firm luxury",
                      "displayPriority":  1,
-                     "firmness":  6,
-                     "firmnessLabel":  "Medium",
-                     "locallyMade":  true,
+                     "firmness":  7,
+                     "firmnessLabel":  "Firm",
+                     "locallyMade":  false,
                      "features":  [
-                                      "medium",
-                                      "cooling",
                                       "support",
-                                      "hybrid",
-                                      "responsive",
-                                      "latex",
-                                      "handTufting",
-                                      "lifetimeWarranty",
-                                      "zoned",
+                                      "firm",
                                       "durability",
-                                      "hypoallergenic",
-                                      "adjustable"
+                                      "hybrid"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Latex",
-                                  "Hand-Tufted"
+                                  "Firm",
+                                  "Coil Support",
+                                  "Durable"
                               ],
-                     "highlight":  "Hand-tufted latex hybrid with a lifetime warranty",
+                     "highlight":  "Handcrafted firm coil support, built to last",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Látex",
-                                     "Cosido a Mano"
+
                                  ],
-                     "highlight_es":  "Híbrido de látex cosido a mano con garantía de por vida",
-                     "imageUrl":  "images/mattresses/athena.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/lux estate firm.jpg",
                      "reasons":  {
-                                     "durability":  "Hand-tufted, lifetime warranty",
-                                     "default":  "Ultra premium hand-tufted hybrid with multiple specialty foams and a lifetime warranty",
-                                     "cooling":  "Phase change technology - cool-to-the-touch fabrics that adjust to temperature",
-                                     "support":  "QUANTUM ENCASED COIL UNIT with 1575 individually encased 17 gauge coils",
-                                     "medium":  "Perfect medium feel for most sleepers",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Talalay latex for natural and durable pressure-relieving comfort layer. Breathable, antimicrobial, and hypo-allergenic"
+                                     "default":  "Firm, durable coil support handcrafted for lasting comfort."
                                  },
                      "reasons_es":  {
-                                        "durability":  "Cosido a mano, garantía de por vida",
-                                        "default":  "Híbrido ultra premium cosido a mano con múltiples espumas especiales y garantía de por vida",
-                                        "cooling":  "Tecnología de cambio de fase — telas frescas al tacto que se ajustan a la temperatura",
-                                        "support":  "UNIDAD DE RESORTES QUANTUM ENCAPSULADOS con 1575 resortes individuales de calibre 17",
-                                        "medium":  "Sensación media perfecta para la mayoría",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Látex Talalay para una capa de confort natural, duradera y que alivia la presión. Transpirable, antimicrobiano e hipoalergénico"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Latex-hybrid construction with hand-tufted finish — responsive support built to last.",
-                                           "es":  "Construcción híbrida de látex con acabado cosido a mano — soporte receptivo construido para durar."
+                                           "en":  "Precision coils deliver firm, durable support built to last.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g5",
-                     "name":  "Zeus",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Last Mattress",
+                     "name":  "Reserve Medium",
+                     "brand":  "Stearns \u0026 Foster",
+                     "subBrand":  "Reserve",
                      "pitchKey":  "",
-                     "archetype":  "engineered premium",
+                     "archetype":  "Heirloom luxury comfort",
                      "displayPriority":  1,
-                     "firmness":  10,
-                     "firmnessLabel":  "Firm",
-                     "locallyMade":  true,
+                     "firmness":  5,
+                     "firmnessLabel":  "Medium",
+                     "locallyMade":  false,
                      "features":  [
-                                      "firm",
-                                      "cooling",
                                       "support",
-                                      "hybrid",
-                                      "responsive",
-                                      "quality",
-                                      "handTufting",
-                                      "lifetimeWarranty",
-                                      "zoned",
+                                      "pressurerelief",
                                       "durability",
-                                      "hypoallergenic",
-                                      "adjustable"
+                                      "medium"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Hand-Tufted"
+                                  "Luxury Coil",
+                                  "Medium",
+                                  "Durable"
                               ],
-                     "highlight":  "Firm hand-tufted hybrid built for serious support",
+                     "highlight":  "Plush-yet-supported handcrafted luxury",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Cosido a Mano"
+
                                  ],
-                     "highlight_es":  "Híbrido firme cosido a mano para soporte serio",
-                     "imageUrl":  "images/mattresses/zeus.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/reserve medium.jpg",
                      "reasons":  {
-                                     "firm":  "Extra firm for stomach sleepers and larger builds",
-                                     "default":  "Ultra premium hand-tufted hybrid with multiple specialty foams and a lifetime warranty",
-                                     "cooling":  "Phase change technology - cool-to-the-touch fabrics that adjust to temperature",
-                                     "support":  "QUANTUM ENCASED COIL UNIT with 1575 individually encased 17 gauge coils",
-                                     "durability":  "Hand-tufted, lifetime warranty",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Talalay latex for natural and durable pressure-relieving comfort layer. Breathable, antimicrobial, and hypo-allergenic"
+                                     "default":  "Premium coils and foams balanced for plush-yet-supported luxury."
                                  },
                      "reasons_es":  {
-                                        "firm":  "Extra firme para quienes duermen boca abajo y personas de mayor contextura",
-                                        "default":  "Híbrido ultra premium cosido a mano con múltiples espumas especiales y garantía de por vida",
-                                        "cooling":  "Tecnología de cambio de fase — telas frescas al tacto que se ajustan a la temperatura",
-                                        "support":  "UNIDAD DE RESORTES QUANTUM ENCAPSULADOS con 1575 resortes individuales de calibre 17",
-                                        "durability":  "Cosido a mano, garantía de por vida",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Látex Talalay para una capa de confort natural, duradera y que alivia la presión. Transpirable, antimicrobiano e hipoalergénico"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "The firmest mattress we make — hand-tufted hybrid built for serious support.",
-                                           "es":  "El colchón más firme que hacemos — híbrido cosido a mano construido para soporte serio."
+                                           "en":  "Handcrafted premium coils and foams for balanced, lasting luxury.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g6",
-                     "name":  "Aphrodite",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Last Mattress",
+                     "name":  "Asha Luxe Plush",
+                     "brand":  "PranaSleep",
+                     "subBrand":  "Asha",
                      "pitchKey":  "",
-                     "archetype":  "engineered premium",
+                     "archetype":  "Talalay-latex wellness luxury",
                      "displayPriority":  1,
                      "firmness":  3,
                      "firmnessLabel":  "Plush",
-                     "locallyMade":  true,
+                     "locallyMade":  false,
                      "features":  [
+                                      "pressurerelief",
                                       "plush",
-                                      "cooling",
-                                      "support",
-                                      "hybrid",
-                                      "responsive",
-                                      "quality",
-                                      "handTufting",
-                                      "lifetimeWarranty",
                                       "soft",
-                                      "zoned",
-                                      "durability",
-                                      "hypoallergenic",
-                                      "adjustable"
+                                      "durability"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Hand-Tufted"
+                                  "Talalay Latex",
+                                  "Plush",
+                                  "Durable"
                               ],
-                     "highlight":  "Cloud-like plush with hand-tufted luxury construction",
+                     "highlight":  "All-latex plush comfort, championship durability",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Cosido a Mano"
+
                                  ],
-                     "highlight_es":  "Suavidad tipo nube con construcción de lujo cosida a mano",
-                     "imageUrl":  "images/mattresses/aphrodite.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/asha luxe plush.jpg",
                      "reasons":  {
-                                     "default":  "Ultra premium hand-tufted hybrid with multiple specialty foams and a lifetime warranty",
-                                     "cooling":  "Phase change technology - cool-to-the-touch fabrics that adjust to temperature",
-                                     "support":  "QUANTUM ENCASED COIL UNIT with 1575 individually encased 17 gauge coils",
-                                     "durability":  "Hand-tufted, lifetime warranty",
-                                     "plush":  "Cloud-like plush feel for side sleepers",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Talalay latex for natural and durable pressure-relieving comfort layer. Breathable, antimicrobial, and hypo-allergenic"
+                                     "default":  "All-natural Talalay latex plushness with championship durability."
                                  },
                      "reasons_es":  {
-                                        "default":  "Híbrido ultra premium cosido a mano con múltiples espumas especiales y garantía de por vida",
-                                        "cooling":  "Tecnología de cambio de fase — telas frescas al tacto que se ajustan a la temperatura",
-                                        "support":  "UNIDAD DE RESORTES QUANTUM ENCAPSULADOS con 1575 resortes individuales de calibre 17",
-                                        "durability":  "Cosido a mano, garantía de por vida",
-                                        "plush":  "Sensación suave tipo nube para quienes duermen de lado",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Látex Talalay para una capa de confort natural, duradera y que alivia la presión. Transpirable, antimicrobiano e hipoalergénico"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Hand-tufted plush comfort with hybrid support underneath — softness that doesn\u0027t sacrifice structure.",
-                                           "es":  "Comodidad suave cosida a mano con soporte híbrido por debajo — suavidad que no sacrifica la estructura."
+                                           "en":  "All-latex plush comfort with a warranty that outlasts the rest.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g7",
-                     "name":  "Maria",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Fleur de Lis",
+                     "name":  "Rejuvenate",
+                     "brand":  "Purple",
+                     "subBrand":  "Rejuvenate",
                      "pitchKey":  "",
-                     "archetype":  "natural premium",
+                     "archetype":  "Premium GelFlex grid",
                      "displayPriority":  1,
-                     "firmness":  2,
-                     "firmnessLabel":  "Plush",
-                     "locallyMade":  true,
+                     "firmness":  5,
+                     "firmnessLabel":  "Medium",
+                     "locallyMade":  false,
                      "features":  [
-                                      "plush",
+                                      "pressurerelief",
+                                      "responsive",
                                       "cooling",
-                                      "handTufting",
-                                      "latex",
-                                      "pressureRelief",
-                                      "backSupporterTechnology",
-                                      "hybrid",
-                                      "motionIsolation",
-                                      "quality",
-                                      "soft",
-                                      "zoned",
-                                      "durability",
-                                      "hypoallergenic",
-                                      "memory"
+                                      "support",
+                                      "medium"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Latex",
-                                  "Back Supporter"
+                                  "GelFlex Grid",
+                                  "Cooling",
+                                  "Responsive"
                               ],
-                     "highlight":  "Silk and wool cover with back-supporting dual-gauge coils",
+                     "highlight":  "Cool, responsive GelFlex grid flagship",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Látex",
-                                     "Soporte Lumbar"
+
                                  ],
-                     "highlight_es":  "Funda de seda y lana con resortes de doble calibre para soporte lumbar",
-                     "imageUrl":  "images/mattresses/maria.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/rejuvenate.jpg",
                      "reasons":  {
-                                     "default":  "Cool, hand-tufted, silk and wool damask cover, multiple specialty foams, individually pocketed coils",
-                                     "cooling":  "Cool, silk and wool damask cover helps regulate temperature",
-                                     "support":  "Hand-tufted, Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                     "durability":  "Hand-tufted",
-                                     "plush":  "Welcoming, soft plush feel for side sleepers",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Full layers of Serene Foam and Cool-Gel Memory Foam"
+                                     "default":  "Purple\u0027s flagship GelFlex grid - cool, responsive, pressure-free."
                                  },
                      "reasons_es":  {
-                                        "default":  "Funda fresca de seda y lana damasco cosida a mano, múltiples espumas especiales, resortes encapsulados individualmente",
-                                        "cooling":  "La funda fresca de seda y lana damasco ayuda a regular la temperatura",
-                                        "support":  "Cosido a mano, resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                        "durability":  "Cosido a mano",
-                                        "plush":  "Sensación suave y acogedora para quienes duermen de lado",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Capas completas de espuma Serene y espuma de memoria Cool-Gel"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Latex-over-Back Supporter coils — soft cradle, clinical-grade spinal alignment.",
-                                           "es":  "Látex sobre resortes Back Supporter — abrazo suave, alineación espinal de grado clínico."
+                                           "en":  "Purple\u0027s flagship grid for cooling, responsive, no-pressure sleep.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g8",
-                     "name":  "Eleanor",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Fleur de Lis",
+                     "name":  "Black Series Three Medium",
+                     "brand":  "Beautyrest",
+                     "subBrand":  "Black",
                      "pitchKey":  "",
-                     "archetype":  "natural premium",
+                     "archetype":  "Premium pocketed-coil comfort",
                      "displayPriority":  1,
                      "firmness":  5,
                      "firmnessLabel":  "Medium",
-                     "locallyMade":  true,
+                     "locallyMade":  false,
                      "features":  [
-                                      "medium",
-                                      "cooling",
-                                      "handTufting",
-                                      "latex",
-                                      "pressureRelief",
-                                      "backSupporterTechnology",
-                                      "hybrid",
-                                      "motionIsolation",
-                                      "quality",
-                                      "zoned",
-                                      "durability",
-                                      "hypoallergenic",
-                                      "memory"
+                                      "support",
+                                      "pressurerelief",
+                                      "motionisolation",
+                                      "medium"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Latex",
-                                  "Back Supporter"
+                                  "Pocketed Coil",
+                                  "Medium",
+                                  "Motion Isolation"
                               ],
-                     "highlight":  "Silk and wool cover with back-supporting dual-gauge coils",
+                     "highlight":  "Luxury medium feel, premium coil support",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Látex",
-                                     "Soporte Lumbar"
+
                                  ],
-                     "highlight_es":  "Funda de seda y lana con resortes de doble calibre para soporte lumbar",
-                     "imageUrl":  "images/mattresses/eleanor.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/black series three medium.jpg",
                      "reasons":  {
-                                     "durability":  "Hand-tufted",
-                                     "default":  "Cool, hand-tufted, silk and wool damask cover, multiple specialty foams, individually pocketed coils",
-                                     "cooling":  "Cool, silk and wool damask cover helps regulate temperature",
-                                     "support":  "Hand-tufted, Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                     "medium":  "Perfect medium feel for most sleepers",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Full layers of Serene Foam and Cool-Gel Memory Foam"
+                                     "default":  "Luxury medium comfort over premium pocketed-coil support."
                                  },
                      "reasons_es":  {
-                                        "durability":  "Cosido a mano",
-                                        "default":  "Funda fresca de seda y lana damasco cosida a mano, múltiples espumas especiales, resortes encapsulados individualmente",
-                                        "cooling":  "La funda fresca de seda y lana damasco ayuda a regular la temperatura",
-                                        "support":  "Cosido a mano, resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                        "medium":  "Sensación media perfecta para la mayoría",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Capas completas de espuma Serene y espuma de memoria Cool-Gel"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Latex comfort with zoned Back Supporter coils targeted for lumbar alignment.",
-                                           "es":  "Comodidad de látex con resortes Back Supporter zonificados dirigidos a la alineación lumbar."
+                                           "en":  "Luxury medium feel over Beautyrest\u0027s premium pocketed-coil support.",
+                                           "es":  ""
                                        }
                  },
                  {
                      "id":  "g9",
-                     "name":  "Genevieve",
-                     "brand":  "Spring Air",
-                     "subBrand":  "Fleur de Lis",
+                     "name":  "SmartLife Lotus 2.0",
+                     "brand":  "King Koil",
+                     "subBrand":  "SmartLife",
                      "pitchKey":  "",
-                     "archetype":  "natural premium",
+                     "archetype":  "Dual-adjustable smart bed",
                      "displayPriority":  1,
-                     "firmness":  9,
-                     "firmnessLabel":  "Firm",
-                     "locallyMade":  true,
+                     "firmness":  5,
+                     "firmnessLabel":  "Adjustable",
+                     "locallyMade":  false,
                      "features":  [
-                                      "firm",
-                                      "cooling",
-                                      "handTufting",
-                                      "latex",
-                                      "pressureRelief",
-                                      "backSupporterTechnology",
-                                      "hybrid",
-                                      "motionIsolation",
-                                      "quality",
-                                      "zoned",
-                                      "durability",
-                                      "hypoallergenic",
-                                      "memory"
+                                      "support",
+                                      "motionisolation",
+                                      "responsive",
+                                      "zoned"
                                   ],
                      "tags":  [
-                                  "Hybrid",
-                                  "Latex",
-                                  "Back Supporter"
+                                  "Smart Adjustable",
+                                  "Dual Firmness",
+                                  "Zoned"
                               ],
-                     "highlight":  "Silk and wool cover with back-supporting dual-gauge coils",
+                     "highlight":  "Smart dual-adjustable firmness, your way",
                      "tags_es":  [
-                                     "Híbrido",
-                                     "Látex",
-                                     "Soporte Lumbar"
+
                                  ],
-                     "highlight_es":  "Funda de seda y lana con resortes de doble calibre para soporte lumbar",
-                     "imageUrl":  "images/mattresses/genevieve.jpg",
+                     "highlight_es":  "",
+                     "imageUrl":  "images/mattresses/smartlife lotus 2.0.jpg",
                      "reasons":  {
-                                     "firm":  "Extra firm for stomach sleepers and larger builds",
-                                     "default":  "Cool, hand-tufted, silk and wool damask cover, multiple specialty foams, individually pocketed coils",
-                                     "cooling":  "Cool, silk and wool damask cover helps regulate temperature",
-                                     "support":  "Hand-tufted, Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                     "durability":  "Hand-tufted",
-                                     "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                     "pressureRelief":  "Full layers of Serene Foam and Cool-Gel Memory Foam"
+                                     "default":  "A smart bed that adjusts each side\u0027s firmness to you."
                                  },
                      "reasons_es":  {
-                                        "firm":  "Extra firme para quienes duermen boca abajo y personas de mayor contextura",
-                                        "default":  "Funda fresca de seda y lana damasco cosida a mano, múltiples espumas especiales, resortes encapsulados individualmente",
-                                        "cooling":  "La funda fresca de seda y lana damasco ayuda a regular la temperatura",
-                                        "support":  "Cosido a mano, resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                        "durability":  "Cosido a mano",
-                                        "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                        "pressureRelief":  "Capas completas de espuma Serene y espuma de memoria Cool-Gel"
+
                                     },
                      "topPickReason":  {
-                                           "en":  "Firm latex surface over Back Supporter coils — serious support with no pressure points.",
-                                           "es":  "Superficie firme de látex sobre resortes Back Supporter — soporte serio sin puntos de presión."
+                                           "en":  "Dial in each side\u0027s firmness with app-controlled smart support.",
+                                           "es":  ""
                                        }
                  }
              ],
     "silver":  [
                    {
-                       "id":  "g10",
-                       "name":  "Hailey",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter Hybrid",
-                       "pitchKey":  "Back Supporter Hybrid (Phase Change)",
-                       "archetype":  "sleep-in",
-                       "displayPriority":  1,
-                       "firmness":  2,
-                       "firmnessLabel":  "Plush",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "plush",
-                                        "cooling",
-                                        "sereneFoam",
-                                        "gelMemoryFoam",
-                                        "motionIsolation",
-                                        "backSupporterTechnology",
-                                        "quality",
-                                        "comfort",
-                                        "hybrid",
-                                        "soft",
-                                        "zoned",
-                                        "durability",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Back Supporter"
-                                ],
-                       "highlight":  "Multi-layer cooling foam meets zoned lumbar support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Soporte Lumbar"
-                                   ],
-                       "highlight_es":  "Espuma de enfriamiento multicapa con soporte lumbar zonificado",
-                       "imageUrl":  "images/mattresses/hailey.jpg",
-                       "reasons":  {
-                                       "default":  "Blends cooling comfort with targeted motion-separating support and multiple layers of pressure-relieving foam",
-                                       "cooling":  "Maximum cooling phase-change cover",
-                                       "support":  "Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                       "plush":  "True cloud-like plush feel for side sleepers",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Hyper Soft Memory Foam + Serene Foam + Gel Memory Foam for exceptional pressure relief"
-                                   },
-                       "reasons_es":  {
-                                          "default":  "Combina confort refrescante con soporte zonificado que aísla el movimiento y múltiples capas de espuma que alivian la presión",
-                                          "cooling":  "Funda de cambio de fase con enfriamiento máximo",
-                                          "support":  "Resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                          "plush":  "Verdadera sensación suave tipo nube para quienes duermen de lado",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "Espuma Hyper Soft + Espuma Serene + Espuma de Memoria Gel para alivio excepcional de presión"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Plush cooling hybrid with Back Supporter coils — soft surface, supported spine.",
-                                             "es":  "Híbrido de enfriamiento suave con resortes Back Supporter — superficie suave, columna apoyada."
-                                         }
-                   },
-                   {
-                       "id":  "g11",
-                       "name":  "Harper",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter Hybrid",
-                       "pitchKey":  "Back Supporter Hybrid (Phase Change)",
-                       "archetype":  "sleep-in",
-                       "displayPriority":  1,
-                       "firmness":  5,
-                       "firmnessLabel":  "Medium",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "medium",
-                                        "cooling",
-                                        "sereneFoam",
-                                        "gelMemoryFoam",
-                                        "backSupporterTechnology",
-                                        "motionIsolation",
-                                        "quality",
-                                        "comfort",
-                                        "foamEncasement",
-                                        "hybrid",
-                                        "zoned",
-                                        "durability",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Back Supporter"
-                                ],
-                       "highlight":  "Multi-layer cooling foam meets zoned lumbar support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Soporte Lumbar"
-                                   ],
-                       "highlight_es":  "Espuma de enfriamiento multicapa con soporte lumbar zonificado",
-                       "imageUrl":  "images/mattresses/harper.jpg",
-                       "reasons":  {
-                                       "default":  "Blends cooling comfort with targeted motion-separating support and multiple layers of pressure-relieving foam",
-                                       "cooling":  "Maximum cooling phase-change cover",
-                                       "support":  "Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                       "medium":  "Perfect medium feel for most sleepers",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Hyper Soft Memory Foam + Serene Foam + Gel Memory Foam for pressure relief"
-                                   },
-                       "reasons_es":  {
-                                          "default":  "Combina confort refrescante con soporte zonificado que aísla el movimiento y múltiples capas de espuma que alivian la presión",
-                                          "cooling":  "Funda de cambio de fase con enfriamiento máximo",
-                                          "support":  "Resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                          "medium":  "Sensación media perfecta para la mayoría",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "Espuma Hyper Soft + Espuma Serene + Espuma de Memoria Gel para alivio de presión"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Balanced cooling hybrid with Back Supporter coils — works for most sleep styles.",
-                                             "es":  "Híbrido de enfriamiento equilibrado con resortes Back Supporter — funciona para la mayoría de estilos de sueño."
-                                         }
-                   },
-                   {
-                       "id":  "g12",
-                       "name":  "Helena",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter Hybrid",
-                       "pitchKey":  "Back Supporter Hybrid (Phase Change)",
-                       "archetype":  "sleep-in",
-                       "displayPriority":  1,
-                       "firmness":  8,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "sereneFoam",
-                                        "gelMemoryFoam",
-                                        "motionIsolation",
-                                        "backSupporterTechnology",
-                                        "quality",
-                                        "comfort",
-                                        "foamEncasement",
-                                        "hybrid",
-                                        "zoned",
-                                        "durability",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Back Supporter"
-                                ],
-                       "highlight":  "Multi-layer cooling foam meets zoned lumbar support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Soporte Lumbar"
-                                   ],
-                       "highlight_es":  "Espuma de enfriamiento multicapa con soporte lumbar zonificado",
-                       "imageUrl":  "images/mattresses/helena.jpg",
-                       "reasons":  {
-                                       "firm":  "Extra firm for stomach sleepers and larger builds",
-                                       "default":  "Blends cooling comfort with targeted motion-separating support and multiple layers of pressure-relieving foam",
-                                       "cooling":  "Maximum cooling phase-change cover",
-                                       "support":  "Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Hyper Soft Memory Foam + Serene Foam + Gel Memory Foam for pressure relief"
-                                   },
-                       "reasons_es":  {
-                                          "firm":  "Extra firme para quienes duermen boca abajo y personas de mayor contextura",
-                                          "default":  "Combina confort refrescante con soporte zonificado que aísla el movimiento y múltiples capas de espuma que alivian la presión",
-                                          "cooling":  "Funda de cambio de fase con enfriamiento máximo",
-                                          "support":  "Resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "Espuma Hyper Soft + Espuma Serene + Espuma de Memoria Gel para alivio de presión"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Firm cooling hybrid with reinforced Back Supporter coils for solid lumbar support.",
-                                             "es":  "Híbrido de enfriamiento firme con resortes Back Supporter reforzados para soporte lumbar sólido."
-                                         }
-                   },
-                   {
-                       "id":  "g13",
-                       "name":  "Kylie",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter Hybrid",
-                       "pitchKey":  "Back Supporter Hybrid (PCM Ice)",
-                       "archetype":  "sleep-on",
-                       "displayPriority":  1,
-                       "firmness":  2,
-                       "firmnessLabel":  "Plush",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "plush",
-                                        "cooling",
-                                        "gelMemoryFoam",
-                                        "motionIsolation",
-                                        "quality",
-                                        "comfort",
-                                        "hybrid",
-                                        "foamEncasement",
-                                        "soft",
-                                        "zoned",
-                                        "durability",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "PCM Cover"
-                                ],
-                       "highlight":  "PCM ice cover with gel memory foam for refreshing sleep",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Funda PCM"
-                                   ],
-                       "highlight_es":  "Funda de hielo PCM con espuma de memoria gel para un sueño refrescante",
-                       "imageUrl":  "images/mattresses/kylie.jpg",
-                       "reasons":  {
-                                       "default":  "PCM ice cover + gel memory foam + pocketed coils for refreshing sleep",
-                                       "cooling":  "Phase Change Material cover actively cools the surface",
-                                       "support":  "Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                       "plush":  "Supportive yet soft, plush feel for side sleepers",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Gel Memory Foam reduces pressure + comfort foam layers"
-                                   },
-                       "reasons_es":  {
-                                          "default":  "Funda de hielo PCM + espuma de memoria gel + resortes encapsulados para un sueño refrescante",
-                                          "cooling":  "La funda de Material de Cambio de Fase enfría activamente la superficie",
-                                          "support":  "Resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                          "plush":  "Sensación suave y con soporte para quienes duermen de lado",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "Espuma de Memoria Gel reduce la presión + capas de espuma de confort"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Plush feel with a phase-change cooling cover — draws heat away the moment you lie down.",
-                                             "es":  "Sensación suave con cubierta de enfriamiento de cambio de fase — aleja el calor desde que te acuestas."
-                                         }
-                   },
-                   {
-                       "id":  "g14",
-                       "name":  "Karla",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter Hybrid",
-                       "pitchKey":  "Back Supporter Hybrid (PCM Ice)",
-                       "archetype":  "sleep-on",
-                       "displayPriority":  1,
-                       "firmness":  5,
-                       "firmnessLabel":  "Medium",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "medium",
-                                        "cooling",
-                                        "gelMemoryFoam",
-                                        "motionIsolation",
-                                        "quality",
-                                        "comfort",
-                                        "hybrid",
-                                        "foamEncasement",
-                                        "zoned",
-                                        "durability",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "PCM Cover"
-                                ],
-                       "highlight":  "PCM ice cover with gel memory foam for refreshing sleep",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Funda PCM"
-                                   ],
-                       "highlight_es":  "Funda de hielo PCM con espuma de memoria gel para un sueño refrescante",
-                       "imageUrl":  "images/mattresses/karla.jpg",
-                       "reasons":  {
-                                       "default":  "PCM ice cover + gel memory foam + pocketed coils for refreshing sleep",
-                                       "cooling":  "Phase Change Material cover actively cools the surface",
-                                       "support":  "Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                       "medium":  "Perfect medium feel for most sleepers",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Gel Memory Foam reduces pressure + comfort foam layers"
-                                   },
-                       "reasons_es":  {
-                                          "default":  "Funda de hielo PCM + espuma de memoria gel + resortes encapsulados para un sueño refrescante",
-                                          "cooling":  "La funda de Material de Cambio de Fase enfría activamente la superficie",
-                                          "support":  "Resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                          "medium":  "Sensación media perfecta para la mayoría",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "Espuma de Memoria Gel reduce la presión + capas de espuma de confort"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Medium feel with phase-change cooling cover — regulates your temperature through the night.",
-                                             "es":  "Sensación media con cubierta de enfriamiento de cambio de fase — regula tu temperatura durante la noche."
-                                         }
-                   },
-                   {
-                       "id":  "g15",
-                       "name":  "Kacey",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter Hybrid",
-                       "pitchKey":  "Back Supporter Hybrid (PCM Ice)",
-                       "archetype":  "sleep-on",
-                       "displayPriority":  1,
-                       "firmness":  9,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "gelMemoryFoam",
-                                        "motionIsolation",
-                                        "quality",
-                                        "comfort",
-                                        "hybrid",
-                                        "foamEncasement",
-                                        "zoned",
-                                        "durability",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "PCM Cover"
-                                ],
-                       "highlight":  "PCM ice cover with gel memory foam for refreshing sleep",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Funda PCM"
-                                   ],
-                       "highlight_es":  "Funda de hielo PCM con espuma de memoria gel para un sueño refrescante",
-                       "imageUrl":  "images/mattresses/kacey.jpg",
-                       "reasons":  {
-                                       "firm":  "Extra firm for stomach sleepers and larger builds",
-                                       "default":  "PCM ice cover + gel memory foam + pocketed coils for refreshing sleep",
-                                       "cooling":  "Phase Change Material cover actively cools the surface",
-                                       "support":  "Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Gel Memory Foam reduces pressure + comfort foam layers"
-                                   },
-                       "reasons_es":  {
-                                          "firm":  "Extra firme para quienes duermen boca abajo y personas de mayor contextura",
-                                          "default":  "Funda de hielo PCM + espuma de memoria gel + resortes encapsulados para un sueño refrescante",
-                                          "cooling":  "La funda de Material de Cambio de Fase enfría activamente la superficie",
-                                          "support":  "Resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "Espuma de Memoria Gel reduce la presión + capas de espuma de confort"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Firm support with active phase-change cooling — stays cool even when you don\u0027t move.",
-                                             "es":  "Soporte firme con enfriamiento activo de cambio de fase — se mantiene fresco incluso cuando no te mueves."
-                                         }
-                   },
-                   {
-                       "id":  "g27",
-                       "name":  "Daybreak",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Cooling Hybrid",
+                       "id":  "s1",
+                       "name":  "Purple Mattress",
+                       "brand":  "Purple",
+                       "subBrand":  "",
                        "pitchKey":  "",
-                       "archetype":  "sleep-on",
-                       "displayPriority":  2,
+                       "archetype":  "The original GelFlex grid",
+                       "displayPriority":  1,
                        "firmness":  5,
                        "firmnessLabel":  "Medium",
                        "locallyMade":  false,
                        "features":  [
-                                        "medium",
+                                        "pressurerelief",
+                                        "responsive",
                                         "cooling",
-                                        "support",
-                                        "hybrid",
-                                        "euroTop",
-                                        "motionIsolation",
-                                        "foamEncasement",
-                                        "zoned",
-                                        "adjustable"
+                                        "medium"
                                     ],
                        "tags":  [
-                                    "Hybrid",
-                                    "Euro Top",
-                                    "Cooling"
+                                    "GelFlex Grid",
+                                    "Cooling",
+                                    "Responsive"
                                 ],
-                       "highlight":  "15-inch euro top medium hybrid for all-night balanced comfort",
+                       "highlight":  "The original cooling, responsive Purple grid",
                        "tags_es":  [
-                                       "Híbrido",
-                                       "Euro Top",
-                                       "Enfriamiento"
+
                                    ],
-                       "highlight_es":  "Híbrido euro top medio de 15 pulgadas para confort equilibrado toda la noche",
-                       "imageUrl":  "images/mattresses/daybreak.jpg",
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/purple mattress.jpg",
                        "reasons":  {
-                                       "default":  "Premium 15-inch euro top hybrid with cooling cover and zoned coil support",
-                                       "cooling":  "Euro Top cooling cover helps regulate sleep temperature",
-                                       "support":  "Individually wrapped coil system delivers zoned support and edge-to-edge stability",
-                                       "medium":  "Perfect medium feel adaptable for all sleep positions",
-                                       "motionIsolation":  "Individually wrapped pocketed coils minimize motion transfer",
-                                       "pressureRelief":  "Plush euro top layer plus responsive comfort foams relieve pressure at shoulders and hips"
+                                       "default":  "The original Purple grid - cooling, responsive, and adaptive."
                                    },
                        "reasons_es":  {
-                                          "default":  "Híbrido premium de 15 pulgadas euro top con funda de enfriamiento y soporte de resortes zonificados",
-                                          "cooling":  "La funda Euro Top de enfriamiento ayuda a regular la temperatura del sueño",
-                                          "support":  "El sistema de resortes encapsulados brinda soporte zonificado y estabilidad de borde a borde",
-                                          "medium":  "Sensación media perfecta adaptable para todas las posiciones de sueño",
-                                          "motionIsolation":  "Los resortes encapsulados individualmente minimizan la transferencia de movimiento",
-                                          "pressureRelief":  "La capa euro top suave más espumas de confort responsivas alivian la presión en hombros y caderas"
+
                                       },
                        "topPickReason":  {
-                                             "en":  "Medium cooling hybrid with Euro top — gentle start, solid foundation.",
-                                             "es":  "Híbrido de enfriamiento medio con pillow top europeo — inicio suave, base sólida."
+                                             "en":  "Cooling, responsive grid comfort that adapts as you move.",
+                                             "es":  ""
                                          }
                    },
                    {
-                       "id":  "g28",
-                       "name":  "Rejuvenation",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Cooling Hybrid",
+                       "id":  "s2",
+                       "name":  "Restore Firm",
+                       "brand":  "Purple",
+                       "subBrand":  "Restore",
                        "pitchKey":  "",
-                       "archetype":  "sleep-in",
+                       "archetype":  "Responsive firm grid hybrid",
+                       "displayPriority":  1,
+                       "firmness":  7,
+                       "firmnessLabel":  "Firm",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "support",
+                                        "responsive",
+                                        "firm",
+                                        "pressurerelief"
+                                    ],
+                       "tags":  [
+                                    "Grid Hybrid",
+                                    "Firm",
+                                    "Responsive"
+                                ],
+                       "highlight":  "Firm grid-over-coil with airflow",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/restore firm.jpg",
+                       "reasons":  {
+                                       "default":  "Firm grid-over-coil support with airflow and pressure relief."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Firm grid-over-coil support with airflow and pressure relief.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s3",
+                       "name":  "Snow 3.0 Hybrid",
+                       "brand":  "Casper",
+                       "subBrand":  "Snow",
+                       "pitchKey":  "",
+                       "archetype":  "Cool-sleeping zoned hybrid",
+                       "displayPriority":  1,
+                       "firmness":  5,
+                       "firmnessLabel":  "Medium",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "cooling",
+                                        "zoned",
+                                        "pressurerelief",
+                                        "hybrid",
+                                        "medium"
+                                    ],
+                       "tags":  [
+                                    "Cooling",
+                                    "Zoned",
+                                    "Hybrid"
+                                ],
+                       "highlight":  "Sleeps degrees cooler with zoned support",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/snow 3.0 hybrid.jpg",
+                       "reasons":  {
+                                       "default":  "Sleeps cooler with zoned support tuned for hot sleepers."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Sleeps degrees cooler with zoned support for hot sleepers.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s4",
+                       "name":  "Dream Hybrid",
+                       "brand":  "Casper",
+                       "subBrand":  "Dream",
+                       "pitchKey":  "",
+                       "archetype":  "Everyday cooling hybrid",
+                       "displayPriority":  1,
+                       "firmness":  5,
+                       "firmnessLabel":  "Medium",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "hybrid",
+                                        "support",
+                                        "pressurerelief",
+                                        "medium"
+                                    ],
+                       "tags":  [
+                                    "Hybrid",
+                                    "Cooling",
+                                    "Medium"
+                                ],
+                       "highlight":  "Balanced hybrid comfort and cooling",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/dream hybrid.jpg",
+                       "reasons":  {
+                                       "default":  "Balanced hybrid comfort and cooling at an approachable price."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Balanced hybrid comfort and cooling at an approachable price.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s5",
+                       "name":  "Brenham 2 Medium",
+                       "brand":  "Sealy",
+                       "subBrand":  "Posturepedic",
+                       "pitchKey":  "",
+                       "archetype":  "Dependable everyday hybrid",
+                       "displayPriority":  1,
+                       "firmness":  5,
+                       "firmnessLabel":  "Medium",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "support",
+                                        "hybrid",
+                                        "medium"
+                                    ],
+                       "tags":  [
+                                    "Hybrid",
+                                    "Medium",
+                                    "Support"
+                                ],
+                       "highlight":  "Dependable Sealy hybrid comfort",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/brenham 2 medium.jpg",
+                       "reasons":  {
+                                       "default":  "Trusted Sealy hybrid support for balanced everyday comfort."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Trusted Sealy hybrid tuned for balanced all-night comfort.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s6",
+                       "name":  "High Point 2 Firm",
+                       "brand":  "Sealy",
+                       "subBrand":  "Posturepedic",
+                       "pitchKey":  "",
+                       "archetype":  "Firm Sealy support",
+                       "displayPriority":  1,
+                       "firmness":  7,
+                       "firmnessLabel":  "Firm",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "support",
+                                        "firm",
+                                        "hybrid",
+                                        "durability"
+                                    ],
+                       "tags":  [
+                                    "Hybrid",
+                                    "Firm",
+                                    "Support"
+                                ],
+                       "highlight":  "Firm hybrid support, aligned all night",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/high point 2 firm.jpg",
+                       "reasons":  {
+                                       "default":  "Firm hybrid support that keeps your spine aligned."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Firm hybrid support that keeps your spine aligned.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s7",
+                       "name":  "Black Series One Firm",
+                       "brand":  "Beautyrest",
+                       "subBrand":  "Black",
+                       "pitchKey":  "",
+                       "archetype":  "Entry-premium firm coil",
+                       "displayPriority":  1,
+                       "firmness":  7,
+                       "firmnessLabel":  "Firm",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "support",
+                                        "firm",
+                                        "motionisolation"
+                                    ],
+                       "tags":  [
+                                    "Pocketed Coil",
+                                    "Firm",
+                                    "Motion Isolation"
+                                ],
+                       "highlight":  "Firm coil support, luxury feel",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/black series one firm.jpg",
+                       "reasons":  {
+                                       "default":  "Firm pocketed-coil support with a true luxury feel."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Firm Beautyrest pocketed-coil support with a luxury feel.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s8",
+                       "name":  "Midnight Bliss Plush",
+                       "brand":  "Astor Park",
+                       "subBrand":  "",
+                       "pitchKey":  "",
+                       "archetype":  "Plush house-brand comfort, WI-made",
                        "displayPriority":  2,
                        "firmness":  3,
                        "firmnessLabel":  "Plush",
+                       "locallyMade":  true,
+                       "features":  [
+                                        "cooling",
+                                        "pressurerelief",
+                                        "plush",
+                                        "soft"
+                                    ],
+                       "tags":  [
+                                    "WI-Made",
+                                    "Plush",
+                                    "Pressure Relief"
+                                ],
+                       "highlight":  "Plush comfort, handcrafted in Wisconsin",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/midnight bliss plush.jpg",
+                       "reasons":  {
+                                       "default":  "Plush, pressure-relieving comfort, handcrafted in Wisconsin."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Astor Park\u0027s plush, pressure-relieving comfort - handcrafted in Wisconsin.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s9",
+                       "name":  "Obsidian Firm",
+                       "brand":  "Astor Park",
+                       "subBrand":  "",
+                       "pitchKey":  "",
+                       "archetype":  "Firm WI-made support",
+                       "displayPriority":  2,
+                       "firmness":  7,
+                       "firmnessLabel":  "Firm",
+                       "locallyMade":  true,
+                       "features":  [
+                                        "support",
+                                        "firm",
+                                        "durability"
+                                    ],
+                       "tags":  [
+                                    "WI-Made",
+                                    "Firm",
+                                    "Durable"
+                                ],
+                       "highlight":  "Firm support, handcrafted in Wisconsin",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/obsidian firm.jpg",
+                       "reasons":  {
+                                       "default":  "Firm, supportive comfort, handcrafted in Wisconsin."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Handcrafted Wisconsin firmness with dependable all-night support.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "s10",
+                       "name":  "Luxe 5.1 Hybrid",
+                       "brand":  "Nectar",
+                       "subBrand":  "Luxe",
+                       "pitchKey":  "",
+                       "archetype":  "Cooling value hybrid",
+                       "displayPriority":  1,
+                       "firmness":  5,
+                       "firmnessLabel":  "Medium",
                        "locallyMade":  false,
                        "features":  [
-                                        "plush",
                                         "cooling",
-                                        "pressureRelief",
+                                        "pressurerelief",
+                                        "motionisolation",
                                         "hybrid",
-                                        "motionIsolation",
-                                        "foamEncasement",
-                                        "soft",
-                                        "adjustable"
+                                        "medium"
                                     ],
                        "tags":  [
                                     "Hybrid",
                                     "Cooling",
-                                    "Plush"
+                                    "Motion Isolation"
                                 ],
-                       "highlight":  "Plush cooling hybrid designed for deep pressure relief",
+                       "highlight":  "Cooling hybrid comfort for couples",
                        "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Suave"
+
                                    ],
-                       "highlight_es":  "Híbrido suave con enfriamiento diseñado para alivio profundo de presión",
-                       "imageUrl":  "images/mattresses/rejuvenation.jpg",
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/luxe 5.1 hybrid.jpg",
                        "reasons":  {
-                                       "default":  "Plush cooling hybrid with premium comfort foams and pocketed coils for deeply cushioned refreshing sleep",
-                                       "cooling":  "Cooling cover actively draws heat away from the sleep surface",
-                                       "support":  "Individually wrapped coils provide targeted support and edge-to-edge stability",
-                                       "plush":  "Deeply cushioned plush feel for side sleepers and those with joint pain",
-                                       "motionIsolation":  "Pocketed coil system minimizes motion transfer for undisturbed sleep",
-                                       "pressureRelief":  "Multiple layers of cooling comfort foam contour deeply to shoulders and hips"
+                                       "default":  "Cooling hybrid comfort with great motion isolation for couples."
                                    },
                        "reasons_es":  {
-                                          "default":  "Híbrido suave con enfriamiento con espumas de confort premium y resortes encapsulados para un sueño profundamente acolchado y refrescante",
-                                          "cooling":  "La funda de enfriamiento disipa activamente el calor de la superficie de sueño",
-                                          "support":  "Los resortes encapsulados individualmente brindan soporte dirigido y estabilidad de borde a borde",
-                                          "plush":  "Sensación suave profundamente acolchada para quienes duermen de lado y personas con dolor articular",
-                                          "motionIsolation":  "El sistema de resortes encapsulados minimiza la transferencia de movimiento para un sueño sin interrupciones",
-                                          "pressureRelief":  "Múltiples capas de espuma de confort con enfriamiento se adaptan profundamente a hombros y caderas"
+
                                       },
                        "topPickReason":  {
-                                             "en":  "Plush cooling hybrid — soft, cool, and built for deep restorative sleep.",
-                                             "es":  "Híbrido de enfriamiento suave — suave, fresco, y construido para un sueño reparador profundo."
+                                             "en":  "Cooling hybrid comfort and motion isolation for couples.",
+                                             "es":  ""
                                          }
                    }
                ],
     "bronze":  [
                    {
-                       "id":  "g16",
-                       "name":  "Veronica",
-                       "brand":  "Restonic",
-                       "subBrand":  "ComfortCare Hybrid",
+                       "id":  "b1",
+                       "name":  "Classic 5.1",
+                       "brand":  "Nectar",
+                       "subBrand":  "Classic",
                        "pitchKey":  "",
-                       "archetype":  "core hybrid",
-                       "displayPriority":  1,
-                       "firmness":  10,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "gelInfusedFoam",
-                                        "motionIsolation",
-                                        "quality",
-                                        "comfort",
-                                        "hybrid",
-                                        "foamEncasement",
-                                        "zoned"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Zoned Support"
-                                ],
-                       "highlight":  "Cool gel foam with zoned coils for spinal alignment",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Soporte Zonificado"
-                                   ],
-                       "highlight_es":  "Espuma de gel fresco con resortes zonificados para alineación espinal",
-                       "imageUrl":  "images/mattresses/veronica.jpg",
-                       "reasons":  {
-                                       "firm":  "Extra firm feel for back and stomach sleepers",
-                                       "default":  "Cool gel foam, zoned wrapped coils, targeted support and spinal alignment",
-                                       "cooling":  "Luxurious cooling cover wicks moisture and heat",
-                                       "support":  "Marvelous Middle gives 25% more center support",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Cool gel foam contours to body for pressure relief"
-                                   },
-                       "reasons_es":  {
-                                          "firm":  "Sensación extra firme para quienes duermen boca arriba y boca abajo",
-                                          "default":  "Espuma de gel fresco, resortes encapsulados zonificados, soporte dirigido y alineación espinal",
-                                          "cooling":  "La lujosa funda de enfriamiento absorbe la humedad y el calor",
-                                          "support":  "Marvelous Middle brinda 25% más soporte central",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "La espuma de gel fresco se adapta al cuerpo para aliviar la presión"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Extra-firm hybrid with zoned support — built for back and stomach sleepers who need solid structure.",
-                                             "es":  "Híbrido extra firme con soporte zonificado — construido para quienes duermen boca arriba o boca abajo y necesitan estructura sólida."
-                                         }
-                   },
-                   {
-                       "id":  "g17",
-                       "name":  "Mechelle",
-                       "brand":  "Restonic",
-                       "subBrand":  "ComfortCare Hybrid",
-                       "pitchKey":  "",
-                       "archetype":  "core hybrid",
-                       "displayPriority":  1,
-                       "firmness":  4,
-                       "firmnessLabel":  "Medium-Plush",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "plush",
-                                        "cooling",
-                                        "gelInfusedFoam",
-                                        "motionIsolation",
-                                        "quality",
-                                        "comfort",
-                                        "hybrid",
-                                        "foamEncasement",
-                                        "zoned"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Zoned Support"
-                                ],
-                       "highlight":  "Cool gel foam with zoned coils for spinal alignment",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Soporte Zonificado"
-                                   ],
-                       "highlight_es":  "Espuma de gel fresco con resortes zonificados para alineación espinal",
-                       "imageUrl":  "images/mattresses/mechelle.jpg",
-                       "reasons":  {
-                                       "default":  "Cool gel foam, zoned wrapped coils, targeted support and spinal alignment",
-                                       "cooling":  "Luxurious cooling cover wicks moisture and heat",
-                                       "support":  "Marvelous Middle gives 25% more center support",
-                                       "medium":  "Perfect medium-plush feel for most sleepers",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "pressureRelief":  "Cool gel foam contours to body for pressure relief"
-                                   },
-                       "reasons_es":  {
-                                          "default":  "Espuma de gel fresco, resortes encapsulados zonificados, soporte dirigido y alineación espinal",
-                                          "cooling":  "La lujosa funda de enfriamiento absorbe la humedad y el calor",
-                                          "support":  "Marvelous Middle brinda 25% más soporte central",
-                                          "medium":  "Sensación media-suave perfecta para la mayoría",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "pressureRelief":  "La espuma de gel fresco se adapta al cuerpo para aliviar la presión"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Medium-plush hybrid with zoned cooling support — balanced comfort for mixed sleep positions.",
-                                             "es":  "Híbrido medio-suave con soporte de enfriamiento zonificado — comodidad equilibrada para posiciones de sueño mixtas."
-                                         }
-                   },
-                   {
-                       "id":  "g18",
-                       "name":  "Ariana",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Value Hybrid",
-                       "pitchKey":  "",
-                       "archetype":  "core hybrid",
-                       "displayPriority":  2,
-                       "firmness":  4,
-                       "firmnessLabel":  "Medium-Plush",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "plush",
-                                        "cooling",
-                                        "gelInfusedFoam",
-                                        "motionIsolation",
-                                        "comfort",
-                                        "hybrid",
-                                        "foamEncasement",
-                                        "zoned"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling"
-                                ],
-                       "highlight":  "Comfortable hybrid with cooling foam and Marvelous Middle support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento"
-                                   ],
-                       "highlight_es":  "Híbrido cómodo con espuma de enfriamiento y soporte Marvelous Middle",
-                       "imageUrl":  "images/mattresses/ariana.jpg",
-                       "reasons":  {
-                                       "pressureRelief":  "Cool gel foam contours to body for pressure relief",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "default":  "Cool gel foam, zoned wrapped coils, targeted support and spinal alignment",
-                                       "cooling":  "Luxurious cooling cover wicks moisture and heat",
-                                       "support":  "Marvelous Middle gives 25% more center support"
-                                   },
-                       "reasons_es":  {
-                                          "pressureRelief":  "La espuma de gel fresco se adapta al cuerpo para aliviar la presión",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "default":  "Espuma de gel fresco, resortes encapsulados zonificados, soporte dirigido y alineación espinal",
-                                          "cooling":  "La lujosa funda de enfriamiento absorbe la humedad y el calor",
-                                          "support":  "Marvelous Middle brinda 25% más soporte central"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Medium-plush cooling hybrid — approachable comfort with Marvelous Middle support.",
-                                             "es":  "Híbrido de enfriamiento medio-suave — comodidad accesible con soporte Marvelous Middle."
-                                         }
-                   },
-                   {
-                       "id":  "g19",
-                       "name":  "Catalina",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Value Hybrid",
-                       "pitchKey":  "",
-                       "archetype":  "core hybrid",
-                       "displayPriority":  2,
-                       "firmness":  9,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "gelInfusedFoam",
-                                        "motionIsolation",
-                                        "comfort",
-                                        "hybrid",
-                                        "foamEncasement",
-                                        "zoned"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling"
-                                ],
-                       "highlight":  "Comfortable hybrid with cooling foam and Marvelous Middle support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento"
-                                   ],
-                       "highlight_es":  "Híbrido cómodo con espuma de enfriamiento y soporte Marvelous Middle",
-                       "imageUrl":  "images/mattresses/catalina.jpg",
-                       "reasons":  {
-                                       "pressureRelief":  "Cool gel foam contours to body for pressure relief",
-                                       "motionIsolation":  "Pocketed coils minimize partner disturbance",
-                                       "default":  "Cool gel foam, zoned wrapped coils, targeted support and spinal alignment",
-                                       "cooling":  "Luxurious cooling cover wicks moisture and heat",
-                                       "support":  "Marvelous Middle gives 25% more center support"
-                                   },
-                       "reasons_es":  {
-                                          "pressureRelief":  "La espuma de gel fresco se adapta al cuerpo para aliviar la presión",
-                                          "motionIsolation":  "Los resortes encapsulados minimizan la perturbación de la pareja",
-                                          "default":  "Espuma de gel fresco, resortes encapsulados zonificados, soporte dirigido y alineación espinal",
-                                          "cooling":  "La lujosa funda de enfriamiento absorbe la humedad y el calor",
-                                          "support":  "Marvelous Middle brinda 25% más soporte central"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Firm cooling hybrid — solid support anchored by the Marvelous Middle.",
-                                             "es":  "Híbrido de enfriamiento firme — soporte sólido anclado por el Marvelous Middle."
-                                         }
-                   },
-                   {
-                       "id":  "g20",
-                       "name":  "Bella",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter",
-                       "pitchKey":  "",
-                       "archetype":  "guest/kid",
-                       "displayPriority":  1,
-                       "firmness":  3,
-                       "firmnessLabel":  "Plush",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "plush",
-                                        "comfort",
-                                        "support",
-                                        "innerspring",
-                                        "foamEncasement",
-                                        "soft",
-                                        "zoned"
-                                    ],
-                       "tags":  [
-                                    "Innerspring",
-                                    "Back Supporter"
-                                ],
-                       "highlight":  "Supportive innerspring with cool foam and lumbar zoning",
-                       "tags_es":  [
-                                       "Resortes",
-                                       "Soporte Lumbar"
-                                   ],
-                       "highlight_es":  "Colchón de resortes con espuma fresca y soporte lumbar zonificado",
-                       "imageUrl":  "images/mattresses/bella.jpg",
-                       "reasons":  {
-                                       "pressureRelief":  "Cool Foam with Polygel for increased comfort and pressure relief",
-                                       "plush":  "Plush feel for side sleepers",
-                                       "support":  "Marvelous Middle gives 25% more center support",
-                                       "default":  "Cool gel foam, innerspring, targeted support and spinal alignment",
-                                       "cooling":  "Cool cover for temperature control"
-                                   },
-                       "reasons_es":  {
-                                          "pressureRelief":  "Espuma fresca con Polygel para mayor confort y alivio de presión",
-                                          "plush":  "Sensación suave para quienes duermen de lado",
-                                          "support":  "Marvelous Middle brinda 25% más soporte central",
-                                          "default":  "Espuma de gel fresco, resortes, soporte dirigido y alineación espinal",
-                                          "cooling":  "Funda fresca para control de temperatura"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Plush innerspring with Back Supporter coils — soft comfort, proven spinal support.",
-                                             "es":  "Innerspring suave con resortes Back Supporter — comodidad suave, soporte espinal comprobado."
-                                         }
-                   },
-                   {
-                       "id":  "g21",
-                       "name":  "Brandon",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter",
-                       "pitchKey":  "",
-                       "archetype":  "guest/kid",
+                       "archetype":  "Easy all-foam starter",
                        "displayPriority":  1,
                        "firmness":  5,
                        "firmnessLabel":  "Medium",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "medium",
-                                        "comfort",
-                                        "support",
-                                        "innerspring",
-                                        "foamEncasement",
-                                        "zoned"
-                                    ],
-                       "tags":  [
-                                    "Innerspring",
-                                    "Back Supporter"
-                                ],
-                       "highlight":  "Supportive innerspring with cool foam and lumbar zoning",
-                       "tags_es":  [
-                                       "Resortes",
-                                       "Soporte Lumbar"
-                                   ],
-                       "highlight_es":  "Colchón de resortes con espuma fresca y soporte lumbar zonificado",
-                       "imageUrl":  "images/mattresses/brandon.jpg",
-                       "reasons":  {
-                                       "pressureRelief":  "Cool Foam with Polygel for increased comfort and pressure relief",
-                                       "default":  "Cool gel foam, innerspring, targeted support and spinal alignment",
-                                       "support":  "Marvelous Middle gives 25% more center support",
-                                       "medium":  "Perfect medium-plush feel for most sleepers",
-                                       "cooling":  "Cool cover for temperature control"
-                                   },
-                       "reasons_es":  {
-                                          "pressureRelief":  "Espuma fresca con Polygel para mayor confort y alivio de presión",
-                                          "default":  "Espuma de gel fresco, resortes, soporte dirigido y alineación espinal",
-                                          "support":  "Marvelous Middle brinda 25% más soporte central",
-                                          "medium":  "Sensación media-suave perfecta para la mayoría",
-                                          "cooling":  "Funda fresca para control de temperatura"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Balanced innerspring feel with Back Supporter coils — reliable, no-frills construction.",
-                                             "es":  "Sensación equilibrada de innerspring con resortes Back Supporter — construcción confiable, sin lujos."
-                                         }
-                   },
-                   {
-                       "id":  "g22",
-                       "name":  "Chloe",
-                       "brand":  "Spring Air",
-                       "subBrand":  "Back Supporter",
-                       "pitchKey":  "",
-                       "archetype":  "guest/kid",
-                       "displayPriority":  1,
-                       "firmness":  4,
-                       "firmnessLabel":  "Medium-Plush",
-                       "locallyMade":  true,
-                       "features":  [
-                                        "medium",
-                                        "comfort",
-                                        "support",
-                                        "innerspring",
-                                        "foamEncasement",
-                                        "zoned"
-                                    ],
-                       "tags":  [
-                                    "Innerspring",
-                                    "Back Supporter"
-                                ],
-                       "highlight":  "Supportive innerspring with cool foam and lumbar zoning",
-                       "tags_es":  [
-                                       "Resortes",
-                                       "Soporte Lumbar"
-                                   ],
-                       "highlight_es":  "Colchón de resortes con espuma fresca y soporte lumbar zonificado",
-                       "imageUrl":  "images/mattresses/chloe.jpg",
-                       "reasons":  {
-                                       "plush":  "Perfect medium-plush feel for most sleepers",
-                                       "motionIsolation":  "Back Supporter dual gauge spring - firmer center coils for lumbar support",
-                                       "default":  "Quality innerspring mattress with targeted center support and spinal alignment"
-                                   },
-                       "reasons_es":  {
-                                          "plush":  "Sensación media-suave perfecta para la mayoría",
-                                          "motionIsolation":  "Resorte Back Supporter de doble calibre — resortes centrales más firmes para soporte lumbar",
-                                          "default":  "Colchón de resortes de calidad con soporte central dirigido y alineación espinal"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Medium-plush innerspring with Back Supporter coils — gentle cradle with structured support.",
-                                             "es":  "Innerspring medio-suave con resortes Back Supporter — abrazo suave con soporte estructurado."
-                                         }
-                   },
-                   {
-                       "id":  "g24",
-                       "name":  "Bucca",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Charcoal",
-                       "pitchKey":  "",
-                       "archetype":  "house hybrid",
-                       "displayPriority":  2,
-                       "firmness":  7,
-                       "firmnessLabel":  "Cushion Firm",
                        "locallyMade":  false,
                        "features":  [
-                                        "firm",
                                         "cooling",
-                                        "pressureRelief",
-                                        "hybrid",
-                                        "motionIsolation",
-                                        "charcoalFoam",
-                                        "10YearWarranty",
-                                        "foamEncasement",
-                                        "zoned",
-                                        "durability",
-                                        "adjustable",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Charcoal Foam"
-                                ],
-                       "highlight":  "Charcoal-infused hybrid",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Espuma de Carbón"
-                                   ],
-                       "highlight_es":  "Híbrido con infusión de carbón",
-                       "imageUrl":  "images/mattresses/bucca.jpg",
-                       "reasons":  {
-                                       "firm":  "Cushion firm feel ideal for back and stomach sleepers",
-                                       "default":  "Charcoal-infused gel foam hybrid with micro pocket coils and foam encasement for cool pressure-relieving sleep",
-                                       "cooling":  "Cooling yarn fabric (ICE yarn blend) with Amstar-Aero Cool Gel Memory Foam draws heat away",
-                                       "support":  "Amstar-Adaptive Pocket Coils (8\" spring height) with lumbar support options for back alignment",
-                                       "motionIsolation":  "Micro Pocket Coil and Amstar-Adaptive Individual Pocket Coils minimize motion transfer",
-                                       "pressureRelief":  "Amstar-Aero Cool Gel Memory Foam and SilkFoam Technology contour to body for pressure relief"
-                                   },
-                       "reasons_es":  {
-                                          "firm":  "Sensación cushion firme ideal para quienes duermen boca arriba y boca abajo",
-                                          "default":  "Híbrido con espuma de gel infusionada con carbón con micro pocket coils y encapsulado en espuma para un sueño fresco que alivia la presión",
-                                          "cooling":  "La tela de hilo de enfriamiento (mezcla ICE yarn) con espuma Amstar-Aero Cool Gel de Memoria disipa el calor",
-                                          "support":  "Resortes Amstar-Adaptive (8\" de altura) con opciones de soporte lumbar para alineación de espalda",
-                                          "motionIsolation":  "Los Micro Pocket Coils y los resortes Amstar-Adaptive minimizan la transferencia de movimiento",
-                                          "pressureRelief":  "La espuma Amstar-Aero Cool Gel de Memoria y la tecnología SilkFoam se adaptan al cuerpo para aliviar la presión"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Cushion-firm cooling hybrid with charcoal-infused foam — distinct cooling construction in the Bronze tier.",
-                                             "es":  "Híbrido de enfriamiento firme con espuma de carbón — construcción de enfriamiento distintiva en la categoría Bronce."
-                                         }
-                   },
-                   {
-                       "id":  "g25",
-                       "name":  "Cleobella",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "7-Zone",
-                       "pitchKey":  "",
-                       "archetype":  "house hybrid",
-                       "displayPriority":  2,
-                       "firmness":  3,
-                       "firmnessLabel":  "Plush",
-                       "locallyMade":  false,
-                       "features":  [
-                                        "plush",
-                                        "cooling",
-                                        "pressureRelief",
-                                        "hybrid",
-                                        "motionIsolation",
-                                        "7Zone",
-                                        "wool",
-                                        "foamEncasement",
-                                        "soft",
-                                        "zoned",
-                                        "adjustable"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "7-Zone"
-                                ],
-                       "highlight":  "Wool-quilted plush hybrid with 7-zone ergonomic support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "7 Zonas"
-                                   ],
-                       "highlight_es":  "Híbrido suave acolchado con lana y soporte ergonómico de 7 zonas",
-                       "imageUrl":  "images/mattresses/cleobella.jpg",
-                       "reasons":  {
-                                       "default":  "Wool-quilted plush hybrid with 7-zone ergonomic support and ~900 foam-encased pocketed coils",
-                                       "cooling":  "Cooling fabric cover quilted with wool regulates temperature throughout the night",
-                                       "support":  "7-zone ergonomic foam provides targeted lumbar and hip support for proper spinal alignment",
-                                       "plush":  "Cloud-soft plush feel ideal for side sleepers and those with shoulder or hip pain",
-                                       "motionIsolation":  "Foam-encased pocketed coils (~900) move independently to reduce motion transfer",
-                                       "pressureRelief":  "Amstar-Flex comfort foam and 7-zone ergonomic foam target pressure points at head, shoulders, hips and knees"
-                                   },
-                       "reasons_es":  {
-                                          "default":  "Híbrido suave acolchado con lana con soporte ergonómico de 7 zonas y ~900 resortes encapsulados en espuma",
-                                          "cooling":  "La funda de tela de enfriamiento acolchada con lana regula la temperatura toda la noche",
-                                          "support":  "La espuma ergonómica de 7 zonas brinda soporte dirigido lumbar y de caderas para una alineación espinal correcta",
-                                          "plush":  "Sensación suave tipo nube ideal para quienes duermen de lado y personas con dolor de hombros o caderas",
-                                          "motionIsolation":  "Los resortes encapsulados en espuma (~900) se mueven independientemente para reducir la transferencia de movimiento",
-                                          "pressureRelief":  "La espuma de confort Amstar-Flex y la espuma ergonómica de 7 zonas se enfocan en puntos de presión en cabeza, hombros, caderas y rodillas"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Plush comfort over 7-zone cooling support — soft surface, zoned spinal alignment.",
-                                             "es":  "Comodidad suave sobre soporte de enfriamiento de 7 zonas — superficie suave, alineación espinal por zonas."
-                                         }
-                   },
-                   {
-                       "id":  "g26",
-                       "name":  "Cleodora",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "7-Zone",
-                       "pitchKey":  "",
-                       "archetype":  "house hybrid",
-                       "displayPriority":  2,
-                       "firmness":  8,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  false,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "support",
-                                        "hybrid",
-                                        "motionIsolation",
-                                        "7Zone",
-                                        "wool",
-                                        "foamEncasement",
-                                        "zoned",
-                                        "adjustable"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "7-Zone"
-                                ],
-                       "highlight":  "Wool-quilted firm hybrid with 7-zone ergonomic support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "7 Zonas"
-                                   ],
-                       "highlight_es":  "Híbrido firme acolchado con lana y soporte ergonómico de 7 zonas",
-                       "imageUrl":  "images/mattresses/cleodora.jpg",
-                       "reasons":  {
-                                       "firm":  "Firm hotel-style feel for back and stomach sleepers who need solid structure",
-                                       "default":  "Wool-quilted firm hybrid with 7-zone ergonomic support and ~900 foam-encased pocketed coils",
-                                       "cooling":  "Cooling fabric cover quilted with wool regulates temperature throughout the night",
-                                       "support":  "7-zone ergonomic foam delivers firmer lumbar and hip support for excellent spinal alignment",
-                                       "motionIsolation":  "Foam-encased pocketed coils (~900) move independently to reduce motion transfer",
-                                       "pressureRelief":  "Amstar-Flex comfort foam and 7-zone ergonomic foam cushion pressure points at head, shoulders, hips and knees"
-                                   },
-                       "reasons_es":  {
-                                          "firm":  "Sensación firme estilo hotel para quienes duermen boca arriba y boca abajo que necesitan estructura sólida",
-                                          "default":  "Híbrido firme acolchado con lana con soporte ergonómico de 7 zonas y ~900 resortes encapsulados en espuma",
-                                          "cooling":  "La funda de tela de enfriamiento acolchada con lana regula la temperatura toda la noche",
-                                          "support":  "La espuma ergonómica de 7 zonas brinda soporte lumbar y de caderas más firme para una excelente alineación espinal",
-                                          "motionIsolation":  "Los resortes encapsulados en espuma (~900) se mueven independientemente para reducir la transferencia de movimiento",
-                                          "pressureRelief":  "La espuma de confort Amstar-Flex y la espuma ergonómica de 7 zonas amortiguan los puntos de presión en cabeza, hombros, caderas y rodillas"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Firm cooling hybrid with 7-zone support — targeted firmness where your body needs it most.",
-                                             "es":  "Híbrido de enfriamiento firme con soporte de 7 zonas — firmeza dirigida donde tu cuerpo más la necesita."
-                                         }
-                   },
-                   {
-                       "id":  "g29",
-                       "name":  "Serenity",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Cooling Hybrid",
-                       "pitchKey":  "",
-                       "archetype":  "house hybrid",
-                       "displayPriority":  2,
-                       "firmness":  8,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  false,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "support",
-                                        "hybrid",
-                                        "motionIsolation",
-                                        "foamEncasement",
-                                        "adjustable"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Firm"
-                                ],
-                       "highlight":  "Firm cooling hybrid for solid hotel-style support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Firme"
-                                   ],
-                       "highlight_es":  "Híbrido firme con enfriamiento para soporte sólido estilo hotel",
-                       "imageUrl":  "images/mattresses/serenity.jpg",
-                       "reasons":  {
-                                       "firm":  "Firm feel for back and stomach sleepers who need solid structured support",
-                                       "default":  "Firm cooling hybrid with premium comfort foams and pocketed coils for solid structured support",
-                                       "cooling":  "Cooling cover actively draws heat away from the sleep surface",
-                                       "support":  "Individually wrapped coils deliver firm edge-to-edge support and spinal alignment",
-                                       "motionIsolation":  "Pocketed coil system minimizes motion transfer",
-                                       "pressureRelief":  "Comfort foam layers relieve pressure while maintaining a firm feel"
-                                   },
-                       "reasons_es":  {
-                                          "firm":  "Sensación firme para quienes duermen boca arriba y boca abajo que necesitan soporte sólido y estructurado",
-                                          "default":  "Híbrido firme con enfriamiento con espumas de confort premium y resortes encapsulados para soporte sólido y estructurado",
-                                          "cooling":  "La funda de enfriamiento disipa activamente el calor de la superficie de sueño",
-                                          "support":  "Los resortes encapsulados individualmente brindan soporte firme de borde a borde y alineación espinal",
-                                          "motionIsolation":  "El sistema de resortes encapsulados minimiza la transferencia de movimiento",
-                                          "pressureRelief":  "Las capas de espuma de confort alivian la presión manteniendo una sensación firme"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Firm cooling hybrid — straightforward solid support for firmness-first sleepers.",
-                                             "es":  "Híbrido de enfriamiento firme — soporte sólido y directo para quienes priorizan la firmeza."
-                                         }
-                   },
-                   {
-                       "id":  "g30",
-                       "name":  "Sunset",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Cooling Hybrid",
-                       "pitchKey":  "",
-                       "archetype":  "house hybrid",
-                       "displayPriority":  2,
-                       "firmness":  8,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  false,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "support",
-                                        "hybrid",
-                                        "euroTop",
-                                        "motionIsolation",
-                                        "foamEncasement",
-                                        "adjustable"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Euro Top",
-                                    "Firm"
-                                ],
-                       "highlight":  "15-inch euro top firm hybrid for structured all-night support",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Euro Top",
-                                       "Firme"
-                                   ],
-                       "highlight_es":  "Híbrido firme euro top de 15 pulgadas para soporte estructurado toda la noche",
-                       "imageUrl":  "images/mattresses/sunset.jpg",
-                       "reasons":  {
-                                       "firm":  "Firm euro top feel for back and stomach sleepers who want structure with surface comfort",
-                                       "default":  "Premium 15-inch euro top firm hybrid with cooling cover and zoned coil support",
-                                       "cooling":  "Euro Top cooling cover helps regulate sleep temperature",
-                                       "support":  "Individually wrapped coil system delivers firm zoned support and edge-to-edge stability",
-                                       "motionIsolation":  "Individually wrapped pocketed coils minimize motion transfer",
-                                       "pressureRelief":  "Euro Top comfort layer plus responsive foams cushion pressure points without sacrificing firmness"
-                                   },
-                       "reasons_es":  {
-                                          "firm":  "Sensación firme euro top para quienes duermen boca arriba y boca abajo que quieren estructura con confort superficial",
-                                          "default":  "Híbrido firme premium de 15 pulgadas euro top con funda de enfriamiento y soporte de resortes zonificados",
-                                          "cooling":  "La funda Euro Top de enfriamiento ayuda a regular la temperatura del sueño",
-                                          "support":  "El sistema de resortes encapsulados brinda soporte firme zonificado y estabilidad de borde a borde",
-                                          "motionIsolation":  "Los resortes encapsulados individualmente minimizan la transferencia de movimiento",
-                                          "pressureRelief":  "La capa Euro Top de confort más espumas responsivas amortiguan los puntos de presión sin sacrificar firmeza"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Firm cooling hybrid with Euro top — firm core, gentle surface transition.",
-                                             "es":  "Híbrido de enfriamiento firme con pillow top europeo — núcleo firme, transición suave en la superficie."
-                                         }
-                   },
-                   {
-                       "id":  "g31",
-                       "name":  "Tiffany",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Charcoal",
-                       "pitchKey":  "",
-                       "archetype":  "house hybrid",
-                       "displayPriority":  2,
-                       "firmness":  3,
-                       "firmnessLabel":  "Plush",
-                       "locallyMade":  false,
-                       "features":  [
-                                        "plush",
-                                        "cooling",
-                                        "pressureRelief",
-                                        "hybrid",
-                                        "motionIsolation",
-                                        "charcoalFoam",
-                                        "10YearWarranty",
-                                        "foamEncasement",
-                                        "soft",
-                                        "adjustable",
-                                        "memory"
-                                    ],
-                       "tags":  [
-                                    "Hybrid",
-                                    "Cooling",
-                                    "Ultra Plush"
-                                ],
-                       "highlight":  "Charcoal memory foam hybrid with ultra plush cloud-like feel",
-                       "tags_es":  [
-                                       "Híbrido",
-                                       "Enfriamiento",
-                                       "Ultra Suave"
-                                   ],
-                       "highlight_es":  "Híbrido de espuma de memoria con carbón y sensación ultra suave tipo nube",
-                       "imageUrl":  "images/mattresses/tiffany.jpg",
-                       "reasons":  {
-                                       "default":  "10-year warranty OEKO-TEX certified charcoal memory foam hybrid with micro pocket coils for ultra plush pressure-relieving sleep",
-                                       "cooling":  "Cooling yarn fabric (ICE yarn blend) with 3-inch Amstar-Aero Charcoal Memory Foam draws heat away",
-                                       "support":  "Amstar-Adaptive Pocket Coils with lumbar support options maintain spinal alignment",
-                                       "plush":  "Ultra plush cloud-like feel for side sleepers and those with shoulder or hip pain",
-                                       "motionIsolation":  "Micro Pocket Coil system and Amstar-Adaptive Individual Pocket Coils minimize motion transfer",
-                                       "pressureRelief":  "Amstar-Aero Charcoal Memory Foam (3-inch, 2.5lb) and SilkFoam Technology deeply contour to body"
-                                   },
-                       "reasons_es":  {
-                                          "default":  "Garantía de 10 años certificado OEKO-TEX híbrido de espuma de memoria con carbón con micro pocket coils para un sueño ultra suave que alivia la presión",
-                                          "cooling":  "La tela de hilo de enfriamiento (mezcla ICE yarn) con espuma Amstar-Aero de Memoria con Carbón de 3 pulgadas disipa el calor",
-                                          "support":  "Los resortes Amstar-Adaptive con opciones de soporte lumbar mantienen la alineación espinal",
-                                          "plush":  "Sensación ultra suave tipo nube para quienes duermen de lado y personas con dolor de hombros o caderas",
-                                          "motionIsolation":  "El sistema de Micro Pocket Coils y los resortes Amstar-Adaptive minimizan la transferencia de movimiento",
-                                          "pressureRelief":  "La espuma Amstar-Aero de Memoria con Carbón (3 pulgadas, 2.5lb) y la tecnología SilkFoam se adaptan profundamente al cuerpo"
-                                      },
-                       "topPickReason":  {
-                                             "en":  "Ultra-plush cooling hybrid — the softest cradle in the Bel-O-Pedic line.",
-                                             "es":  "Híbrido de enfriamiento ultra suave — el abrazo más suave de la línea Bel-O-Pedic."
-                                         }
-                   },
-                   {
-                       "id":  "g32",
-                       "name":  "Tranquil",
-                       "brand":  "Bel-O-Pedic",
-                       "subBrand":  "Memory Foam",
-                       "pitchKey":  "",
-                       "archetype":  "house foam",
-                       "displayPriority":  2,
-                       "firmness":  8,
-                       "firmnessLabel":  "Firm",
-                       "locallyMade":  false,
-                       "features":  [
-                                        "firm",
-                                        "cooling",
-                                        "pressureRelief",
-                                        "memoryFoam",
-                                        "support",
-                                        "adjustable",
-                                        "memory"
+                                        "pressurerelief",
+                                        "motionisolation",
+                                        "medium"
                                     ],
                        "tags":  [
                                     "Memory Foam",
                                     "Cooling",
-                                    "Firm"
+                                    "Medium"
                                 ],
-                       "highlight":  "Medical-grade memory foam with knit cooling cover for firm cool sleep",
+                       "highlight":  "Cooling foam comfort, budget-friendly",
                        "tags_es":  [
-                                       "Espuma de Memoria",
-                                       "Enfriamiento",
-                                       "Firme"
+
                                    ],
-                       "highlight_es":  "Espuma de memoria de grado médico con funda de enfriamiento tejida para un sueño firme y fresco",
-                       "imageUrl":  "images/mattresses/tranquil.jpg",
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/classic 5.1.jpg",
                        "reasons":  {
-                                       "firm":  "Firm memory foam feel for back and stomach sleepers needing solid structure",
-                                       "default":  "Firm all-foam mattress with knit cooling cover and medical-grade memory foam for cool structured sleep",
-                                       "cooling":  "Breathable knit cooling cover conducts heat away from the body for cooler sleep",
-                                       "support":  "Amstar-Flex transition layer adds resilient support and stability across the entire surface",
-                                       "motionIsolation":  "All-foam construction absorbs and isolates motion for undisturbed sleep",
-                                       "pressureRelief":  "4lb medical-grade memory foam contours slowly to reduce pressure points and keep you aligned"
+                                       "default":  "Cooling bed-in-a-box comfort that won\u0027t break the budget."
                                    },
                        "reasons_es":  {
-                                          "firm":  "Sensación firme de espuma de memoria para quienes duermen boca arriba y boca abajo que necesitan estructura sólida",
-                                          "default":  "Colchón firme totalmente de espuma con funda tejida de enfriamiento y espuma de memoria de grado médico para un sueño fresco y estructurado",
-                                          "cooling":  "La funda tejida transpirable de enfriamiento conduce el calor lejos del cuerpo para un sueño más fresco",
-                                          "support":  "La capa de transición Amstar-Flex añade soporte resistente y estabilidad en toda la superficie",
-                                          "motionIsolation":  "La construcción totalmente de espuma absorbe y aísla el movimiento para un sueño sin interrupciones",
-                                          "pressureRelief":  "La espuma de memoria de grado médico de 4lb se adapta lentamente para reducir puntos de presión y mantener la alineación"
+
                                       },
                        "topPickReason":  {
-                                             "en":  "Firm cooling memory foam — all-foam construction with targeted cooling and solid support.",
-                                             "es":  "Espuma con memoria de enfriamiento firme — construcción de toda espuma con enfriamiento dirigido y soporte sólido."
+                                             "en":  "Cooling bed-in-a-box comfort that won\u0027t break the budget.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "b2",
+                       "name":  "Classic 5.1 Hybrid",
+                       "brand":  "Nectar",
+                       "subBrand":  "Classic",
+                       "pitchKey":  "",
+                       "archetype":  "Value cooling hybrid",
+                       "displayPriority":  1,
+                       "firmness":  5,
+                       "firmnessLabel":  "Medium",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "cooling",
+                                        "pressurerelief",
+                                        "hybrid",
+                                        "medium"
+                                    ],
+                       "tags":  [
+                                    "Hybrid",
+                                    "Cooling",
+                                    "Medium"
+                                ],
+                       "highlight":  "Cooling hybrid bounce, starter price",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/classic 5.1 hybrid.jpg",
+                       "reasons":  {
+                                       "default":  "Hybrid bounce and cooling at a starter-friendly price."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Hybrid bounce and cooling at a starter-friendly price.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "b3",
+                       "name":  "Classic Hybrid",
+                       "brand":  "DreamCloud",
+                       "subBrand":  "4.0",
+                       "pitchKey":  "",
+                       "archetype":  "Luxury-feel value hybrid",
+                       "displayPriority":  1,
+                       "firmness":  6,
+                       "firmnessLabel":  "Medium-Firm",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "support",
+                                        "hybrid",
+                                        "pressurerelief",
+                                        "medium"
+                                    ],
+                       "tags":  [
+                                    "Hybrid",
+                                    "Medium-Firm",
+                                    "Value"
+                                ],
+                       "highlight":  "Plush-firm hybrid above its price",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/classic hybrid.jpg",
+                       "reasons":  {
+                                       "default":  "A plush-firm hybrid that feels well above its price."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "A plush-firm hybrid that feels far above its price.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "b4",
+                       "name":  "Moreland Avenue Plush",
+                       "brand":  "Sealy",
+                       "subBrand":  "",
+                       "pitchKey":  "",
+                       "archetype":  "Entry plush comfort",
+                       "displayPriority":  1,
+                       "firmness":  3,
+                       "firmnessLabel":  "Plush",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "plush",
+                                        "soft",
+                                        "pressurerelief"
+                                    ],
+                       "tags":  [
+                                    "Plush",
+                                    "Soft",
+                                    "Value"
+                                ],
+                       "highlight":  "Soft plush comfort, trusted value",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/moreland avenue plush.jpg",
+                       "reasons":  {
+                                       "default":  "Soft, budget-friendly plush comfort from a name you trust."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Soft, budget-friendly plush comfort from a name you know.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "b5",
+                       "name":  "Drake",
+                       "brand":  "WG\u0026R Factory Direct",
+                       "subBrand":  "",
+                       "pitchKey":  "",
+                       "archetype":  "Honest WI-made firm value",
+                       "displayPriority":  2,
+                       "firmness":  7,
+                       "firmnessLabel":  "Firm",
+                       "locallyMade":  true,
+                       "features":  [
+                                        "support",
+                                        "firm",
+                                        "durability"
+                                    ],
+                       "tags":  [
+                                    "WI-Made",
+                                    "Firm",
+                                    "Value"
+                                ],
+                       "highlight":  "Wisconsin-made firm support, great value",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/drake.jpg",
+                       "reasons":  {
+                                       "default":  "Honest Wisconsin-made firm support at a great value."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Wisconsin-made firm support at a guest-room-friendly price.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "b6",
+                       "name":  "Dreamweaver Medium Euro Top",
+                       "brand":  "Beautyrest",
+                       "subBrand":  "BeautySleep",
+                       "pitchKey":  "",
+                       "archetype":  "Affordable everyday comfort",
+                       "displayPriority":  1,
+                       "firmness":  5,
+                       "firmnessLabel":  "Medium",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "support",
+                                        "pressurerelief",
+                                        "medium"
+                                    ],
+                       "tags":  [
+                                    "Euro Top",
+                                    "Medium",
+                                    "Value"
+                                ],
+                       "highlight":  "Plush euro-top over solid support",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/dreamweaver medium euro top.jpg",
+                       "reasons":  {
+                                       "default":  "Plush euro-top comfort over dependable innerspring support."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "Plush euro-top comfort over dependable innerspring support.",
+                                             "es":  ""
+                                         }
+                   },
+                   {
+                       "id":  "b7",
+                       "name":  "Hybrid Premier",
+                       "brand":  "DreamCloud",
+                       "subBrand":  "4.0",
+                       "pitchKey":  "",
+                       "archetype":  "Stepped-up value hybrid",
+                       "displayPriority":  1,
+                       "firmness":  5,
+                       "firmnessLabel":  "Medium",
+                       "locallyMade":  false,
+                       "features":  [
+                                        "support",
+                                        "hybrid",
+                                        "pressurerelief",
+                                        "medium"
+                                    ],
+                       "tags":  [
+                                    "Hybrid",
+                                    "Medium",
+                                    "Value"
+                                ],
+                       "highlight":  "Stepped-up value hybrid comfort",
+                       "tags_es":  [
+
+                                   ],
+                       "highlight_es":  "",
+                       "imageUrl":  "images/mattresses/hybrid premier.jpg",
+                       "reasons":  {
+                                       "default":  "Extra foam and support stepped up from the entry hybrid."
+                                   },
+                       "reasons_es":  {
+
+                                      },
+                       "topPickReason":  {
+                                             "en":  "More foam and support than the entry hybrid, for a little more.",
+                                             "es":  ""
                                          }
                    }
                ]
