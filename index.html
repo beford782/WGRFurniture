@@ -6308,7 +6308,7 @@
   <!-- SCREEN: Profile Summary -->
   <div class="screen" id="profileScreen">
     <div class="noct-profile">
-      <div class="noct-profile-eyebrow" id="profileEyebrow">Your sleep DNA, decoded</div>
+      <div class="noct-profile-eyebrow" id="profileEyebrow">Your sleep profile, decoded</div>
       <h1 class="noct-profile-name" id="profileName"></h1>
       <div class="noct-profile-subtitle" id="profileSubtitle"></div>
       <p class="noct-profile-summary" id="profileSummary"></p>
@@ -6907,7 +6907,7 @@
     const QUESTIONS = [
       {
         id: 'trigger', category: {en: 'Getting Started', es: 'Para Empezar'}, question: {en: "What brought you in today?", es: "\u00bfQu\u00e9 te trae hoy?"},
-        helpText: {en: "Helps your sleep specialist tailor the visit", es: "Ayuda a tu especialista de sue\u00f1o a personalizar la visita"}, type: 'single',
+        helpText: {en: "So your specialist can focus the visit on what matters to you.", es: "Ayuda a tu especialista de sue\u00f1o a personalizar la visita"}, type: 'single',
         options: [
           { id: 'pain', label: {en: 'Back or Body Pain', es: 'Dolor de Espalda o Cuerpo'}, icon: 'spine', sublabel: {en: 'Current mattress is hurting me', es: 'Mi colch\u00f3n actual me lastima'}, scores: {} },
           { id: 'worn_out', label: {en: 'Old Mattress', es: 'Colch\u00f3n Viejo'}, icon: 'sagging', sublabel: {en: 'Time for an upgrade', es: 'Es hora de un cambio'}, scores: {} },
@@ -6918,7 +6918,7 @@
       },
       {
         id: 'mattress_size', category: {en: 'Getting Started', es: 'Para Empezar'}, question: {en: "What size mattress are you looking for?", es: "\u00bfQu\u00e9 tama\u00f1o de colch\u00f3n buscas?"},
-        helpText: {en: "We'll make sure recommendations fit your space", es: "Nos aseguraremos de que las recomendaciones se ajusten a tu espacio"}, type: 'single',
+        helpText: {en: "So every mattress we show actually fits your space.", es: "Nos aseguraremos de que las recomendaciones se ajusten a tu espacio"}, type: 'single',
         options: [
           { id: 'twin', label: {en: 'Twin', es: 'Twin'}, icon: 'solo', sublabel: {en: 'Kids or tight spaces', es: 'Ni\u00f1os o espacios peque\u00f1os'}, scores: {} },
           { id: 'twin_xl', label: {en: 'Twin XL', es: 'Twin XL'}, icon: 'solo', sublabel: {en: 'Extra length, single sleeper', es: 'Largo extra, una persona'}, scores: {} },
@@ -6930,7 +6930,7 @@
       },
       {
         id: 'sleep_position', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "How do you usually sleep?", es: "\u00bfC\u00f3mo duermes normalmente?"},
-        helpText: {en: "Think about where you naturally end up", es: "Piensa en c\u00f3mo terminas naturalmente"}, type: 'single',
+        helpText: {en: "Your sleep position is the biggest clue to the support you need.", es: "Piensa en c\u00f3mo terminas naturalmente"}, type: 'single',
         options: [
           { id: 'side', label: {en: 'Side Sleeper', es: 'De Lado'}, icon: 'side', sublabel: {en: 'Curled up', es: 'Acurrucado'}, scores: { plush: 2, pressureRelief: 2, soft: 1 } },
           { id: 'back', label: {en: 'Back Sleeper', es: 'Boca Arriba'}, icon: 'back', sublabel: {en: 'Flat on back', es: 'Acostado de espalda'}, scores: { support: 2, medium: 2, zoned: 1 } },
@@ -6941,7 +6941,7 @@
       },
       {
         id: 'body_type', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "What weight range should we match for?", es: "\u00bfPara qu\u00e9 rango de peso debemos buscar?"},
-        helpText: {en: "This helps us pick the right support level", es: "Esto nos ayuda a elegir el nivel de soporte correcto"}, type: 'single',
+        helpText: {en: "The right support level depends on the weight it carries.", es: "Esto nos ayuda a elegir el nivel de soporte correcto"}, type: 'single',
         options: [
           { id: 'petite', label: {en: 'Under 130 lbs', es: 'Menos de 130 lbs'}, icon: 'cloud', sublabel: {en: 'Light support', es: 'Soporte ligero'}, scores: { plush: 2, soft: 1 } },
           { id: 'average', label: {en: '130 to 200 lbs', es: '130 a 200 lbs'}, icon: 'weight', sublabel: {en: 'Standard support', es: 'Soporte est\u00e1ndar'}, scores: { medium: 2 } },
@@ -6952,7 +6952,7 @@
       },
       {
         id: 'partner_sleep', category: {en: "Who's With You", es: "Qui\u00e9n Est\u00e1 Contigo"}, question: {en: "Who's sharing the bed with you?", es: "\u00bfQui\u00e9n comparte la cama contigo?"},
-        helpText: {en: "This shapes which features matter most", es: "Esto determina qu\u00e9 caracter\u00edsticas importan m\u00e1s"}, type: 'single',
+        helpText: {en: "Who shares your bed shapes which features matter most.", es: "Esto determina qu\u00e9 caracter\u00edsticas importan m\u00e1s"}, type: 'single',
         options: [
           { id: 'solo', label: {en: 'Solo Sleeper', es: 'Duermo Solo'}, icon: 'solo', sublabel: {en: 'Just me', es: 'Solo yo'}, scores: {} },
           { id: 'partner', label: {en: 'With a Partner', es: 'Con Pareja'}, icon: 'partner', sublabel: {en: 'Sharing the bed', es: 'Compartimos la cama'}, scores: { motionIsolation: 2 } },
@@ -6961,7 +6961,7 @@
       },
       {
         id: 'partner_disturbance', category: {en: "Who's With You", es: "Qui\u00e9n Est\u00e1 Contigo"}, question: {en: "Does your partner's movement wake you up?", es: "\u00bfEl movimiento de tu pareja te despierta?"},
-        helpText: {en: "Motion isolation is one of the biggest upgrades in a new mattress", es: "El aislamiento de movimiento es una de las mayores mejoras en un colch\u00f3n nuevo"}, type: 'single',
+        helpText: {en: "Motion isolation is one of the first upgrades you'll feel.", es: "El aislamiento de movimiento es una de las mayores mejoras en un colch\u00f3n nuevo"}, type: 'single',
         skipIf: { question: 'partner_sleep', answer: 'solo' },
         options: [
           { id: 'yes_often', label: {en: 'Yes, Often', es: 'S\u00ed, Seguido'}, icon: 'motion', sublabel: {en: 'Every movement wakes me', es: 'Cada movimiento me despierta'}, scores: { motionIsolation: 4, hybrid: 3, memory: 2 } },
@@ -6972,7 +6972,7 @@
       },
       {
         id: 'temperature', category: {en: 'What You Like', es: 'Lo Que Te Gusta'}, question: {en: "How do you sleep temperature-wise?", es: "\u00bfC\u00f3mo duermes en cuanto a temperatura?"},
-        helpText: {en: "Temperature regulation is key to deep sleep", es: "La regulaci\u00f3n de temperatura es clave para un sue\u00f1o profundo"}, type: 'single',
+        helpText: {en: "Sleeping hot or cold is an easy fix with the right materials.", es: "La regulaci\u00f3n de temperatura es clave para un sue\u00f1o profundo"}, type: 'single',
         options: [
           { id: 'hot', label: {en: 'I Sleep Hot', es: 'Duermo con Calor'}, icon: 'flame', sublabel: {en: 'Night sweats, kick off covers', es: 'Sudores nocturnos, quito las cobijas'}, scores: { cooling: 3, hybrid: 2 } },
           { id: 'comfortable', label: {en: "I'm Comfortable", es: "Estoy C\u00f3modo"}, icon: 'smile', sublabel: {en: 'No temperature issues', es: 'Sin problemas de temperatura'}, scores: {} },
@@ -6982,13 +6982,13 @@
       },
       {
         id: 'firmness', category: {en: 'What You Like', es: 'Lo Que Te Gusta'}, question: {en: "What firmness level do you prefer?", es: "\u00bfQu\u00e9 nivel de firmeza prefieres?"},
-        helpText: {en: "Slide to your ideal comfort", es: "Desliza a tu comodidad ideal"}, type: 'slider',
+        helpText: {en: "No wrong answer here, just slide to what feels best.", es: "Desliza a tu comodidad ideal"}, type: 'slider',
         min: 1, max: 10, defaultValue: 5,
         labels: [{en: 'Soft \u2014 Sink right in', es: 'Suave \u2014 Hundirse'}, {en: 'Medium', es: 'Medio'}, {en: 'Firm \u2014 Solid support', es: 'Firme \u2014 Soporte s\u00f3lido'}]
       },
       {
         id: 'current_mattress_age', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "How old is your current mattress?", es: "\u00bfCu\u00e1ntos a\u00f1os tiene tu colch\u00f3n actual?"},
-        helpText: {en: "Most mattresses last 7\u201310 years", es: "La mayor\u00eda de los colchones duran 7\u201310 a\u00f1os"}, type: 'single',
+        helpText: {en: "Most mattresses lose their support after about 8 years.", es: "La mayor\u00eda de los colchones duran 7\u201310 a\u00f1os"}, type: 'single',
         options: [
           { id: 'under_2', label: {en: 'Less Than 2 Years', es: 'Menos de 2 A\u00f1os'}, icon: 'check', sublabel: {en: 'Pretty new', es: 'Bastante nuevo'}, scores: {} },
           { id: 'three_seven', label: {en: '3 to 7 Years', es: '3 a 7 A\u00f1os'}, icon: 'combo', sublabel: {en: 'Middle of its life', es: 'A mitad de su vida'}, scores: {} },
@@ -6999,7 +6999,7 @@
       },
       {
         id: 'sleep_quality', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "How well do you sleep right now?", es: "\u00bfQu\u00e9 tan bien duermes actualmente?"},
-        helpText: {en: "Honest answer \u2014 we can help either way", es: "S\u00e9 honesto \u2014 podemos ayudarte de cualquier manera"}, type: 'single',
+        helpText: {en: "Be honest. It helps us solve the real problem, not guess.", es: "S\u00e9 honesto \u2014 podemos ayudarte de cualquier manera"}, type: 'single',
         options: [
           { id: 'poor', label: {en: 'Poorly', es: 'Mal'}, icon: 'stiff', sublabel: {en: 'Restless, waking often', es: 'Inquieto, despertando seguido'}, scores: {} },
           { id: 'fair', label: {en: 'Not Great', es: 'No Muy Bien'}, icon: 'combo', sublabel: {en: 'Could be a lot better', es: 'Podr\u00eda ser mucho mejor'}, scores: {} },
@@ -7009,7 +7009,7 @@
       },
       {
         id: 'sleep_issues', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "Any issues with your current mattress?", es: "\u00bfAlg\u00fan problema con tu colch\u00f3n actual?"},
-        helpText: {en: "Tap any that apply", es: "Toca las que apliquen"}, type: 'multiple',
+        helpText: {en: "Tap anything you've noticed. Each one points us toward a fix.", es: "Toca las que apliquen"}, type: 'multiple',
         options: [
           { id: 'back_pain', label: {en: 'Back Pain', es: 'Dolor de Espalda'}, icon: 'spine', sublabel: {en: 'Lower or upper back', es: 'Espalda baja o alta'}, scores: { support: 3, zoned: 2, firm: 1 } },
           { id: 'hip_pain', label: {en: 'Hip or Shoulder Pain', es: 'Dolor de Cadera u Hombro'}, icon: 'pressure', sublabel: {en: 'Pressure points', es: 'Puntos de presi\u00f3n'}, scores: { pressureRelief: 3, plush: 2 } },
@@ -7023,7 +7023,7 @@
       },
       {
         id: 'health_conditions', category: {en: "What You're Solving", es: "Lo Que Buscas Resolver"}, question: {en: "Anything else going on that affects your sleep?", es: "\u00bfAlgo m\u00e1s que afecte tu sue\u00f1o?"},
-        helpText: {en: "Tap any that apply", es: "Toca las que apliquen"}, type: 'multiple',
+        helpText: {en: "Tap any that apply. A few of these change what we'd suggest.", es: "Toca las que apliquen"}, type: 'multiple',
         options: [
           { id: 'nerve_pain', label: {en: 'Nerve Pain or Tingling', es: 'Dolor Nervioso u Hormigueo'}, icon: 'lightning', sublabel: {en: 'Shooting pain, numbness', es: 'Dolor punzante, entumecimiento'}, scores: { support: 3, firm: 2, zoned: 2 } },
           { id: 'allergies', label: {en: 'Allergies', es: 'Alergias'}, icon: 'sneeze', sublabel: {en: 'Dust, sneezing, stuffy', es: 'Polvo, estornudos, congesti\u00f3n'}, scores: { hypoallergenic: 3 } },
@@ -7637,7 +7637,7 @@
       if (help) {
         help.textContent = es
           ? "Asegúrate de que todo esté bien, luego construiremos tu combinación."
-          : "Make sure everything looks right, then we'll build your match.";
+          : "A quick check, then your specialist builds your recommendations.";
       }
       if (backBtn) backBtn.innerHTML = es ? '&larr; Atrás' : '&larr; Back';
       if (nextBtn) nextBtn.innerHTML = es ? 'Todo bien &rarr;' : 'Looks good &rarr;';
@@ -7968,7 +7968,7 @@
         if (el) el.textContent = value;
       };
 
-      setProfileText('profileEyebrow', es ? 'Tu ADN del sueño, descifrado' : 'Your sleep DNA, decoded');
+      setProfileText('profileEyebrow', es ? 'Tu ADN del sueño, descifrado' : 'Your sleep profile, decoded');
       setProfileText('profileName', displayName);
       setProfileText('profileSubtitle', subtitle);
 
@@ -8272,7 +8272,7 @@
         : 'Your <span class="accent">perfect matches</span> are ready';
       document.getElementById('resultsSubhead').textContent = es
         ? 'Toca cualquier opción para ver por qué encaja y pide a tu especialista que compare tus opciones.'
-        : 'Tap any match to see why it fits, then ask your sleep specialist to compare your options.';
+        : 'Tap any match to see why it fits, then your sleep specialist can compare them with you in the showroom.';
       document.getElementById('buildSystemBtn').textContent = es ? 'Crea Tu Sistema de Sueño →' : 'Build Your Sleep System →';
       document.getElementById('resultsFooterHint').textContent = es ? 'Tu Pase de Ahorro aplica a todo.' : 'Your Savings Pass applies to everything.';
     }
@@ -8650,7 +8650,7 @@
       if (!overlay || !titleEl || !subEl) { window.showResults(); return; }
       window._resultsRevealInFlight = true;
       var es = currentLang === 'es';
-      titleEl.textContent = es ? 'Preparando tus mejores opciones' : 'Building your mattress matches';
+      titleEl.textContent = es ? 'Preparando tus mejores opciones' : 'Putting your matches together';
       subEl.textContent   = es ? 'Priorizando comodidad, soporte y tu forma de dormir.' : 'Prioritizing comfort, support, and sleep style.';
       overlay.style.display = 'flex';
       overlay.setAttribute('aria-hidden', 'false');

@@ -74,8 +74,8 @@
     "pageTitle": "DreamFinder - WG&R Furniture Sleep Quiz",
     "metaDescription": "Take the WG&R Sleep Shop quiz and get personalized mattress recommendations.",
     "ogTitle": "DreamFinder - WG&R Furniture",
-    "trustSignal": "Northeast Wisconsin's #1 furniture & mattress retailer since 1946",
-    "heritage": "EST. 1946 - EMPLOYEE-OWNED - WISCONSIN",
+    "trustSignal": "Serving Northeast Wisconsin since 1946 — proudly employee-owned",
+    "heritage": "EST. 1946 · EMPLOYEE-OWNED · NORTHEAST WISCONSIN",
     "emailPrivacy": "We'll only use your email to send your results.",
     "privacyPolicyContact": "",
     "inStockText": "In stock at WG&R",
@@ -101,14 +101,14 @@
     "codeDigits": 3
   },
   "voice": {
-    "eyebrow": "WG&R Sleep Shop",
-    "headlineMain": "Let's find your",
-    "headlineAccent": "best night's sleep",
-    "subCopyBefore": "Answer a few quick questions and we'll match you to the right mattress - backed by our ",
-    "subCopyAccent": "125-Night Sleep Guarantee",
+    "eyebrow": "WG&R Sleep Consultation",
+    "headlineMain": "Let's find the mattress",
+    "headlineAccent": "made for how you sleep",
+    "subCopyBefore": "Answer a few questions and our sleep specialists will match you to the right mattress — proudly ",
+    "subCopyAccent": "employee-owned in Northeast Wisconsin since 1946",
     "subCopyAfter": ".",
-    "ctaPrimary": "Start the Sleep Quiz",
-    "timeEstimate": "Takes about 2 minutes"
+    "ctaPrimary": "Start My Sleep Consultation",
+    "timeEstimate": "About 2 minutes, no pressure"
   },
   "voice_es": {
     "eyebrow": "",
