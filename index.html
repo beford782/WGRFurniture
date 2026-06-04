@@ -361,6 +361,75 @@
       color: var(--color-text-subtle);
     }
 
+    /* Emphasized ownership trust badge (brass-bordered pill) */
+    .landing-trust-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+      border: 1px solid rgba(184, 147, 93, 0.45);
+      background: rgba(184, 147, 93, 0.07);
+      border-radius: 999px;
+      padding: 7px 16px;
+      margin-bottom: 26px;
+    }
+    .landing-trust-badge:empty { display: none; }
+    .landing-trust-badge::before {
+      content: '\2605'; /* star */
+      font-size: 11px;
+      color: var(--color-gold-bright);
+    }
+
+    /* Store locations row (subtle, premium) */
+    .landing-locations {
+      display: flex;
+      flex-direction: column;
+      gap: 5px;
+      margin-top: 20px;
+    }
+    .landing-locations:empty { display: none; }
+    .landing-locations-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.24em;
+      text-transform: uppercase;
+      color: var(--color-text-subtle);
+    }
+    .landing-locations-cities {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-size: 15px;
+      letter-spacing: 0.01em;
+      color: var(--color-text-muted);
+    }
+
+    /* Brand strip in logo mode (used when brands[].logo is set) */
+    .landing-brand-partners--logos {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 20px;
+    }
+    .landing-brand-logo {
+      height: 22px;
+      width: auto;
+      opacity: 0.82;
+      filter: grayscale(1) brightness(1.7); /* monochrome/light on the dark footer */
+    }
+    .landing-brand-partners--logos .landing-brand-name {
+      font-size: 12px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-text-subtle);
+    }
+
     /* Hide legacy header on Nocturnal-rebuilt screens only.
        Remaining screens (profile, results, accessories, email, handoff)
        still render the header for navigation context until they're rebuilt. */
@@ -6254,6 +6323,9 @@
       <!-- Sub-copy with inline italic-brass accent -->
       <div class="landing-subcopy" id="landingSubcopy">Tell us how you sleep — we'll find your perfect match.</div>
 
+      <!-- Ownership trust badge (emphasized employee-owned line) -->
+      <div class="landing-trust-badge" id="landingTrustBadge"></div>
+
       <!-- CTA row -->
       <div class="landing-cta-row">
         <button class="landing-cta-btn" id="startBtn" onclick="startQuiz()" ontouchend="event.preventDefault();startQuiz();">
@@ -6273,6 +6345,9 @@
         <div class="landing-code-tiles" id="landingCodeTiles"></div>
         <span class="landing-discount-hint" id="landingDiscountHint">Unlock your private in-store offer</span>
       </div>
+
+      <!-- Store locations (subtle, premium) -->
+      <div class="landing-locations" id="landingLocations"></div>
 
       <!-- Footer row -->
       <div class="landing-footer">
@@ -7203,6 +7278,16 @@
       setText('landingDiscountLabel', es ? 'Tu Pase de Ahorro' : 'Your Savings Pass');
       setText('landingDiscountHint', es ? 'Desbloquea tu oferta privada en tienda' : 'Unlock your private in-store offer');
       setText('landingHeritage', textBlock.heritage);
+      setText('landingTrustBadge', textBlock.ownershipBadge);
+
+      // Store locations: optional label + city list (subtle premium row). Source
+      // values come from STORE_CONFIG (trusted, same-origin) — safe to innerHTML.
+      var locEl = document.getElementById('landingLocations');
+      if (locEl) {
+        var locLabel = textBlock.locationsLabel ? '<span class="landing-locations-label">' + textBlock.locationsLabel + '</span>' : '';
+        var locCities = textBlock.locations ? '<span class="landing-locations-cities">' + textBlock.locations + '</span>' : '';
+        locEl.innerHTML = locLabel + locCities;
+      }
 
       // Sub-copy with inline accent span.
       // Source values come from STORE_CONFIG (trusted, same-origin config), not user input — safe to innerHTML.
@@ -7214,11 +7299,25 @@
         subcopy.innerHTML = before + '<span class="accent">' + accent + '</span>' + after;
       }
 
-      // Brand partners line: names only, separated by middle-dot.
+      // Brand partners: render logos when any brand provides one (brands[].logo),
+      // otherwise fall back to a refined names-only strip. Source values come from
+      // STORE_CONFIG (trusted, same-origin) — safe to innerHTML.
       var partners = document.getElementById('landingBrandPartners');
       if (partners) {
         var brands = Array.isArray(STORE_CONFIG.brands) ? STORE_CONFIG.brands : [];
-        partners.textContent = brands.map(function(b) { return b && b.name ? b.name : ''; }).filter(Boolean).join('  ·  ');
+        var anyLogo = brands.some(function(b) { return b && b.logo; });
+        if (anyLogo) {
+          partners.classList.add('landing-brand-partners--logos');
+          partners.innerHTML = brands.map(function(b) {
+            if (!b || !b.name) return '';
+            return b.logo
+              ? '<img class="landing-brand-logo" src="' + b.logo + '" alt="' + b.name + '">'
+              : '<span class="landing-brand-name">' + b.name + '</span>';
+          }).filter(Boolean).join('');
+        } else {
+          partners.classList.remove('landing-brand-partners--logos');
+          partners.textContent = brands.map(function(b) { return b && b.name ? b.name : ''; }).filter(Boolean).join('  ·  ');
+        }
       }
 
       // Code tiles: [prefix letters] — [digit placeholders]
@@ -9061,7 +9160,8 @@
         'snoring': _es ? 'Ayuda con los ronquidos que reportaste' : 'Helps with the snoring you reported',
         'allergies': _es ? 'Protege contra las alergias que mencionaste' : 'Protects against the allergies you noted',
         'premium': _es ? 'Coincide con tus preferencias de comodidad' : 'Matches your comfort preferences',
-        'default': _es ? 'Recomendado para tu perfil de sueño' : 'Recommended for your sleep profile'
+        'default': _es ? 'Recomendado para tu perfil de sueño' : 'Recommended for your sleep profile',
+        'standard': _es ? 'Una buena opción para completar tu sistema de sueño' : 'A solid option to round out your sleep system'
       };
       const accessoryData = ACCESSORIES.map(a => {
         let score = a.matchScores.default || 0;
@@ -9072,8 +9172,15 @@
         if (issues.includes('back_pain') && a.matchScores.back_pain) { score += a.matchScores.back_pain; reasons.push(reasonMap.back_pain); }
         if (health.includes('snoring') && a.matchScores.snoring) { score += a.matchScores.snoring; reasons.push(reasonMap.snoring); }
         if (budget === 'premium' && a.matchScores.premium) { score += a.matchScores.premium; reasons.push(reasonMap.premium); }
-        if (reasons.length === 0) reasons.push(reasonMap.default);
-        return { ...a, score, reasons };
+        // A genuine match means at least one answer-specific reason fired; the
+        // baseline default score alone does not count. Only matched items earn the
+        // "Recommended for your sleep profile" treatment (e.g. an adjustable base when
+        // snoring/back pain is flagged, or a cooling pillow for a hot sleeper). Generic
+        // catalog items (plain foundations, bunkie, unmatched pillows/protectors) show
+        // a neutral line and are never badged recommended.
+        const matched = reasons.length > 0;
+        if (!matched) reasons.push(reasonMap.standard);
+        return { ...a, score, matched, reasons };
       });
       accessoryData.sort((a, b) => b.score - a.score);
       return accessoryData;
@@ -9199,7 +9306,7 @@
         // Stagger cards in
         g.items.forEach((a, i) => {
           const matchPct = Math.min(Math.round((a.score / maxScore) * 100), 99);
-          const isRec = a.score >= 3;
+          const isRec = a.matched === true;
           const _aName = L(a.name);
           const _aDesc = L(a.description);
           // For _toggleAcc, pass English name/category for analytics

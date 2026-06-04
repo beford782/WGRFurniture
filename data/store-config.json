@@ -81,7 +81,10 @@
     "inStockText": "In stock at WG&R",
     "emailHeader": "WG&R Furniture x DreamFinder",
     "emailSubtext": "Your personalized mattress matches",
-    "locationLabel": "Northeast Wisconsin"
+    "locationLabel": "Northeast Wisconsin",
+    "ownershipBadge": "Proudly Employee-Owned Since 1946",
+    "locationsLabel": "Northeast Wisconsin Showrooms",
+    "locations": "Green Bay · Appleton · Oshkosh · Sheboygan · Manitowoc · Fond du Lac"
   },
   "text_es": {
     "pageTitle": "",
