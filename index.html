@@ -89,13 +89,25 @@
       --accent-bar-height: 3px;
     }
 
-    /* ===== NOCTURNAL LANDING (v3) ===== */
+    /* ===== WGR LANDING: HERITAGE CONCIERGE ===== */
+    body:has(#welcomeScreen.active) {
+      --landing-bg: #F4EFE6;
+      --landing-paper: #FBF7EF;
+      --landing-ink: #2F271E;
+      --landing-muted: #685C4D;
+      --landing-subtle: #8B7B67;
+      --landing-rule: rgba(104, 84, 60, 0.24);
+      --landing-red: var(--store-primary);
+      --landing-brass: var(--color-accent);
+      background: var(--landing-bg);
+    }
+
     .nocturnal-landing {
-      max-width: 640px;
+      max-width: 900px;
       width: 100%;
       margin: 0 auto;
-      padding: 36px 48px;
-      color: var(--color-text);
+      padding: clamp(24px, 4vw, 44px) clamp(28px, 6vw, 72px);
+      color: var(--landing-ink, var(--color-text));
       font-family: var(--font-serif);
       display: flex;
       flex-direction: column;
@@ -106,17 +118,30 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 36px;
+      margin-bottom: 32px;
     }
 
     .landing-retailer-name {
+      display: block;
       font-family: var(--font-sans);
-      font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.22em;
-      text-transform: uppercase;
-      color: var(--color-text);
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 0;
+      text-transform: none;
+      color: var(--landing-red, var(--color-text));
     }
+
+    .landing-retailer-subline {
+      margin-top: 8px;
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.44em;
+      text-transform: uppercase;
+      color: var(--landing-muted, var(--color-text-muted));
+    }
+    .landing-retailer-subline:empty { display: none; }
 
     .landing-lang-toggle {
       display: flex;
@@ -130,74 +155,83 @@
       font-weight: 500;
       letter-spacing: 0.1em;
       background: transparent;
-      border: 0.5px solid var(--color-border);
-      color: var(--color-text-subtle);
+      border: 1px solid var(--landing-rule, var(--color-border));
+      color: var(--landing-muted, var(--color-text-subtle));
       cursor: pointer;
       touch-action: manipulation;
       border-radius: 0;
     }
 
     .landing-lang-btn.active {
-      border-color: var(--color-accent);
-      color: var(--color-accent);
+      border-color: var(--landing-red, var(--color-accent));
+      color: var(--landing-red, var(--color-accent));
     }
 
     .landing-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 20px;
       font-family: var(--font-sans);
       font-size: 13px;
-      font-weight: 500;
-      letter-spacing: 0.3em;
+      font-weight: 700;
+      letter-spacing: 0.34em;
       text-transform: uppercase;
-      color: var(--color-accent);
-      margin-bottom: 16px;
+      color: var(--landing-ink, var(--color-text));
+      margin-bottom: 30px;
+    }
+
+    .landing-eyebrow::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: var(--landing-rule, var(--color-border));
     }
 
     .landing-headline {
       font-family: var(--font-serif);
-      font-size: 64px;
+      font-size: clamp(54px, 6vw, 70px);
       font-weight: 400;
       line-height: 1.0;
-      letter-spacing: -0.02em;
-      color: var(--color-text);
+      letter-spacing: 0;
+      color: var(--landing-ink, var(--color-text));
     }
 
     .landing-headline-accent {
       font-style: italic;
-      color: var(--color-accent);
-      margin-bottom: 18px;
+      color: var(--landing-red, var(--color-accent));
+      margin-bottom: 22px;
     }
 
     .landing-subcopy {
       font-family: var(--font-sans);
-      font-size: 17px;
+      font-size: clamp(19px, 2vw, 22px);
       font-weight: 400;
-      color: var(--color-text-muted);
-      line-height: 1.55;
-      max-width: 460px;
-      margin-bottom: 26px;
+      color: var(--landing-muted, var(--color-text-muted));
+      line-height: 1.45;
+      max-width: 720px;
+      margin-bottom: 28px;
     }
 
     .landing-subcopy .accent {
-      font-family: var(--font-serif);
-      font-style: italic;
-      color: var(--color-accent);
-      font-size: 18px;
+      color: inherit;
     }
 
     .landing-cta-row {
       display: flex;
       align-items: center;
-      gap: 22px;
-      margin-bottom: 32px;
+      gap: 24px;
+      margin-bottom: 28px;
+      flex-wrap: wrap;
     }
 
     .landing-cta-btn {
-      background: transparent;
-      color: var(--color-text);
-      padding: 16px 32px;
-      border: 0.5px solid var(--color-accent);
+      background: var(--landing-red, var(--store-primary));
+      color: #FFF8ED;
+      padding: 18px 42px;
+      border: 1px solid var(--landing-red, var(--store-primary));
       font-family: var(--font-serif);
-      font-size: 17px;
+      font-size: 24px;
+      font-weight: 700;
       letter-spacing: 0.01em;
       border-radius: var(--radius);
       cursor: pointer;
@@ -209,8 +243,8 @@
     }
 
     .landing-cta-btn:hover {
-      background: var(--color-accent);
-      color: var(--color-bg);
+      background: color-mix(in srgb, var(--landing-red, var(--store-primary)) 88%, #000);
+      color: #FFF8ED;
     }
 
     .landing-cta-arrow {
@@ -219,9 +253,35 @@
 
     .landing-time-estimate {
       font-family: var(--font-sans);
-      font-size: 13px;
-      letter-spacing: 0.1em;
-      color: var(--color-text-subtle);
+      font-size: 15px;
+      letter-spacing: 0.12em;
+      color: var(--landing-muted, var(--color-text-subtle));
+    }
+
+    .landing-outcome {
+      border-top: 1px solid var(--landing-rule, var(--color-border));
+      border-bottom: 1px solid var(--landing-rule, var(--color-border));
+      padding: 18px 0;
+      margin-bottom: 24px;
+    }
+
+    .landing-outcome-label {
+      display: block;
+      margin-bottom: 10px;
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.34em;
+      text-transform: uppercase;
+      color: var(--landing-red, var(--color-accent));
+    }
+
+    .landing-outcome-items {
+      display: block;
+      font-family: var(--font-serif);
+      font-size: clamp(18px, 1.8vw, 22px);
+      line-height: 1.25;
+      color: var(--landing-ink, var(--color-text));
     }
 
     /* Savings Pass card — certificate framing (Direction 1, Phase 1 visual only).
@@ -230,18 +290,17 @@
     .landing-discount-tease {
       position: relative;
       display: flex;
-      flex-direction: column;
+      flex-direction: row;
       align-items: center;
-      gap: 12px;
-      padding: 22px 28px;
-      margin: 4px auto;
-      max-width: 388px;
+      justify-content: flex-start;
+      gap: 28px;
+      padding: 18px 26px;
+      margin: 0 0 24px;
+      max-width: none;
       width: 100%;
-      border: 1px solid color-mix(in srgb, var(--color-accent) 45%, var(--color-border));
+      border: 1px solid var(--landing-red, var(--color-accent));
       border-radius: 0;
-      background:
-        linear-gradient(180deg, var(--gold-glow) 0%, transparent 60%),
-        var(--color-surface);
+      background: rgba(255, 255, 255, 0.28);
     }
 
     /* Diagonal corner glyphs — hairline L-shapes at top-left + bottom-right.
@@ -252,7 +311,7 @@
       position: absolute;
       width: 14px;
       height: 14px;
-      border: 0 solid var(--color-accent);
+      border: 0 solid var(--landing-brass, var(--color-accent));
       pointer-events: none;
     }
     .landing-discount-tease::before {
@@ -280,12 +339,13 @@
       font-weight: 600;
       letter-spacing: 0.32em;
       text-transform: uppercase;
-      color: var(--color-accent);
-      text-align: center;
+      color: var(--landing-red, var(--color-accent));
+      text-align: left;
+      min-width: 190px;
     }
 
     .landing-code-tiles {
-      display: flex;
+      display: none;
       gap: 8px;
       align-items: center;
       justify-content: center;
@@ -321,11 +381,11 @@
 
     .landing-discount-hint {
       font-family: var(--font-sans);
-      font-size: 13px;
-      font-style: italic;
-      color: var(--color-text-muted);
-      text-align: center;
-      max-width: 32ch;
+      font-size: 18px;
+      font-style: normal;
+      color: var(--landing-muted, var(--color-text-muted));
+      text-align: left;
+      max-width: none;
     }
 
     @media (max-width: 480px) {
@@ -343,7 +403,7 @@
     }
 
     .landing-footer {
-      display: flex;
+      display: none;
       justify-content: space-between;
       align-items: center;
       margin-top: 16px;
@@ -361,9 +421,8 @@
       color: var(--color-text-subtle);
     }
 
-    /* Emphasized ownership trust badge (brass-bordered pill) */
     .landing-trust-badge {
-      display: inline-flex;
+      display: none;
       align-items: center;
       gap: 8px;
       align-self: flex-start;
@@ -372,7 +431,7 @@
       font-weight: 600;
       letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: var(--color-accent);
+      color: var(--landing-brass, var(--color-accent));
       border: 1px solid rgba(184, 147, 93, 0.45);
       background: rgba(184, 147, 93, 0.07);
       border-radius: 999px;
@@ -383,7 +442,7 @@
     .landing-trust-badge::before {
       content: '\2605'; /* star */
       font-size: 11px;
-      color: var(--color-gold-bright);
+      color: var(--landing-brass, var(--color-gold-bright));
     }
 
     /* Store locations row (subtle, premium) */
@@ -391,7 +450,9 @@
       display: flex;
       flex-direction: column;
       gap: 5px;
-      margin-top: 20px;
+      margin-top: 0;
+      padding-top: 4px;
+      border-top: 1px solid var(--landing-rule, var(--color-border));
     }
     .landing-locations:empty { display: none; }
     .landing-locations-label {
@@ -400,14 +461,14 @@
       font-weight: 600;
       letter-spacing: 0.24em;
       text-transform: uppercase;
-      color: var(--color-text-subtle);
+      color: var(--landing-subtle, var(--color-text-subtle));
     }
     .landing-locations-cities {
       font-family: var(--font-serif);
       font-style: italic;
-      font-size: 15px;
+      font-size: 20px;
       letter-spacing: 0.01em;
-      color: var(--color-text-muted);
+      color: var(--landing-ink, var(--color-text-muted));
     }
 
     /* Brand strip in logo mode (used when brands[].logo is set) */
@@ -428,6 +489,82 @@
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--color-text-subtle);
+    }
+
+    @media (max-width: 820px) {
+      .nocturnal-landing {
+        padding: 30px 36px;
+      }
+      .landing-topbar {
+        margin-bottom: 34px;
+      }
+      .landing-eyebrow {
+        gap: 14px;
+        margin-bottom: 32px;
+        letter-spacing: 0.24em;
+      }
+      .landing-subcopy {
+        max-width: none;
+      }
+      .landing-discount-tease {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .nocturnal-landing {
+        padding: 26px 22px;
+      }
+      .landing-topbar {
+        align-items: flex-start;
+        gap: 18px;
+      }
+      .landing-retailer-name {
+        font-size: 26px;
+      }
+      .landing-retailer-subline {
+        font-size: 12px;
+        letter-spacing: 0.34em;
+      }
+      .landing-eyebrow {
+        display: block;
+        font-size: 11px;
+        line-height: 1.6;
+        margin-bottom: 26px;
+      }
+      .landing-eyebrow::after {
+        display: block;
+        margin-top: 16px;
+      }
+      .landing-headline {
+        font-size: 44px;
+      }
+      .landing-subcopy {
+        font-size: 18px;
+      }
+      .landing-cta-row {
+        gap: 14px;
+      }
+      .landing-cta-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 18px 24px;
+        font-size: 22px;
+      }
+      .landing-time-estimate {
+        font-size: 13px;
+      }
+      .landing-discount-tease {
+        flex-direction: column;
+        gap: 10px;
+      }
+      .landing-discount-label {
+        min-width: 0;
+      }
+      .landing-locations-cities {
+        font-size: 17px;
+        line-height: 1.45;
+      }
     }
 
     /* Hide legacy header on Nocturnal-rebuilt screens only.
@@ -771,6 +908,298 @@
     .noct-review-edit:hover {
       border-color: var(--color-accent);
       color: var(--color-accent);
+    }
+
+    /* ===== WARM CONSULTATION: QUESTIONS + REVIEW =====
+       The consultation stays visually connected to the warm landing page.
+       Profile and later screens intentionally return to the dark reveal theme. */
+    body:has(#questionScreen.active),
+    body:has(#reviewScreen.active) {
+      --consultation-bg: #F4EFE6;
+      --consultation-paper: #FBF7EF;
+      --consultation-ink: #2F271E;
+      --consultation-muted: #685C4D;
+      --consultation-subtle: #8B7B67;
+      --consultation-rule: rgba(104, 84, 60, 0.28);
+      --consultation-red: var(--store-primary);
+      --consultation-brass: var(--color-accent);
+      background: var(--consultation-bg);
+      color: var(--consultation-ink);
+    }
+
+    body:has(#questionScreen.active) #questionScreen,
+    body:has(#reviewScreen.active) #reviewScreen {
+      background: var(--consultation-bg);
+      color: var(--consultation-ink);
+    }
+
+    body:has(#questionScreen.active) #questionScreen {
+      height: auto;
+      min-height: 100vh;
+      min-height: 100dvh;
+      padding: 0;
+    }
+
+    body:has(#reviewScreen.active) #reviewScreen {
+      align-items: flex-start;
+      justify-content: center;
+      overflow-y: auto;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz,
+    body:has(#reviewScreen.active) .noct-quiz {
+      max-width: 980px;
+      padding: clamp(32px, 5vw, 58px) clamp(28px, 7vw, 76px) 36px;
+      color: var(--consultation-ink);
+    }
+
+    body:has(#questionScreen.active) #questionContainer {
+      width: 100%;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-eyebrow,
+    body:has(#reviewScreen.active) .noct-quiz-eyebrow {
+      color: var(--consultation-ink);
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.32em;
+      margin-bottom: 18px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-progress-row {
+      margin-bottom: 30px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-progress-track {
+      height: 1px;
+      background: var(--consultation-rule);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-progress-fill {
+      background: var(--consultation-brass);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-progress-pct {
+      color: var(--consultation-subtle);
+      font-weight: 600;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-headline,
+    body:has(#reviewScreen.active) .noct-quiz-headline {
+      color: var(--consultation-ink);
+      font-size: clamp(38px, 5vw, 54px);
+      line-height: 1.06;
+      letter-spacing: 0;
+      margin-bottom: 10px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-headline .accent,
+    body:has(#reviewScreen.active) .noct-quiz-headline .accent {
+      color: var(--consultation-red);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-help,
+    body:has(#reviewScreen.active) .noct-quiz-help {
+      color: var(--consultation-muted);
+      font-size: 15px;
+      line-height: 1.5;
+      margin-bottom: 28px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-multi-note {
+      color: var(--consultation-red);
+      font-weight: 700;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-options {
+      gap: 10px;
+      margin-bottom: 34px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-options.cols-1 {
+      max-width: 560px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-option {
+      min-height: 88px;
+      padding: 20px 22px;
+      background: rgba(255, 255, 255, 0.24);
+      border: 1px solid var(--consultation-rule);
+      color: var(--consultation-ink);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-option:hover {
+      border-color: var(--consultation-brass);
+      background: rgba(255, 255, 255, 0.42);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-option .opt-label {
+      font-size: 21px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-option .opt-sub {
+      color: var(--consultation-muted);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-option.selected {
+      background: var(--consultation-red);
+      border-color: var(--consultation-red);
+      color: #FFF8ED;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-option.selected .opt-sub {
+      color: #FFF8ED;
+      opacity: 0.82;
+    }
+
+    body:has(#questionScreen.active) .noct-slider-value {
+      color: var(--consultation-red);
+    }
+
+    body:has(#questionScreen.active) .noct-slider-feel,
+    body:has(#questionScreen.active) .noct-slider-labels {
+      color: var(--consultation-muted);
+    }
+
+    body:has(#questionScreen.active) .noct-slider-track {
+      height: 2px;
+      background: var(--consultation-rule);
+    }
+
+    body:has(#questionScreen.active) .noct-slider-track::-webkit-slider-thumb {
+      background: var(--consultation-red);
+      border-color: var(--consultation-red);
+    }
+
+    body:has(#questionScreen.active) .noct-slider-track::-moz-range-thumb {
+      background: var(--consultation-red);
+      border-color: var(--consultation-red);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-nav,
+    body:has(#reviewScreen.active) .noct-quiz-nav {
+      border-top: 1px solid var(--consultation-rule);
+      padding-top: 22px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-back,
+    body:has(#reviewScreen.active) .noct-quiz-back {
+      color: var(--consultation-muted);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-back:hover,
+    body:has(#reviewScreen.active) .noct-quiz-back:hover {
+      color: var(--consultation-red);
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-next,
+    body:has(#reviewScreen.active) .noct-quiz-next {
+      min-width: 138px;
+      background: var(--consultation-red);
+      border: 1px solid var(--consultation-red);
+      color: #FFF8ED;
+      font-size: 19px;
+      font-weight: 700;
+      padding: 15px 28px;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-next:hover:not(:disabled),
+    body:has(#reviewScreen.active) .noct-quiz-next:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--consultation-red) 88%, #000);
+      color: #FFF8ED;
+    }
+
+    body:has(#questionScreen.active) .noct-quiz-next:disabled {
+      background: transparent;
+      border-color: var(--consultation-rule);
+      color: var(--consultation-subtle);
+      opacity: 0.58;
+    }
+
+    body:has(#reviewScreen.active) .noct-review-list {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      border-top: 1px solid var(--consultation-rule);
+      margin-bottom: 28px;
+    }
+
+    body:has(#reviewScreen.active) .noct-review-row {
+      align-items: center;
+      padding: 15px 16px 15px 0;
+      border-bottom: 1px solid var(--consultation-rule);
+    }
+
+    body:has(#reviewScreen.active) .noct-review-row:nth-child(even) {
+      padding-left: 20px;
+      padding-right: 0;
+      border-left: 1px solid var(--consultation-rule);
+    }
+
+    body:has(#reviewScreen.active) .noct-review-category {
+      color: var(--consultation-red);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    body:has(#reviewScreen.active) .noct-review-question {
+      color: var(--consultation-ink);
+      font-size: 16px;
+    }
+
+    body:has(#reviewScreen.active) .noct-review-answer {
+      color: var(--consultation-muted);
+      font-size: 13px;
+    }
+
+    body:has(#reviewScreen.active) .noct-review-edit {
+      border: 1px solid var(--consultation-rule);
+      color: var(--consultation-muted);
+      font-size: 10px;
+      font-weight: 700;
+      padding: 9px 12px;
+    }
+
+    body:has(#reviewScreen.active) .noct-review-edit:hover {
+      border-color: var(--consultation-red);
+      color: var(--consultation-red);
+    }
+
+    @media (max-width: 700px) {
+      body:has(#questionScreen.active) .noct-quiz,
+      body:has(#reviewScreen.active) .noct-quiz {
+        padding: 28px 22px 26px;
+      }
+
+      body:has(#questionScreen.active) .noct-quiz-headline,
+      body:has(#reviewScreen.active) .noct-quiz-headline {
+        font-size: 38px;
+      }
+
+      body:has(#questionScreen.active) .noct-quiz-options.cols-2,
+      body:has(#questionScreen.active) .noct-quiz-options.cols-3 {
+        grid-template-columns: 1fr;
+      }
+
+      body:has(#questionScreen.active) .noct-quiz-option {
+        min-height: 76px;
+        padding: 17px 18px;
+      }
+
+      body:has(#reviewScreen.active) .noct-review-list {
+        grid-template-columns: 1fr;
+      }
+
+      body:has(#reviewScreen.active) .noct-review-row,
+      body:has(#reviewScreen.active) .noct-review-row:nth-child(even) {
+        padding: 14px 0;
+        border-left: 0;
+      }
+
+      body:has(#questionScreen.active) .noct-quiz-next,
+      body:has(#reviewScreen.active) .noct-quiz-next {
+        min-width: 126px;
+        padding: 14px 20px;
+      }
     }
 
     /* ===== NOCTURNAL PROFILE REVEAL (v1) ===== */
@@ -6306,7 +6735,10 @@
 
       <!-- Top bar: retailer name + language toggle -->
       <div class="landing-topbar">
-        <div class="landing-retailer-name" id="landingRetailerName"></div>
+        <div class="landing-brand-block">
+          <div class="landing-retailer-name" id="landingRetailerName"></div>
+          <div class="landing-retailer-subline" id="landingRetailerSubline"></div>
+        </div>
         <div class="landing-lang-toggle" id="landingLangToggle">
           <button class="landing-lang-btn" data-lang="en" onclick="switchLanguage('en')" ontouchend="event.preventDefault();switchLanguage('en');">EN</button>
           <button class="landing-lang-btn" data-lang="es" onclick="switchLanguage('es')" ontouchend="event.preventDefault();switchLanguage('es');">ES</button>
@@ -6333,6 +6765,12 @@
           <span class="landing-cta-arrow">&rarr;</span>
         </button>
         <span class="landing-time-estimate" id="landingTimeEstimate">≈ 4 minutes</span>
+      </div>
+
+      <!-- Outcome row -->
+      <div class="landing-outcome">
+        <span class="landing-outcome-label" id="landingOutcomeLabel">Your consultation builds</span>
+        <span class="landing-outcome-items" id="landingOutcomeItems">Comfort Profile · Mattress Matches · Sleep System Picks · Savings Pass</span>
       </div>
 
       <!-- Discount tease row -->
@@ -7271,13 +7709,16 @@
       };
 
       setText('landingRetailerName', STORE_CONFIG.storeName || '');
+      setText('landingRetailerSubline', voice.retailerSubline || (es ? 'Consulta de sueño' : 'Sleep consultation'));
       setText('landingEyebrow', voice.eyebrow);
       setText('landingHeadlineMain', voice.headlineMain);
       setText('landingHeadlineAccent', voice.headlineAccent);
       setText('landingCtaText', voice.ctaPrimary);
       setText('landingTimeEstimate', voice.timeEstimate);
+      setText('landingOutcomeLabel', voice.outcomeLabel || (es ? 'Tu consulta crea' : 'Your consultation builds'));
+      setText('landingOutcomeItems', voice.outcomeItems || (es ? 'Perfil de comodidad · Colchones recomendados · Sistema de descanso · Pase de ahorro' : 'Comfort Profile · Mattress Matches · Sleep System Picks · Savings Pass'));
       setText('landingDiscountLabel', es ? 'Tu Pase de Ahorro' : 'Your Savings Pass');
-      setText('landingDiscountHint', es ? 'Desbloquea tu oferta privada en tienda' : 'Unlock your private in-store offer');
+      setText('landingDiscountHint', es ? 'Se desbloquea cuando tus recomendaciones estén listas.' : 'Unlocks after your matches are ready.');
       setText('landingHeritage', textBlock.heritage);
       setText('landingTrustBadge', textBlock.ownershipBadge);
 
@@ -7297,7 +7738,7 @@
         var before = voice.subCopyBefore || '';
         var accent = voice.subCopyAccent || '';
         var after = voice.subCopyAfter || '';
-        subcopy.innerHTML = before + '<span class="accent">' + accent + '</span>' + after;
+        subcopy.innerHTML = before + (accent ? '<span class="accent">' + accent + '</span>' : '') + after;
       }
 
       // Brand partners: render logos when any brand provides one (brands[].logo),
@@ -7552,8 +7993,8 @@
         const isMulti = q.type === 'multiple';
         const selected = isMulti ? (answers[q.id] || []) : answers[q.id];
         const colClass = quizColsClass(displayOptions.length);
-        const nextLabel = currentQuestion === total - 1
-          ? (es ? 'Ver Mis Resultados →' : 'See My Results →')
+        const nextLabel = stepIdx === total - 1
+          ? (es ? 'Revisar Mis Respuestas →' : 'Review My Answers →')
           : (es ? 'Siguiente →' : 'Next →');
         const multiNote = es ? 'Elige hasta 3' : 'Pick up to 3';
 

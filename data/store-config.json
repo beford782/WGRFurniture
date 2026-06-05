@@ -75,15 +75,15 @@
     "metaDescription": "Take the WG&R Sleep Shop quiz and get personalized mattress recommendations.",
     "ogTitle": "DreamFinder - WG&R Furniture",
     "trustSignal": "Serving Northeast Wisconsin since 1946 — proudly employee-owned",
-    "heritage": "EST. 1946 · EMPLOYEE-OWNED · NORTHEAST WISCONSIN",
+    "heritage": "EMPLOYEE-OWNED · NORTHEAST WISCONSIN · SINCE 1946",
     "emailPrivacy": "We'll only use your email to send your results.",
     "privacyPolicyContact": "",
     "inStockText": "In stock at WG&R",
     "emailHeader": "WG&R Furniture x DreamFinder",
     "emailSubtext": "Your personalized mattress matches",
     "locationLabel": "Northeast Wisconsin",
-    "ownershipBadge": "Proudly Employee-Owned Since 1946",
-    "locationsLabel": "Northeast Wisconsin Showrooms",
+    "ownershipBadge": "",
+    "locationsLabel": "",
     "locations": "Green Bay · Appleton · Oshkosh · Sheboygan · Manitowoc · Fond du Lac"
   },
   "text_es": {
@@ -104,16 +104,20 @@
     "codeDigits": 3
   },
   "voice": {
-    "eyebrow": "WG&R Sleep Consultation",
-    "headlineMain": "Let's find the mattress",
-    "headlineAccent": "made for how you sleep",
-    "subCopyBefore": "Answer a few questions and our sleep specialists will match you to the right mattress — proudly ",
-    "subCopyAccent": "employee-owned in Northeast Wisconsin since 1946",
-    "subCopyAfter": ".",
-    "ctaPrimary": "Start My Sleep Consultation",
-    "timeEstimate": "About 2 minutes, no pressure"
+    "retailerSubline": "SLEEP SHOP",
+    "eyebrow": "EMPLOYEE-OWNED · NORTHEAST WISCONSIN · SINCE 1946",
+    "headlineMain": "Northeast Wisconsin’s",
+    "headlineAccent": "Sleep Shop.",
+    "subCopyBefore": "Answer a few questions, then review your mattress matches with a WG&R sleep specialist.",
+    "subCopyAccent": "",
+    "subCopyAfter": "",
+    "ctaPrimary": "Find My Sleep Match",
+    "timeEstimate": "About 2 minutes · No pressure",
+    "outcomeLabel": "Your consultation builds",
+    "outcomeItems": "Comfort Profile · Mattress Matches · Sleep System Picks · Savings Pass"
   },
   "voice_es": {
+    "retailerSubline": "",
     "eyebrow": "",
     "headlineMain": "",
     "headlineAccent": "",
@@ -121,7 +125,9 @@
     "subCopyAccent": "",
     "subCopyAfter": "",
     "ctaPrimary": "",
-    "timeEstimate": ""
+    "timeEstimate": "",
+    "outcomeLabel": "",
+    "outcomeItems": ""
   },
   "salesNotes": {
     "subBrands": {},
