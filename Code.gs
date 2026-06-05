@@ -82,6 +82,12 @@ function doPost(e) {
     var rsa = _safeText(data.rsa, 100);
     var discount = _safeText(data.discount || 5, 10);
 
+    // White-label store identity, supplied by the client from STORE_CONFIG.storeName.
+    // Falls back to a generic phrase so a missing/blank field never leaks another
+    // retailer's name. Used below in plain-text contexts (subject / sender / plain
+    // fallback body) with NO HTML escaping; buildSimpleHtml re-escapes for HTML.
+    var storeName = _safeText(data.storeName, 100).trim() || (isEs ? 'nuestra tienda' : 'our store');
+
     // --- Log to Google Sheet ---
     // rsa appended at the end (right-of-last column) per the
     // append-don't-insert strategy documented in docs/gas-rsa-field-addition.md.
@@ -102,11 +108,11 @@ function doPost(e) {
 
     // --- Send email with fallback ---
     var subject = isEs
-      ? 'Tu Pase de Ahorro DreamFinder de Bel Furniture'
-      : 'Your DreamFinder Savings Pass from Bel Furniture';
+      ? 'Tu Pase de Ahorro DreamFinder de ' + storeName
+      : 'Your DreamFinder Savings Pass from ' + storeName;
     var senderName = isEs
-      ? 'Equipo de Descanso de Bel Furniture'
-      : 'Bel Furniture Sleep Team';
+      ? 'Equipo de Descanso de ' + storeName
+      : storeName + ' Sleep Team';
     var firstName = (name || (isEs ? 'amigo' : 'there')).split(' ')[0];
 
     // Pre-bound payload for buildSimpleHtml; image URLs filtered to https:// or images/ only.
@@ -137,7 +143,7 @@ function doPost(e) {
     try {
       // Always build HTML server-side. Client previously sent data.htmlBody but
       // that path was deprecated in 5e — kiosk no longer ships pre-built HTML.
-      var htmlBody = buildSimpleHtml(safeData, firstName, isEs);
+      var htmlBody = buildSimpleHtml(safeData, firstName, isEs, storeName);
       var plainFallback = isEs
         ? 'Por favor visualiza este correo en un cliente de correo HTML.'
         : 'Please view in an HTML email client.';
@@ -157,14 +163,14 @@ function doPost(e) {
           + 'Perfil de sue\u00f1o: ' + sleepProfile + '\n'
           + 'Tu pase de ahorro: ' + discount + '% DE DESCUENTO\n'
           + 'C\u00f3digo del pase: ' + dreamCode + '\n\n'
-          + 'Muestra este correo en Bel Furniture para canjearlo.\n\n'
+          + 'Muestra este correo en ' + storeName + ' para canjearlo.\n\n'
           + safeData.allMatches.map(function(m, i) { return (i+1) + '. ' + m.name + ' - ' + m.matchPct + '% compatibilidad'; }).join('\n'))
         : ('Hi ' + firstName + ',\n\n'
           + 'Your top match: ' + topMatch + ' (' + matchPct + '% match)\n'
           + 'Sleep profile: ' + sleepProfile + '\n'
           + 'Your savings pass: ' + discount + '% OFF\n'
           + 'Savings pass code: ' + dreamCode + '\n\n'
-          + 'Show this email at Bel Furniture to redeem.\n\n'
+          + 'Show this email at ' + storeName + ' to redeem.\n\n'
           + safeData.allMatches.map(function(m, i) { return (i+1) + '. ' + m.name + ' - ' + m.matchPct + '% match'; }).join('\n'));
 
       var fallbackOptions = {
@@ -187,11 +193,12 @@ function doPost(e) {
   }
 }
 
-function buildSimpleHtml(data, firstName, isEs) {
+function buildSimpleHtml(data, firstName, isEs, storeName) {
   // All user/client-controlled fields below are HTML-escaped at every
   // interpolation site (caller has already _safeText-bounded scalars and
   // _safeImageUrl-filtered image URLs).
   firstName = _escapeHtml(firstName);
+  storeName = _escapeHtml(storeName || (isEs ? 'nuestra tienda' : 'our store'));
   var dreamCode = _escapeHtml(data.dreamCode || '');
   // Cap at whatever kiosk sent (kiosk already pre-slices: 6 if saved, 3 if recommendations).
   // Hard ceiling of 6 as a server-side safety net.
@@ -226,32 +233,32 @@ function buildSimpleHtml(data, firstName, isEs) {
     titleAccent: 'combinaciones perfectas',
     titleSuffix: 'est\u00e1n listas, ' + firstName,
     discountLabel: 'TU PASE DE AHORRO',
-    discountHint: 'Presenta este c\u00f3digo en Bel Furniture \u00b7 ' + discount + '% DE DESCUENTO',
+    discountHint: 'Presenta este c\u00f3digo en ' + storeName + ' \u00b7 ' + discount + '% DE DESCUENTO',
     profileLabel: 'TU PERFIL DE SUE\u00d1O',
     matchesLabel: 'TUS MEJORES OPCIONES',
     topPick: 'MEJOR OPCI\u00d3N',
     matchSuffix: 'compatibilidad',
     accLabel: 'ACCESORIOS RECOMENDADOS',
-    footerLine1: 'Lleva este correo a tu tienda Bel Furniture',
-    helpedBy: rsa ? 'Atendido por ' + rsa + ' en Bel Furniture' : '',
+    footerLine1: 'Lleva este correo a tu tienda ' + storeName,
+    helpedBy: rsa ? 'Atendido por ' + rsa + ' en ' + storeName : '',
     footerLine2: 'Tu ' + discount + '% de descuento te est\u00e1 esperando',
-    footerHint: 'Disponible en cualquier tienda Bel Furniture'
+    footerHint: 'Disponible en cualquier tienda ' + storeName
   } : {
     eyebrow: 'YOUR RESULTS',
     titlePrefix: 'Your',
     titleAccent: 'perfect matches',
     titleSuffix: 'are ready, ' + firstName,
     discountLabel: 'YOUR SAVINGS PASS',
-    discountHint: 'Show at Bel Furniture \u00b7 ' + discount + '% OFF',
+    discountHint: 'Show at ' + storeName + ' \u00b7 ' + discount + '% OFF',
     profileLabel: 'YOUR SLEEP PROFILE',
     matchesLabel: 'YOUR TOP MATCHES',
     topPick: 'TOP PICK',
     matchSuffix: 'match',
     accLabel: 'RECOMMENDED ACCESSORIES',
-    footerLine1: 'Bring this email to your Bel Furniture store',
-    helpedBy: rsa ? 'Helped by ' + rsa + ' at Bel Furniture' : '',
+    footerLine1: 'Bring this email to your ' + storeName + ' store',
+    helpedBy: rsa ? 'Helped by ' + rsa + ' at ' + storeName : '',
     footerLine2: 'Your ' + discount + '% discount is waiting',
-    footerHint: 'Show at any Bel Furniture location'
+    footerHint: 'Show at any ' + storeName + ' location'
   };
 
   // Helper: mattress card with image-blocked fallback

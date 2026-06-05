@@ -9040,6 +9040,7 @@
       // Email HTML built server-side in Apps Script (Code.gs buildSimpleHtml). Cap mirrored at server.
       // Compile payload
       const payload = {
+        storeName: (STORE_CONFIG && STORE_CONFIG.storeName) || '',
         name: name,
         email: email,
         phone: phone,
