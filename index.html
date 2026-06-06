@@ -6396,24 +6396,99 @@
     .card-feat-chip-icon { font-size:0.85rem; flex-shrink:0; }
     .card-feat-chip-badge { margin-left:auto; font-size:0.4rem; font-weight:700; background:rgba(212,168,75,0.2); color:var(--gold); padding:0.08rem 0.28rem; border-radius:3px; }
     .drawer-backdrop { display:none; position:fixed; inset:0; background:rgba(0,0,0,0); z-index:200; transition:background 0.3s; }
-    .drawer-backdrop.open { display:block; background:rgba(0,0,0,0.6); }
-    .mattress-drawer { position:fixed; bottom:0; left:0; right:0; max-width:600px; margin:0 auto; background:linear-gradient(180deg,#162c4a,#0d1f3c); border-radius:24px 24px 0 0; border-top:2px solid var(--gold); z-index:201; transform:translateY(100%); transition:transform 0.38s cubic-bezier(0.32,0.72,0,1); max-height:80vh; display:flex; flex-direction:column; box-shadow:0 -8px 40px rgba(0,0,0,0.6); }
-    .mattress-drawer.drawer-open { transform:translateY(0); }
+    .drawer-backdrop.open { display:block; background:rgba(0,0,0,0.48); }
+    .mattress-drawer {
+      position: fixed;
+      bottom: 0;
+      left: 50%;
+      width: min(960px, calc(100vw - 32px));
+      margin: 0;
+      background: linear-gradient(180deg,#162c4a,#0d1f3c);
+      border-radius: 20px 20px 0 0;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-bottom: 0;
+      border-top: 3px solid var(--gold);
+      z-index: 201;
+      transform: translate(-50%, 100%);
+      transition: transform 0.38s cubic-bezier(0.32,0.72,0,1);
+      max-height: min(720px, calc(100dvh - 24px));
+      display: flex;
+      flex-direction: column;
+      box-shadow: 0 -12px 48px rgba(0,0,0,0.5);
+      overflow: hidden;
+    }
+    .mattress-drawer.drawer-open { transform:translate(-50%, 0); }
     .mattress-drawer.silver-drawer { border-top-color:var(--silver); }
     .mattress-drawer.bronze-drawer { border-top-color:var(--bronze); }
-    .drawer-handle-bar { width:44px; height:4px; background:rgba(255,255,255,0.2); border-radius:2px; margin:0.75rem auto 0; flex-shrink:0; cursor:pointer; }
-    .drawer-scroll { overflow-y:auto; padding:0.5rem 1rem 2rem; flex:1; }
+    .drawer-handle-bar { width:44px; height:4px; background:rgba(255,255,255,0.24); border-radius:2px; margin:10px auto 8px; flex-shrink:0; cursor:pointer; }
+    .drawer-toolbar {
+      min-height: 52px;
+      padding: 0 18px 10px;
+      display: grid;
+      grid-template-columns: minmax(150px, 1fr) auto minmax(150px, 1fr);
+      align-items: center;
+      gap: 12px;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      flex-shrink: 0;
+    }
+    .drawer-back-to-results {
+      justify-self: start;
+      min-height: 42px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.045);
+      color: var(--cream);
+      font: 600 14px/1.2 var(--font-sans);
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .drawer-navigation {
+      display: grid;
+      grid-template-columns: 96px minmax(54px, auto) 96px;
+      align-items: center;
+      gap: 8px;
+    }
+    .drawer-nav-btn {
+      min-height: 42px;
+      padding: 8px 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.055);
+      color: var(--cream);
+      font: 650 14px/1.2 var(--font-sans);
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .drawer-nav-label {
+      color: var(--cream-dim);
+      font: 600 13px/1.2 var(--font-sans);
+      text-align: center;
+      white-space: nowrap;
+    }
+    .drawer-workspace {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(260px, 34%) minmax(0, 1fr);
+      flex: 1;
+    }
+    .drawer-hero {
+      min-height: 0;
+      background: var(--navy-light);
+      overflow: hidden;
+      border-right: 1px solid rgba(255,255,255,0.1);
+    }
+    .drawer-hero img { width:100%; height:100%; object-fit:cover; display:block; }
+    .drawer-scroll { overflow-y:auto; padding:20px 22px 22px; flex:1; }
     .drawer-scroll::-webkit-scrollbar { display:none; }
-    .drawer-mattress-header { display:flex; align-items:flex-start; gap:0.85rem; padding:0.6rem 0 0.85rem; border-bottom:1px solid rgba(255,255,255,0.08); margin-bottom:0.85rem; }
-    .drawer-mattress-img { width:72px; height:58px; border-radius:10px; overflow:hidden; background:var(--navy-light); flex-shrink:0; border:1px solid rgba(255,255,255,0.1); }
-    .drawer-mattress-img img { width:100%; height:100%; object-fit:cover; }
-    .drawer-mattress-img.no-img { display:flex; align-items:center; justify-content:center; font-size:1.6rem; }
+    .drawer-mattress-header { display:flex; align-items:flex-start; gap:14px; padding:0 0 14px; border-bottom:1px solid rgba(255,255,255,0.1); margin-bottom:14px; }
+    .drawer-mattress-img { display:none; }
     .drawer-mattress-info { flex:1; min-width:0; }
-    .drawer-mattress-brand { font-size:0.55rem; text-transform:uppercase; letter-spacing:1px; color:var(--gold); font-weight:600; }
-    .drawer-mattress-name { font-size:1.2rem; font-weight:800; color:var(--cream); line-height:1.1; margin:0.1rem 0 0.2rem; }
-    .drawer-mattress-sub { font-size:0.58rem; color:var(--cream-dim); }
-    .drawer-match-badge { font-size:0.78rem; font-weight:800; color:#66bb6a; background:rgba(76,175,80,0.15); border:1px solid rgba(76,175,80,0.2); padding:0.25rem 0.55rem; border-radius:10px; flex-shrink:0; } /* Material green 500 — see header note */
-    .drawer-section-label { font-size:0.58rem; font-weight:700; text-transform:uppercase; letter-spacing:1.2px; color:var(--gold); margin-bottom:0.45rem; opacity:0.85; }
+    .drawer-mattress-brand { font:700 12px/1.2 var(--font-sans); text-transform:uppercase; letter-spacing:1.4px; color:var(--gold); }
+    .drawer-mattress-name { font:800 clamp(24px,3vw,34px)/1.08 var(--font-serif); color:var(--cream); margin:4px 0 6px; }
+    .drawer-mattress-sub { font:500 14px/1.3 var(--font-sans); color:var(--cream-dim); }
+    .drawer-match-badge { font:800 13px/1.2 var(--font-sans); color:#8ed9ad; background:rgba(76,175,80,0.14); border:1px solid rgba(110,207,154,0.35); padding:8px 12px; border-radius:8px; flex-shrink:0; } /* Material green 500 — see header note */
+    .drawer-section-label { font:750 12px/1.2 var(--font-sans); text-transform:uppercase; letter-spacing:1.3px; color:var(--gold); margin-bottom:7px; opacity:1; }
     .drawer-feats { display:flex; flex-direction:column; gap:0.3rem; margin-bottom:0.85rem; }
     .drawer-feat-row { display:flex; align-items:flex-start; gap:0.55rem; padding:0.5rem 0.65rem; border-radius:12px; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); }
     .drawer-feat-row.drawer-matched { background:rgba(212,168,75,0.07); border-color:rgba(212,168,75,0.2); }
@@ -6424,60 +6499,56 @@
     .drawer-feat-badge { font-size:0.42rem; font-weight:700; background:rgba(212,168,75,0.2); color:var(--gold); padding:0.12rem 0.35rem; border-radius:4px; white-space:nowrap; flex-shrink:0; align-self:center; }
     .drawer-reason-box { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:0.65rem 0.75rem; font-size:0.6rem; color:var(--cream-dim); line-height:1.65; margin-bottom:0.85rem; }
     .drawer-trial-feel {
-      margin-bottom: 0.9rem;
-      padding: 0.65rem 0.75rem;
+      margin-bottom: 14px;
+      padding: 10px 12px;
       border: 1px solid rgba(212,168,75,0.22);
-      border-radius: 10px;
+      border-radius: 8px;
       background: rgba(212,168,75,0.07);
       color: var(--cream);
-      font-size: 0.72rem;
-      font-weight: 650;
+      font: 700 15px/1.35 var(--font-sans);
       letter-spacing: 0.02em;
     }
     .drawer-shortlist-fit {
-      margin-bottom: 0.9rem;
-      padding: 0.65rem 0.75rem;
-      border-left: 2px solid var(--gold);
+      margin-bottom: 14px;
+      padding: 10px 12px;
+      border-left: 3px solid var(--gold);
       background: rgba(212,168,75,0.055);
-      color: var(--cream-dim);
-      font-size: 0.66rem;
-      line-height: 1.55;
+      color: var(--cream);
+      font: 500 14px/1.45 var(--font-sans);
     }
     .drawer-differentiators {
       display: grid;
-      gap: 0.45rem;
-      margin-bottom: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
     }
     .drawer-differentiator {
-      padding: 0.65rem 0.75rem;
-      border: 1px solid rgba(255,255,255,0.09);
-      border-radius: 10px;
-      background: rgba(255,255,255,0.035);
+      padding: 11px 12px;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.045);
     }
     .drawer-differentiator-title {
       color: var(--cream);
-      font-size: 0.68rem;
-      font-weight: 750;
-      line-height: 1.35;
+      font: 750 14px/1.3 var(--font-sans);
     }
     .drawer-differentiator-detail {
-      margin-top: 0.18rem;
+      margin-top: 4px;
       color: var(--cream-dim);
-      font-size: 0.6rem;
-      line-height: 1.5;
+      font: 500 13px/1.4 var(--font-sans);
     }
     .drawer-try-prompts {
       display: grid;
-      gap: 0.45rem;
-      margin-bottom: 0.9rem;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 14px;
     }
     .drawer-try-prompt {
-      padding: 0.6rem 0.7rem;
-      border-left: 2px solid var(--gold);
+      padding: 11px 12px;
+      border-left: 3px solid var(--gold);
       background: rgba(255,255,255,0.035);
       color: var(--cream);
-      font-size: 0.66rem;
-      line-height: 1.5;
+      font: 550 13px/1.42 var(--font-sans);
     }
     .drawer-difference {
       margin-bottom: 0.9rem;
@@ -6492,17 +6563,16 @@
     .drawer-reaction-row {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.45rem;
-      margin-bottom: 0.9rem;
+      gap: 10px;
+      margin-bottom: 12px;
     }
     .drawer-reaction-row button {
-      min-height: 46px;
-      border: 1px solid rgba(255,255,255,0.13);
-      border-radius: 9px;
-      background: rgba(255,255,255,0.045);
+      min-height: 52px;
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.055);
       color: var(--cream);
-      font-family: inherit;
-      font-size: 0.64rem;
+      font: 700 14px/1.2 var(--font-sans);
       cursor: pointer;
       touch-action: manipulation;
     }
@@ -6619,10 +6689,317 @@
     .drawer-firm-feel { font-size:0.6rem; font-weight:600; color:var(--cream); white-space:nowrap; }
     .drawer-tags-row { display:flex; flex-wrap:wrap; gap:0.3rem; margin-bottom:0.85rem; }
     .drawer-tag { background:rgba(212,168,75,0.1); color:var(--gold); padding:0.2rem 0.55rem; border-radius:8px; font-size:0.58rem; font-weight:500; }
-    .drawer-cta-row { display:flex; gap:0.5rem; }
-    .drawer-btn { flex:1; padding:0.7rem 0.5rem; border-radius:14px; border:none; font-family:inherit; font-size:0.68rem; font-weight:700; cursor:pointer; }
+    .drawer-cta-row { display:flex; gap:10px; }
+    .drawer-btn { flex:1; min-height:52px; padding:12px 16px; border-radius:8px; border:none; font:750 15px/1.2 var(--font-sans); cursor:pointer; touch-action:manipulation; }
     .drawer-btn-primary { background:linear-gradient(180deg,var(--gold-light),var(--gold)); color:var(--navy); box-shadow:0 3px 0 var(--color-accent-shadow); }
     .drawer-btn-secondary { background:rgba(255,255,255,0.07); border:1.5px solid rgba(255,255,255,0.12); color:var(--cream); }
+    @media (max-width: 760px), (orientation: portrait) {
+      .mattress-drawer {
+        width: min(760px, 100vw);
+        max-height: calc(100dvh - 12px);
+        border-radius: 18px 18px 0 0;
+      }
+      .drawer-toolbar {
+        grid-template-columns: auto 1fr;
+        padding: 0 12px 8px;
+      }
+      .drawer-navigation {
+        justify-self: end;
+        grid-template-columns: 74px minmax(48px, auto) 74px;
+      }
+      .drawer-back-to-results,
+      .drawer-nav-btn { font-size:13px; padding:8px 9px; }
+      .drawer-workspace {
+        display: flex;
+        flex-direction: column;
+        min-height: 0;
+      }
+      .drawer-hero {
+        min-height: 128px;
+        height: 128px;
+        border-right: 0;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        flex-shrink: 0;
+      }
+      .drawer-scroll { padding:16px 18px 20px; }
+      .drawer-mattress-name { font-size:26px; }
+    }
+    @media (max-width: 560px) {
+      .drawer-toolbar { gap:8px; }
+      .drawer-back-to-results { max-width:126px; }
+      .drawer-hero { height:108px; min-height:108px; }
+      .drawer-scroll { padding:14px 16px 18px; }
+      .drawer-differentiators,
+      .drawer-try-prompts { grid-template-columns:1fr; }
+      .drawer-mattress-name { font-size:24px; }
+    }
+
+    /* ===== SURGICAL SHOWROOM WORK THEME =====
+       The quiz and Savings Pass reveal retain the darker presentation.
+       Results, guided trials, comparisons, and review use a brighter
+       workspace optimized for a salesperson and customer standing together. */
+    body:has(#resultsScreen.active),
+    body:has(#hf2Screen.active) {
+      --color-bg: #F3EEE5;
+      --color-surface: #FFFDF8;
+      --color-surface-alt: #EEE7DC;
+      --color-border: #D1C5B6;
+      --color-text: #2F271E;
+      --color-text-muted: #665D54;
+      --color-text-subtle: #7A6E61;
+      --color-accent: #9A7445;
+      --color-accent-hover: #7D5B34;
+      --color-on-accent: #FFFDF8;
+      --gold-glow: rgba(177,45,21,0.08);
+      background: #F3EEE5;
+    }
+
+    #resultsScreen.active,
+    #hf2Screen.active {
+      background: #F3EEE5;
+      color: #2F271E;
+    }
+    #resultsScreen .noct-results-eyebrow,
+    #resultsScreen .noct-toppick-eyebrow,
+    #resultsScreen .noct-tier-descriptor .tier-name,
+    #hf2Screen .hf2-review-eyebrow,
+    #hf2Screen .hf2-review-section__label {
+      color: var(--store-primary);
+    }
+    #resultsScreen .noct-results-headline .accent {
+      color: #7D5B34;
+    }
+    #resultsScreen .noct-tier-tab.active {
+      color: var(--store-primary);
+    }
+    #resultsScreen .noct-tier-tab.active::after {
+      height: 2px;
+      background: var(--store-primary);
+    }
+    #resultsScreen .noct-toppick,
+    #resultsScreen .noct-support-card,
+    #hf2Screen .hf2-review-section {
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(55,40,28,0.06);
+    }
+    #resultsScreen .noct-toppick-name,
+    #resultsScreen .noct-support-name {
+      color: #342A23;
+      font-style: normal;
+    }
+    #resultsScreen .noct-save-btn.saved {
+      border-color: #63765D;
+      background: #63765D;
+      color: #FFFFFF;
+    }
+    #resultsScreen .noct-results-cta {
+      border-color: var(--store-primary);
+      border-radius: 8px;
+      background: var(--store-primary);
+      color: #FFFFFF;
+      font-family: var(--font-sans);
+      font-weight: 750;
+    }
+    #resultsScreen .noct-results-cta:hover {
+      border-color: var(--store-primary-light);
+      background: var(--store-primary-light);
+      color: #FFFFFF;
+    }
+    #resultsScreen .noct-results-review-btn {
+      border-radius: 8px;
+      background: #FFFDF8;
+      font-family: var(--font-sans);
+      font-weight: 700;
+    }
+
+    body:has(#resultsScreen.active) .drawer-backdrop.open {
+      background: rgba(47,39,30,0.48);
+    }
+    body:has(#resultsScreen.active) .mattress-drawer {
+      --color-bg: #F3EEE5;
+      --color-surface: #FFFDF8;
+      --color-surface-alt: #EEE7DC;
+      --color-border: #D1C5B6;
+      --color-text: #2F271E;
+      --color-text-muted: #665D54;
+      --color-text-subtle: #7A6E61;
+      --color-accent: #9A7445;
+      --color-accent-hover: #7D5B34;
+      --gold-glow: rgba(177,45,21,0.08);
+      background: #FFFDF8;
+      border-color: #D1C5B6;
+      border-top-color: var(--store-primary);
+      box-shadow: 0 -12px 48px rgba(55,40,28,0.22);
+    }
+    body:has(#resultsScreen.active) .drawer-handle-bar {
+      background: #B9AA98;
+    }
+    body:has(#resultsScreen.active) .drawer-toolbar {
+      border-bottom-color: #D1C5B6;
+      background: #F3EEE5;
+    }
+    body:has(#resultsScreen.active) .drawer-back-to-results,
+    body:has(#resultsScreen.active) .drawer-nav-btn {
+      border-color: #C9BCAC;
+      background: #FFFDF8;
+      color: #2F271E;
+    }
+    body:has(#resultsScreen.active) .drawer-nav-label,
+    body:has(#resultsScreen.active) .drawer-mattress-sub,
+    body:has(#resultsScreen.active) .drawer-differentiator-detail,
+    body:has(#resultsScreen.active) .drawer-pitch-summary,
+    body:has(#resultsScreen.active) .drawer-brand-box .noct-handoff-brand-panel__story {
+      color: #665D54;
+    }
+    body:has(#resultsScreen.active) .drawer-hero {
+      border-color: #D1C5B6;
+      background: #EEE7DC;
+    }
+    body:has(#resultsScreen.active) .drawer-mattress-header,
+    body:has(#resultsScreen.active) #drawerBrandSection {
+      border-color: #D1C5B6;
+    }
+    body:has(#resultsScreen.active) .drawer-mattress-brand,
+    body:has(#resultsScreen.active) .drawer-section-label {
+      color: var(--store-primary);
+    }
+    body:has(#resultsScreen.active) .drawer-mattress-name,
+    body:has(#resultsScreen.active) .drawer-differentiator-title,
+    body:has(#resultsScreen.active) .drawer-trial-feel,
+    body:has(#resultsScreen.active) .drawer-shortlist-fit,
+    body:has(#resultsScreen.active) .drawer-try-prompt,
+    body:has(#resultsScreen.active) .drawer-reaction-row button {
+      color: #2F271E;
+    }
+    body:has(#resultsScreen.active) .drawer-match-badge {
+      border-color: rgba(99,118,93,0.38);
+      background: rgba(99,118,93,0.11);
+      color: #4D6548;
+    }
+    body:has(#resultsScreen.active) .drawer-trial-feel {
+      border-color: rgba(154,116,69,0.3);
+      background: #F6EFE4;
+    }
+    body:has(#resultsScreen.active) .drawer-shortlist-fit {
+      border-left-color: var(--store-primary);
+      background: rgba(177,45,21,0.055);
+    }
+    body:has(#resultsScreen.active) .drawer-differentiator {
+      border-color: #D8CCBD;
+      background: #FFFDF8;
+      box-shadow: 0 3px 12px rgba(55,40,28,0.04);
+    }
+    body:has(#resultsScreen.active) .drawer-try-prompt {
+      border-left-color: #48647A;
+      background: #EEF2F4;
+    }
+    body:has(#resultsScreen.active) .drawer-reaction-row button {
+      border-color: #C9BCAC;
+      background: #FFFDF8;
+    }
+    body:has(#resultsScreen.active) .drawer-reaction-row button.is-selected {
+      border-color: var(--store-primary);
+      background: rgba(177,45,21,0.09);
+      color: var(--store-primary);
+    }
+    body:has(#resultsScreen.active) .drawer-pitch-toggle {
+      border-color: rgba(154,116,69,0.5);
+      color: #7D5B34;
+    }
+    body:has(#resultsScreen.active) .drawer-btn-primary {
+      background: var(--store-primary);
+      color: #FFFFFF;
+      box-shadow: 0 3px 0 color-mix(in srgb, var(--store-primary) 72%, #000000);
+    }
+    body:has(#resultsScreen.active) .drawer-btn-secondary {
+      border: 1px solid #C9BCAC;
+      background: #FFFDF8;
+      color: #2F271E;
+    }
+
+    #hf2Screen .hf2-review-section {
+      background: #FFFDF8;
+    }
+    #hf2Screen .hf2-pick,
+    #hf2Screen .hf2-acc-card {
+      border-radius: 8px;
+    }
+    #hf2Screen .hf2-pick--gold {
+      border-left-color: var(--store-primary);
+    }
+    #hf2Screen .hf2-step-num--filled {
+      background: var(--store-primary);
+      color: #FFFFFF;
+    }
+    #hf2Screen .hf2-step-num--outlined {
+      border-color: var(--store-primary);
+      color: var(--store-primary);
+    }
+    #hf2Screen .hf2-review-finale .hf2-send-btn {
+      border-color: var(--store-primary);
+      background: var(--store-primary);
+      color: #FFFFFF;
+    }
+
+    body:has(#resultsScreen.active) .compare-modal,
+    body:has(#hf2Screen.active) .compare-modal {
+      background: rgba(47,39,30,0.68);
+    }
+    body:has(#resultsScreen.active) .compare-modal-inner,
+    body:has(#hf2Screen.active) .compare-modal-inner {
+      border-color: #C9BCAC;
+      background: #FFFDF8;
+      box-shadow: 0 18px 60px rgba(47,39,30,0.24);
+    }
+    body:has(#resultsScreen.active) .compare-modal-header,
+    body:has(#hf2Screen.active) .compare-modal-header {
+      border-bottom-color: #D1C5B6;
+    }
+    body:has(#resultsScreen.active) .compare-modal-close,
+    body:has(#hf2Screen.active) .compare-modal-close,
+    body:has(#resultsScreen.active) .compare-col-name,
+    body:has(#hf2Screen.active) .compare-col-name,
+    body:has(#resultsScreen.active) .compare-col-stat-val,
+    body:has(#hf2Screen.active) .compare-col-stat-val {
+      color: #2F271E;
+    }
+    body:has(#resultsScreen.active) .compare-col,
+    body:has(#hf2Screen.active) .compare-col {
+      border-color: #D1C5B6;
+      background: #F7F1E8;
+    }
+    body:has(#resultsScreen.active) .compare-col-brand,
+    body:has(#hf2Screen.active) .compare-col-brand,
+    body:has(#resultsScreen.active) .compare-col-stat-label,
+    body:has(#hf2Screen.active) .compare-col-stat-label {
+      color: #665D54;
+    }
+    body:has(#resultsScreen.active) .compare-col-stat,
+    body:has(#hf2Screen.active) .compare-col-stat {
+      border-bottom-color: #D8CCBD;
+    }
+    body:has(#resultsScreen.active) .compare-col-chip,
+    body:has(#hf2Screen.active) .compare-col-chip {
+      border-color: rgba(154,116,69,0.28);
+      background: rgba(154,116,69,0.09);
+      color: #59442D;
+    }
+
+    /* Keep the magic reveal isolated from the brighter working screens. */
+    #discountRevealOverlay {
+      --color-bg: #14171C;
+      --color-surface: #1A1E25;
+      --color-surface-alt: #262A32;
+      --color-border: #3A3E45;
+      --color-text: #F5EFE4;
+      --color-text-muted: #A8A39A;
+      --color-text-subtle: #8A8578;
+      --color-accent: #B8935D;
+      --color-accent-hover: #C9A573;
+      --color-on-accent: #14171C;
+      --gold-glow: rgba(184,147,93,0.14);
+    }
+
     /* Results footer */
     .results-actions {
       text-align: center;
@@ -7199,42 +7576,45 @@
   <div class="drawer-backdrop" id="drawerBackdrop" onclick="window.closeMattressDrawer()"></div>
   <div class="mattress-drawer" id="mattressDrawer">
     <div class="drawer-handle-bar" onclick="window.closeMattressDrawer()"></div>
-    <!-- Full-width mattress hero image -->
-    <div id="drawerHeroImg" style="width:100%; height:200px; background:var(--navy-light); overflow:hidden; flex-shrink:0;"></div>
-    <div class="drawer-scroll" id="drawerScroll">
-      <div class="drawer-mattress-header">
-        <div class="drawer-mattress-img" id="drawerImg"></div>
-        <div class="drawer-mattress-info">
-          <div class="drawer-mattress-brand" id="drawerBrand"></div>
-          <div class="drawer-mattress-name" id="drawerName"></div>
-          <div class="drawer-mattress-sub" id="drawerSub"></div>
+    <div class="drawer-toolbar">
+      <button class="drawer-back-to-results" onclick="window.closeMattressDrawer()"
+        ontouchend="event.preventDefault();window.closeMattressDrawer();" data-i18n="results.back_to_results">← Back to all matches</button>
+      <div class="drawer-navigation">
+        <button class="drawer-nav-btn" id="drawerPrevBtn" onclick="window.drawerNav(-1)"
+          ontouchend="event.preventDefault();window.drawerNav(-1);" data-i18n="drawer.prev">← Prev</button>
+        <span class="drawer-nav-label" id="drawerNavLabel"></span>
+        <button class="drawer-nav-btn" id="drawerNextBtn" onclick="window.drawerNav(1)"
+          ontouchend="event.preventDefault();window.drawerNav(1);" data-i18n="drawer.next">Next →</button>
+      </div>
+    </div>
+    <div class="drawer-workspace">
+      <div class="drawer-hero" id="drawerHeroImg"></div>
+      <div class="drawer-scroll" id="drawerScroll">
+        <div class="drawer-mattress-header">
+          <div class="drawer-mattress-img" id="drawerImg"></div>
+          <div class="drawer-mattress-info">
+            <div class="drawer-mattress-brand" id="drawerBrand"></div>
+            <div class="drawer-mattress-name" id="drawerName"></div>
+            <div class="drawer-mattress-sub" id="drawerSub"></div>
+          </div>
+          <div class="drawer-match-badge" id="drawerMatch"></div>
         </div>
-        <div class="drawer-match-badge" id="drawerMatch"></div>
-      </div>
-      <div class="drawer-trial-feel" id="drawerFeelAnchor"></div>
-      <div class="drawer-section-label" id="drawerWhyLabel">Why it made your shortlist</div>
-      <div class="drawer-shortlist-fit" id="drawerShortlistFit"></div>
-      <div class="drawer-section-label" id="drawerDifferentiatorsLabel">What makes this one different</div>
-      <div class="drawer-differentiators" id="drawerDifferentiators"></div>
-      <div class="drawer-section-label" id="drawerNoticeLabel">As you try it, notice...</div>
-      <div class="drawer-try-prompts" id="drawerTryPrompts"></div>
-      <div class="drawer-section-label" id="drawerReactionLabel">How did it feel?</div>
-      <div class="drawer-reaction-row" id="drawerReactionRow">
-        <button type="button" data-reaction="soft" onclick="window.setDrawerReaction('soft')" ontouchend="event.preventDefault();window.setDrawerReaction('soft');">Too Soft</button>
-        <button type="button" data-reaction="good" onclick="window.setDrawerReaction('good')" ontouchend="event.preventDefault();window.setDrawerReaction('good');">Good Feel</button>
-        <button type="button" data-reaction="firm" onclick="window.setDrawerReaction('firm')" ontouchend="event.preventDefault();window.setDrawerReaction('firm');">Too Firm</button>
-      </div>
-      <div class="drawer-cta-row">
-        <button id="drawerInterestedBtn" class="drawer-btn drawer-btn-primary" onclick="window.saveDrawerPick()" ontouchend="event.preventDefault();window.saveDrawerPick();" style="touch-action:manipulation;">Save as Finalist</button>
-      </div>
-      <!-- Mattress navigation -->
-      <div style="display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08); margin-top:0.5rem;">
-        <button id="drawerPrevBtn" onclick="window.drawerNav(-1)" ontouchend="event.preventDefault();window.drawerNav(-1);" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--cream); border-radius:10px; padding:0.5rem 1rem; font-size:0.78rem; cursor:pointer; font-family:inherit; touch-action:manipulation;" data-i18n="drawer.prev">← Prev</button>
-        <span id="drawerNavLabel" style="font-size:0.72rem; color:var(--cream-dim);"></span>
-        <button id="drawerNextBtn" onclick="window.drawerNav(1)" ontouchend="event.preventDefault();window.drawerNav(1);" style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); color:var(--cream); border-radius:10px; padding:0.5rem 1rem; font-size:0.78rem; cursor:pointer; font-family:inherit; touch-action:manipulation;" data-i18n="drawer.next">Next →</button>
-      </div>
-      <div style="text-align:center; padding-bottom:1rem;">
-        <button onclick="window.closeMattressDrawer()" style="background:none; border:none; color:var(--gold); font-size:0.72rem; cursor:pointer; font-family:inherit; text-decoration:underline;" data-i18n="results.back_to_results">← Back to all matches</button>
+        <div class="drawer-trial-feel" id="drawerFeelAnchor"></div>
+        <div class="drawer-section-label" id="drawerWhyLabel">Why it made your shortlist</div>
+        <div class="drawer-shortlist-fit" id="drawerShortlistFit"></div>
+        <div class="drawer-section-label" id="drawerDifferentiatorsLabel">What makes this one different</div>
+        <div class="drawer-differentiators" id="drawerDifferentiators"></div>
+        <div class="drawer-section-label" id="drawerNoticeLabel">As you try it, notice...</div>
+        <div class="drawer-try-prompts" id="drawerTryPrompts"></div>
+        <div class="drawer-section-label" id="drawerReactionLabel">How did it feel?</div>
+        <div class="drawer-reaction-row" id="drawerReactionRow">
+          <button type="button" data-reaction="soft" onclick="window.setDrawerReaction('soft')" ontouchend="event.preventDefault();window.setDrawerReaction('soft');">Too Soft</button>
+          <button type="button" data-reaction="good" onclick="window.setDrawerReaction('good')" ontouchend="event.preventDefault();window.setDrawerReaction('good');">Good Feel</button>
+          <button type="button" data-reaction="firm" onclick="window.setDrawerReaction('firm')" ontouchend="event.preventDefault();window.setDrawerReaction('firm');">Too Firm</button>
+        </div>
+        <div class="drawer-cta-row">
+          <button id="drawerInterestedBtn" class="drawer-btn drawer-btn-primary" onclick="window.saveDrawerPick()" ontouchend="event.preventDefault();window.saveDrawerPick();">Save as Finalist</button>
+        </div>
       </div>
     </div>
   </div>
@@ -10344,8 +10724,6 @@
       }
       // Update picks badge
       window._updatePicksBadge();
-      // Close drawer after short delay
-      setTimeout(function() { window.closeMattressDrawer(); }, 600);
     };
 
     window._updatePicksBadge = function() {
