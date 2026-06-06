@@ -225,6 +225,10 @@ MATTRESSES = Tab(
         col("reason_durability", note="per-match reason"),
         col("reason_default", required=True, note="main selling point shown to everyone"),
         col("topPickReason", note="top-pick badge reason (EN)"),
+        col("differentiator1Title", required=True, note="model-specific trial distinction title"),
+        col("differentiator1Detail", required=True, note="plain-language felt or functional difference"),
+        col("differentiator2Title", required=True, note="second model-specific trial distinction title"),
+        col("differentiator2Detail", required=True, note="second plain-language felt or functional difference"),
 
         # Spanish — feed mattresses-es.csv (plain header given in note), keyed by `id`.
         col("displayBadges (ES)", "displayBadges_es", lang="es", note="-> mattresses-es.csv displayBadges"),
@@ -239,6 +243,10 @@ MATTRESSES = Tab(
         col("reason_durability (ES)", "reason_durability_es", lang="es", note="-> mattresses-es.csv reason_durability"),
         col("reason_default (ES)", "reason_default_es", lang="es", note="-> mattresses-es.csv reason_default"),
         col("topPickReason (ES)", "topPickReason_es", lang="es", note="-> mattresses-es.csv topPickReason"),
+        col("differentiator1Title (ES)", "differentiator1Title_es", lang="es", note="-> mattresses-es.csv differentiator1Title"),
+        col("differentiator1Detail (ES)", "differentiator1Detail_es", lang="es", note="-> mattresses-es.csv differentiator1Detail"),
+        col("differentiator2Title (ES)", "differentiator2Title_es", lang="es", note="-> mattresses-es.csv differentiator2Title"),
+        col("differentiator2Detail (ES)", "differentiator2Detail_es", lang="es", note="-> mattresses-es.csv differentiator2Detail"),
     ),
 )
 
@@ -258,6 +266,10 @@ MATTRESSES_ES_CSV_COLUMNS: Tuple[str, ...] = (
     "reason_durability",
     "reason_default",
     "topPickReason",
+    "differentiator1Title",
+    "differentiator1Detail",
+    "differentiator2Title",
+    "differentiator2Detail",
 )
 
 

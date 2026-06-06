@@ -26,7 +26,7 @@
   "results.tier_explainer": "<span style=\"color:#d4a84b; font-weight:700;\">Gold</span> · premium materials &nbsp;·&nbsp; <span style=\"color:#c0c7ce; font-weight:700;\">Silver</span> · mid-range value &nbsp;·&nbsp; <span style=\"color:#cd7f32; font-weight:700;\">Bronze</span> · entry-level",
   "results.tap_hint": "Tap any mattress card to explore details & features",
   "results.complete_setup": "Build Your Sleep System →",
-  "results.discount_applies": "Your <span id=\"bannerPct\" style=\"color:var(--gold); font-weight:700;\"></span> discount applies to everything",
+  "results.discount_applies": "Your 30-day Savings Pass applies to a qualifying mattress selection",
   "results.back_to_results": "← Back to all matches",
 
   "drawer.why_matches": "Why it matches you",
@@ -39,11 +39,11 @@
   "drawer.next": "Next →",
 
   "discount.title": "Your Savings Pass",
-  "discount.calculating": "Unlocking your private offer...",
+  "discount.calculating": "Preparing your 30-day offer...",
   "discount.code_label": "Your Savings Pass",
-  "discount.unlocked": "Savings Pass Unlocked",
+  "discount.unlocked": "30-Day Savings Pass",
   "discount.off": "% OFF",
-  "discount.show_specialist": "Yours to use in store today.",
+  "discount.show_specialist": "Take your time. Your offer is saved.",
 
   "handoff.summary_label": "Your Selections",
   "handoff.title": "Your <em>interested</em> picks",
@@ -56,7 +56,7 @@
   "handoff.rsa_note": "RSA NOTE:",
 
   "email.title": "Don't forget your results",
-  "email.subtitle": "Get your sleep profile, mattress matches, and discount sent straight to you — so you can review at home or share with your partner.",
+  "email.subtitle": "Bring home your sleep profile, mattress matches, and 30-day Savings Pass so you can decide on your time.",
   "email.name_label": "Your Name",
   "email.name_placeholder": "First name",
   "email.email_label": "Email Address <span style=\"color:var(--gold);\">*</span>",
@@ -65,8 +65,8 @@
   "email.send_btn": "Send My Results",
   "email.sent_title": "You're all set!",
   "email.sent_subtitle": "Check your inbox for your personalized results.",
-  "email.discount_label": "Your Discount Code",
-  "email.discount_hint": "Show this code to your sleep specialist · <span style=\"color:var(--gold); font-weight:600;\" id=\"dreamCodePct\"></span> OFF",
+  "email.discount_label": "Your 30-Day Savings Pass",
+  "email.discount_hint": "Show this code to your sleep specialist · <span style=\"color:var(--gold); font-weight:600;\" id=\"dreamCodePct\"></span>",
   "email.start_new": "↺ Start New Customer",
 
   "accessories.analysis_label": "Sleep Profile Analysis",

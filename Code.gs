@@ -81,6 +81,10 @@ function doPost(e) {
     var matchPct = _safeText(data.matchPct, 10);
     var rsa = _safeText(data.rsa, 100);
     var discount = _safeText(data.discount || 5, 10);
+    var passExpiration = _safeText(data.passExpiration, 80) || '30 days from issue';
+    var passScope = _safeText(data.passScope, 300) || 'a qualifying DreamFinder mattress selection';
+    var passTerms = _safeText(data.passTerms, 1000)
+      || 'Valid on qualifying mattress selections. Cannot be combined with other offers. Final eligibility confirmed by your sleep specialist.';
 
     // White-label store identity, supplied by the client from STORE_CONFIG.storeName.
     // Falls back to a generic phrase so a missing/blank field never leaks another
@@ -108,8 +112,8 @@ function doPost(e) {
 
     // --- Send email with fallback ---
     var subject = isEs
-      ? 'Tu Pase de Ahorro DreamFinder de ' + storeName
-      : 'Your DreamFinder Savings Pass from ' + storeName;
+      ? 'Tu Pase de Ahorro de 30 dias de ' + storeName
+      : 'Your 30-Day Savings Pass from ' + storeName;
     var senderName = isEs
       ? 'Equipo de Descanso de ' + storeName
       : storeName + ' Sleep Team';
@@ -122,6 +126,9 @@ function doPost(e) {
       topMatch: topMatch,
       matchPct: matchPct,
       discount: discount,
+      passExpiration: passExpiration,
+      passScope: passScope,
+      passTerms: passTerms,
       rsa: rsa,
       allMatches: _safeArray(data.allMatches).slice(0, 6).map(function(m) {
         return {
@@ -161,16 +168,22 @@ function doPost(e) {
         ? ('Hola ' + firstName + ',\n\n'
           + 'Tu mejor opci\u00f3n: ' + topMatch + ' (' + matchPct + '% compatibilidad)\n'
           + 'Perfil de sue\u00f1o: ' + sleepProfile + '\n'
-          + 'Tu pase de ahorro: ' + discount + '% DE DESCUENTO\n'
+          + 'Tu pase de ahorro de 30 dias: ' + discount + '% DE DESCUENTO\n'
           + 'C\u00f3digo del pase: ' + dreamCode + '\n\n'
-          + 'Muestra este correo en ' + storeName + ' para canjearlo.\n\n'
+          + 'Valido en: ' + passScope + '\n'
+          + 'Valido hasta: ' + passExpiration + '\n'
+          + passTerms + '\n\n'
+          + 'Muestra este correo a tu especialista de sueno de ' + storeName + '.\n\n'
           + safeData.allMatches.map(function(m, i) { return (i+1) + '. ' + m.name + ' - ' + m.matchPct + '% compatibilidad'; }).join('\n'))
         : ('Hi ' + firstName + ',\n\n'
           + 'Your top match: ' + topMatch + ' (' + matchPct + '% match)\n'
           + 'Sleep profile: ' + sleepProfile + '\n'
-          + 'Your savings pass: ' + discount + '% OFF\n'
+          + 'Your 30-day Savings Pass: ' + discount + '% OFF\n'
           + 'Savings pass code: ' + dreamCode + '\n\n'
-          + 'Show this email at ' + storeName + ' to redeem.\n\n'
+          + 'Valid on: ' + passScope + '\n'
+          + 'Good through: ' + passExpiration + '\n'
+          + passTerms + '\n\n'
+          + 'Show this email to your ' + storeName + ' sleep specialist.\n\n'
           + safeData.allMatches.map(function(m, i) { return (i+1) + '. ' + m.name + ' - ' + m.matchPct + '% match'; }).join('\n'));
 
       var fallbackOptions = {
@@ -205,6 +218,10 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
   var matches = _safeArray(data.allMatches).slice(0, 6);
   var accs = _safeArray(data.accessories).slice(0, 3);
   var discount = _escapeHtml(data.discount || 5);
+  var passExpiration = _escapeHtml(data.passExpiration || '30 days from issue');
+  var passScope = _escapeHtml(data.passScope || 'a qualifying DreamFinder mattress selection');
+  var passTerms = _escapeHtml(data.passTerms
+    || 'Valid on qualifying mattress selections. Cannot be combined with other offers. Final eligibility confirmed by your sleep specialist.');
   var sleepProfile = _escapeHtml(data.sleepProfile || '');
 
   var rsa = _escapeHtml((data.rsa || '').toString().trim());
@@ -232,8 +249,10 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
     titlePrefix: 'Tus',
     titleAccent: 'combinaciones perfectas',
     titleSuffix: 'est\u00e1n listas, ' + firstName,
-    discountLabel: 'TU PASE DE AHORRO',
-    discountHint: 'Presenta este c\u00f3digo en ' + storeName + ' \u00b7 ' + discount + '% DE DESCUENTO',
+    discountLabel: 'TU PASE DE AHORRO DE 30 DIAS',
+    discountHint: discount + '% DE DESCUENTO en ' + passScope,
+    discountExpiry: 'Valido hasta ' + passExpiration,
+    discountTerms: passTerms,
     profileLabel: 'TU PERFIL DE SUE\u00d1O',
     matchesLabel: 'TUS MEJORES OPCIONES',
     topPick: 'MEJOR OPCI\u00d3N',
@@ -241,15 +260,17 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
     accLabel: 'ACCESORIOS RECOMENDADOS',
     footerLine1: 'Lleva este correo a tu tienda ' + storeName,
     helpedBy: rsa ? 'Atendido por ' + rsa + ' en ' + storeName : '',
-    footerLine2: 'Tu ' + discount + '% de descuento te est\u00e1 esperando',
-    footerHint: 'Disponible en cualquier tienda ' + storeName
+    footerLine2: 'Tomate tu tiempo. Tu oferta esta guardada.',
+    footerHint: 'Revisa los terminos con tu especialista de sueno'
   } : {
     eyebrow: 'YOUR RESULTS',
     titlePrefix: 'Your',
     titleAccent: 'perfect matches',
     titleSuffix: 'are ready, ' + firstName,
-    discountLabel: 'YOUR SAVINGS PASS',
-    discountHint: 'Show at ' + storeName + ' \u00b7 ' + discount + '% OFF',
+    discountLabel: 'YOUR 30-DAY SAVINGS PASS',
+    discountHint: discount + '% OFF ' + passScope,
+    discountExpiry: 'Good through ' + passExpiration,
+    discountTerms: passTerms,
     profileLabel: 'YOUR SLEEP PROFILE',
     matchesLabel: 'YOUR TOP MATCHES',
     topPick: 'TOP PICK',
@@ -257,8 +278,8 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
     accLabel: 'RECOMMENDED ACCESSORIES',
     footerLine1: 'Bring this email to your ' + storeName + ' store',
     helpedBy: rsa ? 'Helped by ' + rsa + ' at ' + storeName : '',
-    footerLine2: 'Your ' + discount + '% discount is waiting',
-    footerHint: 'Show at any ' + storeName + ' location'
+    footerLine2: 'Take your time. Your offer is saved.',
+    footerHint: 'Review the terms with your sleep specialist'
   };
 
   // Helper: mattress card with image-blocked fallback
@@ -347,7 +368,9 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
         ? '<tr><td style="background:' + c.surfaceAlt + ';border-bottom:1px solid ' + c.border + ';padding:32px;text-align:center;">'
           + '<div style="font-family:' + sans + ';font-size:11px;letter-spacing:3px;color:' + c.accent + ';text-transform:uppercase;font-weight:600;margin-bottom:14px;">' + L.discountLabel + '</div>'
           + '<div style="font-family:' + serif + ';font-size:36px;letter-spacing:6px;color:' + c.accent + ';line-height:1;margin-bottom:12px;">' + dreamCode + '</div>'
-          + '<div style="font-family:' + sans + ';font-size:12px;color:' + c.textMuted + ';">' + L.discountHint + '</div>'
+          + '<div style="font-family:' + sans + ';font-size:13px;color:' + c.text + ';margin-bottom:8px;">' + L.discountHint + '</div>'
+          + '<div style="font-family:' + sans + ';font-size:12px;color:' + c.accent + ';font-weight:600;margin-bottom:10px;">' + L.discountExpiry + '</div>'
+          + '<div style="font-family:' + sans + ';font-size:11px;line-height:1.5;color:' + c.textMuted + ';">' + L.discountTerms + '</div>'
           + '</td></tr>'
         : '')
 

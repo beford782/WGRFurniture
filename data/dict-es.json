@@ -26,7 +26,7 @@
   "results.tier_explainer": "<span style=\"color:#d4a84b; font-weight:700;\">Oro</span> · materiales premium &nbsp;·&nbsp; <span style=\"color:#c0c7ce; font-weight:700;\">Plata</span> · valor intermedio &nbsp;·&nbsp; <span style=\"color:#cd7f32; font-weight:700;\">Bronce</span> · nivel de entrada",
   "results.tap_hint": "Toca cualquier tarjeta de colchón para explorar detalles y características",
   "results.complete_setup": "Construye Tu Sistema de Sueño →",
-  "results.discount_applies": "Tu <span id=\"bannerPct\" style=\"color:var(--gold); font-weight:700;\"></span> descuento aplica a todo",
+  "results.discount_applies": "Tu Pase de Ahorro de 30 dias aplica a una seleccion de colchon que califique",
   "results.back_to_results": "← Volver a los resultados",
 
   "drawer.why_matches": "Por qué te conviene",
@@ -39,11 +39,11 @@
   "drawer.next": "Siguiente →",
 
   "discount.title": "Tu Pase de Ahorro",
-  "discount.calculating": "Desbloqueando tu oferta privada...",
+  "discount.calculating": "Preparando tu oferta de 30 dias...",
   "discount.code_label": "Tu Pase de Ahorro",
-  "discount.unlocked": "Pase de Ahorro Desbloqueado",
+  "discount.unlocked": "Pase de Ahorro de 30 Dias",
   "discount.off": "% DE DESC.",
-  "discount.show_specialist": "Tuyo para usar hoy en tienda.",
+  "discount.show_specialist": "Tomate tu tiempo. Tu oferta esta guardada.",
 
   "handoff.summary_label": "Resumen para el Vendedor",
   "handoff.title": "Selecciones del Cliente",
@@ -56,7 +56,7 @@
   "handoff.rsa_note": "NOTA PARA EL VENDEDOR:",
 
   "email.title": "No olvides tus resultados",
-  "email.subtitle": "Recibe tu perfil de sueño, colchones recomendados y descuento directamente — para que puedas revisarlos en casa o compartirlos con tu pareja.",
+  "email.subtitle": "Lleva contigo tu perfil de sueno, colchones recomendados y Pase de Ahorro de 30 dias para decidir a tu ritmo.",
   "email.name_label": "Tu Nombre",
   "email.name_placeholder": "Nombre",
   "email.email_label": "Correo Electrónico <span style=\"color:var(--gold);\">*</span>",
@@ -65,8 +65,8 @@
   "email.send_btn": "Enviar Mis Resultados",
   "email.sent_title": "¡Todo listo!",
   "email.sent_subtitle": "Revisa tu bandeja de entrada para tus resultados personalizados.",
-  "email.discount_label": "Tu Código de Descuento",
-  "email.discount_hint": "Muestra este código a tu especialista de sueño · <span style=\"color:var(--gold); font-weight:600;\" id=\"dreamCodePct\"></span> DE DESC.",
+  "email.discount_label": "Tu Pase de Ahorro de 30 Dias",
+  "email.discount_hint": "Muestra este codigo a tu especialista de sueno · <span style=\"color:var(--gold); font-weight:600;\" id=\"dreamCodePct\"></span>",
   "email.start_new": "↺ Nuevo Cliente",
 
   "accessories.analysis_label": "Análisis de Perfil de Sueño",

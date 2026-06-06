@@ -101,7 +101,26 @@
   },
   "discount": {
     "codePrefix": "DREAM",
-    "codeDigits": 3
+    "codeDigits": 3,
+    "mode": "illustrative",
+    "percentage": 5,
+    "validityDays": 30,
+    "scope": {
+      "en": "a qualifying DreamFinder mattress selection",
+      "es": "una seleccion de colchon DreamFinder que califique"
+    },
+    "landingHint": {
+      "en": "A 30-day offer to bring home with your matches",
+      "es": "Una oferta de 30 dias para llevar con tus recomendaciones"
+    },
+    "demoDeliveryNote": {
+      "en": "Live delivery can be connected after WG&R approves the experience.",
+      "es": "La entrega real se puede conectar despues de que WG&R apruebe la experiencia."
+    },
+    "terms": {
+      "en": "Valid on qualifying mattress selections. Cannot be combined with other offers. Final eligibility confirmed by your WG&R sleep specialist.",
+      "es": "Valido en selecciones de colchones que califiquen. No se puede combinar con otras ofertas. Elegibilidad final confirmada por tu especialista de sueno de WG&R."
+    }
   },
   "voice": {
     "retailerSubline": "SLEEP SHOP",

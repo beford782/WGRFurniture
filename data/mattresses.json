@@ -34,6 +34,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "Slow-adapting TEMPUR contour",
+                                                               "es":  "Contorno TEMPUR de adaptación lenta"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Settles closely around the body instead of pushing back like a springier bed.",
+                                                                "es":  "Se ajusta de cerca al cuerpo en vez de empujar como una cama con más rebote."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "Motion-absorbing all-foam feel",
+                                                               "es":  "Sensación de espuma que absorbe movimiento"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Keeps partner movement quieter than coil-forward designs.",
+                                                                "es":  "Mantiene más silencioso el movimiento de la pareja que los diseños con resortes."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "TEMPUR material molds to you for pressure relief and zero motion transfer.",
                                            "es":  ""
@@ -74,6 +96,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "TEMPUR contour with coil lift",
+                                                               "es":  "Contorno TEMPUR con elevación de resortes"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Combines slow pressure relief on top with easier movement from the hybrid base.",
+                                                                "es":  "Combina alivio de presión lento arriba con movimiento más fácil gracias a la base híbrida."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "Breeze-focused cooling",
+                                                               "es":  "Enfriamiento enfocado Breeze"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Built for a cooler feel than traditional deeply contouring foam.",
+                                                                "es":  "Diseñado para sentirse más fresco que la espuma tradicional de contorno profundo."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "Sleeps cooler with TEMPUR comfort and responsive hybrid support.",
                                            "es":  ""
@@ -113,6 +157,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "Firmest Breeze feel",
+                                                               "es":  "La sensación Breeze más firme"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "A stable 7/10 surface gives less sink while retaining TEMPUR contour.",
+                                                                "es":  "Una superficie estable de 7/10 ofrece menos hundimiento sin perder el contorno TEMPUR."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "Maximum Breeze cooling",
+                                                               "es":  "Máximo enfriamiento Breeze"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "The cooling-focused build is the defining step up within the Breeze line.",
+                                                                "es":  "La construcción enfocada en frescura es el principal avance dentro de la línea Breeze."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "Our coolest TEMPUR with firm, fully-supported all-night comfort.",
                                            "es":  ""
@@ -152,6 +218,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "Handcrafted coil response",
+                                                               "es":  "Respuesta de resortes hecha a mano"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Precision coils create a structured feel with more lift than an all-foam mattress.",
+                                                                "es":  "Los resortes de precisión crean una sensación estructurada con más elevación que la espuma."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "Firm durability focus",
+                                                               "es":  "Enfoque firme y duradero"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Designed to hold a stable supportive feel rather than deliver deep plush sink.",
+                                                                "es":  "Diseñado para conservar una sensación estable en vez de un hundimiento profundo."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "Precision coils deliver firm, durable support built to last.",
                                            "es":  ""
@@ -191,6 +279,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "Plush-on-top luxury balance",
+                                                               "es":  "Equilibrio de lujo suave y apoyado"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Comfort layers soften the first impression while the coil system keeps it supported.",
+                                                                "es":  "Las capas de confort suavizan el primer contacto mientras los resortes mantienen el apoyo."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "Heirloom-style construction",
+                                                               "es":  "Construcción estilo reliquia"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Premium foams and coils emphasize a substantial finished feel and long-term build.",
+                                                                "es":  "Espumas y resortes premium crean una sensación sustancial y una construcción duradera."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "Handcrafted premium coils and foams for balanced, lasting luxury.",
                                            "es":  ""
@@ -230,6 +340,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "Talalay latex buoyancy",
+                                                               "es":  "Flotación de látex Talalay"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Feels springy and immediately responsive without the slow sink of memory foam.",
+                                                                "es":  "Se siente elástico y responde al instante sin el hundimiento lento de la espuma viscoelástica."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "All-latex durability",
+                                                               "es":  "Durabilidad de látex completo"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Uses resilient latex through the comfort build rather than a thin latex accent.",
+                                                                "es":  "Usa látex resistente en toda la estructura de confort y no solo como una capa delgada."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "All-latex plush comfort with a warranty that outlasts the rest.",
                                            "es":  ""
@@ -270,6 +402,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "GelFlex grid response",
+                                                               "es":  "Respuesta de rejilla GelFlex"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "The grid flexes directly under pressure points while staying supportive around them.",
+                                                                "es":  "La rejilla cede justo bajo los puntos de presión y mantiene apoyo alrededor."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "Floating open feel",
+                                                               "es":  "Sensación flotante y abierta"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Feels less enveloping than foam and allows easier movement across the surface.",
+                                                                "es":  "Envuelve menos que la espuma y permite moverse con mayor facilidad."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "Purple\u0027s flagship grid for cooling, responsive, no-pressure sleep.",
                                            "es":  ""
@@ -309,6 +463,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "Premium pocketed-coil core",
+                                                               "es":  "Centro premium de resortes embolsados"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Individual coils provide defined support while limiting movement across the bed.",
+                                                                "es":  "Los resortes individuales dan apoyo definido y limitan el movimiento a través de la cama."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "Luxury medium cushioning",
+                                                               "es":  "Acolchado medio de lujo"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Adds a more finished cushioned surface without losing the underlying coil response.",
+                                                                "es":  "Agrega una superficie más refinada sin perder la respuesta de los resortes."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "Luxury medium feel over Beautyrest\u0027s premium pocketed-coil support.",
                                            "es":  ""
@@ -348,6 +524,28 @@
                      "reasons_es":  {
 
                                     },
+                     "differentiators":  [
+                                             {
+                                                 "title":  {
+                                                               "en":  "Independent firmness by side",
+                                                               "es":  "Firmeza independiente por lado"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Each sleeper can tune their own side instead of compromising on one shared feel.",
+                                                                "es":  "Cada persona puede ajustar su lado sin comprometerse con una sola sensación compartida."
+                                                            }
+                                             },
+                                             {
+                                                 "title":  {
+                                                               "en":  "App-controlled adjustment",
+                                                               "es":  "Ajuste controlado por aplicación"
+                                                           },
+                                                 "detail":  {
+                                                                "en":  "Firmness can be changed after purchase as comfort preferences evolve.",
+                                                                "es":  "La firmeza puede cambiar después de la compra cuando evolucionen las preferencias."
+                                                            }
+                                             }
+                                         ],
                      "topPickReason":  {
                                            "en":  "Dial in each side\u0027s firmness with app-controlled smart support.",
                                            "es":  ""
@@ -389,6 +587,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Original GelFlex experience",
+                                                                 "es":  "Experiencia GelFlex original"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "The grid bends under pressure points and rebounds immediately as you move.",
+                                                                  "es":  "La rejilla se dobla bajo los puntos de presión y recupera su forma al moverte."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Simpler Purple profile",
+                                                                 "es":  "Perfil Purple más sencillo"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Delivers the distinctive floating grid feel without the thicker luxury build.",
+                                                                  "es":  "Ofrece la sensación flotante de la rejilla sin una construcción de lujo más gruesa."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Cooling, responsive grid comfort that adapts as you move.",
                                              "es":  ""
@@ -428,6 +648,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Firm grid over coils",
+                                                                 "es":  "Rejilla firme sobre resortes"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Pairs Purple\u0027s flexible surface with a stronger pushback from the hybrid base.",
+                                                                  "es":  "Combina la superficie flexible de Purple con el empuje más fuerte de una base híbrida."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Airy responsive support",
+                                                                 "es":  "Apoyo ventilado y sensible"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "The open grid and coil construction feels less enclosed than dense firm foam.",
+                                                                  "es":  "La rejilla abierta y los resortes se sienten menos encerrados que una espuma firme y densa."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Firm grid-over-coil support with airflow and pressure relief.",
                                              "es":  ""
@@ -468,6 +710,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Cooling-first hybrid",
+                                                                 "es":  "Híbrido enfocado en enfriamiento"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Its defining purpose is reducing heat while retaining an easy-to-move-on hybrid feel.",
+                                                                  "es":  "Su propósito principal es reducir el calor sin perder una sensación fácil para moverse."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Zoned support layout",
+                                                                 "es":  "Distribución de apoyo por zonas"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Different areas are tuned to cushion pressure points and steady the middle of the body.",
+                                                                  "es":  "Diferentes áreas amortiguan los puntos de presión y estabilizan el centro del cuerpo."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Sleeps degrees cooler with zoned support for hot sleepers.",
                                              "es":  ""
@@ -507,6 +771,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Balanced everyday hybrid",
+                                                                 "es":  "Híbrido equilibrado para diario"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Neither deeply contouring nor especially firm; it aims for an easy middle-ground feel.",
+                                                                  "es":  "No envuelve demasiado ni se siente muy firme; busca una sensación intermedia fácil."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Approachable coil lift",
+                                                                 "es":  "Elevación de resortes accesible"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Offers the movement and edge of a hybrid without stepping into a premium build.",
+                                                                  "es":  "Ofrece el movimiento de un híbrido sin subir a una construcción premium."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Balanced hybrid comfort and cooling at an approachable price.",
                                              "es":  ""
@@ -545,6 +831,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Familiar Sealy hybrid feel",
+                                                                 "es":  "Sensación híbrida Sealy familiar"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "A straightforward medium surface over responsive support makes it easy to understand quickly.",
+                                                                  "es":  "Una superficie media sobre apoyo sensible se entiende rápidamente al probarla."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Support-first simplicity",
+                                                                 "es":  "Simplicidad enfocada en apoyo"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Prioritizes dependable alignment and movement over specialized smart or grid technology.",
+                                                                  "es":  "Prioriza alineación y movimiento confiables sobre tecnología inteligente o de rejilla."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Trusted Sealy hybrid tuned for balanced all-night comfort.",
                                              "es":  ""
@@ -584,6 +892,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Firm Posturepedic profile",
+                                                                 "es":  "Perfil Posturepedic firme"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "A 7/10 surface keeps the body more on top of the mattress than nestled into it.",
+                                                                  "es":  "Una superficie de 7/10 mantiene el cuerpo más encima del colchón que dentro de él."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Stable hybrid construction",
+                                                                 "es":  "Construcción híbrida estable"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Combines firm comfort layers with coil support for a steadier response than firm foam alone.",
+                                                                  "es":  "Combina capas firmes con resortes para una respuesta más estable que la espuma firme sola."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Firm hybrid support that keeps your spine aligned.",
                                              "es":  ""
@@ -622,6 +952,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Firm Beautyrest coil feel",
+                                                                 "es":  "Sensación firme de resortes Beautyrest"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Delivers strong surface pushback with the familiar responsiveness of premium coils.",
+                                                                  "es":  "Ofrece un empuje fuerte con la respuesta familiar de resortes premium."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Pocketed motion control",
+                                                                 "es":  "Control de movimiento embolsado"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Individual coils move more independently than a traditional connected spring unit.",
+                                                                  "es":  "Los resortes individuales se mueven con más independencia que una unidad tradicional conectada."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Firm Beautyrest pocketed-coil support with a luxury feel.",
                                              "es":  ""
@@ -661,6 +1013,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Wisconsin-handcrafted plushness",
+                                                                 "es":  "Suavidad hecha a mano en Wisconsin"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Made locally with a distinctly soft 3/10 surface for customers who want immediate cushion.",
+                                                                  "es":  "Fabricado localmente con una superficie muy suave de 3/10 para quien quiere acolchado inmediato."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Deep pressure-point give",
+                                                                 "es":  "Mayor alivio en puntos de presión"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Lets shoulders and hips settle farther than the medium and firm Astor Park options.",
+                                                                  "es":  "Permite que hombros y caderas bajen más que en las opciones medias y firmes."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Astor Park\u0027s plush, pressure-relieving comfort - handcrafted in Wisconsin.",
                                              "es":  ""
@@ -699,6 +1073,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Wisconsin-handcrafted firmness",
+                                                                 "es":  "Firmeza hecha a mano en Wisconsin"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Made locally with a stable 7/10 surface and minimal initial sink.",
+                                                                  "es":  "Fabricado localmente con una superficie estable de 7/10 y poco hundimiento inicial."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Durability-focused support",
+                                                                 "es":  "Apoyo enfocado en durabilidad"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Emphasizes a straightforward supportive build over extra plush comfort layers.",
+                                                                  "es":  "Destaca una construcción firme y directa sobre capas adicionales de suavidad."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Handcrafted Wisconsin firmness with dependable all-night support.",
                                              "es":  ""
@@ -739,6 +1135,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Couple-friendly cooling hybrid",
+                                                                 "es":  "Híbrido fresco para parejas"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Combines airflow and motion control for partners who sleep warm or wake each other.",
+                                                                  "es":  "Combina ventilación y control de movimiento para parejas que duermen con calor o se despiertan."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Foam-over-coil balance",
+                                                                 "es":  "Equilibrio de espuma y resortes"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Provides some contour on top while preserving the easier movement of a hybrid.",
+                                                                  "es":  "Ofrece algo de contorno arriba y conserva el movimiento más fácil de un híbrido."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Cooling hybrid comfort and motion isolation for couples.",
                                              "es":  ""
@@ -780,6 +1198,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Easy all-foam starter",
+                                                                 "es":  "Inicio sencillo de espuma"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Offers close contour and a quieter surface without the bounce of coils.",
+                                                                  "es":  "Ofrece contorno cercano y una superficie silenciosa sin el rebote de resortes."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Cooling value focus",
+                                                                 "es":  "Enfriamiento con buen valor"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Adds heat-management materials while staying in the most accessible tier.",
+                                                                  "es":  "Agrega materiales para controlar el calor dentro del nivel más accesible."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Cooling bed-in-a-box comfort that won\u0027t break the budget.",
                                              "es":  ""
@@ -819,6 +1259,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Starter hybrid lift",
+                                                                 "es":  "Elevación híbrida de entrada"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Coils make turning and getting out of bed easier than on the all-foam Classic.",
+                                                                  "es":  "Los resortes facilitan girarse y levantarse más que en el Classic de espuma."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Cooling at an entry price",
+                                                                 "es":  "Frescura a precio inicial"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Pairs a cooler surface story with hybrid support in the opening tier.",
+                                                                  "es":  "Combina una superficie más fresca con apoyo híbrido en el nivel de entrada."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Hybrid bounce and cooling at a starter-friendly price.",
                                              "es":  ""
@@ -858,6 +1320,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Plush-firm contrast",
+                                                                 "es":  "Contraste suave y firme"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Cushioning softens the top while the 6/10 hybrid base keeps a noticeable pushback.",
+                                                                  "es":  "El acolchado suaviza la parte superior mientras la base híbrida de 6/10 mantiene empuje."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "More substantial value feel",
+                                                                 "es":  "Sensación de valor más sustancial"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Aims for a heavier more finished impression than a basic starter mattress.",
+                                                                  "es":  "Busca una impresión más sólida y terminada que un colchón inicial básico."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "A plush-firm hybrid that feels far above its price.",
                                              "es":  ""
@@ -896,6 +1380,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Soft Sealy entry feel",
+                                                                 "es":  "Sensación Sealy suave de entrada"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "A 3/10 surface gives immediate softness without premium-tier complexity.",
+                                                                  "es":  "Una superficie de 3/10 da suavidad inmediata sin la complejidad del nivel premium."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Simple pressure relief",
+                                                                 "es":  "Alivio de presión sencillo"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Uses straightforward plush cushioning for shoulders and hips at an accessible price.",
+                                                                  "es":  "Usa acolchado suave y directo para hombros y caderas a un precio accesible."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Soft, budget-friendly plush comfort from a name you know.",
                                              "es":  ""
@@ -934,6 +1440,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Wisconsin-made firm value",
+                                                                 "es":  "Valor firme hecho en Wisconsin"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Locally made with a stable 7/10 feel and a straightforward support story.",
+                                                                  "es":  "Fabricado localmente con una sensación estable de 7/10 y una propuesta de apoyo directa."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Guest-room-friendly simplicity",
+                                                                 "es":  "Simplicidad para habitación de visitas"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Prioritizes dependable firmness and price over added cooling or luxury layers.",
+                                                                  "es":  "Prioriza firmeza confiable y precio sobre capas de enfriamiento o lujo."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Wisconsin-made firm support at a guest-room-friendly price.",
                                              "es":  ""
@@ -972,6 +1500,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Euro-top first impression",
+                                                                 "es":  "Primera impresión Euro Top"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "The sewn-on cushion creates a softer surface feel over a medium support core.",
+                                                                  "es":  "El acolchado cosido crea una superficie más suave sobre un centro de apoyo medio."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Traditional spring response",
+                                                                 "es":  "Respuesta tradicional de resortes"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Feels more familiar and buoyant than a slow-contouring all-foam mattress.",
+                                                                  "es":  "Se siente más familiar y elástico que un colchón de espuma de contorno lento."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "Plush euro-top comfort over dependable innerspring support.",
                                              "es":  ""
@@ -1011,6 +1561,28 @@
                        "reasons_es":  {
 
                                       },
+                       "differentiators":  [
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Stepped-up hybrid comfort",
+                                                                 "es":  "Confort híbrido mejorado"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Adds more cushioning and support than the opening DreamCloud hybrid.",
+                                                                  "es":  "Agrega más acolchado y apoyo que el híbrido DreamCloud de entrada."
+                                                              }
+                                               },
+                                               {
+                                                   "title":  {
+                                                                 "en":  "Middle-ground response",
+                                                                 "es":  "Respuesta intermedia"
+                                                             },
+                                                   "detail":  {
+                                                                  "en":  "Keeps a medium feel with coil lift for customers who do not want deep sink or firm pushback.",
+                                                                  "es":  "Mantiene una sensación media con elevación de resortes sin hundimiento profundo ni empuje firme."
+                                                              }
+                                               }
+                                           ],
                        "topPickReason":  {
                                              "en":  "More foam and support than the entry hybrid, for a little more.",
                                              "es":  ""

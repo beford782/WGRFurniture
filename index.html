@@ -12,9 +12,9 @@
   <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
   <!-- Open Graph / Social -->
-  <meta id="metaDescription" name="description" content="Find your perfect mattress with DreamFinder — a personalized sleep consultation. 12 quick questions, expert recommendations, and a private savings pass.">
+  <meta id="metaDescription" name="description" content="Find your perfect mattress with DreamFinder — a personalized sleep consultation with matches, Sleep System recommendations, and a 30-day Savings Pass.">
   <meta id="ogTitle" property="og:title" content="DreamFinder — Find Your Perfect Mattress">
-  <meta property="og:description" content="Take our 5-minute sleep consultation and get personalized mattress recommendations with a private savings pass.">
+  <meta property="og:description" content="Take our sleep consultation and get personalized mattress recommendations with a 30-day Savings Pass.">
   <meta property="og:type" content="website">
   <meta name="theme-color" content="#0f1f33">
   <meta name="mobile-web-app-capable" content="yes">
@@ -1854,11 +1854,25 @@
       outline-offset: 2px;
       color: var(--color-accent);
     }
+    .review-return-highlight {
+      animation: reviewReturnPulse 1.4s ease;
+    }
+    @keyframes reviewReturnPulse {
+      0%, 100% { box-shadow: inherit; }
+      35% { box-shadow: 0 0 0 3px var(--color-accent), 0 0 28px var(--gold-glow); }
+    }
 
     .noct-results-footer {
       text-align: center;
       padding-top: 32px;
       border-top: 0.5px solid var(--color-border);
+    }
+    .noct-results-footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 12px;
     }
 
     .noct-results-cta {
@@ -1873,12 +1887,29 @@
       cursor: pointer;
       touch-action: manipulation;
       transition: background 0.15s ease, color 0.15s ease;
-      margin-bottom: 12px;
+      margin-bottom: 0;
     }
 
     .noct-results-cta:hover {
       background: var(--color-accent);
       color: var(--color-bg);
+    }
+    .noct-results-review-btn {
+      min-height: 48px;
+      padding: 16px 28px;
+      border: 0.5px solid var(--color-border);
+      border-radius: var(--radius);
+      background: transparent;
+      color: var(--color-text);
+      font-family: var(--font-serif);
+      font-size: 16px;
+      cursor: pointer;
+      touch-action: manipulation;
+      transition: border-color 0.15s ease, background 0.15s ease;
+    }
+    .noct-results-review-btn:hover {
+      border-color: var(--color-accent);
+      background: var(--gold-glow);
     }
 
     .noct-results-footer-hint {
@@ -2634,6 +2665,113 @@
       flex-direction: column;
       padding: 1.25rem;
     }
+    .hf2-review-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .hf2-back-btn {
+      min-height: 48px;
+      padding: 0.65rem 0.9rem;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .hf2-back-btn:hover {
+      border-color: var(--color-accent);
+      background: var(--gold-glow);
+    }
+    .hf2-review-intro {
+      max-width: 780px;
+      margin: 0 auto 1.5rem;
+      text-align: center;
+    }
+    .hf2-review-eyebrow,
+    .hf2-review-section__label {
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-accent);
+    }
+    .hf2-review-title {
+      margin: 0.35rem 0 0.5rem;
+      font-family: var(--font-serif);
+      font-size: clamp(2rem, 5vw, 3.25rem);
+      font-weight: 500;
+      color: var(--color-text);
+    }
+    .hf2-review-subtitle {
+      max-width: 620px;
+      margin: 0 auto;
+      color: var(--color-text-muted);
+      line-height: 1.55;
+    }
+    .hf2-review-section {
+      width: min(900px, 100%);
+      margin: 0 auto 1rem;
+      padding: 1.1rem;
+      background: color-mix(in srgb, var(--color-surface) 92%, transparent);
+      border: 1px solid var(--color-border);
+      border-radius: 8px;
+    }
+    .hf2-review-section__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 0.8rem;
+    }
+    .hf2-review-section__hint {
+      margin-top: 0.3rem;
+      color: var(--color-text-muted);
+      font-size: 0.8rem;
+      line-height: 1.45;
+    }
+    .hf2-compare-finalists,
+    .hf2-edit-system {
+      min-height: 44px;
+      flex-shrink: 0;
+      padding: 0.6rem 0.85rem;
+      border: 1px solid var(--color-border);
+      border-radius: 6px;
+      background: transparent;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 0.78rem;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .hf2-compare-finalists:hover,
+    .hf2-edit-system:hover {
+      border-color: var(--color-accent);
+      background: var(--gold-glow);
+    }
+    .hf2-compare-finalists:disabled {
+      opacity: 0.38;
+      cursor: default;
+    }
+    .hf2-review-finale {
+      text-align: center;
+      padding: 1.4rem;
+      border-color: color-mix(in srgb, var(--color-accent) 55%, transparent);
+    }
+    .hf2-review-finale .hf2-discount-btn {
+      margin-top: 1rem;
+    }
+    .hf2-review-finale .hf2-send-btn {
+      margin-top: 0.75rem;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
+    }
 
     /* Step list: three sequential steps (Lead with / For the close / Close)
        marked by numbered tokens. Replaces an earlier rail+dot concept that
@@ -2787,6 +2925,44 @@
     .hf2-pick__reason:last-child {
       margin-bottom: 0;
     }
+    .hf2-pick__reaction {
+      margin: 0.65rem 0;
+      padding: 0.55rem 0.65rem;
+      background: var(--color-surface-alt);
+      border-radius: 5px;
+      color: var(--color-text);
+      font-size: 0.78rem;
+    }
+    .hf2-pick__reaction-label {
+      color: var(--color-text-muted);
+      margin-right: 0.35rem;
+    }
+    .hf2-pick__actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-top: 0.75rem;
+    }
+    .hf2-pick__action {
+      min-height: 42px;
+      padding: 0.55rem 0.75rem;
+      border: 1px solid var(--color-border);
+      border-radius: 5px;
+      background: transparent;
+      color: var(--color-text);
+      font-family: inherit;
+      font-size: 0.75rem;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .hf2-pick__action:hover,
+    .hf2-pick__action.is-selected {
+      border-color: var(--color-accent);
+      background: var(--gold-glow);
+    }
+    .hf2-pick__action--remove {
+      color: var(--color-text-muted);
+    }
     /* Chip container — four chips of pitch ammo per pick */
     .hf2-pick__chips {
       display: flex;
@@ -2913,7 +3089,7 @@
 
     /* === Step 4: rules for renderer-populated content (brief, action buttons) === */
     .hf2-brief {
-      margin: 0.5rem 0 1.5rem;
+      margin: 0.75rem 0 0;
     }
     .hf2-brief__row {
       font-family: var(--font-sans);
@@ -2926,7 +3102,7 @@
          tier tags and reason templates. CSS transform preserves source data integrity
          for any future use that wants original casing. Existing quiz labels are
          common nouns / adjective phrases, no proper-noun sensitivity. */
-      text-transform: lowercase;
+      text-transform: none;
     }
     .hf2-brief__row:not(:last-child) {
       margin-bottom: 0.25rem;
@@ -4720,12 +4896,36 @@
       font-size: 0.875rem;
       color: var(--color-text-muted);
       text-align: center;
-      font-style: italic;
-      max-width: 28ch;
+      max-width: 38ch;
       opacity: 0;
     }
     .reveal-cert.is-visible .reveal-cert__subtitle {
       animation: revealCertFadeIn 400ms ease-out 2200ms forwards;
+    }
+
+    .reveal-cert__scope {
+      font-family: var(--font-serif);
+      font-size: clamp(1rem, 2.2vw, 1.35rem);
+      color: var(--color-text);
+      text-align: center;
+      max-width: 34ch;
+      opacity: 0;
+    }
+    .reveal-cert.is-visible .reveal-cert__scope {
+      animation: revealCertFadeIn 400ms ease-out 1950ms forwards;
+    }
+
+    .reveal-cert__terms {
+      font-family: var(--font-sans);
+      font-size: 0.72rem;
+      line-height: 1.45;
+      color: var(--color-text-subtle);
+      text-align: center;
+      max-width: 58ch;
+      opacity: 0;
+    }
+    .reveal-cert.is-visible .reveal-cert__terms {
+      animation: revealCertFadeIn 400ms ease-out 2450ms forwards;
     }
 
     /* Reduced motion: suppress all transform-based motion and stagger.
@@ -4739,7 +4939,9 @@
       .reveal-cert.is-visible .reveal-cert__tile,
       .reveal-cert.is-visible .reveal-cert__sep,
       .reveal-cert.is-visible .reveal-cert__pct,
-      .reveal-cert.is-visible .reveal-cert__subtitle {
+      .reveal-cert.is-visible .reveal-cert__scope,
+      .reveal-cert.is-visible .reveal-cert__subtitle,
+      .reveal-cert.is-visible .reveal-cert__terms {
         animation: revealCertFadeIn 200ms ease-out forwards !important;
       }
       .mattress-drawer,
@@ -6008,13 +6210,15 @@
     .compare-col-brand { font-size: 0.7rem; color: var(--cream-dim); margin-top: -0.1rem; }
     .compare-col-stat {
       display: flex;
+      align-items: flex-start;
+      gap: 0.65rem;
       justify-content: space-between;
       font-size: 0.75rem;
       padding: 0.3rem 0;
       border-bottom: 1px solid rgba(255,255,255,0.06);
     }
-    .compare-col-stat-label { color: var(--cream-dim); }
-    .compare-col-stat-val { color: var(--cream); font-weight: 600; }
+    .compare-col-stat-label { color: var(--cream-dim); flex: 0 0 30%; }
+    .compare-col-stat-val { color: var(--cream); font-weight: 600; flex: 1; text-align: right; line-height: 1.4; }
     .compare-col-stat-val.highlight { color: var(--gold); font-weight: 800; }
     .compare-col-chips { display: flex; flex-wrap: wrap; gap: 0.25rem; margin-top: 0.25rem; }
     .compare-col-chip {
@@ -6219,6 +6423,94 @@
     .drawer-feat-why { font-size:0.55rem; color:var(--cream-dim); margin-top:0.1rem; line-height:1.4; }
     .drawer-feat-badge { font-size:0.42rem; font-weight:700; background:rgba(212,168,75,0.2); color:var(--gold); padding:0.12rem 0.35rem; border-radius:4px; white-space:nowrap; flex-shrink:0; align-self:center; }
     .drawer-reason-box { background:rgba(255,255,255,0.03); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:0.65rem 0.75rem; font-size:0.6rem; color:var(--cream-dim); line-height:1.65; margin-bottom:0.85rem; }
+    .drawer-trial-feel {
+      margin-bottom: 0.9rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(212,168,75,0.22);
+      border-radius: 10px;
+      background: rgba(212,168,75,0.07);
+      color: var(--cream);
+      font-size: 0.72rem;
+      font-weight: 650;
+      letter-spacing: 0.02em;
+    }
+    .drawer-shortlist-fit {
+      margin-bottom: 0.9rem;
+      padding: 0.65rem 0.75rem;
+      border-left: 2px solid var(--gold);
+      background: rgba(212,168,75,0.055);
+      color: var(--cream-dim);
+      font-size: 0.66rem;
+      line-height: 1.55;
+    }
+    .drawer-differentiators {
+      display: grid;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+    .drawer-differentiator {
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.035);
+    }
+    .drawer-differentiator-title {
+      color: var(--cream);
+      font-size: 0.68rem;
+      font-weight: 750;
+      line-height: 1.35;
+    }
+    .drawer-differentiator-detail {
+      margin-top: 0.18rem;
+      color: var(--cream-dim);
+      font-size: 0.6rem;
+      line-height: 1.5;
+    }
+    .drawer-try-prompts {
+      display: grid;
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+    .drawer-try-prompt {
+      padding: 0.6rem 0.7rem;
+      border-left: 2px solid var(--gold);
+      background: rgba(255,255,255,0.035);
+      color: var(--cream);
+      font-size: 0.66rem;
+      line-height: 1.5;
+    }
+    .drawer-difference {
+      margin-bottom: 0.9rem;
+      padding: 0.65rem 0.75rem;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 10px;
+      background: rgba(255,255,255,0.03);
+      color: var(--cream-dim);
+      font-size: 0.66rem;
+      line-height: 1.55;
+    }
+    .drawer-reaction-row {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.45rem;
+      margin-bottom: 0.9rem;
+    }
+    .drawer-reaction-row button {
+      min-height: 46px;
+      border: 1px solid rgba(255,255,255,0.13);
+      border-radius: 9px;
+      background: rgba(255,255,255,0.045);
+      color: var(--cream);
+      font-family: inherit;
+      font-size: 0.64rem;
+      cursor: pointer;
+      touch-action: manipulation;
+    }
+    .drawer-reaction-row button.is-selected {
+      border-color: var(--gold);
+      background: rgba(212,168,75,0.18);
+      color: var(--gold-light);
+    }
     /* "What's in it" — per-feature reason bullets surfaced from m.reasons*.
        Visual matches .drawer-reason-box (same surface, border, radius, padding)
        so the section reads as a sibling to the customer-friendly summary above. */
@@ -6781,7 +7073,7 @@
         </svg>
         <span class="landing-discount-label" id="landingDiscountLabel">Your Savings Pass</span>
         <div class="landing-code-tiles" id="landingCodeTiles"></div>
-        <span class="landing-discount-hint" id="landingDiscountHint">Unlock your private in-store offer</span>
+        <span class="landing-discount-hint" id="landingDiscountHint">A 30-day offer to bring home with your matches</span>
       </div>
 
       <!-- Store locations (subtle, premium) -->
@@ -6847,8 +7139,11 @@
       <div class="noct-supporting-row" id="supportingRow"></div>
 
       <div class="noct-results-footer">
-        <button class="noct-results-cta" id="buildSystemBtn" onclick="window.showAccessories()" ontouchend="event.preventDefault();window.showAccessories();">Build Your Sleep System →</button>
-        <div class="noct-results-footer-hint" id="resultsFooterHint">Your Savings Pass applies to everything.</div>
+        <div class="noct-results-footer-actions">
+          <button class="noct-results-cta" id="buildSystemBtn" onclick="window.showAccessories()" ontouchend="event.preventDefault();window.showAccessories();">Build Your Sleep System →</button>
+          <button class="noct-results-review-btn" id="reviewWithCustomerBtn" onclick="window.showSavedPicks()" ontouchend="event.preventDefault();window.showSavedPicks();">Review with customer →</button>
+        </div>
+        <div class="noct-results-footer-hint" id="resultsFooterHint">Your 30-day Savings Pass applies to a qualifying mattress selection.</div>
       </div>
     </div>
 
@@ -6876,7 +7171,9 @@
           <span class="reveal-cert__pct-num" id="revealCertPctNum">5</span>
           <span class="reveal-cert__pct-suffix" data-i18n="discount.off">% OFF</span>
         </div>
-        <div class="reveal-cert__subtitle" data-i18n="discount.show_specialist">Yours to use in store today.</div>
+        <div class="reveal-cert__scope" id="revealCertScope">On a qualifying DreamFinder mattress selection</div>
+        <div class="reveal-cert__subtitle" id="revealCertExpiry">Good through July 5, 2026</div>
+        <div class="reveal-cert__terms" id="revealCertTerms">Cannot be combined with other offers. Final eligibility confirmed by your WG&amp;R sleep specialist.</div>
       </div>
     </div>
   </div>
@@ -6914,38 +7211,21 @@
         </div>
         <div class="drawer-match-badge" id="drawerMatch"></div>
       </div>
-      <div class="drawer-section-label" data-i18n="drawer.why_matches">Why it matches you</div>
-      <div class="drawer-feats" id="drawerFeats"></div>
-      <div id="drawerFeatureBulletsSection" style="display:none;">
-        <div class="drawer-section-label" data-i18n="drawer.whats_in_it">What's in it</div>
-        <ul class="drawer-feature-bullets" id="drawerFeatureBullets"></ul>
-      </div>
-      <div class="drawer-section-label" data-i18n="drawer.about">About this mattress</div>
-      <div class="drawer-reason-box" id="drawerReason"></div>
-      <div class="drawer-firmness-row">
-        <span class="drawer-firm-label" id="drawerFirmLabel">Firmness</span>
-        <div class="drawer-firm-bar"><div class="drawer-firm-fill" id="drawerFirmFill" style="width:0%"></div></div>
-        <span class="drawer-firm-feel" id="drawerFirmFeel"></span>
-      </div>
-      <div class="drawer-tags-row" id="drawerTags"></div>
-      <div id="drawerPitchSection" style="display:none;">
-        <div class="drawer-pitch-header">
-          <div class="drawer-pitch-header__meta">
-            <div class="drawer-section-label" data-i18n="drawer.pitch_heading">Helpful talking points</div>
-            <div class="drawer-pitch-summary" id="drawerPitchSummary"></div>
-          </div>
-          <button class="drawer-pitch-toggle" id="drawerPitchToggle" type="button"
-                  onclick="window.toggleDrawerPitch()"
-                  ontouchend="event.preventDefault();window.toggleDrawerPitch();">Show script</button>
-        </div>
-        <div class="drawer-pitch-box" id="drawerPitch"></div>
-      </div>
-      <div id="drawerBrandSection" style="display:none;">
-        <div class="drawer-section-label" data-i18n="drawer.brand_heading">About the brand</div>
-        <div class="drawer-brand-box" id="drawerBrandStory"></div>
+      <div class="drawer-trial-feel" id="drawerFeelAnchor"></div>
+      <div class="drawer-section-label" id="drawerWhyLabel">Why it made your shortlist</div>
+      <div class="drawer-shortlist-fit" id="drawerShortlistFit"></div>
+      <div class="drawer-section-label" id="drawerDifferentiatorsLabel">What makes this one different</div>
+      <div class="drawer-differentiators" id="drawerDifferentiators"></div>
+      <div class="drawer-section-label" id="drawerNoticeLabel">As you try it, notice...</div>
+      <div class="drawer-try-prompts" id="drawerTryPrompts"></div>
+      <div class="drawer-section-label" id="drawerReactionLabel">How did it feel?</div>
+      <div class="drawer-reaction-row" id="drawerReactionRow">
+        <button type="button" data-reaction="soft" onclick="window.setDrawerReaction('soft')" ontouchend="event.preventDefault();window.setDrawerReaction('soft');">Too Soft</button>
+        <button type="button" data-reaction="good" onclick="window.setDrawerReaction('good')" ontouchend="event.preventDefault();window.setDrawerReaction('good');">Good Feel</button>
+        <button type="button" data-reaction="firm" onclick="window.setDrawerReaction('firm')" ontouchend="event.preventDefault();window.setDrawerReaction('firm');">Too Firm</button>
       </div>
       <div class="drawer-cta-row">
-        <button id="drawerInterestedBtn" class="drawer-btn drawer-btn-primary" onclick="window.saveDrawerPick()" ontouchend="event.preventDefault();window.saveDrawerPick();" style="touch-action:manipulation;" data-i18n="drawer.interested">I'm Interested In This One</button>
+        <button id="drawerInterestedBtn" class="drawer-btn drawer-btn-primary" onclick="window.saveDrawerPick()" ontouchend="event.preventDefault();window.saveDrawerPick();" style="touch-action:manipulation;">Save as Finalist</button>
       </div>
       <!-- Mattress navigation -->
       <div style="display:flex; align-items:center; justify-content:space-between; padding:0.75rem 1rem 0.5rem; border-top:1px solid rgba(255,255,255,0.08); margin-top:0.5rem;">
@@ -6964,6 +7244,11 @@
   <!-- No .active class so it's invisible by default. Preview via showScreen('hf2Screen'). -->
   <div class="screen" id="hf2Screen">
 
+    <div class="hf2-review-nav">
+      <button class="hf2-back-btn" id="hf2BackToMatches" type="button"
+              onclick="window.backToResultsFromReview()"
+              ontouchend="event.preventDefault();window.backToResultsFromReview();">← Back to matches</button>
+
     <!-- 1. RSA attribution strip + closed picker panel. Renderer (renderHf2RsaStrip
          / renderHf2RsaPanel) populates label/name/list; click toggles the `hidden`
          attribute on the panel. event.stopPropagation prevents the document-level
@@ -6981,65 +7266,58 @@
         <button class="hf2-rsa-panel__add" type="button"></button>
       </div>
     </div>
-
-    <!-- 2. Customer brief — empty anchors, populated by renderHf2Brief. -->
-    <div class="hf2-brief">
-      <div class="hf2-brief__row" id="hf2BriefContext"></div>
-      <div class="hf2-brief__row" id="hf2BriefWho"></div>
-      <div class="hf2-brief__row" id="hf2BriefProfile"></div>
     </div>
 
-    <!-- 3. Timeline rail with three steps (Lead with / For the close / Close). -->
-    <div class="hf2-timeline">
-
-      <div class="hf2-timeline-step">
-        <div class="hf2-timeline-step__header">
-          <span class="hf2-step-num hf2-step-num--filled">1</span>
-          <h3>Lead with</h3>
-        </div>
-        <div class="hf2-timeline-step__body">
-          <!-- Picks populated by renderHf2Picks (top-1-per-tier from _resultsState). -->
-          <div id="hf2PicksList"></div>
-          <!-- Accessories populated by renderHf2Accessories. Two-tier layout:
-               cart block (primary, "In your list") + recommended block
-               (secondary, "Round out your system"). Cart-empty fallback
-               renders a single combined block ("Your recommended sleep
-               system"). Cart-non-empty + pool exhausted renders the cart
-               block alone. Read-only on hf2Screen — removal stays on the
-               accessories screen via the existing toggle. -->
-          <div id="hf2AccessoriesList"></div>
-        </div>
-      </div>
-
-      <div class="hf2-timeline-step">
-        <div class="hf2-timeline-step__header">
-          <span class="hf2-step-num hf2-step-num--outlined">2</span>
-          <h3>For the close</h3>
-        </div>
-        <div class="hf2-timeline-step__body">
-          <!-- Pre-reveal copy intentionally omits the percentage per decision H.
-               renderHf2DiscountButton wires the click handler; on tap, fires
-               playSavingsPassReveal() and transitions the button to the
-               --revealed state showing dreamCode + percentage. -->
-          <button class="hf2-discount-btn" id="hf2DiscountBtn" type="button">
-            <span>Savings Pass</span>
-            <span>Reveal for customer →</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="hf2-timeline-step">
-        <div class="hf2-timeline-step__header">
-          <span class="hf2-step-num hf2-step-num--outlined">3</span>
-          <h3>Close</h3>
-        </div>
-        <div class="hf2-timeline-step__body">
-          <!-- Label and click handler bound by renderHf2SendButton. -->
-          <button class="hf2-send-btn" id="hf2SendBtn" type="button"></button>
-        </div>
-      </div>
-
+    <div class="hf2-review-intro">
+      <div class="hf2-review-eyebrow" id="hf2ReviewEyebrow">Review with the customer</div>
+      <h1 class="hf2-review-title" id="hf2ReviewTitle">Review Your Sleep Plan</h1>
+      <p class="hf2-review-subtitle" id="hf2ReviewSubtitle">A quick recap of what matters, what felt best, and what to keep on the shortlist.</p>
     </div>
+
+    <section class="hf2-review-section">
+      <div class="hf2-review-section__label" id="hf2NeedsLabel">What we set out to solve</div>
+      <div class="hf2-brief">
+        <div class="hf2-brief__row" id="hf2BriefContext"></div>
+        <div class="hf2-brief__row" id="hf2BriefWho"></div>
+        <div class="hf2-brief__row" id="hf2BriefProfile"></div>
+      </div>
+    </section>
+
+    <section class="hf2-review-section">
+      <div class="hf2-review-section__header">
+        <div>
+          <div class="hf2-review-section__label" id="hf2FinalistsLabel">Your finalists</div>
+          <div class="hf2-review-section__hint" id="hf2FinalistsHint">Review the mattresses the customer chose to keep.</div>
+        </div>
+        <button class="hf2-compare-finalists" id="hf2CompareBtn" type="button"
+                onclick="window.compareReviewFinalists()"
+                ontouchend="event.preventDefault();window.compareReviewFinalists();">Compare finalists</button>
+      </div>
+      <div id="hf2PicksList"></div>
+    </section>
+
+    <section class="hf2-review-section" id="hf2SleepSystemSection">
+      <div class="hf2-review-section__header">
+        <div>
+          <div class="hf2-review-section__label" id="hf2SystemLabel">Selected Sleep System</div>
+          <div class="hf2-review-section__hint" id="hf2SystemHint">Only the pieces already added to the plan.</div>
+        </div>
+        <button class="hf2-edit-system" id="hf2EditSystemBtn" type="button"
+                onclick="window.showAccessories()"
+                ontouchend="event.preventDefault();window.showAccessories();">Edit Sleep System</button>
+      </div>
+      <div id="hf2AccessoriesList"></div>
+    </section>
+
+    <section class="hf2-review-section hf2-review-finale">
+      <div class="hf2-review-section__label" id="hf2PassLabel">Your consultation is ready to save</div>
+      <p class="hf2-review-section__hint" id="hf2PassHint">Review the plan together, then reveal the 30-day Savings Pass.</p>
+      <button class="hf2-discount-btn" id="hf2DiscountBtn" type="button">
+        <span>Savings Pass</span>
+        <span>Reveal for customer →</span>
+      </button>
+      <button class="hf2-send-btn" id="hf2SendBtn" type="button"></button>
+    </section>
 
   </div>
 
@@ -7048,7 +7326,7 @@
     <div class="noct-email">
       <div class="noct-email-eyebrow" id="emailEyebrow">Don't lose your matches</div>
       <h1 class="noct-email-headline" id="emailHeadline">Send <span class="accent">your results</span> to yourself</h1>
-      <p class="noct-email-subhead" id="emailSubhead">We'll send your matched mattresses, sleep profile, and private savings pass so you can bring your offer back to the store.</p>
+      <p class="noct-email-subhead" id="emailSubhead">We'll send your matched mattresses, sleep profile, and 30-day Savings Pass so you can decide on your time.</p>
 
       <div class="noct-email-preview" id="emailPreviewWrapper">
         <div class="noct-email-preview-label" id="emailPreviewLabel">What's inside</div>
@@ -7083,7 +7361,7 @@
         <div class="noct-dream-code-label" id="dreamCodeLabel">Your Savings Pass</div>
         <div class="noct-dream-code-value" id="dreamCodeValue"></div>
         <div class="noct-dream-code-hint" id="dreamCodeHintWrapper">
-          <span id="dreamCodeHintText">Show this code in store to claim your DreamFinder savings</span> &middot; <span class="pct" id="dreamCodePct"></span>
+          <span id="dreamCodeHintText">Valid on a qualifying DreamFinder mattress selection</span> &middot; <span class="pct" id="dreamCodePct"></span>
         </div>
       </div>
 
@@ -7104,7 +7382,7 @@
       <h3 class="noct-accessories__title" data-i18n="accessories.title">Your Complete Sleep System</h3>
       <p class="noct-accessories__subtitle" id="accessoriesSubhead" data-i18n="accessories.subtitle">Your mattress is one piece of the puzzle. The right foundation, pillow, and protector complete the system.</p>
       <div class="noct-accessories__discount-banner" id="accDiscountBanner">
-        <span class="noct-accessories__discount-text" id="accDiscountText">Your Savings Pass applies to everything on this page</span>
+        <span class="noct-accessories__discount-text" id="accDiscountText">Complete your sleep system, then bring home your matches and 30-day Savings Pass</span>
       </div>
     </div>
     <div class="noct-accessories__profile-badge" id="accessoryProfileBadge"></div>
@@ -7153,22 +7431,74 @@
       }
     })();
 
-    // ===== STORE DISCOUNT CONFIG =====
-    // Usage: add ?discount=10 to the URL to set 10% off (default: 5)
-    const STORE_DISCOUNT = parseInt(new URLSearchParams(window.location.search).get('discount')) || 5;
+    // ===== SAVINGS PASS PRESENTATION MODEL =====
+    // This branch demonstrates a retailer-configured offer. Production
+    // issuance/redemption will move to an authoritative backend after retailer
+    // approval; the displayed value can no longer be overridden from the URL.
+    function getSavingsPassConfig() {
+      var discount = (STORE_CONFIG && STORE_CONFIG.discount) || {};
+      return {
+        mode: discount.mode || 'illustrative',
+        codePrefix: (discount.codePrefix || 'DREAM').toString(),
+        codeDigits: Math.max(3, parseInt(discount.codeDigits, 10) || 3),
+        percentage: Math.max(0, parseInt(discount.percentage, 10) || 5),
+        validityDays: Math.max(1, parseInt(discount.validityDays, 10) || 30),
+        scope: discount.scope || {
+          en: 'a qualifying DreamFinder mattress selection',
+          es: 'una seleccion de colchon DreamFinder que califique'
+        },
+        landingHint: discount.landingHint || {
+          en: 'A 30-day offer to bring home with your matches',
+          es: 'Una oferta de 30 dias para llevar con tus recomendaciones'
+        },
+        demoDeliveryNote: discount.demoDeliveryNote || {
+          en: 'Live delivery can be connected after the retailer approves the experience.',
+          es: 'La entrega real se puede conectar despues de que la tienda apruebe la experiencia.'
+        },
+        terms: discount.terms || {
+          en: 'Valid on qualifying mattress selections. Cannot be combined with other offers. Final eligibility confirmed by your sleep specialist.',
+          es: 'Valido en selecciones de colchones que califiquen. No se puede combinar con otras ofertas. Elegibilidad final confirmada por tu especialista de sueno.'
+        }
+      };
+    }
 
-    // Generate a unique DREAM code + the active discount percentage.
-    // Returns { code: "DREAM472", percentage: 5 } so the handoff redesign's
-    // reveal button can render both ("DREAM discount · 5% off") without a
-    // separate STORE_DISCOUNT lookup. Existing callers use .code only.
-    function generateDreamCode(sessionId) {
+    function formatSavingsPassDate(date) {
+      return new Intl.DateTimeFormat(currentLang === 'es' ? 'es-US' : 'en-US', {
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric'
+      }).format(date);
+    }
+
+    // Generate the stable presentation code and exact expiration used by the
+    // reveal, handoff and email preview.
+    function generateSavingsPass(sessionId) {
+      var config = getSavingsPassConfig();
+      sessionId = String(sessionId || 'dreamfinder-demo');
       let hash = 0;
       for (let i = 0; i < sessionId.length; i++) {
         hash = ((hash << 5) - hash) + sessionId.charCodeAt(i);
         hash |= 0;
       }
-      const digits = String(Math.abs(hash) % 900 + 100); // always 3 digits (100–999)
-      return { code: 'DREAM' + digits, percentage: STORE_DISCOUNT };
+      var modulus = Math.pow(10, config.codeDigits);
+      var suffix = String(Math.abs(hash) % modulus).padStart(config.codeDigits, '0');
+      var issuedAt = new Date(
+        (typeof analytics !== 'undefined' && analytics.startedAt) || Date.now()
+      );
+      var expiresAt = new Date(issuedAt.getTime());
+      expiresAt.setDate(expiresAt.getDate() + config.validityDays);
+      return {
+        code: config.codePrefix + suffix,
+        prefix: config.codePrefix,
+        suffix: suffix,
+        percentage: config.percentage,
+        validityDays: config.validityDays,
+        expiresAt: expiresAt,
+        expirationLabel: formatSavingsPassDate(expiresAt),
+        scope: L(config.scope),
+        terms: L(config.terms),
+        mode: config.mode
+      };
     }
 
     // ===== i18n INFRASTRUCTURE =====
@@ -7221,7 +7551,10 @@
     function applyTranslations() {
       document.querySelectorAll('[data-i18n]').forEach(function(el) {
         var key = el.getAttribute('data-i18n');
-        var val = t(key, { storeName: (STORE_CONFIG && STORE_CONFIG.storeName) || '', discount: STORE_DISCOUNT });
+        var val = t(key, {
+          storeName: (STORE_CONFIG && STORE_CONFIG.storeName) || '',
+          discount: getSavingsPassConfig().percentage
+        });
         if (val !== key) {
           if (el.getAttribute('data-i18n-html') === 'true') {
             el.innerHTML = val;
@@ -7390,12 +7723,6 @@
       };
       return '<span style="display:inline-flex;width:' + size + 'px;height:' + size + 'px;">' + (s[name] || s.moon) + '</span>';
     }
-
-    // Set discount values in the UI
-    document.addEventListener('DOMContentLoaded', function() {
-      const bannerPct = document.getElementById('bannerPct');
-      if (bannerPct) bannerPct.textContent = STORE_DISCOUNT + '% OFF';
-    });
 
     // ===== Generate starfield (deferred) =====
     requestAnimationFrame(function() {
@@ -7581,8 +7908,8 @@
     (async function loadAppData() {
       try {
         const [mattressRes, storeRes] = await Promise.all([
-          fetch('./data/mattresses.json'),
-          fetch('./data/store-config.json')
+          fetch('./data/mattresses.json', { cache: 'no-store' }),
+          fetch('./data/store-config.json', { cache: 'no-store' })
         ]);
         if (!mattressRes.ok) throw new Error('mattresses.json HTTP ' + mattressRes.status);
         if (!storeRes.ok) throw new Error('store-config.json HTTP ' + storeRes.status);
@@ -7607,7 +7934,7 @@
       // [] and carry on. Kept out of the Promise.all above so its failure can't
       // reject the critical mattress/store-config load.
       try {
-        const accRes = await fetch('./data/accessories.json');
+        const accRes = await fetch('./data/accessories.json', { cache: 'no-store' });
         if (!accRes.ok) throw new Error('accessories.json HTTP ' + accRes.status);
         const accData = await accRes.json();
         if (!Array.isArray(accData)) throw new Error('accessories.json is not an array');
@@ -7702,6 +8029,7 @@
       var voice = (es && STORE_CONFIG.voice_es) ? STORE_CONFIG.voice_es : (STORE_CONFIG.voice || {});
       var textBlock = (es && STORE_CONFIG.text_es) ? STORE_CONFIG.text_es : (STORE_CONFIG.text || {});
       var discount = STORE_CONFIG.discount || {};
+      var passConfig = getSavingsPassConfig();
 
       var setText = function(id, value) {
         var el = document.getElementById(id);
@@ -7717,8 +8045,8 @@
       setText('landingTimeEstimate', voice.timeEstimate);
       setText('landingOutcomeLabel', voice.outcomeLabel || (es ? 'Tu consulta crea' : 'Your consultation builds'));
       setText('landingOutcomeItems', voice.outcomeItems || (es ? 'Perfil de comodidad · Colchones recomendados · Sistema de descanso · Pase de ahorro' : 'Comfort Profile · Mattress Matches · Sleep System Picks · Savings Pass'));
-      setText('landingDiscountLabel', es ? 'Tu Pase de Ahorro' : 'Your Savings Pass');
-      setText('landingDiscountHint', es ? 'Se desbloquea cuando tus recomendaciones estén listas.' : 'Unlocks after your matches are ready.');
+      setText('landingDiscountLabel', es ? 'Tu Pase de Ahorro de 30 Dias' : 'Your 30-Day Savings Pass');
+      setText('landingDiscountHint', L(passConfig.landingHint));
       setText('landingHeritage', textBlock.heritage);
       setText('landingTrustBadge', textBlock.ownershipBadge);
 
@@ -8815,7 +9143,10 @@
         ? 'Toca cualquier opción para ver por qué encaja y pide a tu especialista que compare tus opciones.'
         : 'Tap any match to see why it fits, then your sleep specialist can compare them with you in the showroom.';
       document.getElementById('buildSystemBtn').textContent = es ? 'Crea Tu Sistema de Sueño →' : 'Build Your Sleep System →';
-      document.getElementById('resultsFooterHint').textContent = es ? 'Tu Pase de Ahorro aplica a todo.' : 'Your Savings Pass applies to everything.';
+      document.getElementById('reviewWithCustomerBtn').textContent = es ? 'Revisar con el cliente →' : 'Review with customer →';
+      document.getElementById('resultsFooterHint').textContent = es
+        ? 'Tu Pase de Ahorro de 30 dias aplica a una seleccion de colchon que califique.'
+        : 'Your 30-day Savings Pass applies to a qualifying mattress selection.';
     }
 
     function renderTierTabs() {
@@ -9087,14 +9418,17 @@
     // slot-machine reveal. RSA-tap-triggered on the handoff screen via the
     // hf2Screen "Reveal for customer →" button (see renderHf2DiscountButton).
     // Visual: fade-and-stamp certificate activation — no particles, no ring,
-    // no spinning reels, no count-up. Reads dreamCode and percentage from
-    // generateDreamCode(analytics.sessionId).
+    // no spinning reels, no count-up. Reads the configured presentation Pass
+    // so code, value, scope and expiration stay consistent everywhere.
     function playSavingsPassReveal() {
       const overlay = document.getElementById('discountRevealOverlay');
       const cert    = document.getElementById('revealCert');
       const tilesEl = document.getElementById('revealCertTiles');
       const codeSr  = document.getElementById('revealCertCodeSr');
       const pctNum  = document.getElementById('revealCertPctNum');
+      const scopeEl = document.getElementById('revealCertScope');
+      const expiryEl = document.getElementById('revealCertExpiry');
+      const termsEl = document.getElementById('revealCertTerms');
       if (!overlay || !cert || !tilesEl || !pctNum) return;
 
       // Reset overlay + cert to baseline state. pointerEvents reset clears
@@ -9105,14 +9439,14 @@
       overlay.style.pointerEvents = '';
       cert.classList.remove('is-visible');
 
-      // Build tile row from current DREAM code (e.g., "DREAM472"). Each
+      // Build tile row from the current presentation code. Each
       // tile carries inline --i for its CSS animation-delay so activation
       // cascades left-to-right. Separator gets the next index, keeping a
       // single monotonic stagger across letters → separator → digits.
-      const dream = generateDreamCode(analytics.sessionId);
-      const code = dream.code;
-      const prefix = code.slice(0, 5);
-      const suffix = code.slice(5);
+      const pass = generateSavingsPass(analytics.sessionId);
+      const code = pass.code;
+      const prefix = pass.prefix;
+      const suffix = pass.suffix;
 
       let html = '';
       let i = 0;
@@ -9133,7 +9467,18 @@
 
       // Percentage value — suffix ("% OFF" / "% DESC.") is dict-driven via
       // data-i18n="discount.off" on the sibling span and stays untouched.
-      pctNum.textContent = String(dream.percentage);
+      pctNum.textContent = String(pass.percentage);
+      if (scopeEl) {
+        scopeEl.textContent = currentLang === 'es'
+          ? 'En ' + pass.scope
+          : 'On ' + pass.scope;
+      }
+      if (expiryEl) {
+        expiryEl.textContent = currentLang === 'es'
+          ? 'Valido hasta el ' + pass.expirationLabel
+          : 'Good through ' + pass.expirationLabel;
+      }
+      if (termsEl) termsEl.textContent = pass.terms;
 
       // Activate after two animation frames so the browser paints the
       // baseline (hidden) state after display:flex before .is-visible
@@ -9146,7 +9491,7 @@
       //   0→550ms     card settle (eyebrow at 100→500ms)
       //   500→1700ms  tile cascade (9 elements × 110ms stagger, 320ms each)
       //   1700→2150ms percentage stamp
-      //   2200→2600ms subtitle settle
+      //   1950→2850ms scope, expiration and terms settle
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
           cert.classList.add('is-visible');
@@ -9287,6 +9632,8 @@
     // explicit-render pattern used by results / profile / quiz.
     function renderEmailChrome() {
       var es = currentLang === 'es';
+      var pass = generateSavingsPass(analytics.sessionId);
+      var isDemoMode = !(STORE_CONFIG && STORE_CONFIG.gasUrl);
       var setText = function(id, text) {
         var el = document.getElementById(id);
         if (el) el.textContent = text;
@@ -9298,11 +9645,11 @@
 
       setText('emailEyebrow', es ? 'No pierdas tus opciones' : "Don't lose your matches");
       setHtml('emailHeadline', es
-        ? 'Guarda <span class="accent">tu Pase de Ahorro</span>'
-        : 'Save <span class="accent">your Savings Pass</span>');
+        ? 'Lleva contigo <span class="accent">tu Pase de Ahorro</span>'
+        : 'Bring home <span class="accent">your Savings Pass</span>');
       setText('emailSubhead', es
-        ? 'Te enviaremos tus colchones recomendados, tu perfil de sueño y tu pase de ahorro privado para que puedas volver con tu oferta lista.'
-        : "We'll send your matched mattresses, sleep profile, and private savings pass so you can bring your offer back to the store.");
+        ? 'Tus recomendaciones y oferta estaran guardadas hasta el ' + pass.expirationLabel + ' para que puedas decidir a tu ritmo.'
+        : 'Your matches and offer will be saved through ' + pass.expirationLabel + ' so you can decide on your time.');
       setText('emailPreviewLabel', es ? 'Qué incluye' : "What's inside");
 
       setHtml('emailNameLabel', es
@@ -9320,16 +9667,22 @@
       var emailInputEl = document.getElementById('emailInput');
       if (emailInputEl) emailInputEl.placeholder = es ? 'tucorreo@ejemplo.com' : 'your@email.com';
 
-      setText('emailSendBtn', es ? 'Enviar Mis Resultados →' : 'Send My Results →');
+      setText('emailSendBtn', isDemoMode
+        ? (es ? 'Vista Previa del Correo →' : 'Preview Email Experience →')
+        : (es ? 'Enviar Mi Pase y Resultados →' : 'Email My Pass & Matches →'));
       setText('emailPrivacyLink', es ? 'Privacidad y Términos' : 'Privacy & Terms');
 
-      setText('dreamCodeLabel', es ? 'Tu Pase de Ahorro' : 'Your Savings Pass');
-      setText('dreamCodeHintText', es ? 'Muestra este código en tienda para reclamar tu ahorro DreamFinder' : 'Show this code in store to claim your DreamFinder savings');
+      setText('dreamCodeLabel', es ? 'Tu Pase de Ahorro de 30 Dias' : 'Your 30-Day Savings Pass');
+      setText('dreamCodeHintText', es
+        ? 'Valido en ' + pass.scope
+        : 'Valid on ' + pass.scope);
 
-      setText('emailConfirmationTitle', es ? '¡Todo listo!' : "You're all set");
-      setText('emailConfirmationSubtitle', es
-        ? 'Revisa tu bandeja de entrada para ver tus resultados personalizados.'
-        : 'Check your inbox for your personalized results.');
+      setText('emailConfirmationTitle', isDemoMode
+        ? (es ? 'Vista previa lista' : 'Demo email ready')
+        : (es ? '¡Todo listo!' : "You're all set"));
+      setText('emailConfirmationSubtitle', isDemoMode
+        ? L(getSavingsPassConfig().demoDeliveryNote)
+        : (es ? 'Revisa tu bandeja de entrada para ver tus resultados personalizados.' : 'Check your inbox for your personalized results.'));
 
     }
 
@@ -9354,7 +9707,11 @@
       var accessoryText = _esE
         ? 'Accesorios recomendados para tu estilo de sueño'
         : 'Recommended accessories for your sleep style';
-      var items = [profileText, topMatchText, priorityText, accessoryText];
+      var savingsPass = generateSavingsPass(analytics.sessionId);
+      var passText = _esE
+        ? 'Pase de Ahorro: <strong>' + savingsPass.percentage + '% de descuento</strong> · valido hasta ' + savingsPass.expirationLabel
+        : 'Savings Pass: <strong>' + savingsPass.percentage + '% off</strong> · good through ' + savingsPass.expirationLabel;
+      var items = [profileText, topMatchText, priorityText, accessoryText, passText];
       var preview = document.getElementById('emailPreview');
       preview.innerHTML = items.map(function(s) {
         return '<div class="noct-email-preview-item">' + s + '</div>';
@@ -9383,10 +9740,12 @@
       // Hide confirmation block
       document.getElementById('emailConfirmation').classList.remove('visible');
 
-      // Show DREAM code (label/hint set by renderEmailChrome; value/pct are dynamic)
-      var dreamCode = generateDreamCode(analytics.sessionId).code;
-      document.getElementById('dreamCodeValue').textContent = dreamCode;
-      document.getElementById('dreamCodePct').textContent = STORE_DISCOUNT + (_esE ? '% DESCUENTO' : '% OFF');
+      // Show the same presentation Pass used in the specialist reveal.
+      var pass = generateSavingsPass(analytics.sessionId);
+      document.getElementById('dreamCodeValue').textContent = pass.code;
+      document.getElementById('dreamCodePct').textContent = _esE
+        ? pass.percentage + '% DE DESCUENTO · HASTA ' + pass.expirationLabel
+        : pass.percentage + '% OFF · GOOD THROUGH ' + pass.expirationLabel;
       document.getElementById('dreamCodeBox').style.display = '';
 
       showScreen('emailScreen');
@@ -9477,6 +9836,7 @@
       // optional; payload shape is stable whether the field is populated or not.
       const _storeKey = (STORE_CONFIG && STORE_CONFIG.storeKey) || 'unknown';
       const _rsa = localStorage.getItem('dreamfinder.' + _storeKey + '.deviceRsa') || '';
+      const savingsPass = generateSavingsPass(analytics.sessionId);
 
       // Email HTML built server-side in Apps Script (Code.gs buildSimpleHtml). Cap mirrored at server.
       // Compile payload
@@ -9489,8 +9849,11 @@
         mattressSize: ({'twin':'Twin','twin_xl':'Twin XL','full':'Full','queen':'Queen','king':'King','cal_king':'Cal King'})[answers.mattress_size] || '',
         topMatch: topPick ? topPick.name : '',
         matchPct: topPick ? topPick.matchPct : '',
-        discount: STORE_DISCOUNT,
-        dreamCode: generateDreamCode(analytics.sessionId).code,
+        discount: savingsPass.percentage,
+        dreamCode: savingsPass.code,
+        passExpiration: savingsPass.expirationLabel,
+        passScope: savingsPass.scope,
+        passTerms: savingsPass.terms,
         sessionId: analytics.sessionId,
         rsa: _rsa,
         lang: currentLang,
@@ -9498,10 +9861,19 @@
         accessories: accList
       };
       
-      analytics.log('email_submitted', { email: email, name: name, phone: phone });
+      const gasUrl = (STORE_CONFIG && STORE_CONFIG.gasUrl) || '';
+      const isEmailPreview = !gasUrl;
+
+      analytics.log(isEmailPreview ? 'email_previewed' : 'email_submitted', {
+        email: email,
+        name: name,
+        phone: phone
+      });
       
       function showSuccess() {
-        sendBtn.textContent = currentLang === 'es' ? '✓ ¡Enviado!' : '✓ Sent!';
+        sendBtn.textContent = isEmailPreview
+          ? (currentLang === 'es' ? '✓ Vista previa lista' : '✓ Preview ready')
+          : (currentLang === 'es' ? '✓ ¡Enviado!' : '✓ Sent!');
         sendBtn.classList.remove('sending');
         sendBtn.classList.add('sent');
         confirmation.classList.add('visible');
@@ -9519,8 +9891,8 @@
 
         // Auto-navigate back to hf2Screen after 2s so the RSA can continue the
         // close conversation with picks + revealed discount visible. The
-        // customer's "✓ You're all set" reassurance beat plays for the full 2s
-        // on the email screen first. Race-safe via state-check, not timer-
+        // confirmation reassurance beat plays for the full 2s on the email
+        // screen first. Race-safe via state-check, not timer-
         // cancel: if startOver (or any other navigation) fires during the
         // window, the .active class on emailScreen is gone and showSavedPicks
         // is skipped — no module-level timer state, no startOver coupling.
@@ -9538,12 +9910,13 @@
       }
 
       function showError(msg) {
-        sendBtn.textContent = currentLang === 'es' ? 'Enviar Mis Resultados' : 'Send My Results';
+        sendBtn.textContent = isEmailPreview
+          ? (currentLang === 'es' ? 'Vista Previa del Correo →' : 'Preview Email Experience →')
+          : (currentLang === 'es' ? 'Enviar Mis Resultados' : 'Send My Results');
         sendBtn.classList.remove('sending');
         errorEl.textContent = msg || (currentLang === 'es' ? 'Algo salió mal. Por favor intenta de nuevo.' : 'Something went wrong. Please try again.');
       }
       
-      const gasUrl = (STORE_CONFIG && STORE_CONFIG.gasUrl) || '';
       if (gasUrl) {
         // Real send via Google Apps Script.
         // NOTE: No Content-Type header → "simple request" → no CORS preflight.
@@ -9571,7 +9944,8 @@
           showError(currentLang === 'es' ? 'Error de red. Por favor intenta de nuevo.' : 'Network error. Please try again.');
         });
       } else {
-        // Simulated send (no Google Script URL configured)
+        // Presentation mode: demonstrate the completed email experience without
+        // claiming that a live retailer email service is connected.
         console.log('[DreamFinder] Email payload (simulated):', JSON.stringify(payload, null, 2));
         setTimeout(showSuccess, 1200);
       }
@@ -9818,7 +10192,9 @@
       
       // SEQUENCE: Staggered reveal
       const discountEl = document.getElementById('accDiscountText');
-      if (discountEl) discountEl.textContent = _es ? 'Tu Pase de Ahorro aplica a todo en esta página' : 'Your Savings Pass applies to everything on this page';
+      if (discountEl) discountEl.textContent = _es
+        ? 'Completa tu sistema de sueno y lleva tus recomendaciones y Pase de Ahorro de 30 dias contigo'
+        : 'Complete your sleep system, then bring home your matches and 30-day Savings Pass';
       setTimeout(() => { header.style.opacity = '1'; header.style.transform = 'translateY(0)'; }, 100);
       setTimeout(() => { badge.style.opacity = '1'; badge.style.transform = 'scale(1)'; }, 300);
       setTimeout(() => { analyzing.style.opacity = '1'; }, 500);
@@ -9963,7 +10339,7 @@
       // Update button state
       var btn = document.getElementById('drawerInterestedBtn');
       if (btn) {
-        btn.textContent = currentLang === 'es' ? '✓ ¡Guardado!' : '✓ Saved!';
+        btn.textContent = currentLang === 'es' ? '✓ Finalista guardado' : '✓ Finalist saved';
         btn.style.background = 'linear-gradient(180deg,var(--color-match-positive),#4caf6e)';
       }
       // Update picks badge
@@ -10023,7 +10399,56 @@
       showScreen('hf2Screen');
     };
 
+    window.backToResultsFromReview = function() {
+      if (!_resultsState) return;
+      _renderResults();
+      showScreen('resultsScreen');
+    };
+
+    window.showMattressInResults = function(mattressId, tier) {
+      if (!_resultsState || !mattressId || !tier) return;
+      _resultsState.activeTier = tier;
+      _renderResults();
+      showScreen('resultsScreen');
+      setTimeout(function() {
+        var card = document.querySelector(
+          '.noct-toppick[data-id="' + mattressId + '"], .noct-support-card[data-id="' + mattressId + '"]'
+        );
+        if (!card) return;
+        card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        card.classList.add('review-return-highlight');
+        setTimeout(function() { card.classList.remove('review-return-highlight'); }, 1400);
+      }, 80);
+    };
+
     function renderHf2() {
+      var es = currentLang === 'es';
+      var backBtn = document.getElementById('hf2BackToMatches');
+      if (backBtn) backBtn.textContent = es ? '← Volver a colchones' : '← Back to matches';
+      var reviewCopy = {
+        hf2ReviewEyebrow: es ? 'Revisar con el cliente' : 'Review with the customer',
+        hf2ReviewTitle: es ? 'Revisa Tu Plan de Sueño' : 'Review Your Sleep Plan',
+        hf2ReviewSubtitle: es
+          ? 'Un resumen rapido de lo que importa, lo que se sintio mejor y lo que debe quedar en la lista.'
+          : 'A quick recap of what matters, what felt best, and what to keep on the shortlist.',
+        hf2NeedsLabel: es ? 'Lo que queriamos resolver' : 'What we set out to solve',
+        hf2FinalistsLabel: es ? 'Tus finalistas' : 'Your finalists',
+        hf2FinalistsHint: es ? 'Revisa los colchones que el cliente eligio conservar.' : 'Review the mattresses the customer chose to keep.',
+        hf2SystemLabel: es ? 'Sistema de Sueno seleccionado' : 'Selected Sleep System',
+        hf2SystemHint: es ? 'Solo las piezas que ya se agregaron al plan.' : 'Only the pieces already added to the plan.',
+        hf2PassLabel: es ? 'Tu consulta esta lista para guardar' : 'Your consultation is ready to save',
+        hf2PassHint: es
+          ? 'Revisen el plan juntos y luego revela el Pase de Ahorro de 30 dias.'
+          : 'Review the plan together, then reveal the 30-day Savings Pass.'
+      };
+      Object.keys(reviewCopy).forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.textContent = reviewCopy[id];
+      });
+      var compareBtn = document.getElementById('hf2CompareBtn');
+      if (compareBtn) compareBtn.textContent = es ? 'Comparar finalistas' : 'Compare finalists';
+      var editSystemBtn = document.getElementById('hf2EditSystemBtn');
+      if (editSystemBtn) editSystemBtn.textContent = es ? 'Editar Sistema de Sueno' : 'Edit Sleep System';
       renderHf2Brief();
       renderHf2Picks();
       renderHf2Accessories();
@@ -10077,13 +10502,17 @@
       });
       var whoParts = [size].concat(issues).filter(function(p) { return p && p.length; });
       if (who) who.textContent = whoParts.join(' · ');
-      // Profile row: sleep_position · health_conditions · firmness. Graceful empty handling.
+      // Profile row: position · conditions · preferred feel · temperature.
       var position = answerLabelFor('sleep_position', answers.sleep_position);
       var conditions = (answers.health_conditions || []).map(function(id) {
         return answerLabelFor('health_conditions', id);
       });
-      var firmness = answerLabelFor('firmness', answers.firmness);
-      var profileParts = [position].concat(conditions, [firmness])
+      var firmnessScore = Number(answers.firmness);
+      var firmness = Number.isFinite(firmnessScore)
+        ? firmnessFeel(firmnessScore) + ' ' + firmnessScore + '/10'
+        : '';
+      var temperature = answerLabelFor('temperature', answers.temperature);
+      var profileParts = [position].concat(conditions, [firmness, temperature])
         .filter(function(p) { return p && p.length; });
       if (profile) profile.textContent = profileParts.join(' · ');
     }
@@ -10105,23 +10534,11 @@
     }
 
     // ---- Picks ---------------------------------------------------------------
-    // One pick per tier for the RSA handoff. Resolution order per tier:
-    //   1. window._savedPicks — most-recently-saved entry whose tier matches
-    //      (customer's explicit selection from results-screen card or drawer).
-    //   2. _resultsState.tierData[tier][0] — algorithm's top-scoring mattress
-    //      in that tier (fallback when customer didn't save anything for the tier).
-    // User intent overrides algorithm so the handoff reflects what the customer
-    // actually said they're interested in.
-
-    function getSavedPickForTier(tier) {
-      var saved = window._savedPicks;
-      if (!Array.isArray(saved) || saved.length === 0) return null;
-      for (var i = saved.length - 1; i >= 0; i--) {
-        var p = saved[i];
-        if (p && p.tier === tier && p.id) return p;
-      }
-      return null;
-    }
+    // The review is chosen-first. It shows every mattress the customer saved.
+    // Only when the customer saved nothing does it fall back to one suggested
+    // starting point per tier.
+    window._mattressReactions = window._mattressReactions || {};
+    window._favoriteMattressId = window._favoriteMattressId || '';
 
     function renderHf2Picks() {
       var list = document.getElementById('hf2PicksList');
@@ -10129,25 +10546,32 @@
       list.innerHTML = '';
       var state = (typeof _resultsState !== 'undefined' && _resultsState) ? _resultsState : null;
       if (!state || !state.tierData) return;
-      // 5d differentiation ordering: full-pitch vs coaching variant is enforced
-      // by tier — gold/silver are always full-pitch (Spring Air premium and
-      // H/K silvers), bronze can be either (Spring Air Back Supporter or
-      // Restonic ComfortCare → full-pitch; any Bel-O-Pedic → coaching). Never
-      // the reverse. If scoring ever lands a coaching-only sub-brand on gold
-      // or silver, that's a scoring bug, not a render concern — no in-renderer
-      // reorder. Spec: docs/5d-content-spec.md.
-      ['gold', 'silver', 'bronze'].forEach(function(tier) {
-        var savedForTier = getSavedPickForTier(tier);
-        var sourceId = savedForTier
-          ? savedForTier.id
-          : ((state.tierData[tier] || [])[0] || {}).id;
-        if (!sourceId) return;
-        var fullMattress = (MATTRESSES && MATTRESSES[tier] || []).find(function(m) {
-          return m.id === sourceId;
+      var saved = Array.isArray(window._savedPicks) ? window._savedPicks.slice() : [];
+      var reviewPicks = saved.map(function(p) {
+        var data = window._drawerData && window._drawerData[p.id];
+        return data ? { m: data.m, tier: data.tier, suggested: false } : null;
+      }).filter(Boolean);
+
+      if (reviewPicks.length === 0) {
+        ['gold', 'silver', 'bronze'].forEach(function(tier) {
+          var top = (state.tierData[tier] || [])[0];
+          if (!top) return;
+          var data = window._drawerData && window._drawerData[top.id];
+          if (data) reviewPicks.push({ m: data.m, tier: data.tier, suggested: true });
         });
-        if (!fullMattress) return;
-        list.appendChild(renderHf2Pick(fullMattress, tier));
+      }
+
+      reviewPicks.sort(function(a, b) {
+        if (a.m.id === window._favoriteMattressId) return -1;
+        if (b.m.id === window._favoriteMattressId) return 1;
+        return 0;
       });
+      reviewPicks.forEach(function(item) {
+        list.appendChild(renderHf2Pick(item.m, item.tier, item.suggested));
+      });
+
+      var compareBtn = document.getElementById('hf2CompareBtn');
+      if (compareBtn) compareBtn.disabled = saved.length < 2;
     }
 
     // Templated pivot-reason archetype labels for silver/bronze. Lowercase per
@@ -10215,14 +10639,173 @@
       return '<div class="noct-handoff-brand-panel__story">' + renderPitchProse(content.story) + '</div>';
     }
 
-    function renderHf2Pick(m, tier) {
+    function mattressResponseLabel(m) {
+      var features = (m.features || []).join(' ').toLowerCase();
+      var tags = (m.tags || []).join(' ').toLowerCase();
+      var haystack = features + ' ' + tags + ' ' + (m.archetype || '').toLowerCase();
+      if (haystack.includes('latex')) return currentLang === 'es' ? 'latex elastico' : 'buoyant latex';
+      if (haystack.includes('grid') || haystack.includes('gelflex')) return currentLang === 'es' ? 'rejilla sensible' : 'responsive grid';
+      if (haystack.includes('hybrid')) return currentLang === 'es' ? 'hibrido sensible' : 'responsive hybrid';
+      if (haystack.includes('foam') || haystack.includes('memory')) return currentLang === 'es' ? 'contorno cercano' : 'close contour';
+      if (haystack.includes('coil') || haystack.includes('spring')) return currentLang === 'es' ? 'soporte de resortes' : 'coil-supported';
+      return currentLang === 'es' ? 'soporte equilibrado' : 'balanced support';
+    }
+
+    function mattressShortlistFitText(m) {
+      var es = currentLang === 'es';
+      var features = (m.features || []).join(' ').toLowerCase();
+      var issues = answers.sleep_issues || [];
+      var needs = [];
+      if ((answers.temperature === 'hot' || issues.includes('hot')) && features.includes('cooling')) {
+        needs.push(es ? 'dormir mas fresco' : 'cooler sleep');
+      }
+      if ((answers.sleep_position === 'side' || issues.includes('hip_pain') || issues.includes('stiff'))
+          && (features.includes('pressure') || features.includes('plush'))) {
+        needs.push(es ? 'alivio de presion' : 'pressure relief');
+      }
+      if ((answers.partner_sleep === 'partner' || answers.partner_sleep === 'family')
+          && (features.includes('motion') || features.includes('hybrid'))) {
+        needs.push(es ? 'menos movimiento de la pareja' : 'less partner disturbance');
+      }
+      if ((issues.includes('back_pain') || (answers.health_conditions || []).includes('extra_support'))
+          && (features.includes('support') || features.includes('zoned'))) {
+        needs.push(es ? 'apoyo para la espalda baja' : 'lower-back support');
+      }
+      needs = needs.slice(0, 3);
+
+      var feel = firmnessFeel(m.firmness);
+      if (!needs.length) {
+        return es
+          ? 'Ofrece un punto de partida ' + feel.toLowerCase() + ' que encaja con tu perfil general de sueno.'
+          : 'It gives you a ' + feel.toLowerCase() + ' starting point that fits your overall sleep profile.';
+      }
+      var last = needs.pop();
+      var needsText = needs.length
+        ? needs.join(', ') + (es ? ' y ' : ', and ') + last
+        : last;
+      return es
+        ? 'Ofrece una sensacion ' + feel.toLowerCase() + ' con enfoque adicional en ' + needsText + '.'
+        : 'It gives you a ' + feel.toLowerCase() + ' feel with added focus on ' + needsText + '.';
+    }
+
+    function mattressDifferentiators(m) {
+      var authored = Array.isArray(m.differentiators) ? m.differentiators.map(function(item) {
+        return {
+          title: L(item && item.title),
+          detail: L(item && item.detail)
+        };
+      }).filter(function(item) {
+        return item.title || item.detail;
+      }) : [];
+      if (authored.length) return authored.slice(0, 2);
+
+      return [
+        {
+          title: m.archetype || (currentLang === 'es' ? 'Su caracter principal' : 'Its defining character'),
+          detail: topPickReasonText(m) || m.highlight || ''
+        },
+        {
+          title: currentLang === 'es' ? 'Como se siente diferente' : 'How it feels different',
+          detail: mattressDifferenceText(m)
+        }
+      ].filter(function(item) {
+        return item.title || item.detail;
+      }).slice(0, 2);
+    }
+
+    function getMattressTrialPrompts(m) {
+      var es = currentLang === 'es';
+      var prompts = [];
+      var features = (m.features || []).join(' ').toLowerCase();
+      var response = mattressResponseLabel(m);
+      var archetype = (m.archetype || '').toLowerCase();
+
+      if (archetype.includes('smart') || features.includes('zoned') && (m.tags || []).join(' ').toLowerCase().includes('adjustable')) {
+        prompts.push(es
+          ? 'Pide cambiar la firmeza de un lado. Puedes sentir una diferencia clara sin cambiar toda la cama?'
+          : 'Ask to change the firmness on one side. Can you feel a clear difference without changing the whole bed?');
+      } else if (response === 'responsive grid' || response === 'rejilla sensible') {
+        prompts.push(es
+          ? 'Mueve el hombro o la cadera. La rejilla cede justo bajo ese punto y sigue apoyando alrededor?'
+          : 'Shift your shoulder or hip. Does the grid flex right under that point while staying supportive around it?');
+      } else if (response === 'responsive hybrid' || response === 'hibrido sensible') {
+        prompts.push(es
+          ? 'Gira una vez. La elevacion de los resortes hace que moverte sea mas facil que en las opciones de espuma?'
+          : 'Roll over once. Does the coil lift make movement easier than on the foam options?');
+      } else if (response === 'close contour' || response === 'contorno cercano') {
+        prompts.push(es
+          ? 'Quedate quieto unos segundos. Nota que tan lentamente la superficie se adapta a tu cuerpo.'
+          : 'Stay still for a few seconds. Notice how slowly the surface settles around your body.');
+      } else if (response === 'buoyant latex' || response === 'latex elastico') {
+        prompts.push(es
+          ? 'Presiona la superficie y suelta. Nota que tan rapido recupera su forma sin dejarte hundido.'
+          : 'Press into the surface and release. Notice how quickly it rebounds without leaving you sunk in.');
+      } else {
+        prompts.push(es
+          ? 'Cambia entre tus posiciones normales. Nota cuanto empuje y elevacion sientes debajo de ti.'
+          : 'Move through your normal sleep positions. Notice how much pushback and lift you feel underneath.');
+      }
+
+      if (answers.temperature === 'hot' || features.includes('cooling')) {
+        prompts.push(es
+          ? 'Quedate un minuto completo. La superficie sigue sintiendose fresca o empieza a guardar calor?'
+          : 'Stay for a full minute. Does the surface still feel cool or begin holding heat?');
+      } else if (answers.partner_sleep !== 'solo'
+          && answers.partner_disturbance
+          && answers.partner_disturbance !== 'not_applicable') {
+        prompts.push(es
+          ? 'Pide que tu acompanante se mueva. Cuanto movimiento llega a tu lado?'
+          : 'Have your partner move. How much motion reaches your side?');
+      } else {
+        prompts.push(es
+          ? 'Compara con el colchon anterior. Se siente mas suave, mas firme o mas equilibrado?'
+          : 'Compare it with the last mattress. Does it feel softer, firmer, or more balanced?');
+      }
+      return prompts.slice(0, 2);
+    }
+
+    function mattressDifferenceText(m) {
+      var response = mattressResponseLabel(m);
+      var es = currentLang === 'es';
+      if (response === 'responsive hybrid' || response === 'hibrido sensible') {
+        return es
+          ? 'Una sensacion mas elastica y facil para moverse que un colchon de contorno profundo.'
+          : 'A bouncier, easier-to-move-on feel than a deep-contouring foam mattress.';
+      }
+      if (response === 'close contour' || response === 'contorno cercano') {
+        return es
+          ? 'Mas abrazo y aislamiento de movimiento, con menos rebote que un hibrido.'
+          : 'More contouring and motion isolation, with less bounce than a hybrid.';
+      }
+      if (response === 'buoyant latex' || response === 'latex elastico') {
+        return es
+          ? 'Mas elevacion y respuesta inmediata, con menos sensacion de hundimiento.'
+          : 'More lift and immediate response, with less of a sinking-in sensation.';
+      }
+      if (response === 'responsive grid' || response === 'rejilla sensible') {
+        return es
+          ? 'Una sensacion flotante y flexible que cede bajo los puntos de presion.'
+          : 'A floating, flexible feel that gives way under pressure points.';
+      }
+      return es
+        ? 'Una sensacion equilibrada que vale comparar directamente con tu otro finalista.'
+        : 'A balanced feel worth comparing directly with your other finalist.';
+    }
+
+    function renderHf2Pick(m, tier, suggested) {
       var card = document.createElement('div');
       card.className = 'hf2-pick' + (tier === 'gold' ? ' hf2-pick--gold' : '');
 
       var tierTag = document.createElement('div');
       tierTag.className = 'hf2-pick__tier';
       // Lowercase content; brass small-caps appearance comes from CSS letter-spacing.
-      tierTag.textContent = tier + ' · ' + (m.archetype || '');
+      var tierNames = currentLang === 'es'
+        ? { gold: 'Oro', silver: 'Plata', bronze: 'Bronce' }
+        : { gold: 'Gold', silver: 'Silver', bronze: 'Bronze' };
+      tierTag.textContent = (suggested
+        ? (currentLang === 'es' ? 'Sugerencia · ' : 'Suggested · ')
+        : (m.id === window._favoriteMattressId ? (currentLang === 'es' ? 'Favorito · ' : 'Favorite · ') : ''))
+        + tierNames[tier] + ' · ' + firmnessFeel(m.firmness) + ' · ' + mattressResponseLabel(m);
       card.appendChild(tierTag);
 
       var name = document.createElement('div');
@@ -10232,47 +10815,97 @@
 
       var reason = document.createElement('div');
       reason.className = 'hf2-pick__reason';
-      reason.textContent = hf2ReasonFor(m, tier);
+      var priorities = buildMattressPriorities(m);
+      reason.textContent = priorities.length
+        ? priorities[0].title + ' — ' + priorities[0].desc
+        : hf2ReasonFor(m, tier);
       card.appendChild(reason);
 
-      // Chips from displayBadges (m.tags / m.tags_es). Per Decision A1, ship
-      // with existing taxonomic chips; pitch-shaped chip authoring is deferred
-      // to a future content pass informed by RSA field data.
-      var chipSource = (currentLang === 'es' && Array.isArray(m.tags_es) && m.tags_es.length > 0)
-        ? m.tags_es : (m.tags || []);
-      if (chipSource.length > 0) {
-        var chipsEl = document.createElement('div');
-        chipsEl.className = 'hf2-pick__chips';
-        chipSource.forEach(function(c) {
-          var chip = document.createElement('span');
-          chip.className = 'hf2-chip';
-          chip.textContent = c;
-          chipsEl.appendChild(chip);
-        });
-        card.appendChild(chipsEl);
+      var reaction = window._mattressReactions[m.id];
+      if (reaction) {
+        var reactionEl = document.createElement('div');
+        reactionEl.className = 'hf2-pick__reaction';
+        reactionEl.innerHTML = '<span class="hf2-pick__reaction-label">'
+          + (currentLang === 'es' ? 'Su reaccion:' : 'Your reaction:')
+          + '</span>' + escapeHtml(reactionLabel(reaction));
+        card.appendChild(reactionEl);
       }
-      // Pitch content (lead/demo/close, rsaNote) was relocated to the mattress
-      // drawer (openMattressDrawer) — hf2 is a true summary surface now.
+
+      var actions = document.createElement('div');
+      actions.className = 'hf2-pick__actions';
+      actions.innerHTML =
+        '<button class="hf2-pick__action' + (m.id === window._favoriteMattressId ? ' is-selected' : '') + '"'
+          + ' onclick="window.toggleFavoriteMattress(\'' + m.id + '\')"'
+          + ' ontouchend="event.preventDefault();window.toggleFavoriteMattress(\'' + m.id + '\');">'
+          + (currentLang === 'es' ? 'Favorito' : 'Favorite') + '</button>'
+        + '<button class="hf2-pick__action"'
+          + ' onclick="window.showMattressInResults(\'' + m.id + '\',\'' + tier + '\')"'
+          + ' ontouchend="event.preventDefault();window.showMattressInResults(\'' + m.id + '\',\'' + tier + '\');">'
+          + (currentLang === 'es' ? 'Ver en colchones →' : 'View in matches →') + '</button>'
+        + (!suggested
+          ? '<button class="hf2-pick__action hf2-pick__action--remove"'
+            + ' onclick="window.removeReviewMattress(\'' + m.id + '\')"'
+            + ' ontouchend="event.preventDefault();window.removeReviewMattress(\'' + m.id + '\');">'
+            + (currentLang === 'es' ? 'Quitar' : 'Remove') + '</button>'
+          : '');
+      card.appendChild(actions);
       return card;
     }
 
+    function reactionLabel(reaction) {
+      var labels = currentLang === 'es'
+        ? { soft: 'Muy suave', good: 'Buena sensacion', firm: 'Muy firme' }
+        : { soft: 'Too soft', good: 'Good feel', firm: 'Too firm' };
+      return labels[reaction] || reaction;
+    }
+
+    window.setMattressReaction = function(mattressId, reaction) {
+      window._mattressReactions = window._mattressReactions || {};
+      window._mattressReactions[mattressId] = reaction;
+      renderHf2();
+    };
+
+    window.setDrawerReaction = function(reaction) {
+      var mattressId = window._currentDrawerMattressId;
+      if (!mattressId) return;
+      window._mattressReactions = window._mattressReactions || {};
+      window._mattressReactions[mattressId] = reaction;
+      document.querySelectorAll('#drawerReactionRow button').forEach(function(btn) {
+        btn.classList.toggle('is-selected', btn.getAttribute('data-reaction') === reaction);
+      });
+    };
+
+    window.toggleFavoriteMattress = function(mattressId) {
+      window._favoriteMattressId = window._favoriteMattressId === mattressId ? '' : mattressId;
+      renderHf2();
+    };
+
+    window.removeReviewMattress = function(mattressId) {
+      window._savedPicks = (window._savedPicks || []).filter(function(p) {
+        return p.id !== mattressId;
+      });
+      if (window._favoriteMattressId === mattressId) window._favoriteMattressId = '';
+      if (window._updatePicksBadge) window._updatePicksBadge();
+      renderHf2();
+      if (_resultsState) _renderResults();
+    };
+
+    window.compareReviewFinalists = function() {
+      var saved = Array.isArray(window._savedPicks) ? window._savedPicks : [];
+      if (saved.length < 2) return;
+      var ordered = saved.slice().sort(function(a, b) {
+        if (a.id === window._favoriteMattressId) return -1;
+        if (b.id === window._favoriteMattressId) return 1;
+        return 0;
+      });
+      window._compareSelected = ordered.slice(0, 2).map(function(p) { return p.id; });
+      window._compareOrigin = 'review';
+      window.openCompareModal();
+    };
+
     // ---- Accessories block ---------------------------------------------------
-    // Renders under "Lead with" beneath the mattress picks. Three branches:
-    //   1. cart-empty               → combined block ("Your recommended sleep
-    //                                  system"), top 3 algorithm-scored items.
-    //   2. cart-non-empty + recs    → cart block ("In your list", primary) +
-    //                                  recommended block ("Round out your
-    //                                  system", secondary), top 2 not-in-cart.
-    //   3. cart-non-empty + no recs → cart block alone (pool exhausted; clean
-    //                                  fallback, no empty-state message).
-    //
-    // Recommendation pool excludes any accessory whose category has at least
-    // one cart item (id-keyed comparison via canonical-EN category names —
-    // dodges the EN/ES category-string mismatch since cart values store
-    // resolved-language strings while ACCESSORIES.category may be {en, es}).
-    //
-    // Read-only display: tap handlers intentionally absent. Cart removal
-    // stays on the accessories screen via the existing _toggleAcc.
+    // Shared review shows only the components the customer already selected.
+    // Additional recommendations remain on the Sleep System screen.
     function renderHf2Accessories() {
       var container = document.getElementById('hf2AccessoriesList');
       if (!container) return;
@@ -10285,44 +10918,13 @@
       var cartItems = (typeof ACCESSORIES !== 'undefined' ? ACCESSORIES : []).filter(function(a) {
         return cartIds.has(a.id);
       });
-      var excludedCats = new Set(cartItems.map(function(a) {
-        return typeof a.category === 'object' ? a.category.en : a.category;
-      }));
-
-      var scored = scoreAccessoriesFromAnswers();
-      var recommended = scored.filter(function(a) {
-        var catEn = typeof a.category === 'object' ? a.category.en : a.category;
-        return !excludedCats.has(catEn);
-      });
-
-      var cartCount = cartItems.length;
-      var recCap = cartCount === 0 ? 3 : 2;
-      var topRecommended = recommended.slice(0, recCap);
-
-      if (cartCount === 0) {
-        if (topRecommended.length > 0) {
-          container.appendChild(renderHf2AccBlock(
-            es ? 'Tu sistema de sueño recomendado' : 'Your recommended sleep system',
-            topRecommended,
-            false
-          ));
-        }
-        return;
-      }
-
-      // Cart non-empty — primary block always renders.
-      container.appendChild(renderHf2AccBlock(
-        es ? 'En tu lista' : 'In your list',
-        cartItems,
-        false
-      ));
-
-      // Secondary recommended block only when pool not exhausted.
-      if (topRecommended.length > 0) {
+      var section = document.getElementById('hf2SleepSystemSection');
+      if (section) section.style.display = cartItems.length ? '' : 'none';
+      if (cartItems.length > 0) {
         container.appendChild(renderHf2AccBlock(
-          es ? 'Completa tu sistema' : 'Round out your system',
-          topRecommended,
-          true
+          es ? 'Incluido en tu plan' : 'Included in your plan',
+          cartItems,
+          false
         ));
       }
     }
@@ -10394,10 +10996,10 @@
     }
 
     // ---- Action buttons ------------------------------------------------------
-    // Reveal button: pre-reveal state shows "Savings Pass / Reveal for
+    // Reveal button: pre-reveal state shows "30-Day Savings Pass / Reveal for
     // customer →". Tap fires the savings pass certificate reveal and
-    // transitions the button to the --revealed state showing the code +
-    // percentage. Idempotent across screen revisits within a session —
+    // transitions the button to the --revealed state showing the code, value
+    // and exact expiration. Idempotent across screen revisits within a session —
     // startOver() clears the --revealed class so a fresh quiz session
     // re-renders the pre-reveal state.
     function renderHf2DiscountButton() {
@@ -10409,7 +11011,7 @@
       var es = currentLang === 'es';
       var leftSpan = btn.querySelectorAll('span')[0];
       var rightSpan = btn.querySelectorAll('span')[1];
-      if (leftSpan)  leftSpan.textContent  = es ? 'Pase de Ahorro'            : 'Savings Pass';
+      if (leftSpan)  leftSpan.textContent  = es ? 'Pase de Ahorro de 30 Dias' : '30-Day Savings Pass';
       if (rightSpan) rightSpan.textContent = es ? 'Revelar para el cliente →' : 'Reveal for customer →';
       btn.disabled = false;
       btn.onclick = function() {
@@ -10418,9 +11020,13 @@
         // re-trigger. Subsequent invocations hit a null handler.
         btn.onclick = null;
         btn.classList.add('hf2-discount-btn--revealed');
-        var dreamCode = generateDreamCode(analytics.sessionId);
-        if (leftSpan)  leftSpan.textContent  = dreamCode.code;
-        if (rightSpan) rightSpan.textContent = dreamCode.percentage + (es ? '% de descuento' : '% off');
+        var pass = generateSavingsPass(analytics.sessionId);
+        if (leftSpan) leftSpan.textContent = pass.code;
+        if (rightSpan) {
+          rightSpan.textContent = pass.percentage
+            + (es ? '% de descuento · hasta ' : '% off · through ')
+            + pass.expirationLabel;
+        }
         playSavingsPassReveal();
       };
     }
@@ -10660,6 +11266,8 @@
 
       // Reset saved picks
       window._savedPicks = [];
+      window._mattressReactions = {};
+      window._favoriteMattressId = '';
       window._updatePicksBadge();
 
       // Reset all state
@@ -10701,8 +11309,8 @@
     };
 
     // ===== Idle auto-reset (showroom tablet) =====
-    // Default 2 min on every screen; handoff (savedPicksScreen) gets 5 min so an
-    // RSA reading the Lead/Demo/Close pitch aloud doesn't get reset mid-sentence.
+    // Default 2 min on every screen; the shared review gets 5 min so an
+    // in-person customer conversation does not reset mid-review.
     (function() {
       const DEFAULT_IDLE = 120000;
       const HANDOFF_IDLE = 300000;
@@ -10713,7 +11321,7 @@
         idleTimer = setTimeout(() => { window.startOver(); }, currentTimeout);
       }
       window._setIdleScreen = function(screenId) {
-        currentTimeout = (screenId === 'savedPicksScreen') ? HANDOFF_IDLE : DEFAULT_IDLE;
+        currentTimeout = (screenId === 'hf2Screen') ? HANDOFF_IDLE : DEFAULT_IDLE;
         resetIdleTimer();
       };
       ['touchstart', 'mousemove', 'click', 'keydown', 'scroll'].forEach(evt => { document.addEventListener(evt, resetIdleTimer, { passive: true }); });
@@ -10779,33 +11387,35 @@
       if (!m1 || !m2) return;
 
       // Note which side wins on each stat for subtle highlighting
-      var pctWinner = m1.pct > m2.pct ? 0 : m2.pct > m1.pct ? 1 : null;
-
-      function colHtml(data, i) {
+      function colHtml(data) {
         var m = data.m;
         var tier = data.tier;
         var firmLabel = data.firmFeel;
-        var chips = (data.feats || []).slice(0, 4).map(function(f) {
-          return '<span class="compare-col-chip">' + (f.emoji || '') + ' ' + f.name + '</span>';
-        }).join('');
-        var isWinner = pctWinner === i;
         var _esCmp = currentLang === 'es';
         var _tierNames = _esCmp ? {gold:'Oro',silver:'Plata',bronze:'Bronce'} : {gold:'Gold',silver:'Silver',bronze:'Bronze'};
-        return '<div class="compare-col' + (isWinner ? ' winner' : '') + '">'
+        var priorities = buildMattressPriorities(m);
+        var topReason = priorities.length
+          ? priorities[0].title + ' — ' + priorities[0].desc
+          : hf2ReasonFor(m, tier);
+        var reaction = (window._mattressReactions || {})[m.id];
+        return '<div class="compare-col">'
           + (m.imageUrl ? '<div class="compare-col-img"><img src="' + m.imageUrl + '" alt="' + m.name + '"></div>' : '')
           + '<div>'
           +   '<div class="compare-col-name">' + m.name + ' <span class="price-tier">' + priceTierSymbol(tier) + '</span></div>'
           +   '<div class="compare-col-brand">' + m.brand + (m.subBrand ? ' · ' + m.subBrand : '') + '</div>'
           + '</div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Compatibilidad' : 'Match') + '</span><span class="compare-col-stat-val ' + (isWinner ? 'highlight' : '') + '">' + data.pct + '%</span></div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Firmeza' : 'Firmness') + '</span><span class="compare-col-stat-val">' + m.firmness + '/10 · ' + firmLabel + '</span></div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Nivel' : 'Tier') + '</span><span class="compare-col-stat-val">' + (_tierNames[tier] || (tier.charAt(0).toUpperCase() + tier.slice(1))) + '</span></div>'
-          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? '¿Local?' : 'Local?') + '</span><span class="compare-col-stat-val">' + (m.locallyMade ? (_esCmp ? 'Hecho localmente' : 'Made locally') : '—') + '</span></div>'
-          + '<div class="compare-col-chips">' + chips + '</div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Sensacion' : 'Feel') + '</span><span class="compare-col-stat-val">' + firmLabel + ' ' + m.firmness + '/10</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Respuesta' : 'Response') + '</span><span class="compare-col-stat-val">' + mattressResponseLabel(m) + '</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Nivel' : 'Tier') + '</span><span class="compare-col-stat-val">' + (_tierNames[tier] || tier) + '</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Por que esta aqui' : 'Why it is here') + '</span><span class="compare-col-stat-val">' + escapeHtml(topReason) + '</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Tu reaccion' : 'Your reaction') + '</span><span class="compare-col-stat-val">' + (reaction ? escapeHtml(reactionLabel(reaction)) : (_esCmp ? 'Aun no registrada' : 'Not recorded yet')) + '</span></div>'
+          + '<div class="compare-col-stat"><span class="compare-col-stat-label">' + (_esCmp ? 'Diferencia' : 'Difference') + '</span><span class="compare-col-stat-val">' + escapeHtml((mattressDifferentiators(m)[0] || {}).detail || mattressDifferenceText(m)) + '</span></div>'
           + '</div>';
       }
 
-      document.getElementById('compareCols').innerHTML = colHtml(m1, 0) + colHtml(m2, 1);
+      var title = document.getElementById('compareModalTitle');
+      if (title) title.textContent = currentLang === 'es' ? 'Compara Tus Finalistas' : 'Compare Your Finalists';
+      document.getElementById('compareCols').innerHTML = colHtml(m1) + colHtml(m2);
       var modal = document.getElementById('compareModal');
       modal.style.display = 'flex';
       modal.classList.add('visible');
@@ -10815,6 +11425,10 @@
       var modal = document.getElementById('compareModal');
       modal.style.display = 'none';
       modal.classList.remove('visible');
+      if (window._compareOrigin === 'review') {
+        window._compareOrigin = '';
+        window.clearCompare();
+      }
     };
 
     // Build the prev/next order list from result-card siblings only, then open
@@ -10891,7 +11505,7 @@
   <div id="compareModal" class="compare-modal" style="display:none;">
     <div class="compare-modal-inner">
       <div class="compare-modal-header">
-        <div style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:700;">Side by Side</div>
+        <div id="compareModalTitle" style="font-size:0.65rem; text-transform:uppercase; letter-spacing:2px; color:var(--gold); font-weight:700;">Compare Your Finalists</div>
         <button class="compare-modal-close" onclick="window.closeCompareModal()"
           ontouchend="event.preventDefault();window.closeCompareModal();">&times;</button>
       </div>
@@ -10950,7 +11564,7 @@
       var intBtn = document.getElementById('drawerInterestedBtn');
       if (intBtn) {
         var alreadySaved = window._savedPicks && window._savedPicks.some(function(p) { return p.id === mattressId; });
-        intBtn.textContent = alreadySaved ? (currentLang === 'es' ? '✓ Ya Guardado' : '✓ Already Saved') : (currentLang === 'es' ? 'Me Interesa Este' : 'I\'m Interested In This One');
+        intBtn.textContent = alreadySaved ? (currentLang === 'es' ? '✓ Finalista guardado' : '✓ Finalist saved') : (currentLang === 'es' ? 'Guardar como finalista' : 'Save as Finalist');
         intBtn.style.background = alreadySaved ? 'linear-gradient(180deg,var(--color-match-positive),#4caf6e)' : '';
       }
 
@@ -10988,80 +11602,42 @@
       document.getElementById('drawerBrand').textContent = m.brand + (m.subBrand ? ' - ' + m.subBrand : '');
       var priceSym = priceTierSymbol(d.tier || '');
       document.getElementById('drawerName').innerHTML = m.name + (priceSym ? ' <span class="price-tier">' + priceSym + '</span>' : '');
-      document.getElementById('drawerSub').textContent = (mField(m, 'tags')||[]).join(' - ');
-      document.getElementById('drawerMatch').textContent = d.pct + '% ' + (currentLang === 'es' ? 'Compatibilidad' : 'Match');
+      document.getElementById('drawerSub').textContent = d.firmFeel + ' · ' + mattressResponseLabel(m);
+      var tierNames = currentLang === 'es'
+        ? { gold: 'Oro', silver: 'Plata', bronze: 'Bronce' }
+        : { gold: 'Gold', silver: 'Silver', bronze: 'Bronze' };
+      document.getElementById('drawerMatch').textContent = tierNames[d.tier] || d.tier;
 
-      var _drawerNeedBadge = currentLang === 'es' ? 'TU NECESIDAD' : 'YOUR NEED';
-      document.getElementById('drawerFeats').innerHTML = d.feats.slice(0,3).map(function(f){
-        return '<div class="drawer-feat-row'+(f.matched?' drawer-matched':'')+'">'+
-          '<span class="drawer-feat-icon">'+f.emoji+'</span>'+
-          '<div class="drawer-feat-body">'+
-          '<div class="drawer-feat-name">'+f.name+'</div>'+
-          '<div class="drawer-feat-why">'+f.why+'</div>'+
-          '</div>'+
-          (f.matched?'<span class="drawer-feat-badge">'+_drawerNeedBadge+'</span>':'')+
-          '</div>';
+      document.getElementById('drawerFeelAnchor').textContent =
+        (currentLang === 'es' ? 'Sensacion: ' : 'Feel: ')
+        + d.firmFeel + ' ' + m.firmness + '/10 · ' + mattressResponseLabel(m);
+      document.getElementById('drawerWhyLabel').textContent = currentLang === 'es'
+        ? 'Por que llego a tus finalistas'
+        : 'Why it made your shortlist';
+      document.getElementById('drawerShortlistFit').textContent = mattressShortlistFitText(m);
+      document.getElementById('drawerDifferentiatorsLabel').textContent = currentLang === 'es'
+        ? 'Lo que hace diferente a este'
+        : 'What makes this one different';
+      document.getElementById('drawerDifferentiators').innerHTML = mattressDifferentiators(m).map(function(item) {
+        return '<div class="drawer-differentiator">'
+          + '<div class="drawer-differentiator-title">' + escapeHtml(item.title) + '</div>'
+          + '<div class="drawer-differentiator-detail">' + escapeHtml(item.detail) + '</div>'
+          + '</div>';
       }).join('');
 
-      var r = currentLang === 'es' && m.reasons_es ? m.reasons_es : (m.reasons || {});
-      document.getElementById('drawerReason').textContent = r['default'] || r.cooling || r.pressureRelief || r.support || (currentLang === 'es' ? 'Una gran opción para tu perfil de sueño.' : 'A great match for your sleep profile.');
-
-      // "What's in it" bullets — surface up to 3 per-feature reasons in the
-      // priority order below, rendered between #drawerFeats and #drawerReason
-      // so RSA selling cues land above the customer-friendly summary.
-      // Excludes 'default' since #drawerReason already shows that. Section
-      // hides when no bullets resolve so the heading doesn't orphan.
-      var BULLET_ORDER = ['cooling', 'pressureRelief', 'support', 'motionIsolation', 'plush', 'medium', 'firm', 'durability'];
-      var bullets = [];
-      for (var bi = 0; bi < BULLET_ORDER.length && bullets.length < 3; bi++) {
-        var bv = r[BULLET_ORDER[bi]];
-        if (bv && typeof bv === 'string' && bv.trim()) bullets.push(bv.trim());
-      }
-      var bulletSection = document.getElementById('drawerFeatureBulletsSection');
-      var bulletList = document.getElementById('drawerFeatureBullets');
-      if (bullets.length > 0) {
-        bulletList.innerHTML = bullets.map(function(b) {
-          return '<li>' + escapeHtml(b) + '</li>';
-        }).join('');
-        bulletSection.style.display = '';
-      } else {
-        bulletList.innerHTML = '';
-        bulletSection.style.display = 'none';
-      }
-
-      document.getElementById('drawerFirmLabel').textContent = (currentLang === 'es' ? 'Firmeza ' : 'Firmness ') + m.firmness + '/10';
-      document.getElementById('drawerFirmFeel').textContent = d.firmFeel;
-      document.getElementById('drawerFirmFill').style.width = '0%';
-      setTimeout(function(){document.getElementById('drawerFirmFill').style.width=(m.firmness*10)+'%';},100);
-      document.getElementById('drawerTags').innerHTML = (mField(m, 'tags')||[]).map(function(t){return '<span class="drawer-tag">'+t+'</span>';}).join('');
-
-      // Pitch section is hidden in the drawer pending purpose-written short
-      // talking points. The existing SUBBRAND_NOTES prose is too long to
-      // present cleanly in the drawer even when clamped — clamping cut
-      // sentences mid-thought, which read as unpolished. renderPitchHtml,
-      // SUBBRAND_NOTES, the toggle UI, and the prose-clamp CSS are all
-      // preserved for that future work; only the drawer rendering is
-      // suppressed here. The existing "Why it matches you" and "What's in
-      // it" sections above already carry the RSA selling cues for now.
-      var pitchSection = document.getElementById('drawerPitchSection');
-      if (pitchSection) {
-        pitchSection.style.display = 'none';
-        pitchSection.classList.remove('is-expanded');
-      }
-
-      // Brand heritage (Spring Air / Restonic). Bel-O-Pedic returns empty by
-      // design — no BRAND_NOTES entry, section stays hidden. Both sections
-      // can fire independently when both have content.
-      var brandHtml = renderBrandStory(m);
-      var brandSection = document.getElementById('drawerBrandSection');
-      var brandEl = document.getElementById('drawerBrandStory');
-      if (brandHtml) {
-        brandEl.innerHTML = brandHtml;
-        brandSection.style.display = '';
-      } else {
-        brandEl.innerHTML = '';
-        brandSection.style.display = 'none';
-      }
+      document.getElementById('drawerNoticeLabel').textContent = currentLang === 'es' ? 'Mientras lo pruebas, nota...' : 'As you try it, notice...';
+      document.getElementById('drawerTryPrompts').innerHTML = getMattressTrialPrompts(m).map(function(prompt) {
+        return '<div class="drawer-try-prompt">' + escapeHtml(prompt) + '</div>';
+      }).join('');
+      document.getElementById('drawerReactionLabel').textContent = currentLang === 'es' ? 'Como se sintio?' : 'How did it feel?';
+      var reactionLabels = currentLang === 'es'
+        ? { soft: 'Muy Suave', good: 'Buena Sensacion', firm: 'Muy Firme' }
+        : { soft: 'Too Soft', good: 'Good Feel', firm: 'Too Firm' };
+      document.querySelectorAll('#drawerReactionRow button').forEach(function(btn) {
+        var reaction = btn.getAttribute('data-reaction');
+        btn.textContent = reactionLabels[reaction];
+        btn.classList.toggle('is-selected', (window._mattressReactions || {})[mattressId] === reaction);
+      });
 
       document.getElementById('drawerScroll').scrollTop = 0;
       document.getElementById('drawerBackdrop').classList.add('open');

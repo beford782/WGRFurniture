@@ -114,6 +114,16 @@ foreach ($row in $rows) {
     if ($row.highlight -and $row.highlight.Trim()) { $highlight = $row.highlight.Trim() }
     $topPickEn = ""
     if ($row.topPickReason -and $row.topPickReason.Trim()) { $topPickEn = $row.topPickReason.Trim() }
+    $differentiatorEn = @(
+        @{
+            title  = if ($row.differentiator1Title) { $row.differentiator1Title.Trim() } else { "" }
+            detail = if ($row.differentiator1Detail) { $row.differentiator1Detail.Trim() } else { "" }
+        },
+        @{
+            title  = if ($row.differentiator2Title) { $row.differentiator2Title.Trim() } else { "" }
+            detail = if ($row.differentiator2Detail) { $row.differentiator2Detail.Trim() } else { "" }
+        }
+    )
 
     # Auto-resolve image URL from images/mattresses/ folder
     $imageUrl = ""
@@ -131,6 +141,10 @@ foreach ($row in $rows) {
     $highlight_es = ""
     $reasons_es = @{}
     $topPickEs = ""
+    $differentiatorEs = @(
+        @{ title = ""; detail = "" },
+        @{ title = ""; detail = "" }
+    )
     $mattressId = $row.id.Trim()
     if ($esLookup.ContainsKey($mattressId)) {
         $esRow = $esLookup[$mattressId]
@@ -157,6 +171,17 @@ foreach ($row in $rows) {
         if ($esRow.topPickReason -and $esRow.topPickReason.Trim()) {
             $topPickEs = $esRow.topPickReason.Trim()
         }
+
+        $differentiatorEs = @(
+            @{
+                title  = if ($esRow.differentiator1Title) { $esRow.differentiator1Title.Trim() } else { "" }
+                detail = if ($esRow.differentiator1Detail) { $esRow.differentiator1Detail.Trim() } else { "" }
+            },
+            @{
+                title  = if ($esRow.differentiator2Title) { $esRow.differentiator2Title.Trim() } else { "" }
+                detail = if ($esRow.differentiator2Detail) { $esRow.differentiator2Detail.Trim() } else { "" }
+            }
+        )
     }
 
     # Assemble bilingual {en, es} object. Only emit if at least one language is populated.
@@ -165,6 +190,20 @@ foreach ($row in $rows) {
         $topPickReason = [ordered]@{
             en = $topPickEn
             es = $topPickEs
+        }
+    }
+
+    $differentiators = @()
+    for ($i = 0; $i -lt 2; $i++) {
+        $enTitle = $differentiatorEn[$i].title
+        $enDetail = $differentiatorEn[$i].detail
+        $esTitle = $differentiatorEs[$i].title
+        $esDetail = $differentiatorEs[$i].detail
+        if ($enTitle -or $enDetail -or $esTitle -or $esDetail) {
+            $differentiators += ,([ordered]@{
+                title = [ordered]@{ en = $enTitle; es = $esTitle }
+                detail = [ordered]@{ en = $enDetail; es = $esDetail }
+            })
         }
     }
 
@@ -187,6 +226,7 @@ foreach ($row in $rows) {
         imageUrl        = $imageUrl
         reasons         = $reasons
         reasons_es      = $reasons_es
+        differentiators = $differentiators
     }
     if ($null -ne $topPickReason) {
         $mattress["topPickReason"] = $topPickReason
@@ -196,7 +236,7 @@ foreach ($row in $rows) {
 }
 
 # Convert to JSON and write
-$json = $result | ConvertTo-Json -Depth 4
+$json = $result | ConvertTo-Json -Depth 6
 [System.IO.File]::WriteAllText($jsonPath, $json, (New-Object System.Text.UTF8Encoding $false))
 
 $counts = "gold: $($result.gold.Count), silver: $($result.silver.Count), bronze: $($result.bronze.Count)"
