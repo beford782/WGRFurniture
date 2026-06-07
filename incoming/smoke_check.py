@@ -26,7 +26,7 @@ for rel in ["index.html", "manifest.json", "data/store-config.json",
 cfg = jload("data/store-config.json")
 if cfg:
     if cfg.get("storeName") != "WG&R Furniture": problems.append(f"storeName={cfg.get('storeName')!r}")
-    if cfg.get("languages") != ["en"]: problems.append(f"languages={cfg.get('languages')!r}")
+    if cfg.get("languages") != ["en", "es"]: problems.append(f"languages={cfg.get('languages')!r}")
     if cfg.get("allowedHosts") != ["beford782.github.io"]: problems.append(f"allowedHosts={cfg.get('allowedHosts')!r}")
     if (cfg.get("gasUrl") or "") != "": notes.append(f"gasUrl set unexpectedly: {cfg.get('gasUrl')!r}")
     if cfg.get("colors", {}).get("storePrimary") != "#B12D15": problems.append("storePrimary != #B12D15")

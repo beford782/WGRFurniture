@@ -14,11 +14,11 @@
   "review.looks_good": "Looks Good →",
   "nav.back": "← Back",
 
-  "profile.badge": "Your Sleep DNA, Decoded",
-  "profile.perfect_match": "Your Perfect Match",
+  "profile.badge": "Personalized From Your Answers",
+  "profile.perfect_match": "Your Sleep Brief",
   "profile.edit_answers": "← Edit my answers",
 
-  "results.header": "Your perfect matches are ready",
+  "results.header": "Your strongest matches are ready",
   "results.specialist_cue": "<span style=\"color:var(--gold); font-weight:700;\">Ask your sleep specialist</span> to walk you through each option below.",
   "results.tier_gold": "Gold",
   "results.tier_silver": "Silver",
@@ -56,7 +56,7 @@
   "handoff.rsa_note": "RSA NOTE:",
 
   "email.title": "Don't forget your results",
-  "email.subtitle": "Bring home your sleep profile, mattress matches, and 30-day Savings Pass so you can decide on your time.",
+  "email.subtitle": "Bring home your Sleep Brief, mattress matches, and 30-day Savings Pass so you can decide on your time.",
   "email.name_label": "Your Name",
   "email.name_placeholder": "First name",
   "email.email_label": "Email Address <span style=\"color:var(--gold);\">*</span>",
@@ -69,10 +69,10 @@
   "email.discount_hint": "Show this code to your sleep specialist · <span style=\"color:var(--gold); font-weight:600;\" id=\"dreamCodePct\"></span>",
   "email.start_new": "↺ Start New Customer",
 
-  "accessories.analysis_label": "Sleep Profile Analysis",
+  "accessories.analysis_label": "Sleep Brief Priorities",
   "accessories.title": "Your Complete Sleep System",
   "accessories.subtitle": "Your mattress is one piece of the puzzle. The right foundation, pillow, and protector complete the system.",
-  "accessories.analyzing": "Analyzing your sleep profile...",
+  "accessories.analyzing": "Applying your Sleep Brief...",
   "accessories.send_results": "Send Me My Results",
   "accessories.start_over": "Start Over",
   "accessories.tap_hint": "Tap a card to add or remove"

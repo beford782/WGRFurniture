@@ -3,10 +3,23 @@
 
 Builds an .xlsx whose tab/column headers come from the repo's shared
 tools/workbook_schema.py (so they cannot drift from what the converter reads).
-Spanish columns are intentionally left blank (languages = en only).
+Spanish product-copy columns are loaded from the canonical data translation
+files so workbook regeneration cannot silently discard approved translations.
 
 Output: incoming/WGR_Store_Data.xlsx
+
+REGEN WARNING -- data/store-config.json is hand-maintained for WG&R.
+The workbook schema does not cover every field currently in store-config.json,
+and the converter (tools/convert_store_data.py) writes only the keys in its
+STORE_CONFIG_KEY_ORDER. So regenerating this workbook and re-running the
+converter will SILENTLY DROP these hand-added fields:
+  - promotions                                  (entire block: concept promo items)
+  - text / text_es: ownershipBadge, locationsLabel, locations
+  - voice / voice_es: retailerSubline, outcomeLabel, outcomeItems
+After any regen, diff data/store-config.json and hand-merge the above back in
+(or extend tools/workbook_schema.py + the converter first).
 """
+import csv
 import os
 import sys
 
@@ -18,11 +31,33 @@ import openpyxl  # noqa: E402
 
 OUT = os.path.join(HERE, "WGR_Store_Data.xlsx")
 
+
+# ── What the redesigned WGR UI actually renders from mattress Spanish ──────────
+# The current WGR UI surfaces mattress Spanish through THREE live paths only:
+#   1. Differentiators      -> index.html mattressDifferentiators() via L({en,es})
+#   2. Priority chips        -> index.html buildMattressPriorities() (inline EN/ES)
+#   3. Match-reason maps     -> index.html (inline bilingual, keyed by feature/score)
+# The other generated mattress fields — tags_es (from displayBadges), highlight_es,
+# and reasons_es — are RETAINED here for forward compatibility but are NOT currently
+# rendered: the redesign reads neither m.tags / m.highlight nor reasons_es, and the
+# language-aware mField() helper is presently unused. In particular, reasons_es may
+# carry future-facing per-feature strings even where the English source has only
+# reason_default; do NOT treat those as live customer-facing copy unless the UI is
+# intentionally updated to render them (e.g. by wiring mField). Until the design
+# renders these fields, avoid spending further translation effort on them.
+def load_mattress_es():
+    path = os.path.join(REPO, "data", "mattresses-es.csv")
+    with open(path, encoding="utf-8", newline="") as f:
+        return {row["id"]: row for row in csv.DictReader(f) if row.get("id")}
+
+
+MATTRESS_ES = load_mattress_es()
+
 # ---- Store Info (one row) ---------------------------------------------------
 STORE = {
     "Store Name": "WG&R Furniture",
     "Store Key": "wgr",
-    "Languages": "en",
+    "Languages": "en,es",
     "Logo Line 1": "WG&R",
     "Logo Line 2": "furniture",
     "Primary Color (hex)": "#B12D15",
@@ -33,7 +68,7 @@ STORE = {
     "Public Asset Root": "https://beford782.github.io/WGRFurniture/",
     "Allowed Hosts": "beford782.github.io",
     "Discount Code Prefix": "DREAM",
-    "Discount Code Digits": 3,
+    "Discount Code Digits": 4,
     "Page Title": "DreamFinder - WG&R Furniture Sleep Quiz",
     "Meta Description": "Take the WG&R Sleep Shop quiz and get personalized mattress recommendations.",
     "OG Title": "DreamFinder - WG&R Furniture",
@@ -209,7 +244,7 @@ MATT_COLMAP = ["tier","id","name","brand","subBrand","archetype","displayPriorit
 
 def mattress_row(t):
     d = dict(zip(MATT_COLMAP, t))
-    return {
+    row = {
         "tier": d["tier"], "id": d["id"], "name": d["name"], "brand": d["brand"],
         "subBrand": d["subBrand"], "pitchKey": "", "archetype": d["archetype"],
         "displayPriority": d["displayPriority"], "firmnessScore": d["firmnessScore"],
@@ -218,6 +253,11 @@ def mattress_row(t):
         "locally-made": d["locally-made"], "features": d["features"],
         "reason_default": d["reason_default"], "topPickReason": d["topPickReason"],
     }
+    es = MATTRESS_ES.get(d["id"], {})
+    for header in schema.MATTRESSES_ES_CSV_COLUMNS:
+        if header != "id":
+            row[header + " (ES)"] = es.get(header, "")
+    return row
 
 # ---- Accessories (12) -------------------------------------------------------
 # (id,name,category,subType,price,desc,imageFull,matchTags,scores{})
@@ -225,15 +265,15 @@ A = [
  ("base-bedtech-relax","BedTech Relax Lifestyle Base","Foundations & Support","adjustable",899,
   "Adjustable power base with head & foot articulation, wireless remote, and memory positions.",
   "images/accessories/base-bedtech-relax.jpg","snoring, reflux, back_pain, all_positions",
-  {"Score: Back Pain":4,"Score: Snoring":4,"Score: Premium":3}),
+  {"Score: Back Pain":4,"Score: Snoring":4,"Score: Reflux":4,"Score: Premium":3}),
  ("base-tempur-ergo-smart","TEMPUR-Ergo Smart 3.0 Base","Foundations & Support","adjustable",2099,
   "Smart adjustable base with app control, head & foot adjustment, and sleep tracking.",
   "images/accessories/base-tempur-ergo-smart.jpg","snoring, reflux, back_pain",
-  {"Score: Back Pain":4,"Score: Snoring":4,"Score: Premium":3}),
+  {"Score: Back Pain":4,"Score: Snoring":4,"Score: Reflux":4,"Score: Premium":3}),
  ("base-purple-premium-plus","Purple Premium Plus Smart Base","Foundations & Support","adjustable",1595,
   "Smart adjustable base with app control and full head & foot articulation.",
   "images/accessories/base-purple-premium-plus.jpg","snoring, reflux, back_pain",
-  {"Score: Back Pain":4,"Score: Snoring":4,"Score: Premium":3}),
+  {"Score: Back Pain":4,"Score: Snoring":4,"Score: Reflux":4,"Score: Premium":3}),
  ("foundation-wgr-slate","WG&R Factory Direct Slate Foundation","Foundations & Support","foundation",179,
   "Sturdy standard-height foundation - solid platform support for any mattress.",
   "images/accessories/foundation-wgr-slate.jpg","all",{"Score: Default":2}),
@@ -257,22 +297,86 @@ A = [
   {"Score: Cooling":4,"Score: Hot":4,"Score: Position Side":1,"Score: Position Back":2}),
  ("protector-purple-waterproof","Purple Waterproof Protector","Protectors","",119,
   "Waterproof protector that guards your mattress while staying breathable.",
-  "images/accessories/protector-purple-waterproof.jpg","all, allergies",
+  "images/accessories/protector-purple-waterproof.jpg","all, allergies, spills, everyday",
   {"Score: Default":1,"Score: Allergies":2}),
  ("protector-healthy-sleep-encasement","Healthy Sleep Premium Encasement","Protectors","",79,
   "Full-zip encasement - allergen and dust-mite barrier on all six sides.",
-  "images/accessories/protector-healthy-sleep-encasement.jpg","allergies, all",
+  "images/accessories/protector-healthy-sleep-encasement.jpg","allergies, all, everyday",
   {"Score: Allergies":3,"Score: Default":1}),
  ("protector-tempur-breeze","TEMPUR-Protect Breeze Protector","Protectors","",249,
   "Cooling protector that adds a breathable layer of protection.",
-  "images/accessories/protector-tempur-breeze.jpg","cooling, hot_sleeper, all",
+  "images/accessories/protector-tempur-breeze.jpg","cooling, hot_sleeper, all, everyday",
   {"Score: Cooling":3,"Score: Hot":2}),
 ]
+
+ACCESSORY_ES = {
+    "base-bedtech-relax": {
+        "Name (ES)": "Base Ajustable BedTech Relax Lifestyle",
+        "Category (ES)": "Bases y Soportes",
+        "Description (ES)": "Base eléctrica ajustable con elevación de cabeza y pies, control inalámbrico y posiciones de memoria.",
+    },
+    "base-tempur-ergo-smart": {
+        "Name (ES)": "Base TEMPUR-Ergo Smart 3.0",
+        "Category (ES)": "Bases y Soportes",
+        "Description (ES)": "Base inteligente ajustable con control por aplicación, elevación de cabeza y pies, y seguimiento del sueño.",
+    },
+    "base-purple-premium-plus": {
+        "Name (ES)": "Base Inteligente Purple Premium Plus",
+        "Category (ES)": "Bases y Soportes",
+        "Description (ES)": "Base inteligente ajustable con control por aplicación y articulación completa de cabeza y pies.",
+    },
+    "foundation-wgr-slate": {
+        "Name (ES)": "Base Slate de WG&R Factory Direct",
+        "Category (ES)": "Bases y Soportes",
+        "Description (ES)": "Base resistente de altura estándar con soporte de plataforma sólida para cualquier colchón.",
+    },
+    "foundation-wgr-slate-lowpro": {
+        "Name (ES)": "Base Slate de Perfil Bajo de WG&R",
+        "Category (ES)": "Bases y Soportes",
+        "Description (ES)": "Base de menor altura, ideal para colchones altos o para lograr una apariencia de perfil bajo.",
+    },
+    "bunkie-wgr": {
+        "Name (ES)": "Tabla Bunkie de WG&R Factory Direct",
+        "Category (ES)": "Bases y Soportes",
+        "Description (ES)": "Tabla delgada de soporte de 2 pulgadas para camas de plataforma y literas.",
+    },
+    "pillow-tempur-breeze-prolo": {
+        "Name (ES)": "Almohada TEMPUR-Breeze ProLo 2.0",
+        "Category (ES)": "Almohadas",
+        "Description (ES)": "Almohada TEMPUR fresca de perfil bajo para quienes duermen boca arriba o boca abajo.",
+    },
+    "pillow-tempur-proadjust": {
+        "Name (ES)": "Almohada TEMPUR-Adapt ProAdjust",
+        "Category (ES)": "Almohadas",
+        "Description (ES)": "Almohada TEMPUR de relleno ajustable que se adapta a cualquier posición para dormir.",
+    },
+    "pillow-cooltech-graphite": {
+        "Name (ES)": "Almohada Healthy Sleep Cool-Tech Graphite",
+        "Category (ES)": "Almohadas",
+        "Description (ES)": "Almohada fresca con grafito que ayuda a disipar el calor durante toda la noche.",
+    },
+    "protector-purple-waterproof": {
+        "Name (ES)": "Protector Impermeable Purple",
+        "Category (ES)": "Protectores",
+        "Description (ES)": "Protector impermeable y transpirable que ayuda a cuidar el colchón.",
+    },
+    "protector-healthy-sleep-encasement": {
+        "Name (ES)": "Funda Integral Healthy Sleep Premium",
+        "Category (ES)": "Protectores",
+        "Description (ES)": "Funda integral con cierre que crea una barrera contra alérgenos y ácaros en los seis lados.",
+    },
+    "protector-tempur-breeze": {
+        "Name (ES)": "Protector TEMPUR-Protect Breeze",
+        "Category (ES)": "Protectores",
+        "Description (ES)": "Protector fresco que agrega una capa transpirable de protección.",
+    },
+}
 
 def accessory_row(a):
     aid,name,cat,sub,price,desc,img,tags,scores = a
     row = {"ID":aid,"Name":name,"Category":cat,"Sub-Type":sub,"Price":price,
            "Description":desc,"Image File Name":img,"Match Tags":tags}
+    row.update(ACCESSORY_ES.get(aid, {}))
     row.update(scores)
     return row
 

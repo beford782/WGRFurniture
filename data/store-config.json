@@ -2,7 +2,8 @@
   "storeName": "WG&R Furniture",
   "storeKey": "wgr",
   "languages": [
-    "en"
+    "en",
+    "es"
   ],
   "logo": {
     "main": "WG&R",
@@ -101,26 +102,83 @@
   },
   "discount": {
     "codePrefix": "DREAM",
-    "codeDigits": 3,
+    "codeDigits": 4,
     "mode": "illustrative",
     "percentage": 5,
     "validityDays": 30,
     "scope": {
       "en": "a qualifying DreamFinder mattress selection",
-      "es": "una seleccion de colchon DreamFinder que califique"
+      "es": "una selección de colchón DreamFinder que califique"
     },
     "landingHint": {
       "en": "A 30-day offer to bring home with your matches",
-      "es": "Una oferta de 30 dias para llevar con tus recomendaciones"
+      "es": "Una oferta de 30 días para llevar con tus recomendaciones"
     },
     "demoDeliveryNote": {
       "en": "Live delivery can be connected after WG&R approves the experience.",
-      "es": "La entrega real se puede conectar despues de que WG&R apruebe la experiencia."
+      "es": "La entrega real se puede conectar después de que WG&R apruebe la experiencia."
     },
     "terms": {
       "en": "Valid on qualifying mattress selections. Cannot be combined with other offers. Final eligibility confirmed by your WG&R sleep specialist.",
-      "es": "Valido en selecciones de colchones que califiquen. No se puede combinar con otras ofertas. Elegibilidad final confirmada por tu especialista de sueno de WG&R."
+      "es": "Válido en selecciones de colchones que califiquen. No se puede combinar con otras ofertas. Elegibilidad final confirmada por tu especialista de sueño de WG&R."
     }
+  },
+  "promotions": {
+    "demoOnly": true,
+    "timeZone": "America/Chicago",
+    "items": [
+      {
+        "id": "concept-tempur-event",
+        "eligibleMattressIds": ["g2"],
+        "badge": {
+          "en": "Event Offer",
+          "es": "Oferta del Evento"
+        },
+        "headline": {
+          "en": "Save 20% through June 30",
+          "es": "Ahorra 20% hasta el 30 de junio"
+        },
+        "detail": {
+          "en": "A strong model-specific event offer shown after comfort fit is established.",
+          "es": "Una oferta especial para este modelo que aparece después de confirmar la comodidad."
+        },
+        "savingsPassPolicy": "alternative"
+      },
+      {
+        "id": "concept-purple-bundle",
+        "eligibleMattressIds": ["g7"],
+        "badge": {
+          "en": "Bonus Bundle",
+          "es": "Paquete de Regalo"
+        },
+        "headline": {
+          "en": "Includes a premium pillow pair",
+          "es": "Incluye un par de almohadas premium"
+        },
+        "detail": {
+          "en": "A value-add bundle that keeps the mattress price conversation secondary.",
+          "es": "Un paquete de valor que mantiene el precio del colchón en segundo plano."
+        },
+        "savingsPassPolicy": "stackable"
+      },
+      {
+        "id": "concept-smartlife-financing",
+        "eligibleMattressIds": ["g9"],
+        "badge": {
+          "en": "Financing",
+          "es": "Financiamiento"
+        },
+        "headline": {
+          "en": "0% APR for 36 months",
+          "es": "0% APR por 36 meses"
+        },
+        "detail": {
+          "en": "A financing example for a premium smart mattress, subject to approval.",
+          "es": "Un ejemplo de financiamiento para un colchón inteligente premium, sujeto a aprobación."
+        },
+        "savingsPassPolicy": "specialist_confirm"
+      }
+    ]
   },
   "voice": {
     "retailerSubline": "SLEEP SHOP",
@@ -133,7 +191,7 @@
     "ctaPrimary": "Find My Sleep Match",
     "timeEstimate": "About 2 minutes · No pressure",
     "outcomeLabel": "Your consultation builds",
-    "outcomeItems": "Comfort Profile · Mattress Matches · Sleep System Picks · Savings Pass"
+    "outcomeItems": "Sleep Brief · Mattress Matches · Sleep System Picks · Savings Pass"
   },
   "voice_es": {
     "retailerSubline": "",

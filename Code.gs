@@ -5,6 +5,10 @@
 //   - replace with a retailer-specific backup inbox if appropriate
 //   - set to '' to disable BCC for this deployment
 var RESULT_EMAIL_BCC = 'dreamfinderleads@gmail.com';
+// Defensive payload ceiling, not a merchandising limit. The kiosk currently
+// selects at most one product per Sleep System step, but future stores may add
+// more categories and should not silently lose items after the third.
+var MAX_EMAIL_ACCESSORIES = 20;
 
 // Helper: escape five HTML metacharacters; safe for attribute values and text content.
 function _escapeHtml(s) {
@@ -79,6 +83,7 @@ function doPost(e) {
     var sleepProfile = _safeText(data.sleepProfile, 500);
     var topMatch = _safeText(data.topMatch, 200);
     var matchPct = _safeText(data.matchPct, 10);
+    var meetsMatchThreshold = data.meetsMatchThreshold === true;
     var rsa = _safeText(data.rsa, 100);
     var discount = _safeText(data.discount || 5, 10);
     var passExpiration = _safeText(data.passExpiration, 80) || '30 days from issue';
@@ -105,14 +110,18 @@ function doPost(e) {
       phone,
       dreamCode,
       lang,
-      _safeArray(data.allMatches).slice(0, 6).map(function(m) { return _safeText(m && m.name, 200) + ' (' + _safeText(m && m.matchPct, 10) + '%)'; }).join(', '),
-      _safeArray(data.accessories).slice(0, 3).map(function(a) { return _safeText(a && a.name, 200); }).join(', '),
+      _safeArray(data.allMatches).slice(0, 6).map(function(m) {
+        return _safeText(m && m.name, 200) + (m && m.meetsMatchThreshold === true
+          ? ' (' + _safeText(m.matchPct, 10) + '%)'
+          : ' (additional comparison option)');
+      }).join(', '),
+      _safeArray(data.accessories).slice(0, MAX_EMAIL_ACCESSORIES).map(function(a) { return _safeText(a && a.name, 200); }).join(', '),
       rsa
     ]);
 
     // --- Send email with fallback ---
     var subject = isEs
-      ? 'Tu Pase de Ahorro de 30 dias de ' + storeName
+      ? 'Tu Pase de Ahorro de 30 días de ' + storeName
       : 'Your 30-Day Savings Pass from ' + storeName;
     var senderName = isEs
       ? 'Equipo de Descanso de ' + storeName
@@ -125,6 +134,7 @@ function doPost(e) {
       sleepProfile: sleepProfile,
       topMatch: topMatch,
       matchPct: matchPct,
+      meetsMatchThreshold: meetsMatchThreshold,
       discount: discount,
       passExpiration: passExpiration,
       passScope: passScope,
@@ -135,10 +145,11 @@ function doPost(e) {
           name: _safeText(m && m.name, 200),
           brand: _safeText(m && m.brand, 100),
           matchPct: _safeText(m && m.matchPct, 10),
+          meetsMatchThreshold: m && m.meetsMatchThreshold === true,
           imageUrl: _safeImageUrl(m && m.imageUrl)
         };
       }),
-      accessories: _safeArray(data.accessories).slice(0, 3).map(function(a) {
+      accessories: _safeArray(data.accessories).slice(0, MAX_EMAIL_ACCESSORIES).map(function(a) {
         return {
           name: _safeText(a && a.name, 200),
           category: _safeText(a && a.category, 100),
@@ -164,27 +175,44 @@ function doPost(e) {
 
     } catch (emailErr) {
       Logger.log('HTML email failed, trying plain text: ' + emailErr.toString());
+      var accessoryLines = safeData.accessories.map(function(a, i) {
+        return (i + 1) + '. ' + a.name + (a.category ? ' - ' + a.category : '');
+      }).join('\n');
+      var comparisonLabel = isEs ? 'Opción adicional para comparar' : 'Additional comparison option';
+      var topMatchDetail = meetsMatchThreshold
+        ? matchPct + (isEs ? '% compatibilidad' : '% match')
+        : comparisonLabel;
       var plainBody = isEs
         ? ('Hola ' + firstName + ',\n\n'
-          + 'Tu mejor opci\u00f3n: ' + topMatch + ' (' + matchPct + '% compatibilidad)\n'
-          + 'Perfil de sue\u00f1o: ' + sleepProfile + '\n'
-          + 'Tu pase de ahorro de 30 dias: ' + discount + '% DE DESCUENTO\n'
+          + (meetsMatchThreshold ? 'Mejor punto de partida: ' : 'Opción para comparar: ') + topMatch + ' (' + topMatchDetail + ')\n'
+          + 'Resumen de sue\u00f1o: ' + sleepProfile + '\n'
+          + 'Tu pase de ahorro de 30 días: ' + discount + '% DE DESCUENTO\n'
           + 'C\u00f3digo del pase: ' + dreamCode + '\n\n'
-          + 'Valido en: ' + passScope + '\n'
-          + 'Valido hasta: ' + passExpiration + '\n'
+          + 'Válido en: ' + passScope + '\n'
+          + 'Válido hasta: ' + passExpiration + '\n'
           + passTerms + '\n\n'
-          + 'Muestra este correo a tu especialista de sueno de ' + storeName + '.\n\n'
-          + safeData.allMatches.map(function(m, i) { return (i+1) + '. ' + m.name + ' - ' + m.matchPct + '% compatibilidad'; }).join('\n'))
+          + 'Muestra este correo a tu especialista de sueño de ' + storeName + '.\n\n'
+          + safeData.allMatches.map(function(m, i) {
+              return (i+1) + '. ' + m.name + ' - ' + (m.meetsMatchThreshold
+                ? m.matchPct + '% compatibilidad'
+                : comparisonLabel);
+            }).join('\n')
+          + (accessoryLines ? '\n\nTu Sistema de Sueño guardado:\n' + accessoryLines : ''))
         : ('Hi ' + firstName + ',\n\n'
-          + 'Your top match: ' + topMatch + ' (' + matchPct + '% match)\n'
-          + 'Sleep profile: ' + sleepProfile + '\n'
+          + (meetsMatchThreshold ? 'Best place to start: ' : 'Option to compare: ') + topMatch + ' (' + topMatchDetail + ')\n'
+          + 'Sleep Brief: ' + sleepProfile + '\n'
           + 'Your 30-day Savings Pass: ' + discount + '% OFF\n'
           + 'Savings pass code: ' + dreamCode + '\n\n'
           + 'Valid on: ' + passScope + '\n'
           + 'Good through: ' + passExpiration + '\n'
           + passTerms + '\n\n'
           + 'Show this email to your ' + storeName + ' sleep specialist.\n\n'
-          + safeData.allMatches.map(function(m, i) { return (i+1) + '. ' + m.name + ' - ' + m.matchPct + '% match'; }).join('\n'));
+          + safeData.allMatches.map(function(m, i) {
+              return (i+1) + '. ' + m.name + ' - ' + (m.meetsMatchThreshold
+                ? m.matchPct + '% match'
+                : comparisonLabel);
+            }).join('\n')
+          + (accessoryLines ? '\n\nYour saved Sleep System:\n' + accessoryLines : ''));
 
       var fallbackOptions = {
         name: senderName
@@ -213,10 +241,10 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
   firstName = _escapeHtml(firstName);
   storeName = _escapeHtml(storeName || (isEs ? 'nuestra tienda' : 'our store'));
   var dreamCode = _escapeHtml(data.dreamCode || '');
-  // Cap at whatever kiosk sent (kiosk already pre-slices: 6 if saved, 3 if recommendations).
-  // Hard ceiling of 6 as a server-side safety net.
+  // Server-side safety ceilings protect the email renderer from oversized
+  // client payloads without imposing the former three-accessory product limit.
   var matches = _safeArray(data.allMatches).slice(0, 6);
-  var accs = _safeArray(data.accessories).slice(0, 3);
+  var accs = _safeArray(data.accessories).slice(0, MAX_EMAIL_ACCESSORIES);
   var discount = _escapeHtml(data.discount || 5);
   var passExpiration = _escapeHtml(data.passExpiration || '30 days from issue');
   var passScope = _escapeHtml(data.passScope || 'a qualifying DreamFinder mattress selection');
@@ -247,35 +275,37 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
   var L = isEs ? {
     eyebrow: 'TUS RESULTADOS',
     titlePrefix: 'Tus',
-    titleAccent: 'combinaciones perfectas',
+    titleAccent: 'opciones m\u00e1s compatibles',
     titleSuffix: 'est\u00e1n listas, ' + firstName,
-    discountLabel: 'TU PASE DE AHORRO DE 30 DIAS',
+    discountLabel: 'TU PASE DE AHORRO DE 30 DÍAS',
     discountHint: discount + '% DE DESCUENTO en ' + passScope,
-    discountExpiry: 'Valido hasta ' + passExpiration,
+    discountExpiry: 'Válido hasta ' + passExpiration,
     discountTerms: passTerms,
-    profileLabel: 'TU PERFIL DE SUE\u00d1O',
-    matchesLabel: 'TUS MEJORES OPCIONES',
-    topPick: 'MEJOR OPCI\u00d3N',
+    profileLabel: 'TU RESUMEN DE SUE\u00d1O',
+    matchesLabel: 'TUS OPCIONES M\u00c1S COMPATIBLES',
+    topPick: 'MEJOR PUNTO DE PARTIDA',
     matchSuffix: 'compatibilidad',
-    accLabel: 'ACCESORIOS RECOMENDADOS',
+    comparisonOption: 'OPCIÓN ADICIONAL PARA COMPARAR',
+    accLabel: 'TU SISTEMA DE SUEÑO GUARDADO',
     footerLine1: 'Lleva este correo a tu tienda ' + storeName,
     helpedBy: rsa ? 'Atendido por ' + rsa + ' en ' + storeName : '',
-    footerLine2: 'Tomate tu tiempo. Tu oferta esta guardada.',
-    footerHint: 'Revisa los terminos con tu especialista de sueno'
+    footerLine2: 'Tómate tu tiempo. Tu oferta está guardada.',
+    footerHint: 'Revisa los términos con tu especialista de sueño'
   } : {
     eyebrow: 'YOUR RESULTS',
     titlePrefix: 'Your',
-    titleAccent: 'perfect matches',
+    titleAccent: 'strongest matches',
     titleSuffix: 'are ready, ' + firstName,
     discountLabel: 'YOUR 30-DAY SAVINGS PASS',
     discountHint: discount + '% OFF ' + passScope,
     discountExpiry: 'Good through ' + passExpiration,
     discountTerms: passTerms,
-    profileLabel: 'YOUR SLEEP PROFILE',
-    matchesLabel: 'YOUR TOP MATCHES',
-    topPick: 'TOP PICK',
+    profileLabel: 'YOUR SLEEP BRIEF',
+    matchesLabel: 'YOUR STRONGEST MATCHES',
+    topPick: 'BEST PLACE TO START',
     matchSuffix: 'match',
-    accLabel: 'RECOMMENDED ACCESSORIES',
+    comparisonOption: 'ADDITIONAL COMPARISON OPTION',
+    accLabel: 'YOUR SAVED SLEEP SYSTEM',
     footerLine1: 'Bring this email to your ' + storeName + ' store',
     helpedBy: rsa ? 'Helped by ' + rsa + ' at ' + storeName : '',
     footerLine2: 'Take your time. Your offer is saved.',
@@ -287,10 +317,12 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
     var name = _escapeHtml(m.name || '');
     var brand = _escapeHtml(m.brand || '');
     var pct = _escapeHtml(m.matchPct || '');
+    var meetsThreshold = m.meetsMatchThreshold === true;
     var img = _escapeHtml(m.imageUrl || '');
     var rankBlock = isTop
-      ? '<div style="font-family:' + sans + ';font-size:10px;letter-spacing:2.5px;color:' + c.accent + ';text-transform:uppercase;font-weight:600;margin-bottom:6px;">' + L.topPick + '</div>'
+      ? '<div style="font-family:' + sans + ';font-size:10px;letter-spacing:2.5px;color:' + c.accent + ';text-transform:uppercase;font-weight:600;margin-bottom:6px;">' + (meetsThreshold ? L.topPick : L.comparisonOption) + '</div>'
       : '';
+    var matchLine = meetsThreshold ? pct + '% ' + L.matchSuffix : L.comparisonOption;
     // Image with bulletproof fallback \u2014 if blocked, the cell shows a surface tile with mattress name
     var imgCell = '<td width="90" valign="top" style="padding:0;background:' + c.surface + ';border-right:1px solid ' + c.border + ';">'
       + (img
@@ -305,7 +337,7 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
       + rankBlock
       + '<div style="font-family:' + serif + ';font-size:18px;color:' + c.text + ';font-weight:normal;line-height:1.2;margin-bottom:4px;">' + name + '</div>'
       + '<div style="font-family:' + sans + ';font-size:12px;color:' + c.textMuted + ';margin-bottom:6px;">' + brand + '</div>'
-      + '<div style="font-family:' + sans + ';font-size:11px;letter-spacing:1.5px;color:' + c.accent + ';text-transform:uppercase;font-weight:600;">' + pct + '% ' + L.matchSuffix + '</div>'
+      + '<div style="font-family:' + sans + ';font-size:11px;letter-spacing:1.5px;color:' + c.accent + ';text-transform:uppercase;font-weight:600;">' + matchLine + '</div>'
       + '</td>'
       + '</tr>'
       + '</table>';
@@ -374,7 +406,7 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
           + '</td></tr>'
         : '')
 
-    // Sleep profile
+    // Sleep Brief
     + (sleepProfile
         ? '<tr><td style="padding:28px 32px 16px;">'
           + '<div style="font-family:' + sans + ';font-size:10px;letter-spacing:2.5px;color:' + c.accent + ';text-transform:uppercase;font-weight:600;margin-bottom:8px;">' + L.profileLabel + '</div>'

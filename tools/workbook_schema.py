@@ -298,6 +298,7 @@ ACCESSORIES = Tab(
         col("Score: Hot", "matchScores.hot", note="-> matchScores.hot"),
         col("Score: Back Pain", "matchScores.back_pain", note="-> matchScores.back_pain"),
         col("Score: Snoring", "matchScores.snoring", note="-> matchScores.snoring"),
+        col("Score: Reflux", "matchScores.reflux", note="-> matchScores.reflux"),
         col("Score: Premium", "matchScores.premium", note="-> matchScores.premium"),
         col("Score: Position Side", "matchScores.position_side", note="-> matchScores.position_side"),
         col("Score: Position Back", "matchScores.position_back", note="-> matchScores.position_back"),

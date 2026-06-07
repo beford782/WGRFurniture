@@ -24,15 +24,25 @@
                               ],
                      "highlight":  "Molds to you for deep pressure relief",
                      "tags_es":  [
-
+                                     "Espuma viscoelástica",
+                                     "Alivio de presión",
+                                     "Medio"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Se adapta a tu cuerpo para un alivio profundo de presión",
                      "imageUrl":  "images/mattresses/adapt 2.0 medium.jpg",
                      "reasons":  {
                                      "default":  "Memory foam that molds to your body for deep pressure relief."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Espuma viscoelástica que se adapta al cuerpo para un alivio profundo de presión.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -58,7 +68,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "TEMPUR material molds to you for pressure relief and zero motion transfer.",
-                                           "es":  ""
+                                           "es":  "El material TEMPUR se adapta a ti para aliviar la presión y reducir la transferencia de movimiento."
                                        }
                  },
                  {
@@ -86,15 +96,25 @@
                               ],
                      "highlight":  "Adaptive comfort, hybrid support, all-night cooling",
                      "tags_es":  [
-
+                                     "Enfriamiento",
+                                     "Híbrido",
+                                     "Medio"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Confort adaptable con soporte híbrido y frescura toda la noche",
                      "imageUrl":  "images/mattresses/pro breeze 2.0 medium hybrid.jpg",
                      "reasons":  {
                                      "default":  "Adaptive foam comfort with hybrid bounce and all-night cooling."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Confort de espuma adaptable con respuesta híbrida y frescura toda la noche.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -120,7 +140,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "Sleeps cooler with TEMPUR comfort and responsive hybrid support.",
-                                           "es":  ""
+                                           "es":  "Duerme más fresco con confort TEMPUR y soporte híbrido sensible."
                                        }
                  },
                  {
@@ -147,15 +167,25 @@
                               ],
                      "highlight":  "Our coolest TEMPUR, firm and supported",
                      "tags_es":  [
-
+                                     "Enfriamiento",
+                                     "Firme",
+                                     "Alivio de presión"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Nuestro TEMPUR más fresco firme y con buen soporte",
                      "imageUrl":  "images/mattresses/luxe breeze 2.0 firm.jpg",
                      "reasons":  {
                                      "default":  "Our coolest sleep with firm, fully-supported comfort."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Nuestra opción más fresca con confort firme y soporte completo.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -181,7 +211,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "Our coolest TEMPUR with firm, fully-supported all-night comfort.",
-                                           "es":  ""
+                                           "es":  "Nuestro TEMPUR más fresco con confort firme y soporte durante toda la noche."
                                        }
                  },
                  {
@@ -208,15 +238,25 @@
                               ],
                      "highlight":  "Handcrafted firm coil support, built to last",
                      "tags_es":  [
-
+                                     "Firme",
+                                     "Soporte de resortes",
+                                     "Duradero"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Soporte firme de resortes hecho a mano y diseñado para durar",
                      "imageUrl":  "images/mattresses/lux estate firm.jpg",
                      "reasons":  {
                                      "default":  "Firm, durable coil support handcrafted for lasting comfort."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Soporte firme y duradero de resortes hecho a mano para brindar confort prolongado.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -242,7 +282,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "Precision coils deliver firm, durable support built to last.",
-                                           "es":  ""
+                                           "es":  "Los resortes de precisión brindan soporte firme y duradero."
                                        }
                  },
                  {
@@ -269,15 +309,25 @@
                               ],
                      "highlight":  "Plush-yet-supported handcrafted luxury",
                      "tags_es":  [
-
+                                     "Resortes de lujo",
+                                     "Medio",
+                                     "Duradero"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Lujo artesanal suave en la superficie y apoyado por debajo",
                      "imageUrl":  "images/mattresses/reserve medium.jpg",
                      "reasons":  {
                                      "default":  "Premium coils and foams balanced for plush-yet-supported luxury."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Resortes y espumas premium equilibrados para un lujo suave y con buen soporte.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -303,7 +353,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "Handcrafted premium coils and foams for balanced, lasting luxury.",
-                                           "es":  ""
+                                           "es":  "Resortes y espumas premium hechos a mano para un lujo equilibrado y duradero."
                                        }
                  },
                  {
@@ -330,15 +380,25 @@
                               ],
                      "highlight":  "All-latex plush comfort, championship durability",
                      "tags_es":  [
-
+                                     "Látex Talalay",
+                                     "Suave",
+                                     "Duradero"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Confort suave de látex completo con durabilidad excepcional",
                      "imageUrl":  "images/mattresses/asha luxe plush.jpg",
                      "reasons":  {
                                      "default":  "All-natural Talalay latex plushness with championship durability."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Suavidad de látex Talalay natural con durabilidad excepcional.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -364,7 +424,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "All-latex plush comfort with a warranty that outlasts the rest.",
-                                           "es":  ""
+                                           "es":  "Confort suave de látex completo con una garantía que destaca."
                                        }
                  },
                  {
@@ -392,15 +452,25 @@
                               ],
                      "highlight":  "Cool, responsive GelFlex grid flagship",
                      "tags_es":  [
-
+                                     "Rejilla GelFlex",
+                                     "Enfriamiento",
+                                     "Sensible"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Rejilla GelFlex premium fresca sensible y sin presión",
                      "imageUrl":  "images/mattresses/rejuvenate.jpg",
                      "reasons":  {
                                      "default":  "Purple\u0027s flagship GelFlex grid - cool, responsive, pressure-free."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "La rejilla GelFlex premium de Purple ofrece una sensación fresca y sensible con alivio de presión.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -426,7 +496,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "Purple\u0027s flagship grid for cooling, responsive, no-pressure sleep.",
-                                           "es":  ""
+                                           "es":  "La rejilla premium de Purple brinda una sensación fresca y sensible sin presión."
                                        }
                  },
                  {
@@ -453,15 +523,25 @@
                               ],
                      "highlight":  "Luxury medium feel, premium coil support",
                      "tags_es":  [
-
+                                     "Resortes embolsados",
+                                     "Medio",
+                                     "Aislamiento de movimiento"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Sensación media de lujo con soporte premium de resortes",
                      "imageUrl":  "images/mattresses/black series three medium.jpg",
                      "reasons":  {
                                      "default":  "Luxury medium comfort over premium pocketed-coil support."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Confort medio de lujo sobre soporte premium de resortes embolsados.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -487,7 +567,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "Luxury medium feel over Beautyrest\u0027s premium pocketed-coil support.",
-                                           "es":  ""
+                                           "es":  "Sensación media de lujo sobre el soporte premium de resortes embolsados Beautyrest."
                                        }
                  },
                  {
@@ -514,15 +594,25 @@
                               ],
                      "highlight":  "Smart dual-adjustable firmness, your way",
                      "tags_es":  [
-
+                                     "Ajuste inteligente",
+                                     "Firmeza doble",
+                                     "Zonas"
                                  ],
-                     "highlight_es":  "",
+                     "highlight_es":  "Firmeza inteligente ajustable por lado a tu manera",
                      "imageUrl":  "images/mattresses/smartlife lotus 2.0.jpg",
                      "reasons":  {
                                      "default":  "A smart bed that adjusts each side\u0027s firmness to you."
                                  },
                      "reasons_es":  {
-
+                                        "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                        "default":  "Una cama inteligente que ajusta la firmeza de cada lado a cada persona.",
+                                        "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                        "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                        "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                        "medium":  "La sensación media equilibra suavidad y soporte.",
+                                        "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                        "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                        "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                     },
                      "differentiators":  [
                                              {
@@ -548,7 +638,7 @@
                                          ],
                      "topPickReason":  {
                                            "en":  "Dial in each side\u0027s firmness with app-controlled smart support.",
-                                           "es":  ""
+                                           "es":  "Ajusta la firmeza de cada lado con soporte inteligente controlado por aplicación."
                                        }
                  }
              ],
@@ -577,15 +667,25 @@
                                 ],
                        "highlight":  "The original cooling, responsive Purple grid",
                        "tags_es":  [
-
+                                       "Rejilla GelFlex",
+                                       "Enfriamiento",
+                                       "Sensible"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "La rejilla Purple original fresca sensible y adaptable",
                        "imageUrl":  "images/mattresses/purple mattress.jpg",
                        "reasons":  {
                                        "default":  "The original Purple grid - cooling, responsive, and adaptive."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "La rejilla Purple original ofrece frescura respuesta y adaptación.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -611,7 +711,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Cooling, responsive grid comfort that adapts as you move.",
-                                             "es":  ""
+                                             "es":  "Confort fresco y sensible de rejilla que se adapta mientras te mueves."
                                          }
                    },
                    {
@@ -638,15 +738,25 @@
                                 ],
                        "highlight":  "Firm grid-over-coil with airflow",
                        "tags_es":  [
-
+                                       "Híbrido de rejilla",
+                                       "Firme",
+                                       "Sensible"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Rejilla firme sobre resortes con flujo de aire",
                        "imageUrl":  "images/mattresses/restore firm.jpg",
                        "reasons":  {
                                        "default":  "Firm grid-over-coil support with airflow and pressure relief."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Soporte firme de rejilla sobre resortes con ventilación y alivio de presión.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -672,7 +782,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Firm grid-over-coil support with airflow and pressure relief.",
-                                             "es":  ""
+                                             "es":  "Soporte firme de rejilla sobre resortes con ventilación y alivio de presión."
                                          }
                    },
                    {
@@ -700,15 +810,25 @@
                                 ],
                        "highlight":  "Sleeps degrees cooler with zoned support",
                        "tags_es":  [
-
+                                       "Enfriamiento",
+                                       "Zonas",
+                                       "Híbrido"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Duerme más fresco con soporte por zonas",
                        "imageUrl":  "images/mattresses/snow 3.0 hybrid.jpg",
                        "reasons":  {
                                        "default":  "Sleeps cooler with zoned support tuned for hot sleepers."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Duerme más fresco con soporte por zonas pensado para quienes sienten calor.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -734,7 +854,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Sleeps degrees cooler with zoned support for hot sleepers.",
-                                             "es":  ""
+                                             "es":  "Duerme más fresco con soporte por zonas para quienes sienten calor."
                                          }
                    },
                    {
@@ -761,15 +881,25 @@
                                 ],
                        "highlight":  "Balanced hybrid comfort and cooling",
                        "tags_es":  [
-
+                                       "Híbrido",
+                                       "Enfriamiento",
+                                       "Medio"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Confort híbrido equilibrado con frescura",
                        "imageUrl":  "images/mattresses/dream hybrid.jpg",
                        "reasons":  {
                                        "default":  "Balanced hybrid comfort and cooling at an approachable price."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Confort híbrido equilibrado y fresco a un precio accesible.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -795,7 +925,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Balanced hybrid comfort and cooling at an approachable price.",
-                                             "es":  ""
+                                             "es":  "Confort híbrido equilibrado y fresco a un precio accesible."
                                          }
                    },
                    {
@@ -821,15 +951,25 @@
                                 ],
                        "highlight":  "Dependable Sealy hybrid comfort",
                        "tags_es":  [
-
+                                       "Híbrido",
+                                       "Medio",
+                                       "Soporte"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Confort híbrido Sealy confiable",
                        "imageUrl":  "images/mattresses/brenham 2 medium.jpg",
                        "reasons":  {
                                        "default":  "Trusted Sealy hybrid support for balanced everyday comfort."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Soporte híbrido Sealy confiable para un confort diario equilibrado.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -855,7 +995,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Trusted Sealy hybrid tuned for balanced all-night comfort.",
-                                             "es":  ""
+                                             "es":  "Híbrido Sealy confiable ajustado para un confort equilibrado toda la noche."
                                          }
                    },
                    {
@@ -882,15 +1022,25 @@
                                 ],
                        "highlight":  "Firm hybrid support, aligned all night",
                        "tags_es":  [
-
+                                       "Híbrido",
+                                       "Firme",
+                                       "Soporte"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Soporte híbrido firme para mantener la alineación",
                        "imageUrl":  "images/mattresses/high point 2 firm.jpg",
                        "reasons":  {
                                        "default":  "Firm hybrid support that keeps your spine aligned."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Soporte híbrido firme que ayuda a mantener la columna alineada.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -916,7 +1066,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Firm hybrid support that keeps your spine aligned.",
-                                             "es":  ""
+                                             "es":  "Soporte híbrido firme que ayuda a mantener la columna alineada."
                                          }
                    },
                    {
@@ -942,15 +1092,25 @@
                                 ],
                        "highlight":  "Firm coil support, luxury feel",
                        "tags_es":  [
-
+                                       "Resortes embolsados",
+                                       "Firme",
+                                       "Aislamiento de movimiento"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Soporte firme de resortes con sensación de lujo",
                        "imageUrl":  "images/mattresses/black series one firm.jpg",
                        "reasons":  {
                                        "default":  "Firm pocketed-coil support with a true luxury feel."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Soporte firme de resortes embolsados con una verdadera sensación de lujo.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -976,7 +1136,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Firm Beautyrest pocketed-coil support with a luxury feel.",
-                                             "es":  ""
+                                             "es":  "Soporte firme de resortes embolsados Beautyrest con sensación de lujo."
                                          }
                    },
                    {
@@ -1003,15 +1163,25 @@
                                 ],
                        "highlight":  "Plush comfort, handcrafted in Wisconsin",
                        "tags_es":  [
-
+                                       "Hecho en Wisconsin",
+                                       "Suave",
+                                       "Alivio de presión"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Confort suave hecho a mano en Wisconsin",
                        "imageUrl":  "images/mattresses/midnight bliss plush.jpg",
                        "reasons":  {
                                        "default":  "Plush, pressure-relieving comfort, handcrafted in Wisconsin."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Confort suave que alivia la presión y está hecho a mano en Wisconsin.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1037,7 +1207,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Astor Park\u0027s plush, pressure-relieving comfort - handcrafted in Wisconsin.",
-                                             "es":  ""
+                                             "es":  "Confort suave Astor Park que alivia la presión y está hecho a mano en Wisconsin."
                                          }
                    },
                    {
@@ -1063,15 +1233,25 @@
                                 ],
                        "highlight":  "Firm support, handcrafted in Wisconsin",
                        "tags_es":  [
-
+                                       "Hecho en Wisconsin",
+                                       "Firme",
+                                       "Duradero"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Soporte firme hecho a mano en Wisconsin",
                        "imageUrl":  "images/mattresses/obsidian firm.jpg",
                        "reasons":  {
                                        "default":  "Firm, supportive comfort, handcrafted in Wisconsin."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Confort firme y con buen soporte hecho a mano en Wisconsin.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1097,7 +1277,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Handcrafted Wisconsin firmness with dependable all-night support.",
-                                             "es":  ""
+                                             "es":  "Firmeza artesanal de Wisconsin con soporte confiable toda la noche."
                                          }
                    },
                    {
@@ -1125,15 +1305,25 @@
                                 ],
                        "highlight":  "Cooling hybrid comfort for couples",
                        "tags_es":  [
-
+                                       "Híbrido",
+                                       "Enfriamiento",
+                                       "Aislamiento de movimiento"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Confort híbrido fresco para parejas",
                        "imageUrl":  "images/mattresses/luxe 5.1 hybrid.jpg",
                        "reasons":  {
                                        "default":  "Cooling hybrid comfort with great motion isolation for couples."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Confort híbrido fresco con buen aislamiento de movimiento para parejas.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1159,7 +1349,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Cooling hybrid comfort and motion isolation for couples.",
-                                             "es":  ""
+                                             "es":  "Confort híbrido fresco y aislamiento de movimiento para parejas."
                                          }
                    }
                ],
@@ -1188,15 +1378,25 @@
                                 ],
                        "highlight":  "Cooling foam comfort, budget-friendly",
                        "tags_es":  [
-
+                                       "Espuma viscoelástica",
+                                       "Enfriamiento",
+                                       "Medio"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Confort fresco de espuma a un precio accesible",
                        "imageUrl":  "images/mattresses/classic 5.1.jpg",
                        "reasons":  {
                                        "default":  "Cooling bed-in-a-box comfort that won\u0027t break the budget."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Confort fresco de espuma en caja que cuida el presupuesto.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1222,7 +1422,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Cooling bed-in-a-box comfort that won\u0027t break the budget.",
-                                             "es":  ""
+                                             "es":  "Confort fresco de espuma en caja que cuida el presupuesto."
                                          }
                    },
                    {
@@ -1249,15 +1449,25 @@
                                 ],
                        "highlight":  "Cooling hybrid bounce, starter price",
                        "tags_es":  [
-
+                                       "Híbrido",
+                                       "Enfriamiento",
+                                       "Medio"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Respuesta híbrida fresca a precio inicial",
                        "imageUrl":  "images/mattresses/classic 5.1 hybrid.jpg",
                        "reasons":  {
                                        "default":  "Hybrid bounce and cooling at a starter-friendly price."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Respuesta híbrida y frescura a un precio inicial accesible.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1283,7 +1493,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Hybrid bounce and cooling at a starter-friendly price.",
-                                             "es":  ""
+                                             "es":  "Respuesta híbrida y frescura a un precio inicial accesible."
                                          }
                    },
                    {
@@ -1310,15 +1520,25 @@
                                 ],
                        "highlight":  "Plush-firm hybrid above its price",
                        "tags_es":  [
-
+                                       "Híbrido",
+                                       "Medio firme",
+                                       "Buen valor"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Híbrido suave y firme con sensación superior a su precio",
                        "imageUrl":  "images/mattresses/classic hybrid.jpg",
                        "reasons":  {
                                        "default":  "A plush-firm hybrid that feels well above its price."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Un híbrido suave y firme que se siente superior a su precio.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1344,7 +1564,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "A plush-firm hybrid that feels far above its price.",
-                                             "es":  ""
+                                             "es":  "Un híbrido suave y firme que se siente muy superior a su precio."
                                          }
                    },
                    {
@@ -1370,15 +1590,25 @@
                                 ],
                        "highlight":  "Soft plush comfort, trusted value",
                        "tags_es":  [
-
+                                       "Suave",
+                                       "Acolchado",
+                                       "Buen valor"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Confort suave y confiable a un precio accesible",
                        "imageUrl":  "images/mattresses/moreland avenue plush.jpg",
                        "reasons":  {
                                        "default":  "Soft, budget-friendly plush comfort from a name you trust."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Confort suave y accesible de una marca reconocida.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1404,7 +1634,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Soft, budget-friendly plush comfort from a name you know.",
-                                             "es":  ""
+                                             "es":  "Confort suave y accesible de una marca conocida."
                                          }
                    },
                    {
@@ -1430,15 +1660,25 @@
                                 ],
                        "highlight":  "Wisconsin-made firm support, great value",
                        "tags_es":  [
-
+                                       "Hecho en Wisconsin",
+                                       "Firme",
+                                       "Buen valor"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Soporte firme hecho en Wisconsin a un gran valor",
                        "imageUrl":  "images/mattresses/drake.jpg",
                        "reasons":  {
                                        "default":  "Honest Wisconsin-made firm support at a great value."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Soporte firme hecho en Wisconsin a un precio accesible.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1464,7 +1704,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Wisconsin-made firm support at a guest-room-friendly price.",
-                                             "es":  ""
+                                             "es":  "Soporte firme hecho en Wisconsin a un precio ideal para una habitación de visitas."
                                          }
                    },
                    {
@@ -1490,15 +1730,25 @@
                                 ],
                        "highlight":  "Plush euro-top over solid support",
                        "tags_es":  [
-
+                                       "Euro Top",
+                                       "Medio",
+                                       "Buen valor"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Euro top suave sobre soporte confiable",
                        "imageUrl":  "images/mattresses/dreamweaver medium euro top.jpg",
                        "reasons":  {
                                        "default":  "Plush euro-top comfort over dependable innerspring support."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Confort suave de euro top sobre soporte confiable de resortes.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1524,7 +1774,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "Plush euro-top comfort over dependable innerspring support.",
-                                             "es":  ""
+                                             "es":  "Confort suave de euro top sobre soporte confiable de resortes."
                                          }
                    },
                    {
@@ -1551,15 +1801,25 @@
                                 ],
                        "highlight":  "Stepped-up value hybrid comfort",
                        "tags_es":  [
-
+                                       "Híbrido",
+                                       "Medio",
+                                       "Buen valor"
                                    ],
-                       "highlight_es":  "",
+                       "highlight_es":  "Confort híbrido mejorado con más espuma y soporte",
                        "imageUrl":  "images/mattresses/hybrid premier.jpg",
                        "reasons":  {
                                        "default":  "Extra foam and support stepped up from the entry hybrid."
                                    },
                        "reasons_es":  {
-
+                                          "firm":  "La superficie firme ofrece apoyo estable con menos hundimiento.",
+                                          "default":  "Más espuma y soporte que el híbrido de entrada.",
+                                          "cooling":  "Los materiales transpirables ayudan a disipar el calor.",
+                                          "support":  "El sistema de soporte ayuda a mantener el cuerpo alineado.",
+                                          "durability":  "Los materiales resistentes están diseñados para conservar su sensación.",
+                                          "medium":  "La sensación media equilibra suavidad y soporte.",
+                                          "plush":  "La superficie suave ofrece mayor acolchado y adaptación.",
+                                          "motionIsolation":  "Ayuda a reducir la transferencia de movimiento entre ambos lados de la cama.",
+                                          "pressureRelief":  "La superficie amortigua hombros y caderas para aliviar puntos de presión."
                                       },
                        "differentiators":  [
                                                {
@@ -1585,7 +1845,7 @@
                                            ],
                        "topPickReason":  {
                                              "en":  "More foam and support than the entry hybrid, for a little more.",
-                                             "es":  ""
+                                             "es":  "Más espuma y soporte que el híbrido de entrada para ofrecer un poco más."
                                          }
                    }
                ]
