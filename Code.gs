@@ -10,6 +10,21 @@ var RESULT_EMAIL_BCC = 'dreamfinderleads@gmail.com';
 // more categories and should not silently lose items after the third.
 var MAX_EMAIL_ACCESSORIES = 20;
 
+// ─────────────────────────────────────────────────────────────────────────
+// CAN-SPAM / privacy footer values — ⚠️ DRAFT PLACEHOLDERS, NOT YET APPROVED.
+// WG&R MUST REVIEW & APPROVE every value below BEFORE live lead capture.
+// CAN-SPAM requires (a) a working unsubscribe mechanism, honored within 10
+// business days and kept live >=30 days, and (b) a valid physical postal
+// address in every commercial email. The values here are review drafts only.
+// These are WG&R-STYLE GUESSES, NOT confirmed — the inbox/domain may not exist
+// or route, and the postal address is incomplete. Do NOT enable gasUrl until
+// WG&R confirms all three AND the unsubscribe inbox is actively monitored.
+// Replace all three before going live.
+// ─────────────────────────────────────────────────────────────────────────
+var UNSUBSCRIBE_URL = 'mailto:unsubscribe@wgrfurniture.com?subject=Unsubscribe%20DreamFinder'; // ⚠️ WG&R TO APPROVE (unverified placeholder)
+var POSTAL_ADDRESS  = 'WG&R Furniture, [Corporate Mailing Address], Green Bay, WI [ZIP]'; // ⚠️ WG&R TO APPROVE (unverified placeholder)
+var PRIVACY_CONTACT = 'privacy@wgrfurniture.com'; // ⚠️ WG&R TO APPROVE (unverified placeholder)
+
 // Helper: escape five HTML metacharacters; safe for attribute values and text content.
 function _escapeHtml(s) {
   return String(s == null ? '' : s).replace(/[&<>"']/g, function(ch) {
@@ -202,7 +217,12 @@ function doPost(e) {
                 ? m.matchPct + '% compatibilidad'
                 : comparisonLabel);
             }).join('\n')
-          + (accessoryLines ? '\n\nTu Sistema de Sueño guardado:\n' + accessoryLines : ''))
+          + (accessoryLines ? '\n\nTu Sistema de Sueño guardado:\n' + accessoryLines : '')
+          + '\n\n----------\n'
+          + 'Recibiste este correo porque guardaste tu Resumen de Sueño en ' + storeName + '.\n'
+          + POSTAL_ADDRESS + '\n'
+          + 'Cancelar suscripción: ' + UNSUBSCRIBE_URL + '\n'
+          + 'Privacidad y solicitudes de datos: ' + PRIVACY_CONTACT)
         : ('Hi ' + firstName + ',\n\n'
           + (meetsMatchThreshold ? 'Best place to start: ' : 'Option to compare: ') + topMatch + ' (' + topMatchDetail + ')\n'
           + 'Sleep Brief: ' + sleepProfile + '\n'
@@ -217,7 +237,12 @@ function doPost(e) {
                 ? m.matchPct + '% match'
                 : comparisonLabel);
             }).join('\n')
-          + (accessoryLines ? '\n\nYour saved Sleep System:\n' + accessoryLines : ''));
+          + (accessoryLines ? '\n\nYour saved Sleep System:\n' + accessoryLines : '')
+          + '\n\n----------\n'
+          + 'You received this email because you saved your Sleep Brief at ' + storeName + '.\n'
+          + POSTAL_ADDRESS + '\n'
+          + 'Unsubscribe: ' + UNSUBSCRIBE_URL + '\n'
+          + 'Privacy & data requests: ' + PRIVACY_CONTACT);
 
       var fallbackOptions = {
         name: senderName
@@ -295,7 +320,10 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
     footerLine1: 'Lleva este correo a tu tienda ' + storeName,
     helpedBy: rsa ? 'Atendido por ' + rsa + ' en ' + storeName : '',
     footerLine2: 'Tómate tu tiempo. Tu oferta está guardada.',
-    footerHint: 'Revisa los términos con tu especialista de sueño'
+    footerHint: 'Revisa los términos con tu especialista de sueño',
+    unsubWhy: 'Recibiste este correo porque guardaste tu Resumen de Sueño en ' + storeName + '.',
+    unsubAction: 'Cancelar suscripción',
+    privacyLine: 'Privacidad y solicitudes de datos: ' + PRIVACY_CONTACT
   } : {
     eyebrow: 'YOUR RESULTS',
     titlePrefix: 'Your',
@@ -314,7 +342,10 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
     footerLine1: 'Bring this email to your ' + storeName + ' store',
     helpedBy: rsa ? 'Helped by ' + rsa + ' at ' + storeName : '',
     footerLine2: 'Take your time. Your offer is saved.',
-    footerHint: 'Review the terms with your sleep specialist'
+    footerHint: 'Review the terms with your sleep specialist',
+    unsubWhy: 'You received this email because you saved your Sleep Brief at ' + storeName + '.',
+    unsubAction: 'Unsubscribe',
+    privacyLine: 'Privacy & data requests: ' + PRIVACY_CONTACT
   };
 
   // Helper: mattress card with image-blocked fallback
@@ -434,6 +465,13 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
     + (L.helpedBy ? '<div style="font-family:' + sans + ';font-size:13px;color:' + c.textMuted + ';margin-bottom:8px;">' + L.helpedBy + '</div>' : '')
     + '<div style="font-family:' + serif + ';font-size:18px;color:' + c.accent + ';font-style:italic;line-height:1.3;">' + L.footerLine2 + '</div>'
     + '<div style="font-family:' + sans + ';font-size:11px;letter-spacing:1.5px;color:' + c.textSubtle + ';text-transform:uppercase;margin-top:14px;">' + L.footerHint + '</div>'
+    // CAN-SPAM compliance block (draft placeholders — see top-of-file constants).
+    + '<div style="font-family:' + sans + ';font-size:10px;color:' + c.textSubtle + ';line-height:1.7;margin-top:20px;">'
+    + _escapeHtml(L.unsubWhy) + '<br>'
+    + _escapeHtml(POSTAL_ADDRESS) + '<br>'
+    + '<a href="' + _escapeHtml(UNSUBSCRIBE_URL) + '" style="color:' + c.textSubtle + ';">' + _escapeHtml(L.unsubAction) + '</a>'
+    + ' &nbsp;·&nbsp; ' + _escapeHtml(L.privacyLine)
+    + '</div>'
     + '</td></tr>'
 
     + '</table>'

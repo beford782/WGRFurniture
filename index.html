@@ -10019,6 +10019,22 @@
         document.querySelectorAll('[data-store="privacy-policy-contact"]').forEach(function(el) {
           el.textContent = textBlock.privacyPolicyContact || el.textContent;
         });
+        // Privacy & Terms overlay body — retailer-specific draft copy (text/text_es).
+        document.querySelectorAll('[data-store="privacy-draft-notice"]').forEach(function(el) {
+          el.textContent = textBlock.privacyDraftNotice || el.textContent;
+        });
+        document.querySelectorAll('[data-store="privacy-heading"]').forEach(function(el) {
+          el.textContent = textBlock.privacyHeading || el.textContent;
+        });
+        document.querySelectorAll('[data-store="privacy-body"]').forEach(function(el) {
+          el.textContent = textBlock.privacyBody || el.textContent;
+        });
+        document.querySelectorAll('[data-store="disclaimer-heading"]').forEach(function(el) {
+          el.textContent = textBlock.disclaimerHeading || el.textContent;
+        });
+        document.querySelectorAll('[data-store="disclaimer-body"]').forEach(function(el) {
+          el.textContent = textBlock.disclaimerBody || el.textContent;
+        });
         // Header location pill — populated from store-config text.locationLabel.
         // Replaces the previous browser-geolocation + Nominatim reverse-geocode
         // path; kiosk runs from a fixed showroom, so the city is known up-front.
@@ -10642,13 +10658,25 @@
         'no_idea': {en: 'Restless Sleeper', es: 'Durmiente Inquieto'}
       };
 
-      // Build subtitle: temperature + position + partner context
-      var subtitle = '';
-      if (temp === 'hot') subtitle += currentLang === 'es' ? 'Caluroso ' : 'Hot ';
-      else if (temp === 'cold') subtitle += currentLang === 'es' ? 'Friolento ' : 'Cozy ';
-      subtitle += L(fullPositionLabels[position]) || (currentLang === 'es' ? 'Durmiente' : 'Sleeper');
-      if (partnerSleep === 'partner') subtitle += currentLang === 'es' ? ' \u00B7 Cama Compartida' : ' \u00B7 Shared Bed';
-      else if (partnerSleep === 'family') subtitle += currentLang === 'es' ? ' \u00B7 Cama Familiar' : ' \u00B7 Family Bed';
+      // Build both language variants so downstream screens do not inherit the
+      // language that happened to be active when this screen last rendered.
+      var buildProfileSubtitle = function(lang) {
+        var value = '';
+        if (temp === 'hot') value += lang === 'es' ? 'Caluroso ' : 'Hot ';
+        else if (temp === 'cold') value += lang === 'es' ? 'Friolento ' : 'Cozy ';
+        var positionLabel = fullPositionLabels[position];
+        value += positionLabel
+          ? (positionLabel[lang] || positionLabel.en)
+          : (lang === 'es' ? 'Durmiente' : 'Sleeper');
+        if (partnerSleep === 'partner') value += lang === 'es' ? ' \u00B7 Cama Compartida' : ' \u00B7 Shared Bed';
+        else if (partnerSleep === 'family') value += lang === 'es' ? ' \u00B7 Cama Familiar' : ' \u00B7 Family Bed';
+        return value;
+      };
+      var profileSubtitles = {
+        en: buildProfileSubtitle('en'),
+        es: buildProfileSubtitle('es')
+      };
+      var subtitle = profileSubtitles[currentLang] || profileSubtitles.en;
       
       // Count pain signals
       var painCount = 0;
@@ -10762,6 +10790,7 @@
       // Results and accessories screens read these profile fields.
       analytics.profileName = profileName;
       analytics.profileSubtitle = subtitle;
+      analytics.profileSubtitleByLang = profileSubtitles;
 
       // ----- CUSTOMER FACTS -----
       var sizeLabels = { twin: 'Twin', twin_xl: 'Twin XL', full: 'Full', queen: 'Queen', king: 'King', cal_king: 'Cal King' };
@@ -10802,6 +10831,8 @@
         priorities.push({
           score: score,
           kind: kind,
+          nameEn: nameEn,
+          nameEs: nameEs,
           name: es ? nameEs : nameEn,
           why: es ? whyEs : whyEn,
           test: es ? testEs : testEn
@@ -10960,38 +10991,48 @@
       // answer-based signals, with no generic padding.
       priorities.sort(function(a, b) { return b.score - a.score; });
       var topPriorities = priorities.slice(0, 3);
-      var briefTermMap = es
-        ? {
-            'Temperaturas de sueño diferentes': 'equilibrio de temperatura',
-            'Una superficie de descanso más limpia': 'protección contra alérgenos',
-            'Suave, no inestable': 'estabilidad suave',
-            'Firme, no rígido': 'comodidad firme'
-          }
-        : {
-            'Different sleep temperatures': 'temperature balance',
-            'A cleaner sleep surface': 'allergen protection',
-            'Plush, not unstable': 'plush stability',
-            'Firm, not rigid': 'firm comfort'
-          };
-      var briefTerms = topPriorities.map(function(priority) {
-        return briefTermMap[priority.name] || priority.name.toLowerCase();
-      });
-      var naturalList = function(items) {
+      var briefTermMaps = {
+        en: {
+          'Different sleep temperatures': 'temperature balance',
+          'A cleaner sleep surface': 'allergen protection',
+          'Plush, not unstable': 'plush stability',
+          'Firm, not rigid': 'firm comfort'
+        },
+        es: {
+          'Temperaturas de sueño diferentes': 'equilibrio de temperatura',
+          'Una superficie de descanso más limpia': 'protección contra alérgenos',
+          'Suave, no inestable': 'estabilidad suave',
+          'Firme, no rígido': 'comodidad firme'
+        }
+      };
+      var naturalList = function(items, lang) {
         if (!items.length) return '';
         if (items.length === 1) return items[0];
-        if (items.length === 2) return items[0] + (es ? ' y ' : ' and ') + items[1];
-        return es
+        if (items.length === 2) return items[0] + (lang === 'es' ? ' y ' : ' and ') + items[1];
+        return lang === 'es'
           ? items.slice(0, -1).join(', ') + ' y ' + items[items.length - 1]
           : items.slice(0, -1).join(', ') + ', and ' + items[items.length - 1];
       };
-      var briefFocus = naturalList(briefTerms);
+      var briefFocusByLang = {};
+      ['en', 'es'].forEach(function(lang) {
+        var briefTerms = topPriorities.map(function(priority) {
+          var name = lang === 'es' ? priority.nameEs : priority.nameEn;
+          return briefTermMaps[lang][name] || name.toLowerCase();
+        });
+        briefFocusByLang[lang] = naturalList(briefTerms, lang);
+      });
+      var briefFocus = briefFocusByLang[currentLang] || briefFocusByLang.en;
       var briefSummary = es
         ? 'Tu punto de partida: ' + briefFocus + '.'
         : 'Your starting point: ' + briefFocus + '.';
       setProfileText('profileSummary', briefSummary);
       analytics.profileBrief = (es ? 'Resumen de sueño' : 'Sleep brief') + ' · ' + briefFocus;
+      analytics.profileBriefByLang = {
+        en: 'Sleep brief · ' + briefFocusByLang.en,
+        es: 'Resumen de sueño · ' + briefFocusByLang.es
+      };
       analytics.trialFocus = topPriorities.map(function(priority) {
-        return priority.name;
+        return { en: priority.nameEn, es: priority.nameEs };
       });
 
       var priorityLabel = function(kind) {
@@ -11069,7 +11110,10 @@
       selectedAccessories: [],
       topPick: null,
       profileBrief: null,
+      profileBriefByLang: null,
       trialFocus: [],
+      profileSubtitle: null,
+      profileSubtitleByLang: null,
       events: [],
       log: function(event, data) {
         // Shallow-copy data and drop `events` to avoid circular refs when
@@ -11265,7 +11309,9 @@
     function renderResultsTrialFocus() {
       var el = document.getElementById('resultsTrialFocus');
       if (!el) return;
-      var focus = Array.isArray(analytics.trialFocus) ? analytics.trialFocus.filter(Boolean) : [];
+      var focus = Array.isArray(analytics.trialFocus)
+        ? analytics.trialFocus.map(function(item) { return L(item); }).filter(Boolean)
+        : [];
       if (!focus.length) {
         el.classList.remove('is-visible');
         el.innerHTML = '';
@@ -11795,7 +11841,7 @@
           return Object.assign({}, m, {
             score: rawScore,
             pct: Math.max(0, Math.min(100, rawPct)),
-            meetsMatchThreshold: rawPct >= 60
+            meetsMatchThreshold: rawScore >= maxScore * 0.6
           });
         });
       });
@@ -12075,8 +12121,12 @@
       sendBtn.classList.add('sending');
       
       // Send the customer-facing brief; the internal archetype remains in analytics.
-      var profName = analytics.profileBrief
-        || ((currentLang === 'es' ? 'Resumen de sueño' : 'Sleep brief') + ' - ' + (analytics.profileSubtitle || ''));
+      var profName = (analytics.profileBriefByLang && analytics.profileBriefByLang[currentLang])
+        || analytics.profileBrief
+        || ((currentLang === 'es' ? 'Resumen de sueño' : 'Sleep brief') + ' - '
+          + ((analytics.profileSubtitleByLang && analytics.profileSubtitleByLang[currentLang])
+            || analytics.profileSubtitle
+            || ''));
       
       // Get the lead recommendation and all matches from analytics
       const topPick = analytics.topPick;
@@ -12288,7 +12338,9 @@
       const budget = answers.budget || '';
 
       var profileType = currentLang === 'es' ? 'Tu Resumen de Sueño' : 'Your Sleep Brief';
-      var profileSub = analytics.profileSubtitle || 'Sleeper';
+      var profileSub = (analytics.profileSubtitleByLang && analytics.profileSubtitleByLang[currentLang])
+        || analytics.profileSubtitle
+        || (currentLang === 'es' ? 'Durmiente' : 'Sleeper');
 
       var _es = currentLang === 'es';
       const accessoryData = scoreAccessoriesFromAnswers();
@@ -12667,7 +12719,7 @@
       if (!ranked.length) return [];
       var maxScore = Math.max.apply(null, ranked.map(scoreForItem).concat([1]));
       var qualified = ranked.filter(function(item) {
-        return Math.round((scoreForItem(item) / maxScore) * 100) >= 60;
+        return scoreForItem(item) >= maxScore * 0.6;
       }).slice(0, 3);
       ranked.some(function(item) {
         if (qualified.length >= Math.min(2, ranked.length)) return true;
@@ -12695,8 +12747,16 @@
       };
 
       Object.keys(groups).forEach(function(stepId) {
-        groups[stepId] = qualifyRankedChoices(groups[stepId], function(item) {
+        var ranked = groups[stepId];
+        var maxScore = Math.max.apply(null, ranked.map(function(item) {
           return item.score || 0;
+        }).concat([1]));
+        groups[stepId] = qualifyRankedChoices(ranked, function(item) {
+          return item.score || 0;
+        }).map(function(item) {
+          return Object.assign({}, item, {
+            meetsMatchThreshold: (item.score || 0) >= maxScore * 0.6
+          });
         });
       });
 
@@ -12711,7 +12771,8 @@
           name: typeof item.name === 'object' ? item.name.en : item.name,
           category: sleepSystemCategory(item),
           imageUrl: item.image || '',
-          score: item.score || 0
+          score: item.score || 0,
+          meetsMatchThreshold: item.meetsMatchThreshold
         };
       });
       analytics.recommendedAccessories = recommended;
@@ -13280,7 +13341,7 @@
                 en: 'Best for ' + sleepSystemText(protectionGoalLabel(window._sleepSystemState.protectionGoal || getSuggestedProtectionGoal())),
                 es: 'Mejor para ' + sleepSystemText(protectionGoalLabel(window._sleepSystemState.protectionGoal || getSuggestedProtectionGoal()))
               })
-          : (primary.matched
+          : (primary.meetsMatchThreshold
             ? sleepSystemText({ en: 'Recommended to try', es: 'Recomendado para probar' })
             : sleepSystemText({ en: 'Worth comparing', es: 'Vale la pena comparar' }));
         var actionHtml;
@@ -14210,7 +14271,9 @@
 
       return [
         {
-          title: m.archetype || (currentLang === 'es' ? 'Su carácter principal' : 'Its defining character'),
+          title: currentLang === 'es'
+            ? mattressResponseLabel(m)
+            : (m.archetype || 'Its defining character'),
           detail: topPickReasonText(m) || m.highlight || ''
         },
         {
@@ -14584,11 +14647,14 @@
         }
         return (currentLang === 'es' && m.highlight_es) ? m.highlight_es : (m.highlight || '');
       }
-      var label = HF2_ARCHETYPE_LABELS[m.archetype] || m.archetype || '';
+      var label = currentLang === 'es'
+        ? mattressResponseLabel(m)
+        : (HF2_ARCHETYPE_LABELS[m.archetype] || m.archetype || '');
       var hl = (currentLang === 'es' && m.highlight_es) ? m.highlight_es : (m.highlight || '');
       if (!label) return hl;
-      var altWord = currentLang === 'es' ? 'alternativa' : 'alternative';
-      return label + ' ' + altWord + ' — ' + hl;
+      return currentLang === 'es'
+        ? 'alternativa de ' + label + ' — ' + hl
+        : label + ' alternative — ' + hl;
     }
 
     // ---- Action buttons ------------------------------------------------------
@@ -14874,8 +14940,10 @@
       analytics.selectedAccessories = [];
       analytics.profileName = null;
       analytics.profileBrief = null;
+      analytics.profileBriefByLang = null;
       analytics.trialFocus = [];
       analytics.profileSubtitle = null;
+      analytics.profileSubtitleByLang = null;
       document.getElementById('profileScreen').classList.remove('animate');
       analytics.events = [];
       
@@ -15102,14 +15170,13 @@
   <div id="privacyOverlay" style="display:none; position:fixed; inset:0; z-index:9999; background:rgba(0,0,0,0.7); align-items:center; justify-content:center; padding:1.5rem;">
     <div style="background:#162b45; border:1px solid rgba(212,168,75,0.2); border-radius:16px; max-width:420px; width:100%; max-height:80vh; overflow-y:auto; padding:1.5rem; position:relative;">
       <button onclick="document.getElementById('privacyOverlay').classList.remove('visible');" style="position:absolute; top:0.75rem; right:0.75rem; background:none; border:none; color:rgba(248,246,241,0.5); font-size:1.2rem; cursor:pointer; font-family:inherit; padding:0.25rem;">&times;</button>
-      <div style="font-size:0.9rem; font-weight:700; color:var(--color-gold-bright); margin-bottom:0.75rem;">Privacy</div>
+      <div data-store="privacy-draft-notice" style="font-size:0.62rem; font-style:italic; color:rgba(248,246,241,0.45); margin-bottom:0.85rem;">Draft policy — pending WG&amp;R approval before live use.</div>
+      <div data-store="privacy-heading" style="font-size:0.9rem; font-weight:700; color:var(--color-gold-bright); margin-bottom:0.75rem;">Privacy</div>
       <div style="font-size:0.68rem; color:rgba(248,246,241,0.7); line-height:1.65; margin-bottom:1rem;">
-        DreamFinder collects your name, email, and optional phone number to deliver your mattress recommendations. Your data is only used for this purpose and is never sold or shared with third parties. <span data-store="privacy-policy-contact">To have your information removed, contact your local store.</span>
+        <span data-store="privacy-body">DreamFinder collects your name, email, and optional phone number to deliver your mattress recommendations and Savings Pass. Your information is only used for this purpose and is never sold or shared with third parties.</span> <span data-store="privacy-policy-contact">To access or remove your information, contact your local WG&amp;R store.</span>
       </div>
-      <div style="font-size:0.9rem; font-weight:700; color:var(--color-gold-bright); margin-bottom:0.75rem;">Disclaimer</div>
-      <div style="font-size:0.68rem; color:rgba(248,246,241,0.7); line-height:1.65;">
-        DreamFinder is a product recommendation tool. Match percentages and Sleep Brief guidance are generated from your quiz answers and should be treated as starting points, not guarantees. This tool does not provide medical advice — consult a healthcare provider for medical sleep concerns. Discounts and product availability are subject to store terms.
-      </div>
+      <div data-store="disclaimer-heading" style="font-size:0.9rem; font-weight:700; color:var(--color-gold-bright); margin-bottom:0.75rem;">Disclaimer</div>
+      <div data-store="disclaimer-body" style="font-size:0.68rem; color:rgba(248,246,241,0.7); line-height:1.65;">DreamFinder is a product recommendation tool. Match percentages and Sleep Brief guidance are generated from your quiz answers and should be treated as starting points, not guarantees. This tool does not provide medical advice — consult a healthcare provider for medical sleep concerns. Discounts and product availability are subject to WG&amp;R store terms.</div>
     </div>
   </div>
   <style>
