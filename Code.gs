@@ -120,9 +120,14 @@ function doPost(e) {
     ]);
 
     // --- Send email with fallback ---
+    // Subject leads with the Sleep Brief (the consultation takeaway) and keeps
+    // the Savings Pass as a secondary draw, matching the in-app "Save your Sleep
+    // Brief" narrative. (Email-body section ORDER still shows the Savings Pass
+    // band before the Sleep Brief section; reordering is deferred to the Phase C
+    // test deploy where the rendered email can actually be verified.)
     var subject = isEs
-      ? 'Tu Pase de Ahorro de 30 días de ' + storeName
-      : 'Your 30-Day Savings Pass from ' + storeName;
+      ? 'Tu Resumen de Sueño y Pase de Ahorro de ' + storeName
+      : 'Your Sleep Brief & Savings Pass from ' + storeName;
     var senderName = isEs
       ? 'Equipo de Descanso de ' + storeName
       : storeName + ' Sleep Team';

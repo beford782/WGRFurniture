@@ -1,6 +1,8 @@
 .claude/
 docs/*
 !docs/phase0-onboarding-pipeline-spec-2026-05-31.md
+!docs/gas-rsa-field-addition.md
+!docs/gas-activation-runbook.md
 tools/strip-bg.py
 
 # Local scratch / design mockups (kept locally, never committed)
