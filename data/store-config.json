@@ -88,17 +88,17 @@
     "locations": "Green Bay · Appleton · Oshkosh · Sheboygan · Manitowoc · Fond du Lac"
   },
   "text_es": {
-    "pageTitle": "",
-    "metaDescription": "",
-    "ogTitle": "",
-    "trustSignal": "",
-    "heritage": "",
-    "emailPrivacy": "",
+    "pageTitle": "DreamFinder - Cuestionario del Sueño de WG&R Furniture",
+    "metaDescription": "Responde el cuestionario de WG&R Sleep Shop y recibe recomendaciones personalizadas de colchones.",
+    "ogTitle": "DreamFinder - WG&R Furniture",
+    "trustSignal": "Sirviendo a Northeast Wisconsin desde 1946 — con orgullo, propiedad de sus empleados",
+    "heritage": "PROPIEDAD DE SUS EMPLEADOS · NORTHEAST WISCONSIN · DESDE 1946",
+    "emailPrivacy": "Solo usaremos tu correo para enviarte tus resultados.",
     "privacyPolicyContact": "",
-    "inStockText": "",
+    "inStockText": "En stock en WG&R",
     "emailHeader": "",
     "emailSubtext": "",
-    "locationLabel": ""
+    "locationLabel": "Northeast Wisconsin"
   },
   "discount": {
     "codePrefix": "DREAM",
@@ -194,17 +194,17 @@
     "outcomeItems": "Sleep Brief · Mattress Matches · Sleep System Picks · Savings Pass"
   },
   "voice_es": {
-    "retailerSubline": "",
-    "eyebrow": "",
-    "headlineMain": "",
-    "headlineAccent": "",
-    "subCopyBefore": "",
+    "retailerSubline": "TIENDA DEL DESCANSO",
+    "eyebrow": "PROPIEDAD DE SUS EMPLEADOS · NORTHEAST WISCONSIN · DESDE 1946",
+    "headlineMain": "Northeast Wisconsin,",
+    "headlineAccent": "tu tienda del descanso.",
+    "subCopyBefore": "Responde unas preguntas y revisa tus opciones de colchón con un especialista del descanso de WG&R.",
     "subCopyAccent": "",
     "subCopyAfter": "",
-    "ctaPrimary": "",
-    "timeEstimate": "",
-    "outcomeLabel": "",
-    "outcomeItems": ""
+    "ctaPrimary": "Encontrar Mi Opción Ideal",
+    "timeEstimate": "Aproximadamente 2 minutos · Sin presión",
+    "outcomeLabel": "Tu consulta crea",
+    "outcomeItems": "Resumen de Sueño · Opciones de Colchón · Sistema de Sueño · Pase de Ahorro"
   },
   "salesNotes": {
     "subBrands": {},
