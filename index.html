@@ -2582,6 +2582,137 @@
       .noct-dream-code-value { font-size: 28px; }
     }
 
+    /* ===== SAVE-YOUR-SLEEP-BRIEF SCREEN (warm showroom theme) =====
+       The capture + confirmation screen shares the warm workspace theme via the
+       SURGICAL SHOWROOM WORK THEME :has() block above. These rules give it the
+       two-panel "save packet" layout that matches the Sleep Brief. */
+    #emailScreen .noct-email { max-width: 940px; }
+    .email-cap-header { text-align: center; margin-bottom: 28px; }
+
+    .email-cap-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 20px;
+      align-items: start;
+    }
+
+    .email-card {
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: clamp(20px, 2.6vw, 30px);
+      box-shadow: 0 10px 28px rgba(55, 40, 28, 0.07);
+      margin-bottom: 20px;
+    }
+    .email-card:last-child { margin-bottom: 0; }
+
+    .email-card-label {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--store-primary);
+      margin-bottom: 16px;
+    }
+
+    /* "What you'll save" rows */
+    .email-save-row { display: flex; gap: 12px; padding: 12px 0; border-top: 1px solid var(--color-border); }
+    .email-save-row:first-child { border-top: 0; padding-top: 2px; }
+    .email-save-mark {
+      flex-shrink: 0; width: 18px; margin-top: 2px;
+      color: var(--store-primary); font-size: 14px; line-height: 1.3; text-align: center;
+    }
+    .email-save-row.is-empty .email-save-mark { color: var(--color-text-subtle); }
+    .email-save-title { font-family: var(--font-serif); font-size: 17px; color: var(--color-text); line-height: 1.25; }
+    .email-save-detail { font-family: var(--font-sans); font-size: 12.5px; color: var(--color-text-muted); line-height: 1.4; margin-top: 2px; }
+
+    /* Form card + solid showroom-red CTA */
+    #emailScreen .noct-email-form { margin-bottom: 18px; }
+    #emailScreen .noct-email-send-btn {
+      background: var(--store-primary);
+      color: #FFFFFF;
+      border: 1px solid var(--store-primary);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-weight: 750;
+      width: 100%;
+      margin-bottom: 12px;
+    }
+    #emailScreen .noct-email-send-btn:hover { background: var(--store-primary-light); border-color: var(--store-primary-light); color: #FFFFFF; }
+    #emailScreen .noct-email-send-btn.sent { background: var(--store-primary); color: #FFFFFF; }
+
+    .email-preview-note {
+      font-family: var(--font-sans);
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      color: var(--color-text-subtle);
+      text-align: center;
+      margin-bottom: 14px;
+    }
+    #emailScreen .noct-email-privacy { margin-bottom: 0; }
+
+    /* Certificate accent on the savings-pass code box */
+    #emailScreen .noct-dream-code { border-top: 4px solid var(--store-primary); margin: 0; max-width: none; }
+
+    /* Confirmation card */
+    #emailScreen .noct-email-confirmation {
+      max-width: 560px;
+      margin: 0 auto;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      box-shadow: 0 10px 28px rgba(55, 40, 28, 0.07);
+      padding: clamp(28px, 4vw, 44px) clamp(24px, 4vw, 40px);
+    }
+    #emailScreen .noct-email-confirmation .noct-email-eyebrow { margin-bottom: 10px; color: var(--store-primary); }
+
+    .email-preview-card {
+      border: 1px solid var(--color-border);
+      border-radius: 9px;
+      background: var(--color-surface-alt);
+      padding: 14px 18px;
+      max-width: 420px;
+      margin: 18px auto 0;
+      text-align: center;
+    }
+    .email-preview-card-label {
+      font-family: var(--font-sans); font-size: 10px; font-weight: 750;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--store-primary);
+      margin-bottom: 6px;
+    }
+    .email-preview-card-line { font-family: var(--font-sans); font-size: 12.5px; color: var(--color-text-muted); line-height: 1.45; }
+
+    /* Confirmation recap checklist */
+    .email-recap { max-width: 360px; margin: 18px auto 0; text-align: left; display: grid; gap: 8px; }
+    .email-recap-row { display: flex; gap: 10px; align-items: baseline; font-family: var(--font-sans); font-size: 13.5px; color: var(--color-text); }
+    .email-recap-mark { color: var(--store-primary); flex-shrink: 0; }
+    .email-recap-row.is-empty, .email-recap-row.is-empty .email-recap-mark { color: var(--color-text-subtle); }
+
+    /* Confirmation primary CTA (solid red, matches showroom) */
+    .noct-email-cta-primary {
+      background: var(--store-primary);
+      color: #FFFFFF;
+      border: 1px solid var(--store-primary);
+      border-radius: 8px;
+      font-family: var(--font-sans);
+      font-weight: 750;
+      font-size: 16px;
+      padding: 15px 32px;
+      cursor: pointer;
+      touch-action: manipulation;
+      display: block;
+      width: 100%;
+      max-width: 340px;
+      margin: 22px auto 10px;
+    }
+    .noct-email-cta-primary:hover { background: var(--store-primary-light); border-color: var(--store-primary-light); }
+
+    @media (max-width: 760px) {
+      .email-cap-grid { grid-template-columns: 1fr; gap: 0; }
+      #emailScreen .noct-dream-code { margin-bottom: 20px; }
+    }
+
     /* === 5c-2a Handoff screen — class definitions === */
     /* Defined but not yet applied. Markup wiring follows in 5c-2b. */
     .noct-handoff {
@@ -8124,7 +8255,8 @@
     body:has(#profileScreen.active),
     body:has(#resultsScreen.active),
     body:has(#hf2Screen.active),
-    body:has(#accessoriesScreen.active) {
+    body:has(#accessoriesScreen.active),
+    body:has(#emailScreen.active) {
       --color-bg: #F3EEE5;
       --color-surface: #FFFDF8;
       --color-surface-alt: #EEE7DC;
@@ -9125,57 +9257,80 @@
 
   </div>
 
-  <!-- SCREEN: Email Results -->
+  <!-- SCREEN: Save Sleep Brief / lead capture -->
   <div class="screen email-screen" id="emailScreen">
     <div class="noct-email">
-      <div class="noct-email-eyebrow" id="emailEyebrow">Don't lose your matches</div>
-      <h1 class="noct-email-headline" id="emailHeadline">Send <span class="accent">your results</span> to yourself</h1>
-      <p class="noct-email-subhead" id="emailSubhead">We'll send your Sleep Brief, mattress matches, and 30-day Savings Pass so you can decide on your time.</p>
 
-      <div class="noct-email-preview" id="emailPreviewWrapper">
-        <div class="noct-email-preview-label" id="emailPreviewLabel">What's inside</div>
-        <div class="noct-email-preview-list" id="emailPreview"></div>
+      <!-- Capture view -->
+      <div id="emailCaptureView">
+        <div class="email-cap-header">
+          <div class="noct-email-eyebrow" id="emailEyebrow">Don't lose your matches</div>
+          <h1 class="noct-email-headline" id="emailHeadline">Save your WG&amp;R <span class="accent">Sleep Brief</span></h1>
+          <p class="noct-email-subhead" id="emailSubhead">Keep your mattress matches, Sleep System picks, and Savings Pass together so a WG&amp;R sleep specialist can pick up right where you left off.</p>
+        </div>
+
+        <div class="email-cap-grid">
+          <div class="email-col-left">
+            <div class="email-card" id="emailPreviewWrapper">
+              <div class="email-card-label" id="emailPreviewLabel">What you'll save</div>
+              <div id="emailPreview"></div>
+            </div>
+            <div class="noct-dream-code" id="dreamCodeBox">
+              <div class="noct-dream-code-label" id="dreamCodeLabel">Your Savings Pass</div>
+              <div class="noct-dream-code-value" id="dreamCodeValue"></div>
+              <div class="noct-dream-code-hint" id="dreamCodeHintWrapper">
+                <span id="dreamCodeHintText">Valid on a qualifying DreamFinder mattress selection</span> &middot; <span class="pct" id="dreamCodePct"></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="email-col-right">
+            <div class="email-card email-form-card">
+              <div class="email-card-label" id="emailFormTitle">Where should we save it?</div>
+              <div class="noct-email-form">
+                <div class="noct-email-form-group">
+                  <label class="noct-email-label" for="emailNameInput" id="emailNameLabel">Your Name <span class="optional">(optional)</span></label>
+                  <input type="text" id="emailNameInput" class="noct-email-input" placeholder="First name" autocomplete="given-name" />
+                </div>
+                <div class="noct-email-form-group">
+                  <label class="noct-email-label" for="emailInput" id="emailEmailLabel">Email Address <span class="required">*</span></label>
+                  <input type="email" id="emailInput" class="noct-email-input" placeholder="your@email.com" autocomplete="email" />
+                  <div class="noct-email-error" id="emailError"></div>
+                </div>
+                <div class="noct-email-form-group">
+                  <label class="noct-email-label" for="emailPhoneInput" id="emailPhoneLabel">Phone <span class="optional">(optional)</span></label>
+                  <input type="tel" id="emailPhoneInput" class="noct-email-input" placeholder="(555) 555-5555" autocomplete="tel" />
+                </div>
+              </div>
+              <button class="noct-email-send-btn" id="emailSendBtn" onclick="sendResults()" ontouchend="event.preventDefault();sendResults();">Save My Sleep Brief &rarr;</button>
+              <div class="email-preview-note" id="emailPreviewNote">Preview mode: live email delivery isn't connected yet.</div>
+              <div class="noct-email-privacy" id="emailPrivacy">
+                <span id="emailPrivacyLead" data-store="email-privacy">We'll only use your email to send your results.</span>
+                <span id="emailPrivacyStatic"> Your info is never sold to third parties. Unsubscribe anytime.</span>
+                <a href="#" onclick="event.preventDefault();document.getElementById('privacyOverlay').classList.add('visible');" id="emailPrivacyLink">Privacy &amp; Terms</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <button class="noct-email-secondary js-start-over" id="emailStartOver" ontouchend="event.preventDefault();window.startOver();">&#8634; Start over</button>
       </div>
 
-      <div class="noct-email-form">
-        <div class="noct-email-form-group">
-          <label class="noct-email-label" for="emailNameInput" id="emailNameLabel">Your Name <span class="optional">(optional)</span></label>
-          <input type="text" id="emailNameInput" class="noct-email-input" placeholder="First name" autocomplete="given-name" />
-        </div>
-        <div class="noct-email-form-group">
-          <label class="noct-email-label" for="emailInput" id="emailEmailLabel">Email Address <span class="required">*</span></label>
-          <input type="email" id="emailInput" class="noct-email-input" placeholder="your@email.com" autocomplete="email" />
-          <div class="noct-email-error" id="emailError"></div>
-        </div>
-        <div class="noct-email-form-group">
-          <label class="noct-email-label" for="emailPhoneInput" id="emailPhoneLabel">Phone <span class="optional">(optional)</span></label>
-          <input type="tel" id="emailPhoneInput" class="noct-email-input" placeholder="(555) 555-5555" autocomplete="tel" />
-        </div>
-      </div>
-
-      <button class="noct-email-send-btn" id="emailSendBtn" onclick="sendResults()" ontouchend="event.preventDefault();sendResults();">Send My Results &rarr;</button>
-
-      <div class="noct-email-privacy" id="emailPrivacy">
-        <span data-store="email-privacy">We'll only use your email to send your results.</span>
-        Your info is never sold to third parties. Unsubscribe anytime.
-        <a href="#" onclick="event.preventDefault();document.getElementById('privacyOverlay').classList.add('visible');" id="emailPrivacyLink">Privacy &amp; Terms</a>
-      </div>
-
-      <div class="noct-dream-code" id="dreamCodeBox">
-        <div class="noct-dream-code-label" id="dreamCodeLabel">Your Savings Pass</div>
-        <div class="noct-dream-code-value" id="dreamCodeValue"></div>
-        <div class="noct-dream-code-hint" id="dreamCodeHintWrapper">
-          <span id="dreamCodeHintText">Valid on a qualifying DreamFinder mattress selection</span> &middot; <span class="pct" id="dreamCodePct"></span>
-        </div>
-      </div>
-
+      <!-- Confirmation view (persistent; shown after Save) -->
       <div class="noct-email-confirmation" id="emailConfirmation">
+        <div class="noct-email-eyebrow" id="emailConfirmEyebrow">Sleep Brief ready</div>
         <div class="noct-email-confirmation-mark">&check;</div>
-        <div class="noct-email-confirmation-title" id="emailConfirmationTitle">You're all set</div>
-        <div class="noct-email-confirmation-subtitle" id="emailConfirmationSubtitle">Check your inbox for your personalized results.</div>
+        <div class="noct-email-confirmation-title" id="emailConfirmationTitle">Your Sleep Brief is ready</div>
+        <div class="noct-email-confirmation-subtitle" id="emailConfirmationSubtitle">Bring this to a WG&amp;R sleep specialist to pick up where you left off.</div>
+        <div class="email-recap" id="emailRecap"></div>
+        <div class="email-preview-card" id="emailPreviewModeCard">
+          <div class="email-preview-card-label" id="emailPreviewModeLabel">Preview mode</div>
+          <div class="email-preview-card-line" id="emailPreviewModeNote">No email was sent. Live delivery can be connected after WG&amp;R approves the experience.</div>
+        </div>
+        <button class="noct-email-cta-primary" id="emailConfirmStartOver" onclick="window.startOver()" ontouchend="event.preventDefault();window.startOver();">Start New Customer</button>
+        <button class="noct-email-secondary" id="emailConfirmBackHandoff" onclick="window.showSavedPicks()" ontouchend="event.preventDefault();window.showSavedPicks();">Back to handoff</button>
       </div>
 
-      <button class="noct-email-secondary js-start-over" id="emailStartOver" ontouchend="event.preventDefault();window.startOver();" data-i18n="email.start_new">&#8634; Start New Customer</button>
     </div>
   </div>
 
@@ -11702,14 +11857,16 @@
         if (el) el.innerHTML = html;
       };
 
+      // ----- Capture view -----
       setText('emailEyebrow', es ? 'No pierdas tus opciones' : "Don't lose your matches");
       setHtml('emailHeadline', es
-        ? 'Lleva contigo <span class="accent">tu Pase de Ahorro</span>'
-        : 'Bring home <span class="accent">your Savings Pass</span>');
+        ? 'Guarda tu <span class="accent">Resumen de Sueño</span> WG&R'
+        : 'Save your WG&R <span class="accent">Sleep Brief</span>');
       setText('emailSubhead', es
-        ? 'Tus recomendaciones y oferta estarán guardadas hasta el ' + pass.expirationLabel + ' para que puedas decidir a tu ritmo.'
-        : 'Your matches and offer will be saved through ' + pass.expirationLabel + ' so you can decide on your time.');
-      setText('emailPreviewLabel', es ? 'Qué incluye' : "What's inside");
+        ? 'Guardaremos tus opciones de colchón, tu Sistema de Sueño y tu Pase de Ahorro juntos para que un especialista de sueño de WG&R pueda continuar justo donde lo dejaste.'
+        : 'Keep your mattress matches, Sleep System picks, and Savings Pass together so a WG&R sleep specialist can pick up right where you left off.');
+      setText('emailPreviewLabel', es ? 'Lo que vas a guardar' : "What you'll save");
+      setText('emailFormTitle', es ? '¿Dónde lo guardamos?' : 'Where should we save it?');
 
       setHtml('emailNameLabel', es
         ? 'Tu Nombre <span class="optional">(opcional)</span>'
@@ -11726,22 +11883,49 @@
       var emailInputEl = document.getElementById('emailInput');
       if (emailInputEl) emailInputEl.placeholder = es ? 'tucorreo@ejemplo.com' : 'your@email.com';
 
-      setText('emailSendBtn', isDemoMode
-        ? (es ? 'Vista Previa del Correo →' : 'Preview Email Experience →')
-        : (es ? 'Enviar Mi Pase y Resultados →' : 'Email My Pass & Matches →'));
+      setText('emailSendBtn', es ? 'Guardar Mi Resumen →' : 'Save My Sleep Brief →');
       setText('emailPrivacyLink', es ? 'Privacidad y Términos' : 'Privacy & Terms');
+      setText('emailStartOver', es ? '↺ Empezar de nuevo' : '↺ Start over');
+      // Privacy line: EN lead stays config-driven (store-config text.emailPrivacy);
+      // ES lead is translated inline because text_es.emailPrivacy is not supplied.
+      setText('emailPrivacyLead', es
+        ? 'Solo usaremos tu correo para enviarte tus resultados.'
+        : ((STORE_CONFIG && STORE_CONFIG.text && STORE_CONFIG.text.emailPrivacy) || "We'll only use your email to send your results."));
+      setText('emailPrivacyStatic', es
+        ? ' Tu información nunca se vende. Puedes cancelar la suscripción en cualquier momento.'
+        : ' Your info is never sold to third parties. Unsubscribe anytime.');
+
+      // Preview-mode note under the CTA — shown only while live email is not wired.
+      var noteEl = document.getElementById('emailPreviewNote');
+      if (noteEl) {
+        noteEl.textContent = es
+          ? 'Modo de vista previa: la entrega de correo en vivo aún no está conectada.'
+          : "Preview mode: live email delivery isn't connected yet.";
+        noteEl.style.display = isDemoMode ? '' : 'none';
+      }
 
       setText('dreamCodeLabel', es ? 'Tu Pase de Ahorro de 30 Días' : 'Your 30-Day Savings Pass');
       setText('dreamCodeHintText', es
         ? 'Válido en ' + pass.scope
         : 'Valid on ' + pass.scope);
 
-      setText('emailConfirmationTitle', isDemoMode
-        ? (es ? 'Vista previa lista' : 'Demo email ready')
-        : (es ? '¡Todo listo!' : "You're all set"));
+      // ----- Confirmation view -----
+      setText('emailConfirmEyebrow', es ? 'Resumen de sueño listo' : 'Sleep Brief ready');
+      setText('emailConfirmationTitle', es ? 'Tu Resumen de Sueño está listo' : 'Your Sleep Brief is ready');
       setText('emailConfirmationSubtitle', isDemoMode
-        ? L(getSavingsPassConfig().demoDeliveryNote)
+        ? (es ? 'Llévalo a un especialista de sueño de WG&R para continuar donde lo dejaste.' : 'Bring this to a WG&R sleep specialist to pick up where you left off.')
         : (es ? 'Revisa tu bandeja de entrada para ver tus resultados personalizados.' : 'Check your inbox for your personalized results.'));
+
+      // Preview-mode honesty card (demo only). Uses the WG&R-approved
+      // demoDeliveryNote from store-config so the wording stays config-driven.
+      var pmCard = document.getElementById('emailPreviewModeCard');
+      if (pmCard) pmCard.style.display = isDemoMode ? '' : 'none';
+      setText('emailPreviewModeLabel', es ? 'Modo de vista previa' : 'Preview mode');
+      setText('emailPreviewModeNote',
+        (es ? 'No se envió ningún correo. ' : 'No email was sent. ') + L(getSavingsPassConfig().demoDeliveryNote));
+
+      setText('emailConfirmStartOver', es ? 'Nuevo Cliente' : 'Start New Customer');
+      setText('emailConfirmBackHandoff', es ? 'Volver a las selecciones' : 'Back to handoff');
 
     }
 
@@ -11776,37 +11960,53 @@
 
       renderEmailChrome();
 
-      // Build preview list from analytics — strings stay close to the original phrasing.
-      var emailProfileName = analytics.profileBrief
-        || ((currentLang === 'es' ? 'Resumen de sueño' : 'Sleep brief') + ' · ' + (analytics.profileSubtitle || ''));
-      var topPick = analytics.topPick;
+      // Build the "save packet" once; reused for the summary card (capture view)
+      // and the recap checklist (confirmation). Rows reflect what was ACTUALLY
+      // saved so the packet never claims picks the shopper didn't make.
+      var _esE = currentLang === 'es';
       var savedMattresses = getSelectedMattressPlan();
       var selectedAccessories = getSelectedAccessoryPlan();
-      var _esE = currentLang === 'es';
-      var profileText = (_esE ? 'Resumen de sueño' : 'Sleep brief')
-        + ': <strong>' + emailProfileName + '</strong>';
-      var emailLeadMattress = savedMattresses[0] || topPick;
-      var topMatchText = savedMattresses.length
-        ? (_esE ? 'Finalistas guardados' : 'Saved finalists')
-            + ': <strong>' + savedMattresses.length + '</strong>'
-            + (emailLeadMattress ? ' · ' + emailLeadMattress.name : '')
-        : (_esE ? 'Colchones recomendados' : 'Recommended mattresses')
-            + ': <strong>' + ((analytics.allMatches || []).length || 0) + '</strong>';
-      var priorityText = _esE
-        ? 'Desglose de prioridades y por qué cada colchón te conviene'
-        : 'Priority breakdown & why each mattress fits you';
-      var accessoryText = selectedAccessories.length
-        ? (_esE ? 'Piezas guardadas del Sistema de Sueño' : 'Saved Sleep System pieces')
-            + ': <strong>' + selectedAccessories.length + '</strong>'
-        : (_esE ? 'Sistema de Sueño: no se guardaron accesorios' : 'Sleep System: no accessories saved');
-      var savingsPass = generateSavingsPass(analytics.sessionId);
-      var passText = _esE
-        ? 'Pase de Ahorro: <strong>' + savingsPass.percentage + '% de descuento</strong> · válido hasta ' + savingsPass.expirationLabel
-        : 'Savings Pass: <strong>' + savingsPass.percentage + '% off</strong> · good through ' + savingsPass.expirationLabel;
-      var items = [profileText, topMatchText, priorityText, accessoryText, passText];
-      var preview = document.getElementById('emailPreview');
-      preview.innerHTML = items.map(function(s) {
-        return '<div class="noct-email-preview-item">' + s + '</div>';
+      var recCount = (analytics.allMatches || []).length;
+      var pass = generateSavingsPass(analytics.sessionId);
+      var packet = [
+        { present: true,
+          title: _esE ? 'Resumen de Sueño' : 'Sleep Brief',
+          detail: _esE ? 'Tu perfil de confort y enfoque de prueba.' : 'Your comfort profile and trial focus.' },
+        { present: (savedMattresses.length > 0 || recCount > 0),
+          title: _esE ? 'Colchones finalistas' : 'Mattress finalists',
+          detail: savedMattresses.length
+            ? (_esE ? (savedMattresses.length + ' guardados · tus opciones más compatibles y para comparar')
+                    : (savedMattresses.length + ' saved · your strongest matches and comparison options'))
+            : (_esE ? (recCount + ' recomendados · tus opciones más compatibles')
+                    : (recCount + ' recommended · your strongest matches')) },
+        { present: selectedAccessories.length > 0,
+          title: _esE ? 'Sistema de Sueño' : 'Sleep System picks',
+          detail: selectedAccessories.length
+            ? (_esE ? (selectedAccessories.length + ' piezas · bases, almohadas y protectores para ti')
+                    : (selectedAccessories.length + ' pieces · bases, pillows & protectors matched to you'))
+            : (_esE ? 'Explóralo con tu especialista en la tienda' : 'Explore with your specialist in store') },
+        { present: true,
+          title: _esE ? 'Pase de Ahorro' : 'Savings Pass',
+          detail: (_esE ? 'Tu oferta, válida hasta ' : 'Your offer, good through ') + pass.expirationLabel }
+      ];
+
+      var summaryEl = document.getElementById('emailPreview');
+      if (summaryEl) summaryEl.innerHTML = packet.map(function(r) {
+        return '<div class="email-save-row' + (r.present ? '' : ' is-empty') + '">'
+          + '<span class="email-save-mark">' + (r.present ? '✓' : '○') + '</span>'
+          + '<div><div class="email-save-title">' + r.title + '</div>'
+          + '<div class="email-save-detail">' + r.detail + '</div></div>'
+          + '</div>';
+      }).join('');
+
+      var recapEl = document.getElementById('emailRecap');
+      if (recapEl) recapEl.innerHTML = packet.map(function(r) {
+        // ES present: no trailing word (the ✓ conveys "included") to avoid
+        // gender/number agreement issues (e.g. plural "Colchones finalistas").
+        var tail = r.present ? (_esE ? '' : ' included') : (_esE ? ' — en la tienda' : ' — in store');
+        return '<div class="email-recap-row' + (r.present ? '' : ' is-empty') + '">'
+          + '<span class="email-recap-mark">' + (r.present ? '✓' : '○') + '</span>'
+          + '<span>' + r.title + tail + '</span></div>';
       }).join('');
 
       // Reset form fields
@@ -11815,21 +12015,13 @@
       document.getElementById('emailPhoneInput').value = '';
       document.getElementById('emailError').textContent = '';
 
-      // Restore send button to normal state (label was set by renderEmailChrome)
+      // Reset send button + restore the capture view; hide the confirmation.
       var sendBtn = document.getElementById('emailSendBtn');
       sendBtn.classList.remove('sending');
       sendBtn.classList.remove('sent');
       sendBtn.style.display = '';
-
-      // Restore wrappers if they were hidden after a previous success
-      var formEl = document.querySelector('.noct-email-form');
-      if (formEl) formEl.style.display = '';
-      var privacyEl = document.getElementById('emailPrivacy');
-      if (privacyEl) privacyEl.style.display = '';
-      var previewEl = document.getElementById('emailPreviewWrapper');
-      if (previewEl) previewEl.style.display = '';
-
-      // Hide confirmation block
+      var capView = document.getElementById('emailCaptureView');
+      if (capView) capView.style.display = '';
       document.getElementById('emailConfirmation').classList.remove('visible');
 
       // Show the same presentation Pass used in the specialist reveal.
@@ -11958,6 +12150,15 @@
         accessories: accList
       };
       
+      // ── LIVE LEAD CAPTURE / EMAIL: single-field activation ──────────────────
+      // To go live, set STORE_CONFIG.gasUrl in data/store-config.json to the GAS
+      // web-app URL. Everything below branches automatically — no other UI
+      // changes needed: the POST fires, analytics logs 'email_submitted', and the
+      // confirmation swaps from preview copy to live copy. While gasUrl is blank
+      // (preview mode) NO network request is made and NO email is sent.
+      // GAS-side prerequisites (NOT automatic): deploy Code.gs as a web app
+      // (Execute as: Me, Access: Anyone), bind a Google Sheet (+ 'rsa' column),
+      // and review RESULT_EMAIL_BCC in Code.gs. See Code.gs for details.
       const gasUrl = (STORE_CONFIG && STORE_CONFIG.gasUrl) || '';
       const isEmailPreview = !gasUrl;
 
@@ -11969,41 +12170,18 @@
       
       function showSuccess() {
         sendBtn.textContent = isEmailPreview
-          ? (currentLang === 'es' ? '✓ Vista previa lista' : '✓ Preview ready')
+          ? (currentLang === 'es' ? '✓ Guardado' : '✓ Saved')
           : (currentLang === 'es' ? '✓ ¡Enviado!' : '✓ Sent!');
         sendBtn.classList.remove('sending');
         sendBtn.classList.add('sent');
+        // Persistent confirmation: hide the whole capture view and reveal the
+        // confirmation, which carries its own CTAs ("Start New Customer" /
+        // "Back to handoff"). No auto-jump — the RSA decides what's next, so the
+        // polished confirmation stays readable.
+        var capView = document.getElementById('emailCaptureView');
+        if (capView) capView.style.display = 'none';
         confirmation.classList.add('visible');
-        // Hide form / send / privacy / preview / DREAM code so only the
-        // confirmation block remains visible.
-        var formEl = document.querySelector('.noct-email-form');
-        if (formEl) formEl.style.display = 'none';
-        sendBtn.style.display = 'none';
-        var privacyEl = document.getElementById('emailPrivacy');
-        if (privacyEl) privacyEl.style.display = 'none';
-        var previewWrap = document.getElementById('emailPreviewWrapper');
-        if (previewWrap) previewWrap.style.display = 'none';
-        var dreamEl = document.getElementById('dreamCodeBox');
-        if (dreamEl) dreamEl.style.display = 'none';
-
-        // Auto-navigate back to hf2Screen after 2s so the RSA can continue the
-        // close conversation with picks + revealed discount visible. The
-        // confirmation reassurance beat plays for the full 2s on the email
-        // screen first. Race-safe via state-check, not timer-
-        // cancel: if startOver (or any other navigation) fires during the
-        // window, the .active class on emailScreen is gone and showSavedPicks
-        // is skipped — no module-level timer state, no startOver coupling.
-        // window.showSavedPicks is the documented routing chokepoint at
-        // index.html:8770-8779 — it runs renderHf2 (all sub-renderers) and
-        // then showScreen('hf2Screen'). Idempotency guards in 1e7520d
-        // preserve the discount button's revealed state, and the CSS-default
-        // flip from that same commit keeps the discount overlay hidden post-nav.
-        setTimeout(function() {
-          var emailScreenEl = document.getElementById('emailScreen');
-          if (emailScreenEl && emailScreenEl.classList.contains('active')) {
-            window.showSavedPicks();
-          }
-        }, 2000);
+        try { confirmation.scrollIntoView({ block: 'start', behavior: 'smooth' }); } catch (e) {}
       }
 
       function showError(msg) {
