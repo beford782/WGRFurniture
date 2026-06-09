@@ -134,7 +134,7 @@
     }
   },
   "promotions": {
-    "activeScenario": "memorial-day-2026-demo",
+    "activeScenario": "current",
     "timeZone": "America/Chicago",
     "scenarios": {
       "current": {
@@ -152,60 +152,346 @@
         },
         "items": [
           {
-            "id": "tempurpedic-offer",
+            "id": "wgr-tempurpedic-offer",
             "verified": true,
             "type": "offer",
-            "eligibleBrands": [
-              "Tempur-Pedic"
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "g1",
+              "g2",
+              "g3"
             ],
-            "eligibleMattressIds": [],
             "badge": {
-              "en": "Current WG&R Offer",
-              "es": "Oferta actual de WG&R"
+              "en": "Free Delivery + $300 Card",
+              "es": "Entrega gratis + tarjeta de $300"
             },
             "headline": {
-              "en": "Tempur-Pedic: free delivery, up to 5-year financing, and a $300 Mastercard® Rewards Card",
-              "es": "Tempur-Pedic: entrega gratis, financiamiento hasta 5 años y una tarjeta Mastercard® de $300 en recompensas"
+              "en": "Free Delivery + Free $300 Mastercard® Rewards Card to spend anywhere†",
+              "es": "Entrega gratis + tarjeta Mastercard® de $300 en recompensas para gastar donde quieras†"
             },
             "detail": {
-              "en": "Shown on WG&R's Sleep Shop page. Offer details and current availability confirmed by your WG&R sleep specialist.",
-              "es": "Mostrado en la página Sleep Shop de WG&R. Tu especialista de sueño de WG&R confirma los detalles y la disponibilidad actual."
+              "en": "Includes special financing. Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist. May not combine with the Savings Pass or other offers — ask your WG&R specialist.",
+              "es": "Incluye financiamiento especial. Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R. Puede no combinarse con el Pase de Ahorro ni con otras ofertas — pregunta a tu especialista de WG&R."
             },
             "disclosure": {
-              "en": "Financing subject to credit approval. May not combine with the Savings Pass or percentage-off offers — ask your WG&R specialist.",
-              "es": "Financiamiento sujeto a aprobación de crédito. Puede no combinarse con el Pase de Ahorro ni con ofertas de porcentaje de descuento — pregunta a tu especialista de WG&R."
+              "en": "See WG&R for offer terms.",
+              "es": "Consulta los términos de la oferta en WG&R."
             },
             "expiration": "not shown",
-            "sourceUrl": "https://www.wgrfurniture.com/sleep-shop",
+            "sourceUrl": "https://www.wgrfurniture.com/tempurpedic",
             "checkedAt": "2026-06-08",
             "savingsPassPolicy": "specialist_confirm"
           },
           {
-            "id": "tempurpedic-125night-guarantee",
+            "id": "wgr-sealy-offer",
             "verified": true,
-            "type": "guarantee",
-            "eligibleBrands": [
-              "Tempur-Pedic"
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "s5",
+              "s6",
+              "b4"
             ],
-            "eligibleMattressIds": [],
             "badge": {
-              "en": "125-Night Guarantee",
-              "es": "Garantía de 125 noches"
+              "en": "Free $200 Gift",
+              "es": "Regalo gratis de $200"
             },
             "headline": {
-              "en": "125-night sleep satisfaction guarantee",
-              "es": "Garantía de satisfacción de sueño de 125 noches"
+              "en": "Free $200 Gift∞ to spend on accessories",
+              "es": "Regalo gratis de $200∞ para gastar en accesorios"
             },
             "detail": {
-              "en": "Shown on WG&R's Sleep Shop page. Terms confirmed by your WG&R sleep specialist.",
-              "es": "Mostrada en la página Sleep Shop de WG&R. Tu especialista de sueño de WG&R confirma los términos."
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist. May not combine with the Savings Pass or other offers — ask your WG&R specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R. Puede no combinarse con el Pase de Ahorro ni con otras ofertas — pregunta a tu especialista de WG&R."
+            },
+            "disclosure": {
+              "en": "See WG&R for offer terms.",
+              "es": "Consulta los términos de la oferta en WG&R."
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/sealy",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "specialist_confirm"
+          },
+          {
+            "id": "wgr-stearns-foster-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "g4",
+              "g5"
+            ],
+            "badge": {
+              "en": "Free Delivery + $300 Card",
+              "es": "Entrega gratis + tarjeta de $300"
+            },
+            "headline": {
+              "en": "FREE DELIVERY + FREE $300 Mastercard® Rewards Card to spend anywhere†",
+              "es": "ENTREGA GRATIS + tarjeta Mastercard® de $300 en recompensas para gastar donde quieras†"
+            },
+            "detail": {
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist. May not combine with the Savings Pass or other offers — ask your WG&R specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R. Puede no combinarse con el Pase de Ahorro ni con otras ofertas — pregunta a tu especialista de WG&R."
+            },
+            "disclosure": {
+              "en": "See WG&R for offer terms.",
+              "es": "Consulta los términos de la oferta en WG&R."
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/stearns-foster",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "specialist_confirm"
+          },
+          {
+            "id": "wgr-beautyrest-black-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "g8",
+              "s7"
+            ],
+            "badge": {
+              "en": "Free Adjustable Base",
+              "es": "Base ajustable gratis"
+            },
+            "headline": {
+              "en": "Free baselogic™ Silver adjustable base with purchase (up to a $599 value) — limited time only, ends 6/16",
+              "es": "Base ajustable baselogic™ Silver gratis con tu compra (hasta $599 de valor) — por tiempo limitado, termina el 6/16"
+            },
+            "detail": {
+              "en": "Free delivery included. Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist. May not combine with the Savings Pass or other offers — ask your WG&R specialist.",
+              "es": "Incluye entrega gratis. Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R. Puede no combinarse con el Pase de Ahorro ni con otras ofertas — pregunta a tu especialista de WG&R."
+            },
+            "disclosure": {
+              "en": "",
+              "es": ""
+            },
+            "endsAt": "2026-06-16T23:59:59-05:00",
+            "expiration": "June 16, 2026",
+            "sourceUrl": "https://www.wgrfurniture.com/beautyrest-black",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "specialist_confirm"
+          },
+          {
+            "id": "wgr-purple-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "g7",
+              "s1",
+              "s2"
+            ],
+            "badge": {
+              "en": "Free Delivery + Gift",
+              "es": "Entrega gratis + regalo"
+            },
+            "headline": {
+              "en": "Free Delivery + Free Gift With Purchase, up to $300 value∞",
+              "es": "Entrega gratis + regalo gratis con tu compra, hasta $300 de valor∞"
+            },
+            "detail": {
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist. May not combine with the Savings Pass or other offers — ask your WG&R specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R. Puede no combinarse con el Pase de Ahorro ni con otras ofertas — pregunta a tu especialista de WG&R."
+            },
+            "disclosure": {
+              "en": "See WG&R for offer terms.",
+              "es": "Consulta los términos de la oferta en WG&R."
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/purple",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "specialist_confirm"
+          },
+          {
+            "id": "wgr-smartlife-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "g9"
+            ],
+            "badge": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "headline": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "detail": {
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R."
             },
             "disclosure": {
               "en": "",
               "es": ""
             },
             "expiration": "not shown",
-            "sourceUrl": "https://www.wgrfurniture.com/sleep-shop",
+            "sourceUrl": "https://www.wgrfurniture.com/search/mattresses/shop-by-brand/smartlife",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "stackable"
+          },
+          {
+            "id": "wgr-nectar-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "s10",
+              "b1",
+              "b2"
+            ],
+            "badge": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "headline": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "detail": {
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R."
+            },
+            "disclosure": {
+              "en": "",
+              "es": ""
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/search/mattresses/shop-by-brand/nectar",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "stackable"
+          },
+          {
+            "id": "wgr-casper-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "s3",
+              "s4"
+            ],
+            "badge": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "headline": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "detail": {
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R."
+            },
+            "disclosure": {
+              "en": "",
+              "es": ""
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/casper",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "stackable"
+          },
+          {
+            "id": "wgr-dreamcloud-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "b3",
+              "b7"
+            ],
+            "badge": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "headline": {
+              "en": "Free Delivery",
+              "es": "Entrega gratis"
+            },
+            "detail": {
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R."
+            },
+            "disclosure": {
+              "en": "",
+              "es": ""
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/search/mattresses/shop-by-brand/dreamcloud",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "stackable"
+          },
+          {
+            "id": "wgr-astor-park-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "s8",
+              "s9"
+            ],
+            "badge": {
+              "en": "Save 20%",
+              "es": "Ahorra 20%"
+            },
+            "headline": {
+              "en": "Limited time only — Save 20% on mattresses",
+              "es": "Por tiempo limitado — Ahorra 20% en colchones"
+            },
+            "detail": {
+              "en": "Hand-crafted in Two Rivers. Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist. May not combine with the Savings Pass or other offers — ask your WG&R specialist.",
+              "es": "Hecho a mano en Two Rivers. Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R. Puede no combinarse con el Pase de Ahorro ni con otras ofertas — pregunta a tu especialista de WG&R."
+            },
+            "disclosure": {
+              "en": "",
+              "es": ""
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/search/mattresses/shop-by-brand/astor-park",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "specialist_confirm"
+          },
+          {
+            "id": "wgr-factory-direct-offer",
+            "verified": true,
+            "type": "offer",
+            "evidenceStatus": "wgr-current-page",
+            "eligibleBrands": [],
+            "eligibleMattressIds": [
+              "b5"
+            ],
+            "badge": {
+              "en": "Save 20%",
+              "es": "Ahorra 20%"
+            },
+            "headline": {
+              "en": "Limited time only — Save 20% on mattresses^",
+              "es": "Por tiempo limitado — Ahorra 20% en colchones^"
+            },
+            "detail": {
+              "en": "Hand-crafted in Two Rivers. Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist. May not combine with the Savings Pass or other offers — ask your WG&R specialist.",
+              "es": "Hecho a mano en Two Rivers. Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R. Puede no combinarse con el Pase de Ahorro ni con otras ofertas — pregunta a tu especialista de WG&R."
+            },
+            "disclosure": {
+              "en": "See WG&R for offer terms.",
+              "es": "Consulta los términos de la oferta en WG&R."
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/factory-direct",
             "checkedAt": "2026-06-08",
             "savingsPassPolicy": "specialist_confirm"
           }
@@ -235,6 +521,32 @@
             "sourceUrl": "https://www.wgrfurniture.com/financing",
             "checkedAt": "2026-06-08",
             "savingsPassPolicy": "alternative"
+          },
+          {
+            "id": "wgr-125night-guarantee",
+            "verified": true,
+            "type": "guarantee",
+            "evidenceStatus": "wgr-current-page",
+            "badge": {
+              "en": "125-Night Guarantee",
+              "es": "Garantía de 125 noches"
+            },
+            "headline": {
+              "en": "125 sleep satisfaction guarantee",
+              "es": "Garantía de satisfacción de sueño de 125 noches"
+            },
+            "detail": {
+              "en": "Shown on WG&R's Sleep Shop; confirmed by your WG&R sleep specialist.",
+              "es": "Mostrado en el Sleep Shop de WG&R; lo confirma tu especialista de sueño de WG&R."
+            },
+            "disclosure": {
+              "en": "",
+              "es": ""
+            },
+            "expiration": "not shown",
+            "sourceUrl": "https://www.wgrfurniture.com/sleep-shop",
+            "checkedAt": "2026-06-08",
+            "savingsPassPolicy": "stackable"
           },
           {
             "id": "wgr-delivery-49",

@@ -11369,6 +11369,22 @@
       return promotions; // flat promotions behave as a single active scenario
     }
 
+    // Active-promotion time gate (shared by every promotion-selection path).
+    // A promotion with no `endsAt` never expires here. `endsAt` is an ABSOLUTE
+    // instant — ISO-8601 with an explicit timezone offset
+    // (e.g. "2026-06-16T23:59:59-05:00", the close of June 16 in WG&R's
+    // America/Chicago zone). The comparison is epoch-vs-epoch, so it never reads
+    // the tablet's local timezone. The offer stays active through its final
+    // second inclusive (<=). A malformed endsAt is rejected at build time by
+    // tools/validation.py; if one ever reaches the client it fails OPEN (offer
+    // shown) rather than hiding a possibly-valid offer.
+    function promotionActiveAt(p, nowMs) {
+      if (!p || !p.endsAt) return true;
+      var t = Date.parse(p.endsAt);
+      if (isNaN(t)) return true;
+      return nowMs <= t;
+    }
+
     // Persistent disclosure ({en,es}) for the active scenario, or null.
     function getScenarioDisclosure() {
       var sc = getActivePromotionScenario();
@@ -11378,7 +11394,9 @@
     function getMattressPromotions(mattress) {
       var sc = getActivePromotionScenario();
       if (!mattress || !sc || !Array.isArray(sc.items)) return [];
+      var now = Date.now();
       return sc.items.filter(function(item) {
+        if (!promotionActiveAt(item, now)) return false; // hide expired offers everywhere
         var byId = Array.isArray(item.eligibleMattressIds)
           && item.eligibleMattressIds.indexOf(mattress.id) !== -1;
         var byBrand = Array.isArray(item.eligibleBrands)
@@ -11396,7 +11414,9 @@
     // Store-wide promotions (financing, delivery, "more offers" pointer).
     function getStorewidePromotions() {
       var sc = getActivePromotionScenario();
-      return (sc && Array.isArray(sc.storewide)) ? sc.storewide : [];
+      if (!sc || !Array.isArray(sc.storewide)) return [];
+      var now = Date.now();
+      return sc.storewide.filter(function(item) { return promotionActiveAt(item, now); });
     }
 
     // Badge label. Prefixes Sample/Ejemplo only for un-verified promos in a

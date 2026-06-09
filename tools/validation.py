@@ -324,6 +324,19 @@ def _is_wgr_source(url: str) -> bool:
     return False
 
 
+def _valid_ends_at(s: str) -> bool:
+    """A promotion `endsAt` must be an ISO-8601 datetime carrying an explicit
+    timezone offset, so it is an absolute instant the client can compare without
+    depending on the tablet's local timezone (e.g. 2026-06-16T23:59:59-05:00).
+    A bare date or an offset-less timestamp is rejected."""
+    from datetime import datetime
+    try:
+        d = datetime.fromisoformat(s)
+    except (ValueError, TypeError):
+        return False
+    return d.tzinfo is not None
+
+
 def validate_promotions(config: dict, *, mattress_ids=None, accessory_ids=None,
                         accessory_categories=None) -> ValidationReport:
     """Validate the optional promotions block (scenario-aware or flat back-compat).
@@ -426,6 +439,14 @@ def _validate_promo_item(r, sid, it, mids, aids, acats):
         r.add_error(f"{tag}: wgr-full-page-archive sourceUrl must be a web.archive.org capture of wgrfurniture.com")
     if ev == "prior-research-observation" and not _s(it.get("evidenceProvenance")):
         r.add_error(f"{tag}: evidenceStatus prior-research-observation requires evidenceProvenance")
+
+    # time-limited offers: endsAt must be an absolute ISO-8601 instant (with a
+    # timezone offset) so the client can hide expired offers without depending
+    # on the tablet's local timezone.
+    ends = _s(it.get("endsAt"))
+    if ends and not _valid_ends_at(ends):
+        r.add_error(f"{tag}: endsAt {ends!r} must be an ISO-8601 datetime with a "
+                    f"timezone offset (e.g. 2026-06-16T23:59:59-05:00)")
 
     # the reconstructed 20% storewide event must not target individual products
     # unless explicitly marked eligible
@@ -1403,6 +1424,18 @@ def _self_test() -> int:
     npp = _mut(); del npp["scenarios"]["demo"]["items"][0]["evidenceProvenance"]
     check("promotions prior-research-observation without provenance -> error",
           any("requires evidenceProvenance" in e for e in validate_promotions(_pc(npp), mattress_ids=MIDS).errors))
+
+    eok = _mut(); eok["scenarios"]["demo"]["items"][0]["endsAt"] = "2026-06-16T23:59:59-05:00"
+    check("promotions valid endsAt (ISO + offset) -> ok",
+          not any("endsAt" in e for e in validate_promotions(_pc(eok), mattress_ids=MIDS).errors))
+
+    enoff = _mut(); enoff["scenarios"]["demo"]["items"][0]["endsAt"] = "2026-06-16T23:59:59"
+    check("promotions endsAt without timezone offset -> error",
+          any("endsAt" in e for e in validate_promotions(_pc(enoff), mattress_ids=MIDS).errors))
+
+    ebad = _mut(); ebad["scenarios"]["demo"]["items"][0]["endsAt"] = "soon"
+    check("promotions malformed endsAt -> error",
+          any("endsAt" in e for e in validate_promotions(_pc(ebad), mattress_ids=MIDS).errors))
 
     print(f"\nSelf-test: {passed} passed, {failed} failed")
     return 0 if failed == 0 else 1
