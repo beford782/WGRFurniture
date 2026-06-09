@@ -9786,28 +9786,6 @@
         ]
       },
       {
-        id: 'sleep_position', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "How do you usually sleep?", es: "\u00bfC\u00f3mo duermes normalmente?"},
-        helpText: {en: "Your sleep position is the biggest clue to the support you need.", es: "Piensa en c\u00f3mo terminas naturalmente"}, type: 'single',
-        options: [
-          { id: 'side', label: {en: 'Side Sleeper', es: 'De Lado'}, icon: 'side', sublabel: {en: 'Curled up', es: 'Acurrucado'}, scores: { plush: 2, pressureRelief: 2, soft: 1 } },
-          { id: 'back', label: {en: 'Back Sleeper', es: 'Boca Arriba'}, icon: 'back', sublabel: {en: 'Flat on back', es: 'Acostado de espalda'}, scores: { support: 2, medium: 2, zoned: 1 } },
-          { id: 'stomach', label: {en: 'Stomach Sleeper', es: 'Boca Abajo'}, icon: 'stomach', sublabel: {en: 'Face down', es: 'Boca abajo'}, scores: { firm: 2, support: 1 } },
-          { id: 'combo', label: {en: 'Combination', es: 'Combinaci\u00f3n'}, icon: 'combo', sublabel: {en: 'Move around', es: 'Me muevo mucho'}, scores: { medium: 2, responsive: 2 } },
-          { id: 'no_idea', label: {en: 'Not Sure', es: 'No Estoy Seguro'}, icon: 'question', sublabel: {en: 'I wake up in weird positions', es: 'Me despierto en posiciones raras'}, scores: { medium: 2, responsive: 2 } }
-        ]
-      },
-      {
-        id: 'body_type', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "What weight range should we match for?", es: "\u00bfPara qu\u00e9 rango de peso debemos buscar?"},
-        helpText: {en: "The right support level depends on the weight it carries.", es: "Esto nos ayuda a elegir el nivel de soporte correcto"}, type: 'single',
-        options: [
-          { id: 'petite', label: {en: 'Under 130 lbs', es: 'Menos de 130 lbs'}, icon: 'cloud', sublabel: {en: 'Light support', es: 'Soporte ligero'}, scores: { plush: 2, soft: 1 } },
-          { id: 'average', label: {en: '130 to 200 lbs', es: '130 a 200 lbs'}, icon: 'weight', sublabel: {en: 'Standard support', es: 'Soporte est\u00e1ndar'}, scores: { medium: 2 } },
-          { id: 'athletic', label: {en: '200 to 230 lbs', es: '200 a 230 lbs'}, icon: 'support', sublabel: {en: 'Medium-firm support', es: 'Soporte medio-firme'}, scores: { support: 2, medium: 1, responsive: 1 } },
-          { id: 'plus', label: {en: 'Over 230 lbs', es: 'M\u00e1s de 230 lbs'}, icon: 'support', sublabel: {en: 'Maximum support', es: 'Soporte m\u00e1ximo'}, scores: { firm: 2, support: 3, hybrid: 2, durability: 2 } },
-          { id: 'different', label: {en: 'Different Weights', es: 'Pesos Diferentes'}, icon: 'partner', sublabel: {en: 'Mixed support needs', es: 'Necesidades mixtas de soporte'}, scores: { medium: 2, support: 1, motionIsolation: 2 }, hideIf: { question: 'partner_sleep', answer: 'solo' } }
-        ]
-      },
-      {
         id: 'partner_sleep', category: {en: "Who's With You", es: "Qui\u00e9n Est\u00e1 Contigo"}, question: {en: "Who's sharing the bed with you?", es: "\u00bfQui\u00e9n comparte la cama contigo?"},
         helpText: {en: "Who shares your bed shapes which features matter most.", es: "Esto determina qu\u00e9 caracter\u00edsticas importan m\u00e1s"}, type: 'single',
         options: [
@@ -9825,6 +9803,40 @@
           { id: 'sometimes', label: {en: 'Sometimes', es: 'A Veces'}, icon: 'combo', sublabel: {en: 'Bigger movements bother me', es: 'Los movimientos grandes me molestan'}, scores: { motionIsolation: 3, hybrid: 2 } },
           { id: 'rarely', label: {en: 'Rarely', es: 'Rara Vez'}, icon: 'check', sublabel: {en: 'Light sleeper but mostly fine', es: 'Sue\u00f1o ligero pero generalmente bien'}, scores: { motionIsolation: 1 } },
           { id: 'not_applicable', label: {en: "Doesn't Apply", es: "No Aplica"}, icon: 'solo', sublabel: {en: 'I sleep alone', es: 'Duermo solo'}, scores: {} }
+        ]
+      },
+      {
+        id: 'sleep_position', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "How do you usually sleep?", es: "\u00bfC\u00f3mo duermes normalmente?"},
+        helpText: {en: "Your sleep position is the biggest clue to the support you need.", es: "Piensa en c\u00f3mo terminas naturalmente"}, type: 'single',
+        options: [
+          { id: 'side', label: {en: 'Side Sleeper', es: 'De Lado'}, icon: 'side', sublabel: {en: 'Curled up', es: 'Acurrucado'}, scores: { plush: 2, pressureRelief: 2, soft: 1 } },
+          { id: 'back', label: {en: 'Back Sleeper', es: 'Boca Arriba'}, icon: 'back', sublabel: {en: 'Flat on back', es: 'Acostado de espalda'}, scores: { support: 2, medium: 2, zoned: 1 } },
+          { id: 'stomach', label: {en: 'Stomach Sleeper', es: 'Boca Abajo'}, icon: 'stomach', sublabel: {en: 'Face down', es: 'Boca abajo'}, scores: { firm: 2, support: 1 } },
+          { id: 'combo', label: {en: 'Combination', es: 'Combinaci\u00f3n'}, icon: 'combo', sublabel: {en: 'Move around', es: 'Me muevo mucho'}, scores: { medium: 2, responsive: 2 } },
+          { id: 'no_idea', label: {en: 'Not Sure', es: 'No Estoy Seguro'}, icon: 'question', sublabel: {en: 'I wake up in weird positions', es: 'Me despierto en posiciones raras'}, scores: { medium: 2, responsive: 2 } }
+        ]
+      },
+      {
+        id: 'body_type', category: {en: 'About You', es: 'Sobre Ti'}, question: {en: "What weight range should this mattress support?", es: "\u00bfQu\u00e9 rango de peso debe soportar este colch\u00f3n?"},
+        helpText: {en: "This helps us account for cushioning, support, and durability.", es: "Esto nos ayuda a considerar la amortiguaci\u00f3n, el soporte y la durabilidad."}, type: 'single',
+        // Answer-aware copy (resolved in renderQuestion via dynamicCopy): solo shoppers
+        // see the base wording above; couples / family beds get partner-framed wording
+        // so "whose weight?" is unambiguous. IDs, ranges, and scores are identical in
+        // both cases \u2014 only the prose changes. Firmness stays the separate preference Q.
+        dynamicCopy: function(a) {
+          var couple = a.partner_sleep === 'partner' || a.partner_sleep === 'family';
+          if (!couple) return null;
+          return {
+            question: {en: "What weight range should we match for the sleeper who needs more support?", es: "\u00bfPara qu\u00e9 rango de peso debemos ajustar, seg\u00fan quien necesite m\u00e1s soporte?"},
+            helpText: {en: "If you fall into different ranges, choose \u201cDifferent weight ranges.\u201d", es: "Si est\u00e1n en rangos diferentes, elige \u201cRangos de peso diferentes\u201d."}
+          };
+        },
+        options: [
+          { id: 'petite', label: {en: 'Under 130 lbs', es: 'Menos de 130 lbs'}, icon: 'cloud', sublabel: {en: 'Light support', es: 'Soporte ligero'}, scores: { plush: 2, soft: 1 } },
+          { id: 'average', label: {en: '130 to 200 lbs', es: '130 a 200 lbs'}, icon: 'weight', sublabel: {en: 'Standard support', es: 'Soporte est\u00e1ndar'}, scores: { medium: 2 } },
+          { id: 'athletic', label: {en: '200 to 230 lbs', es: '200 a 230 lbs'}, icon: 'support', sublabel: {en: 'Medium-firm support', es: 'Soporte medio-firme'}, scores: { support: 2, medium: 1, responsive: 1 } },
+          { id: 'plus', label: {en: 'Over 230 lbs', es: 'M\u00e1s de 230 lbs'}, icon: 'support', sublabel: {en: 'Maximum support', es: 'Soporte m\u00e1ximo'}, scores: { firm: 2, support: 3, hybrid: 2, durability: 2 } },
+          { id: 'different', label: {en: 'Different weight ranges', es: 'Rangos de peso diferentes'}, icon: 'partner', sublabel: {en: 'Sleepers fall into different ranges', es: 'Los durmientes est\u00e1n en rangos diferentes'}, scores: { medium: 2, support: 1, motionIsolation: 2 }, hideIf: { question: 'partner_sleep', answer: 'solo' } }
         ]
       },
       {
@@ -10311,7 +10323,11 @@
       const container = document.getElementById('questionContainer');
       const es = currentLang === 'es';
       const eyebrow = (es ? 'Pregunta ' : 'Question ') + (stepIdx + 1) + ' · ' + (es ? 'de ' : 'of ') + total;
-      const headlineHtml = applyQuestionAccent(q.id, L(q.question), currentLang);
+      // Answer-aware copy: a question may override its prompt/help based on prior
+      // answers (e.g. body_type reframes for couples). Falls back to static copy.
+      const dynCopy = (typeof q.dynamicCopy === 'function') ? (q.dynamicCopy(answers) || {}) : {};
+      const qHelp = dynCopy.helpText || q.helpText;
+      const headlineHtml = applyQuestionAccent(q.id, L(dynCopy.question || q.question), currentLang);
       const backLabel = es ? '← Atrás' : '← Back';
 
       if (q.type === 'slider') {
@@ -10326,7 +10342,7 @@
             <div class="noct-quiz-progress-pct">${stepIdx + 1} / ${total}</div>
           </div>
           <h2 class="noct-quiz-headline">${headlineHtml}</h2>
-          <p class="noct-quiz-help">${L(q.helpText)}</p>
+          <p class="noct-quiz-help">${L(qHelp)}</p>
           <div class="noct-slider-wrap">
             <div class="noct-slider-value" id="sliderVal">${val}</div>
             <div class="noct-slider-feel" id="sliderLabel">${getFirmnessLabel(val)}</div>
@@ -10368,7 +10384,7 @@
             <div class="noct-quiz-progress-pct">${stepIdx + 1} / ${total}</div>
           </div>
           <h2 class="noct-quiz-headline">${headlineHtml}</h2>
-          <p class="noct-quiz-help">${L(q.helpText)}</p>
+          <p class="noct-quiz-help">${L(qHelp)}</p>
           ${isMulti ? '<p class="noct-quiz-multi-note">' + multiNote + '</p>' : ''}
           <div class="noct-quiz-options ${colClass}">
             ${displayOptions.map(opt => `
