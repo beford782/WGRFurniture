@@ -68,7 +68,7 @@ STORE_INFO_LISTS = {"languages", "allowedHosts"}
 STORE_CONFIG_KEY_ORDER = [
     "storeName", "storeKey", "languages", "logo", "colors", "gasUrl",
     "publicAssetRoot", "allowedHosts", "brands", "rsaList", "text", "text_es",
-    "discount", "voice", "voice_es", "salesNotes", "salesNotes_es",
+    "discount", "promotions", "voice", "voice_es", "salesNotes", "salesNotes_es",
 ]
 
 # Per-accessory key order (committed Bel order) - readability only.
@@ -259,8 +259,31 @@ def build_store_config(wb):
     cfg["salesNotes"] = sn
     cfg["salesNotes_es"] = sn_es
 
+    # Optional promotions block (scenario-aware). Emitted only when the workbook
+    # carries a non-empty Promotions tab, so deployments without it (e.g. Bel) are
+    # unchanged.
+    promotions = build_promotions(wb)
+    if promotions:
+        cfg["promotions"] = promotions
+
     # Reorder top-level keys to the committed order (readability only).
     return {k: cfg[k] for k in STORE_CONFIG_KEY_ORDER if k in cfg}
+
+
+def build_promotions(wb):
+    """Reassemble the promotions block from the optional Promotions tab.
+
+    The tab stores the canonical promotions JSON chunked one fragment per row
+    (column 'Promotions JSON'); fragments are concatenated in row order and
+    parsed. Returns the promotions dict, or None when the tab is absent/empty
+    (Bel and any deployment without promotions emit no key)."""
+    if "Promotions" not in wb.sheetnames:
+        return None
+    _, rows = read_tab(wb, "Promotions")
+    payload = "".join(_s(r.get("Promotions JSON")) for r in rows).strip()
+    if not payload:
+        return None
+    return json.loads(payload)
 
 
 # -- manifest.json (S5) -------------------------------------------------------
@@ -629,6 +652,23 @@ def main(argv=None) -> int:
             raw_tabs, source_images=args.source_images,
             skip_images=args.skip_image_normalization))
         report.merge(validation.validate_sales_notes(raw_tabs, languages=langs))
+        # Promotions (scenario-aware) validation against the assembled config +
+        # the known mattress/accessory catalog.
+        promo_mids = {_s(r0.get("id")) for r0 in (m_rows or []) if not _blank(r0.get("id"))}
+        promo_aids, promo_cats = set(), set()
+        for a in accessories:
+            if a.get("id"):
+                promo_aids.add(a["id"])
+            cat = a.get("category")
+            if isinstance(cat, dict):
+                for v in cat.values():
+                    if v:
+                        promo_cats.add(v)
+            elif cat:
+                promo_cats.add(cat)
+        report.merge(validation.validate_promotions(
+            config, mattress_ids=promo_mids, accessory_ids=promo_aids,
+            accessory_categories=promo_cats))
         print(report.summary())
         blocking = report.blocking(warnings_as_errors=args.warnings_as_errors)
         if args.validate_only:

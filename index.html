@@ -11356,22 +11356,71 @@
       document.getElementById('tierDescriptor').innerHTML = html;
     }
 
-    function getMattressPromotion(mattress) {
+    // All applicable promotions for a mattress — matches by exact id OR brand-wide.
+    // Active promotion scenario: promotions.scenarios[activeScenario], or the
+    // flat promotions block (back-compat) when no scenarios are defined.
+    function getActivePromotionScenario() {
       var promotions = STORE_CONFIG && STORE_CONFIG.promotions;
-      if (!mattress || !promotions || !Array.isArray(promotions.items)) return null;
-      return promotions.items.find(function(item) {
-        return Array.isArray(item.eligibleMattressIds)
+      if (!promotions) return null;
+      if (promotions.scenarios && typeof promotions.scenarios === 'object') {
+        var id = promotions.activeScenario;
+        return (id && promotions.scenarios[id]) || null;
+      }
+      return promotions; // flat promotions behave as a single active scenario
+    }
+
+    // Persistent disclosure ({en,es}) for the active scenario, or null.
+    function getScenarioDisclosure() {
+      var sc = getActivePromotionScenario();
+      return (sc && sc.disclosure && L(sc.disclosure)) ? sc.disclosure : null;
+    }
+
+    function getMattressPromotions(mattress) {
+      var sc = getActivePromotionScenario();
+      if (!mattress || !sc || !Array.isArray(sc.items)) return [];
+      return sc.items.filter(function(item) {
+        var byId = Array.isArray(item.eligibleMattressIds)
           && item.eligibleMattressIds.indexOf(mattress.id) !== -1;
-      }) || null;
+        var byBrand = Array.isArray(item.eligibleBrands)
+          && mattress.brand
+          && item.eligibleBrands.indexOf(mattress.brand) !== -1;
+        return byId || byBrand;
+      });
+    }
+
+    // Back-compat single accessor (first applicable promotion, or null).
+    function getMattressPromotion(mattress) {
+      return getMattressPromotions(mattress)[0] || null;
+    }
+
+    // Store-wide promotions (financing, delivery, "more offers" pointer).
+    function getStorewidePromotions() {
+      var sc = getActivePromotionScenario();
+      return (sc && Array.isArray(sc.storewide)) ? sc.storewide : [];
+    }
+
+    // Badge label. Prefixes Sample/Ejemplo only for un-verified promos in a
+    // demoOnly scenario; reconstructed/historical promos keep their own badge text.
+    function promotionBadgeLabel(promotion) {
+      var sc = getActivePromotionScenario() || {};
+      var label = L(promotion.badge);
+      if (sc.demoOnly && promotion.verified !== true && !promotion.reconstructedHistorical) {
+        label = (currentLang === 'es' ? 'Ejemplo · ' : 'Sample · ') + label;
+      }
+      return label;
     }
 
     function promotionBadgeHtml(promotion) {
       if (!promotion) return '';
-      var demoOnly = STORE_CONFIG.promotions && STORE_CONFIG.promotions.demoOnly;
-      var label = L(promotion.badge);
-      if (demoOnly) label = (currentLang === 'es' ? 'Ejemplo · ' : 'Sample · ') + label;
-      return '<div class="mattress-promo-badge">' + escapeHtml(label) + '</div>'
+      return '<div class="mattress-promo-badge">' + escapeHtml(promotionBadgeLabel(promotion)) + '</div>'
         + '<div class="mattress-promo-summary">' + escapeHtml(L(promotion.headline)) + '</div>';
+    }
+
+    // All applicable promotion badges for a mattress (result-card surface).
+    function promotionBadgesHtml(mattress) {
+      return getMattressPromotions(mattress).map(function(p) {
+        return promotionBadgeHtml(p);
+      }).join('');
     }
 
     function promotionOfferTabHtml(promotion) {
@@ -11381,20 +11430,83 @@
         + '</div>';
     }
 
+    // Conservative expiration line — never invents a date.
+    function promotionExpiryText(p) {
+      var es = currentLang === 'es';
+      var exp = p && p.expiration;
+      if (!exp || exp === 'not shown') return es ? 'Fecha de término: no indicada' : 'End date: not shown';
+      return (es ? 'Válido hasta: ' : 'Good through: ') + exp;
+    }
+
+    // Full promotion block (drawer / details surface) with disclosure + source.
+    function promotionDetailBlockHtml(p) {
+      var es = currentLang === 'es';
+      var muted = 'color:rgba(248,246,241,0.6);';
+      var html = '<div style="margin:0.5rem 0 0.15rem; padding-top:0.5rem; border-top:1px solid rgba(212,168,75,0.18);">';
+      html += '<div style="font-weight:700; color:var(--color-gold-bright); font-size:0.7rem; letter-spacing:0.5px;">' + escapeHtml(promotionBadgeLabel(p)) + '</div>';
+      html += '<div style="font-size:0.82rem; margin-top:0.15rem; line-height:1.4;">' + escapeHtml(L(p.headline)) + '</div>';
+      if (L(p.detail)) html += '<div style="font-size:0.7rem; ' + muted + ' margin-top:0.2rem; line-height:1.5;">' + escapeHtml(L(p.detail)) + '</div>';
+      if (p.disclosure && L(p.disclosure)) html += '<div style="font-size:0.64rem; ' + muted + ' margin-top:0.2rem; line-height:1.45;">' + escapeHtml(L(p.disclosure)) + '</div>';
+      // Evidence provenance (reconstructed / prior-research-observation historical
+      // promos). Bilingual via L() — accepts {en,es} or a legacy plain string.
+      if (p.evidenceProvenance && L(p.evidenceProvenance)) html += '<div style="font-size:0.6rem; font-style:italic; color:rgba(248,246,241,0.45); margin-top:0.2rem; line-height:1.4;">' + escapeHtml(L(p.evidenceProvenance)) + '</div>';
+      html += '<div style="font-size:0.62rem; ' + muted + ' margin-top:0.2rem;">' + escapeHtml(promotionExpiryText(p)) + '</div>';
+      if (p.sourceUrl) {
+        html += '<div style="font-size:0.62rem; margin-top:0.15rem;"><a href="' + escapeHtml(p.sourceUrl) + '" target="_blank" rel="noopener" style="color:var(--color-gold-bright);">'
+          + (es ? 'Ver en el sitio de WG&R' : "View on WG&R's site") + '</a></div>';
+      }
+      html += '</div>';
+      return html;
+    }
+
+    // Combined drawer promo body: product-eligible promos + store-wide notes.
+    function promotionDrawerDetailHtml(mattress) {
+      var es = currentLang === 'es';
+      var sc = getActivePromotionScenario() || {};
+      var promos = getMattressPromotions(mattress);
+      var storewide = getStorewidePromotions();
+      if (!promos.length && !storewide.length) return '';
+      var parts = [];
+      // Persistent scenario disclosure (e.g. historical-demo "not current offers").
+      var disc = getScenarioDisclosure();
+      if (disc) {
+        parts.push('<div style="font-size:0.66rem; font-weight:600; color:var(--color-gold-bright); background:rgba(212,168,75,0.08); border:1px solid rgba(212,168,75,0.25); border-radius:6px; padding:0.5rem 0.6rem; line-height:1.45;">' + escapeHtml(L(disc)) + '</div>');
+      }
+      if (es && sc.spanishStatus === 'draft' && sc.spanishDraftNote && L(sc.spanishDraftNote)) {
+        parts.push('<div style="font-size:0.62rem; font-style:italic; color:rgba(248,246,241,0.45);">' + escapeHtml(L(sc.spanishDraftNote)) + '</div>');
+      }
+      promos.forEach(function(p) { parts.push(promotionDetailBlockHtml(p)); });
+      if (storewide.length) {
+        parts.push('<div style="font-size:0.62rem; letter-spacing:1px; text-transform:uppercase; color:rgba(248,246,241,0.5); margin-top:0.7rem;">' + (es ? 'Ofertas en toda la tienda WG&R' : 'WG&R store-wide offers') + '</div>');
+        storewide.forEach(function(p) { parts.push(promotionDetailBlockHtml(p)); });
+      }
+      return parts.join('');
+    }
+
     function renderResultsOfferCue(mattresses) {
       var cue = document.getElementById('resultsOfferCue');
       if (!cue) return;
       var count = (mattresses || []).filter(function(m) {
-        return !!getMattressPromotion(m);
+        return getMattressPromotions(m).length > 0;
       }).length;
+      // Disclosed scenario (e.g. historical demo): the cue ALWAYS carries the
+      // required disclosure wherever promotions can appear — never a "current
+      // offers" claim.
+      var disc = getScenarioDisclosure();
+      if (disc && (count > 0 || getStorewidePromotions().length > 0)) {
+        cue.textContent = L(disc);
+        cue.setAttribute('data-label', currentLang === 'es' ? 'AVISO' : 'NOTICE');
+        cue.classList.add('is-visible');
+        return;
+      }
       if (!count) {
         cue.classList.remove('is-visible');
         cue.textContent = '';
         return;
       }
       cue.textContent = currentLang === 'es'
-        ? count + ' de estas opciones tienen ejemplos de ofertas actuales.'
-        : count + ' of these matches have current offer examples.';
+        ? count + ' de estas opciones tienen ofertas actuales de WG&R.'
+        : count + ' of these matches have current WG&R offers.';
       cue.setAttribute('data-label', currentLang === 'es' ? 'OFERTA' : 'OFFER');
       cue.classList.add('is-visible');
     }
@@ -11455,7 +11567,7 @@
               : comparisonLabel) + '</div>'
         +   '<div class="noct-toppick-brand">' + escapeHtml(brandLine) + '</div>'
         +   '<div class="noct-toppick-name">' + escapeHtml(m.name) + '</div>'
-        +   promotionBadgeHtml(promotion)
+        +   promotionBadgesHtml(m)
         +   reasonHtml
         +   '<div class="noct-toppick-firmness-row">'
         +     '<div class="noct-toppick-firmness-value">' + m.firmness + '/10</div>'
@@ -11518,7 +11630,7 @@
           + '<div class="noct-support-body">'
           +   '<div class="noct-support-brand">' + escapeHtml(brandLine) + '</div>'
           +   '<div class="noct-support-name">' + escapeHtml(m.name) + '</div>'
-          +   promotionBadgeHtml(promotion)
+          +   promotionBadgesHtml(m)
           +   reasonHtml
           +   '<div class="noct-support-meta">'
           +     '<span class="firm-value">' + m.firmness + '/10</span>' + escapeHtml(feel) + ' · '
@@ -11893,7 +12005,9 @@
     function renderEmailChrome() {
       var es = currentLang === 'es';
       var pass = generateSavingsPass(analytics.sessionId);
-      var isDemoMode = !(STORE_CONFIG && STORE_CONFIG.gasUrl);
+      var _emailScenario = getActivePromotionScenario();
+      var isDemoMode = !(STORE_CONFIG && STORE_CONFIG.gasUrl)
+        || !!(_emailScenario && _emailScenario.disableEmailSubmission);
       var setText = function(id, text) {
         var el = document.getElementById(id);
         if (el) el.textContent = text;
@@ -12175,6 +12289,32 @@
       const _rsa = localStorage.getItem('dreamfinder.' + _storeKey + '.deviceRsa') || '';
       const savingsPass = generateSavingsPass(analytics.sessionId);
 
+      // Website-derived WG&R offers for the email — union of promos applicable to
+      // the emailed matches + store-wide notes, pre-localized to the email language.
+      var _emailPromoSeen = {};
+      var _emailPromoItems = [];
+      function _collectEmailPromo(p) {
+        if (p && !_emailPromoSeen[p.id]) { _emailPromoSeen[p.id] = true; _emailPromoItems.push(p); }
+      }
+      (saved.length > 0 ? saved : (analytics.allMatches || [])).forEach(function(it) {
+        getMattressPromotions({ id: it.id, brand: it.brand }).forEach(_collectEmailPromo);
+      });
+      getStorewidePromotions().forEach(_collectEmailPromo);
+      const emailPromotions = _emailPromoItems.map(function(p) {
+        return {
+          badge: promotionBadgeLabel(p),
+          headline: L(p.headline),
+          detail: L(p.detail) || '',
+          disclosure: (p.disclosure && L(p.disclosure)) || '',
+          expiration: promotionExpiryText(p),
+          sourceUrl: p.sourceUrl || ''
+        };
+      });
+      const _promoCfg = (STORE_CONFIG && STORE_CONFIG.promotions) || {};
+      const promoSpanishDraft = (currentLang === 'es' && _promoCfg.spanishStatus === 'draft' && _promoCfg.spanishDraftNote)
+        ? (L(_promoCfg.spanishDraftNote) || '')
+        : '';
+
       // Email HTML is built server-side in Apps Script (Code.gs buildSimpleHtml).
       // The server applies defensive payload ceilings without truncating the plan to three accessories.
       // Compile payload
@@ -12197,7 +12337,11 @@
         rsa: _rsa,
         lang: currentLang,
         allMatches: allMatches,
-        accessories: accList
+        accessories: accList,
+        emailPromotions: emailPromotions,
+        promoSpanishDraft: promoSpanishDraft,
+        promoScenario: (STORE_CONFIG.promotions && STORE_CONFIG.promotions.activeScenario) || '',
+        promoDisclosure: (function () { var d = getScenarioDisclosure(); return d ? L(d) : ''; })()
       };
       
       // ── LIVE LEAD CAPTURE / EMAIL: single-field activation ──────────────────
@@ -12210,7 +12354,12 @@
       // (Execute as: Me, Access: Anyone), bind a Google Sheet (+ 'rsa' column),
       // and review RESULT_EMAIL_BCC in Code.gs. See Code.gs for details.
       const gasUrl = (STORE_CONFIG && STORE_CONFIG.gasUrl) || '';
-      const isEmailPreview = !gasUrl;
+      // Some scenarios (e.g. the historical demo) disable live submission entirely:
+      // preview-only regardless of gasUrl, so a reconstructed scenario can never
+      // send a real customer email.
+      const _submitScenario = getActivePromotionScenario();
+      const scenarioBlocksEmail = !!(_submitScenario && _submitScenario.disableEmailSubmission);
+      const isEmailPreview = !gasUrl || scenarioBlocksEmail;
 
       analytics.log(isEmailPreview ? 'email_previewed' : 'email_submitted', {
         email: email,
@@ -12242,7 +12391,7 @@
         errorEl.textContent = msg || (currentLang === 'es' ? 'Algo salió mal. Por favor intenta de nuevo.' : 'Something went wrong. Please try again.');
       }
       
-      if (gasUrl) {
+      if (gasUrl && !scenarioBlocksEmail) {
         // Real send via Google Apps Script.
         // NOTE: No Content-Type header → "simple request" → no CORS preflight.
         // GAS web apps deployed as "Anyone" return Access-Control-Allow-Origin:*,
@@ -15279,15 +15428,21 @@
           + '</div>';
       }).join('');
 
-      var promotion = getMattressPromotion(m);
+      var drawerPromos = getMattressPromotions(m);
+      var drawerStorewide = getStorewidePromotions();
       var promotionEl = document.getElementById('drawerPromotion');
-      if (promotion && promotionEl) {
-        var isDemo = STORE_CONFIG.promotions && STORE_CONFIG.promotions.demoOnly;
-        document.getElementById('drawerPromotionKicker').textContent = isDemo
-          ? (currentLang === 'es' ? 'Concepto de Promoción' : 'Promotion Concept')
-          : (currentLang === 'es' ? 'Oferta Actual' : 'Current Offer');
-        document.getElementById('drawerPromotionHeadline').textContent = L(promotion.headline);
-        document.getElementById('drawerPromotionDetail').textContent = L(promotion.detail);
+      if (promotionEl && (drawerPromos.length || drawerStorewide.length)) {
+        var esDrawer = currentLang === 'es';
+        // Scenario-aware kicker: a disclosed scenario (e.g. historical demo) must
+        // never make a "current offer" claim — mirror the cue/disclosure logic.
+        var drawerKicker = getScenarioDisclosure()
+          ? (esDrawer ? 'Ofertas de WG&R (Demostración histórica)' : 'WG&R Offers (Historical Demo)')
+          : (esDrawer ? 'Ofertas Actuales de WG&R' : 'Current WG&R Offers');
+        document.getElementById('drawerPromotionKicker').textContent = drawerKicker;
+        document.getElementById('drawerPromotionHeadline').textContent = esDrawer
+          ? 'Detalles confirmados por tu especialista de WG&R'
+          : 'Details confirmed by your WG&R specialist';
+        document.getElementById('drawerPromotionDetail').innerHTML = promotionDrawerDetailHtml(m);
         promotionEl.classList.add('is-visible');
       } else if (promotionEl) {
         promotionEl.classList.remove('is-visible');

@@ -1,0 +1,316 @@
+{
+  "activeScenario": "memorial-day-2026-demo",
+  "timeZone": "America/Chicago",
+  "scenarios": {
+    "current": {
+      "kind": "current",
+      "demoOnly": false,
+      "checkedAt": "2026-06-08",
+      "spanishStatus": "draft",
+      "spanishDraftNote": {
+        "en": "",
+        "es": "Traducción preliminar — confirma los detalles con tu especialista de WG&R."
+      },
+      "sourceNote": {
+        "en": "Offers reflect WG&R's official website and are confirmed by your WG&R sleep specialist.",
+        "es": "Las ofertas reflejan el sitio web oficial de WG&R y las confirma tu especialista de sueño de WG&R."
+      },
+      "items": [
+        {
+          "id": "tempurpedic-offer",
+          "verified": true,
+          "type": "offer",
+          "eligibleBrands": [
+            "Tempur-Pedic"
+          ],
+          "eligibleMattressIds": [],
+          "badge": {
+            "en": "Current WG&R Offer",
+            "es": "Oferta actual de WG&R"
+          },
+          "headline": {
+            "en": "Tempur-Pedic: free delivery, up to 5-year financing, and a $300 Mastercard® Rewards Card",
+            "es": "Tempur-Pedic: entrega gratis, financiamiento hasta 5 años y una tarjeta Mastercard® de $300 en recompensas"
+          },
+          "detail": {
+            "en": "Shown on WG&R's Sleep Shop page. Offer details and current availability confirmed by your WG&R sleep specialist.",
+            "es": "Mostrado en la página Sleep Shop de WG&R. Tu especialista de sueño de WG&R confirma los detalles y la disponibilidad actual."
+          },
+          "disclosure": {
+            "en": "Financing subject to credit approval. May not combine with the Savings Pass or percentage-off offers — ask your WG&R specialist.",
+            "es": "Financiamiento sujeto a aprobación de crédito. Puede no combinarse con el Pase de Ahorro ni con ofertas de porcentaje de descuento — pregunta a tu especialista de WG&R."
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/sleep-shop",
+          "checkedAt": "2026-06-08",
+          "savingsPassPolicy": "specialist_confirm"
+        },
+        {
+          "id": "tempurpedic-125night-guarantee",
+          "verified": true,
+          "type": "guarantee",
+          "eligibleBrands": [
+            "Tempur-Pedic"
+          ],
+          "eligibleMattressIds": [],
+          "badge": {
+            "en": "125-Night Guarantee",
+            "es": "Garantía de 125 noches"
+          },
+          "headline": {
+            "en": "125-night sleep satisfaction guarantee",
+            "es": "Garantía de satisfacción de sueño de 125 noches"
+          },
+          "detail": {
+            "en": "Shown on WG&R's Sleep Shop page. Terms confirmed by your WG&R sleep specialist.",
+            "es": "Mostrada en la página Sleep Shop de WG&R. Tu especialista de sueño de WG&R confirma los términos."
+          },
+          "disclosure": {
+            "en": "",
+            "es": ""
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/sleep-shop",
+          "checkedAt": "2026-06-08",
+          "savingsPassPolicy": "specialist_confirm"
+        }
+      ],
+      "storewide": [
+        {
+          "id": "wgr-financing",
+          "verified": true,
+          "type": "financing",
+          "badge": {
+            "en": "Financing Available",
+            "es": "Financiamiento disponible"
+          },
+          "headline": {
+            "en": "0% APR financing available (12, 36, or 60 months)",
+            "es": "Financiamiento con 0% APR disponible (12, 36 o 60 meses)"
+          },
+          "detail": {
+            "en": "Subject to credit approval. Not valid on power buys, floor samples, or clearance. Cannot combine with percentage-off discounts or gift-with-purchase. Ask your WG&R specialist.",
+            "es": "Sujeto a aprobación de crédito. No válido en power buys, muestras de piso ni liquidación. No se combina con descuentos de porcentaje ni regalo con compra. Pregunta a tu especialista de WG&R."
+          },
+          "disclosure": {
+            "en": "New accounts as of 7/31/2025: Purchase APR 34.99%, Penalty APR 39.99%, Minimum Interest Charge $2. Subject to credit approval.",
+            "es": "Cuentas nuevas desde el 31/7/2025: APR de compra 34.99%, APR de penalización 39.99%, cargo mínimo de interés $2. Sujeto a aprobación de crédito."
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/financing",
+          "checkedAt": "2026-06-08",
+          "savingsPassPolicy": "alternative"
+        },
+        {
+          "id": "wgr-delivery-49",
+          "verified": true,
+          "type": "service",
+          "badge": {
+            "en": "Delivery from $49",
+            "es": "Entrega desde $49"
+          },
+          "headline": {
+            "en": "Delivery starting at $49",
+            "es": "Entrega desde $49"
+          },
+          "detail": {
+            "en": "Starting prices reflect WG&R's standard delivery area. Exclusions apply (clearance, closeouts, floor samples, doorbusters, and select brands including Tempur-Pedic, Purple, and Casper). Ask your WG&R specialist.",
+            "es": "Los precios iniciales reflejan el área de entrega estándar de WG&R. Aplican exclusiones (liquidación, cierres, muestras de piso, ofertas especiales y ciertas marcas como Tempur-Pedic, Purple y Casper). Pregunta a tu especialista de WG&R."
+          },
+          "disclosure": {
+            "en": "",
+            "es": ""
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/current-promotions",
+          "checkedAt": "2026-06-08",
+          "savingsPassPolicy": "stackable"
+        },
+        {
+          "id": "wgr-more-offers",
+          "verified": true,
+          "type": "pointer",
+          "badge": {
+            "en": "More Current Offers",
+            "es": "Más ofertas actuales"
+          },
+          "headline": {
+            "en": "WG&R runs additional current offers (Power Buys, brand deals, clearance)",
+            "es": "WG&R tiene ofertas actuales adicionales (Power Buys, ofertas de marca, liquidación)"
+          },
+          "detail": {
+            "en": "Some offers appear only on WG&R's promotions pages. Ask your WG&R specialist for current details.",
+            "es": "Algunas ofertas solo aparecen en las páginas de promociones de WG&R. Pregunta a tu especialista de WG&R por los detalles actuales."
+          },
+          "disclosure": {
+            "en": "",
+            "es": ""
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/current-promotions",
+          "checkedAt": "2026-06-08",
+          "savingsPassPolicy": "specialist_confirm"
+        }
+      ]
+    },
+    "memorial-day-2026-demo": {
+      "kind": "historical-demo",
+      "period": {
+        "startsAt": "2026-05-05",
+        "endsAt": "2026-06-02",
+        "timeZone": "America/Chicago"
+      },
+      "disclosure": {
+        "en": "Historical Demo · Pre–Memorial Day 2026 — Offers shown are a reconstruction of promotions advertised during May 2026 and are not current offers.",
+        "es": "Demostración histórica · Antes del Día de los Caídos de 2026 — Las ofertas mostradas reconstruyen promociones anunciadas durante mayo de 2026 y no son ofertas actuales."
+      },
+      "disableEmailSubmission": true,
+      "spanishStatus": "draft",
+      "spanishDraftNote": {
+        "en": "",
+        "es": "Traducción preliminar — confirma los detalles con tu especialista de WG&R."
+      },
+      "evidenceStatus": "prior-research-observation",
+      "evidenceProvenance": {
+        "en": "Previously observed on a WG&R-indexed or WG&R product result, but not independently retrievable as of 2026-06-08.",
+        "es": "Observado anteriormente en un resultado indexado de WG&R o en una página de producto de WG&R, pero no recuperable de forma independiente al 2026-06-08."
+      },
+      "items": [
+        {
+          "id": "md2026-purple-rejuvenate",
+          "reconstructedHistorical": true,
+          "evidenceStatus": "prior-research-observation",
+          "evidenceProvenance": {
+            "en": "Previously observed on a WG&R-indexed or WG&R product result, but not independently retrievable as of 2026-06-08.",
+            "es": "Observado anteriormente en un resultado indexado de WG&R o en una página de producto de WG&R, pero no recuperable de forma independiente al 2026-06-08."
+          },
+          "eligibleMattressIds": [
+            "g7"
+          ],
+          "eligibleAccessoryIds": [],
+          "eligibleBrands": [],
+          "eligibleForStorewide20": false,
+          "badge": {
+            "en": "Reconstructed Historical Offer",
+            "es": "Oferta histórica reconstruida"
+          },
+          "headline": {
+            "en": "Previously observed $500 savings",
+            "es": "Ahorro de $500 observado anteriormente"
+          },
+          "detail": {
+            "en": "Reconstructed from prior research; not a current offer. Confirm with your WG&R sleep specialist.",
+            "es": "Reconstruido a partir de investigación previa; no es una oferta actual. Confírmalo con tu especialista de sueño de WG&R."
+          },
+          "disclosure": {
+            "en": "",
+            "es": ""
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/product/group/mattresses/shop-by-size/twin-xl/purp/purple-rejuvenate-twin-xl-mattress/3020940/3017912",
+          "savingsPassPolicy": "specialist_confirm"
+        },
+        {
+          "id": "md2026-purple-restore-firm",
+          "reconstructedHistorical": true,
+          "evidenceStatus": "prior-research-observation",
+          "evidenceProvenance": {
+            "en": "Previously observed on a WG&R-indexed or WG&R product result, but not independently retrievable as of 2026-06-08.",
+            "es": "Observado anteriormente en un resultado indexado de WG&R o en una página de producto de WG&R, pero no recuperable de forma independiente al 2026-06-08."
+          },
+          "eligibleMattressIds": [
+            "s2"
+          ],
+          "eligibleAccessoryIds": [],
+          "eligibleBrands": [],
+          "eligibleForStorewide20": false,
+          "badge": {
+            "en": "Reconstructed Historical Offer",
+            "es": "Oferta histórica reconstruida"
+          },
+          "headline": {
+            "en": "Previously observed $250 savings (Twin XL, as observed)",
+            "es": "Ahorro de $250 observado anteriormente (Twin XL, según lo observado)"
+          },
+          "detail": {
+            "en": "Reconstructed from prior research; not a current offer. Confirm with your WG&R sleep specialist.",
+            "es": "Reconstruido a partir de investigación previa; no es una oferta actual. Confírmalo con tu especialista de sueño de WG&R."
+          },
+          "disclosure": {
+            "en": "",
+            "es": ""
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/product/group/mattresses/shop-by-size/twin-xl/purp/purple-restore-firm-twin-xl-mattress/2954265/2916623",
+          "savingsPassPolicy": "specialist_confirm"
+        },
+        {
+          "id": "md2026-purple-mattress",
+          "reconstructedHistorical": true,
+          "evidenceStatus": "prior-research-observation",
+          "evidenceProvenance": {
+            "en": "Previously observed on a WG&R-indexed or WG&R product result, but not independently retrievable as of 2026-06-08.",
+            "es": "Observado anteriormente en un resultado indexado de WG&R o en una página de producto de WG&R, pero no recuperable de forma independiente al 2026-06-08."
+          },
+          "eligibleMattressIds": [
+            "s1"
+          ],
+          "eligibleAccessoryIds": [],
+          "eligibleBrands": [],
+          "eligibleForStorewide20": false,
+          "badge": {
+            "en": "Reconstructed Historical Offer",
+            "es": "Oferta histórica reconstruida"
+          },
+          "headline": {
+            "en": "Previously observed promotional pricing varying by size",
+            "es": "Precio promocional observado anteriormente, variable según el tamaño"
+          },
+          "detail": {
+            "en": "Reconstructed from prior research; not a current offer. Confirm with your WG&R sleep specialist.",
+            "es": "Reconstruido a partir de investigación previa; no es una oferta actual. Confírmalo con tu especialista de sueño de WG&R."
+          },
+          "disclosure": {
+            "en": "",
+            "es": ""
+          },
+          "expiration": "not shown",
+          "sourceUrl": "",
+          "savingsPassPolicy": "specialist_confirm"
+        }
+      ],
+      "storewide": [
+        {
+          "id": "md2026-storewide-20",
+          "reconstructedHistorical": true,
+          "evidenceStatus": "prior-research-observation",
+          "evidenceProvenance": {
+            "en": "Previously observed on a WG&R-indexed or WG&R product result, but not independently retrievable as of 2026-06-08.",
+            "es": "Observado anteriormente en un resultado indexado de WG&R o en una página de producto de WG&R, pero no recuperable de forma independiente al 2026-06-08."
+          },
+          "type": "reconstructed-storewide",
+          "eligibleForStorewide20": false,
+          "badge": {
+            "en": "Reconstructed Historical Event",
+            "es": "Evento histórico reconstruido"
+          },
+          "headline": {
+            "en": "Previously observed 20% off during Memorial Day sale (storewide)",
+            "es": "20% de descuento durante la venta del Día de los Caídos, observado anteriormente (en toda la tienda)"
+          },
+          "detail": {
+            "en": "Reconstructed from prior research; not a current offer. Applied to no individual product without WG&R product-specific evidence.",
+            "es": "Reconstruido a partir de investigación previa; no es una oferta actual. No se aplica a ningún producto individual sin evidencia específica de producto de WG&R."
+          },
+          "disclosure": {
+            "en": "Recorded exclusions: Tempur-Pedic, Purple, Casper, Nectar, DreamCloud, Stearns & Foster, select Sealy, Beautyrest Black Hybrid, Power Buys, clearance.",
+            "es": "Exclusiones registradas: Tempur-Pedic, Purple, Casper, Nectar, DreamCloud, Stearns & Foster, ciertos Sealy, Beautyrest Black Hybrid, Power Buys, liquidación."
+          },
+          "expiration": "not shown",
+          "sourceUrl": "https://www.wgrfurniture.com/current-promotions",
+          "savingsPassPolicy": "specialist_confirm"
+        }
+      ]
+    }
+  }
+}

@@ -8,16 +8,17 @@ files so workbook regeneration cannot silently discard approved translations.
 
 Output: incoming/WGR_Store_Data.xlsx
 
-REGEN WARNING -- data/store-config.json is hand-maintained for WG&R.
-The workbook schema does not cover every field currently in store-config.json,
-and the converter (tools/convert_store_data.py) writes only the keys in its
-STORE_CONFIG_KEY_ORDER. So regenerating this workbook and re-running the
-converter will SILENTLY DROP these hand-added fields:
-  - promotions                                  (entire block: concept promo items)
-  - text / text_es: ownershipBadge, locationsLabel, locations
-  - voice / voice_es: retailerSubline, outcomeLabel, outcomeItems
-After any regen, diff data/store-config.json and hand-merge the above back in
-(or extend tools/workbook_schema.py + the converter first).
+SOURCE OF TRUTH -- this builder is self-contained and does NOT read
+data/store-config.json. Retailer values that used to be hand-maintained in
+store-config.json now live in committed build inputs next to this file:
+  - incoming/wgr_store_values.json  -> text/text_es/voice/voice_es/discount leaves
+                                       (privacy overlay, Savings Pass, landing/voice)
+  - incoming/wgr_promotions.json    -> the scenario-aware promotions block
+The schema (tools/workbook_schema.py) carries matching Store Info columns plus an
+optional Promotions tab, and the converter re-nests them. A workbook round-trip
+reproduces every field (verified by the round-trip + independence gates), so
+data/store-config.json is a regenerable downstream artifact, not a source.
+To change a value, edit the build input above and regenerate the workbook.
 """
 import csv
 import os
@@ -261,6 +262,51 @@ MATT_COLMAP = ["tier","id","name","brand","subBrand","archetype","displayPriorit
                "firmnessScore","firmnessLabel","displayBadges","highlight",
                "locally-made","features","reason_default","topPickReason"]
 
+# ── Explicit build input for migrated retailer values ────────────────────────
+# Privacy-overlay, voice, discount/Savings-Pass, and landing/location/ownership
+# fields live in incoming/wgr_store_values.json (committed, dotted-schema-key ->
+# value). The builder applies them onto the Store Info row, overriding any stale
+# hardcoded literal. This file — NOT data/store-config.json — is the durable
+# source of truth for these blocks, so the workbook is reproducible from build
+# inputs alone (data/store-config.json is a downstream artifact).
+#
+# To re-seed this file from a known-good config (one-time migration, NOT a
+# production path), run a throwaway extractor; do not wire it into normal builds.
+BUILD_VALUES = os.path.join(HERE, "wgr_store_values.json")
+
+
+def _apply_build_values(store):
+    import json
+    with open(BUILD_VALUES, encoding="utf-8") as f:
+        values = json.load(f)  # {dotted schema col.key: value}
+    by_key = {c.key: c.name for c in schema.get_columns("Store Info")}
+    for key, val in values.items():
+        if key in by_key:
+            store[by_key[key]] = val
+
+
+_apply_build_values(STORE)
+
+
+# ── Promotions build input -> Promotions tab (chunked canonical JSON) ──────────
+# incoming/wgr_promotions.json holds the scenario-aware promotions block. It is
+# written into the workbook as a static JSON payload chunked across rows (Excel
+# caps a cell near 32k chars). The converter (build_promotions) concatenates and
+# parses it. Absent file => no Promotions tab rows => converter emits no
+# promotions key.
+PROMO_INPUT = os.path.join(HERE, "wgr_promotions.json")
+
+
+def promotions_rows():
+    import json
+    if not os.path.exists(PROMO_INPUT):
+        return []
+    with open(PROMO_INPUT, encoding="utf-8") as f:
+        payload = json.dumps(json.load(f), ensure_ascii=False)  # validates + canonicalizes
+    size = 30000
+    return [{"Promotions JSON": payload[i:i + size]} for i in range(0, len(payload), size)]
+
+
 def mattress_row(t):
     d = dict(zip(MATT_COLMAP, t))
     row = {
@@ -416,6 +462,7 @@ def main():
     write_sheet(wb, "Mattresses", [mattress_row(t) for t in M])
     write_sheet(wb, "Accessories", [accessory_row(a) for a in A])
     write_sheet(wb, "SalesNotes", [])  # deferred / sparse for v1 (headers only)
+    write_sheet(wb, "Promotions", promotions_rows())
     wb.save(OUT)
     print(f"Wrote {OUT}")
     print(f"  Brands: {len(BRANDS)}  Mattresses: {len(M)}  Accessories: {len(A)}  SalesNotes: 0")

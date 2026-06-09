@@ -287,6 +287,156 @@ def validate_store_config(config: dict, manifest: Optional[dict] = None, *,
     return r
 
 
+# -- Promotions validation (scenario-aware) -----------------------------------
+
+# Accepted evidence-status values for promotion items (provenance ladder).
+PROMO_EVIDENCE_STATUSES = {
+    "wgr-current-page",
+    "wgr-product-page",
+    "wgr-full-page-archive",
+    "wgr-indexed-historical",
+    "operator-reported-wgr-indexed-historical",
+    "prior-research-observation",
+}
+# Statuses that assert the offer was seen on WG&R's own site -> a non-empty
+# sourceUrl must be a wgrfurniture.com page or a web.archive.org capture whose
+# embedded target is wgrfurniture.com.
+PROMO_WGR_SOURCE_STATUSES = {
+    "wgr-current-page", "wgr-product-page", "wgr-full-page-archive",
+    "wgr-indexed-historical", "operator-reported-wgr-indexed-historical",
+}
+_WGR_HOST_SUFFIX = "wgrfurniture.com"
+
+
+def _archive_embedded_host(url: str) -> str:
+    """For a web.archive.org capture URL, return the embedded target host (''
+    when not an archive URL / unparseable)."""
+    m = re.search(r"web\.archive\.org/web/[^/]+/(https?://\S+)", str(url))
+    return _host_from_url(m.group(1)) if m else ""
+
+
+def _is_wgr_source(url: str) -> bool:
+    host = _host_from_url(url)
+    if host.endswith(_WGR_HOST_SUFFIX):
+        return True
+    if "web.archive.org" in host:
+        return _archive_embedded_host(url).endswith(_WGR_HOST_SUFFIX)
+    return False
+
+
+def validate_promotions(config: dict, *, mattress_ids=None, accessory_ids=None,
+                        accessory_categories=None) -> ValidationReport:
+    """Validate the optional promotions block (scenario-aware or flat back-compat).
+
+    Pure: takes the assembled config dict plus the known mattress/accessory id and
+    accessory-category sets. No-op when there is no promotions block."""
+    r = ValidationReport()
+    promos = config.get("promotions")
+    if not promos:
+        return r
+    mids = set(mattress_ids or [])
+    aids = set(accessory_ids or [])
+    acats = set(c for c in (accessory_categories or []) if c)
+
+    scenarios = promos.get("scenarios")
+    if scenarios is None:
+        _validate_promo_scenario(r, "(flat)", promos, True, mids, aids, acats)
+        return r
+    if not isinstance(scenarios, dict):
+        r.add_error("promotions.scenarios must be an object")
+        return r
+    active = promos.get("activeScenario")
+    if active and active not in scenarios:
+        r.add_error(f"promotions.activeScenario {active!r} is not a defined scenario "
+                    f"{sorted(scenarios)}")
+    for sid, sc in scenarios.items():
+        if not isinstance(sc, dict):
+            r.add_error(f"promotions.scenarios[{sid!r}] must be an object")
+            continue
+        _validate_promo_scenario(r, sid, sc, sid == active, mids, aids, acats)
+    return r
+
+
+def _validate_promo_scenario(r, sid, sc, is_active, mids, aids, acats):
+    kind = sc.get("kind")
+    items = sc.get("items") or []
+    storewide = sc.get("storewide") or []
+
+    # duplicate promotion ids within a scenario (items + storewide share an id space)
+    seen = set()
+    for it in list(items) + list(storewide):
+        iid = it.get("id")
+        if iid in seen:
+            r.add_error(f"promotions[{sid}]: duplicate promotion id {iid!r}")
+        else:
+            seen.add(iid)
+
+    # historical-demo guardrails
+    if kind == "historical-demo":
+        if sc.get("disableEmailSubmission") is not True:
+            r.add_error(f"promotions[{sid}]: historical-demo scenario must set "
+                        f"disableEmailSubmission=true")
+        if is_active:
+            disc = sc.get("disclosure") or {}
+            if not (_s(disc.get("en")) and _s(disc.get("es"))):
+                r.add_error(f"promotions[{sid}]: active historical-demo scenario must "
+                            f"have a disclosure in EN and ES")
+
+    for it in items:
+        _validate_promo_item(r, sid, it, mids, aids, acats)
+    for it in storewide:
+        _validate_promo_item(r, sid, it, mids, aids, acats)
+
+
+def _validate_promo_item(r, sid, it, mids, aids, acats):
+    iid = it.get("id", "?")
+    tag = f"promotions[{sid}].{iid}"
+
+    # eligibility references resolve to real catalog entries
+    for mid in (it.get("eligibleMattressIds") or []):
+        if mids and mid not in mids:
+            r.add_error(f"{tag}: eligibleMattressIds {mid!r} not in mattresses")
+    for aid in (it.get("eligibleAccessoryIds") or []):
+        if aids and aid not in aids:
+            r.add_error(f"{tag}: eligibleAccessoryIds {aid!r} not in accessories")
+    for cat in (it.get("eligibleAccessoryCategories") or []):
+        if acats and cat not in acats:
+            r.add_error(f"{tag}: eligibleAccessoryCategories {cat!r} not a known accessory category")
+
+    # customer-visible bilingual copy: badge + headline must carry EN and ES
+    for field in ("badge", "headline"):
+        obj = it.get(field)
+        if not isinstance(obj, dict) or not _s(obj.get("en")) or not _s(obj.get("es")):
+            r.add_error(f"{tag}: {field} missing EN or ES")
+    # detail/disclosure: if one language is present the other must be too
+    for field in ("detail", "disclosure"):
+        obj = it.get(field)
+        if isinstance(obj, dict) and (bool(_s(obj.get("en"))) != bool(_s(obj.get("es")))):
+            r.add_error(f"{tag}: {field} has one language but not the other")
+
+    # evidence status enum + source rules
+    ev = it.get("evidenceStatus")
+    if ev is not None and ev not in PROMO_EVIDENCE_STATUSES:
+        r.add_error(f"{tag}: evidenceStatus {ev!r} not in {sorted(PROMO_EVIDENCE_STATUSES)}")
+    src = _s(it.get("sourceUrl"))
+    if ev in PROMO_WGR_SOURCE_STATUSES and src and not _is_wgr_source(src):
+        r.add_error(f"{tag}: sourceUrl {src!r} is not a wgrfurniture.com source "
+                    f"(required for evidenceStatus {ev!r})")
+    if ev == "wgr-full-page-archive" and src and not _archive_embedded_host(src).endswith(_WGR_HOST_SUFFIX):
+        r.add_error(f"{tag}: wgr-full-page-archive sourceUrl must be a web.archive.org capture of wgrfurniture.com")
+    if ev == "prior-research-observation" and not _s(it.get("evidenceProvenance")):
+        r.add_error(f"{tag}: evidenceStatus prior-research-observation requires evidenceProvenance")
+
+    # the reconstructed 20% storewide event must not target individual products
+    # unless explicitly marked eligible
+    if it.get("type") == "reconstructed-storewide" or "storewide-20" in str(iid):
+        targets_products = bool(it.get("eligibleMattressIds") or it.get("eligibleAccessoryIds")
+                                or it.get("eligibleAccessoryCategories"))
+        if targets_products and it.get("eligibleForStorewide20") is not True:
+            r.add_error(f"{tag}: 20% storewide event applied to individual products "
+                        f"without eligibleForStorewide20=true")
+
+
 # -- V2: catalog validation (raw tabs) ----------------------------------------
 
 def validate_mattresses(raw_tabs, *, source_images=None, skip_images=False,
@@ -1174,6 +1324,85 @@ def _self_test() -> int:
         check("post-emit manifest icon missing -> error",
               any("icon 'icon-512.png' not found" in e
                   for e in validate_generated_outputs(d, build_json=False).errors))
+
+    # ---- promotions (scenario-aware) validation ----
+    MIDS = {"g7", "s1", "s2", "g1"}
+
+    def _pc(promos):
+        return {"promotions": promos}
+
+    good_promo = {
+        "activeScenario": "demo",
+        "scenarios": {"demo": {
+            "kind": "historical-demo", "disableEmailSubmission": True,
+            "disclosure": {"en": "Historical demo", "es": "Demo historica"},
+            "items": [{"id": "p1", "eligibleMattressIds": ["g7"],
+                       "badge": {"en": "B", "es": "B"}, "headline": {"en": "H", "es": "H"},
+                       "evidenceStatus": "prior-research-observation",
+                       "evidenceProvenance": "seen prior",
+                       "sourceUrl": "https://www.wgrfurniture.com/x"}],
+            "storewide": [{"id": "s20", "type": "reconstructed-storewide",
+                           "badge": {"en": "E", "es": "E"}, "headline": {"en": "H", "es": "H"},
+                           "evidenceStatus": "prior-research-observation", "evidenceProvenance": "x"}]}},
+    }
+    check("promotions valid scenario -> ok",
+          validate_promotions(_pc(good_promo), mattress_ids=MIDS).ok)
+
+    def _mut(**path_set):
+        return json.loads(json.dumps(good_promo))
+
+    dup = _mut(); dup["scenarios"]["demo"]["storewide"][0]["id"] = "p1"
+    check("promotions duplicate id -> error",
+          any("duplicate promotion id" in e for e in validate_promotions(_pc(dup), mattress_ids=MIDS).errors))
+
+    badm = _mut(); badm["scenarios"]["demo"]["items"][0]["eligibleMattressIds"] = ["zzz"]
+    check("promotions invalid mattress id -> error",
+          any("not in mattresses" in e for e in validate_promotions(_pc(badm), mattress_ids=MIDS).errors))
+
+    badacc = _mut(); badacc["scenarios"]["demo"]["items"][0]["eligibleAccessoryIds"] = ["nope"]
+    check("promotions invalid accessory id -> error",
+          any("not in accessories" in e
+              for e in validate_promotions(_pc(badacc), mattress_ids=MIDS, accessory_ids={"base-x"}).errors))
+
+    mes = _mut(); mes["scenarios"]["demo"]["items"][0]["headline"] = {"en": "H", "es": ""}
+    check("promotions missing ES headline -> error",
+          any("headline missing EN or ES" in e for e in validate_promotions(_pc(mes), mattress_ids=MIDS).errors))
+
+    ua = _mut(); ua["activeScenario"] = "nope"
+    check("promotions unknown activeScenario -> error",
+          any("activeScenario" in e for e in validate_promotions(_pc(ua), mattress_ids=MIDS).errors))
+
+    bev = _mut(); bev["scenarios"]["demo"]["items"][0]["evidenceStatus"] = "bogus"
+    check("promotions bad evidenceStatus -> error",
+          any("evidenceStatus" in e for e in validate_promotions(_pc(bev), mattress_ids=MIDS).errors))
+
+    nws = _mut()
+    nws["scenarios"]["demo"]["items"][0]["evidenceStatus"] = "wgr-product-page"
+    nws["scenarios"]["demo"]["items"][0]["sourceUrl"] = "https://purple.com/x"
+    check("promotions non-WG&R source -> error",
+          any("not a wgrfurniture.com source" in e for e in validate_promotions(_pc(nws), mattress_ids=MIDS).errors))
+
+    arc = _mut()
+    arc["scenarios"]["demo"]["items"][0]["evidenceStatus"] = "wgr-full-page-archive"
+    arc["scenarios"]["demo"]["items"][0]["sourceUrl"] = "https://web.archive.org/web/20260525/https://www.wgrfurniture.com/x"
+    check("promotions archive of WG&R -> ok",
+          validate_promotions(_pc(arc), mattress_ids=MIDS).ok)
+
+    nde = _mut(); nde["scenarios"]["demo"]["disableEmailSubmission"] = False
+    check("promotions historical-demo without disableEmailSubmission -> error",
+          any("disableEmailSubmission" in e for e in validate_promotions(_pc(nde), mattress_ids=MIDS).errors))
+
+    ndd = _mut(); ndd["scenarios"]["demo"]["disclosure"] = {"en": "x", "es": ""}
+    check("promotions active demo missing ES disclosure -> error",
+          any("disclosure in EN and ES" in e for e in validate_promotions(_pc(ndd), mattress_ids=MIDS).errors))
+
+    t20 = _mut(); t20["scenarios"]["demo"]["storewide"][0]["eligibleMattressIds"] = ["g7"]
+    check("promotions 20% on product without eligibility -> error",
+          any("eligibleForStorewide20" in e for e in validate_promotions(_pc(t20), mattress_ids=MIDS).errors))
+
+    npp = _mut(); del npp["scenarios"]["demo"]["items"][0]["evidenceProvenance"]
+    check("promotions prior-research-observation without provenance -> error",
+          any("requires evidenceProvenance" in e for e in validate_promotions(_pc(npp), mattress_ids=MIDS).errors))
 
     print(f"\nSelf-test: {passed} passed, {failed} failed")
     return 0 if failed == 0 else 1

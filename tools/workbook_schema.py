@@ -161,6 +161,42 @@ STORE_INFO = Tab(
         col("Voice CTA Primary (ES)", "voice_es.ctaPrimary", lang="es", note="-> voice_es.ctaPrimary"),
         col("Voice Time Estimate (ES)", "voice_es.timeEstimate", lang="es", note="-> voice_es.timeEstimate"),
 
+        # ── Preservation columns (M-promo migration) ────────────────────────
+        # Hand-maintained store-config fields previously absent from the schema;
+        # added so a workbook round-trip no longer silently drops them. Sub-key
+        # order within text/voice/discount is not significant (round-trip diff is
+        # semantic / order-insensitive).
+        col("Discount Mode", "discount.mode", note="-> discount.mode"),
+        col("Discount Percentage", "discount.percentage", note="-> discount.percentage (int)"),
+        col("Discount Validity Days", "discount.validityDays", note="-> discount.validityDays (int)"),
+        col("Discount Scope", "discount.scope.en", note="-> discount.scope.en"),
+        col("Discount Scope (ES)", "discount.scope.es", lang="es", note="-> discount.scope.es"),
+        col("Discount Landing Hint", "discount.landingHint.en", note="-> discount.landingHint.en"),
+        col("Discount Landing Hint (ES)", "discount.landingHint.es", lang="es", note="-> discount.landingHint.es"),
+        col("Discount Demo Delivery Note", "discount.demoDeliveryNote.en", note="-> discount.demoDeliveryNote.en"),
+        col("Discount Demo Delivery Note (ES)", "discount.demoDeliveryNote.es", lang="es", note="-> discount.demoDeliveryNote.es"),
+        col("Discount Terms", "discount.terms.en", note="-> discount.terms.en"),
+        col("Discount Terms (ES)", "discount.terms.es", lang="es", note="-> discount.terms.es"),
+        col("Privacy Draft Notice", "text.privacyDraftNotice", note="-> text.privacyDraftNotice"),
+        col("Privacy Heading", "text.privacyHeading", note="-> text.privacyHeading"),
+        col("Privacy Body", "text.privacyBody", note="-> text.privacyBody"),
+        col("Disclaimer Heading", "text.disclaimerHeading", note="-> text.disclaimerHeading"),
+        col("Disclaimer Body", "text.disclaimerBody", note="-> text.disclaimerBody"),
+        col("Ownership Badge", "text.ownershipBadge", note="-> text.ownershipBadge"),
+        col("Locations Label", "text.locationsLabel", note="-> text.locationsLabel"),
+        col("Locations", "text.locations", note="-> text.locations"),
+        col("Privacy Draft Notice (ES)", "text_es.privacyDraftNotice", lang="es", note="-> text_es.privacyDraftNotice"),
+        col("Privacy Heading (ES)", "text_es.privacyHeading", lang="es", note="-> text_es.privacyHeading"),
+        col("Privacy Body (ES)", "text_es.privacyBody", lang="es", note="-> text_es.privacyBody"),
+        col("Disclaimer Heading (ES)", "text_es.disclaimerHeading", lang="es", note="-> text_es.disclaimerHeading"),
+        col("Disclaimer Body (ES)", "text_es.disclaimerBody", lang="es", note="-> text_es.disclaimerBody"),
+        col("Voice Retailer Subline", "voice.retailerSubline", note="-> voice.retailerSubline"),
+        col("Voice Outcome Label", "voice.outcomeLabel", note="-> voice.outcomeLabel"),
+        col("Voice Outcome Items", "voice.outcomeItems", note="-> voice.outcomeItems"),
+        col("Voice Retailer Subline (ES)", "voice_es.retailerSubline", lang="es", note="-> voice_es.retailerSubline"),
+        col("Voice Outcome Label (ES)", "voice_es.outcomeLabel", lang="es", note="-> voice_es.outcomeLabel"),
+        col("Voice Outcome Items (ES)", "voice_es.outcomeItems", lang="es", note="-> voice_es.outcomeItems"),
+
         # manifest.json (PWA). display/orientation are converter constants, not columns.
         col("Manifest Name", "manifest.name", note="-> manifest.json name"),
         col("Manifest Short Name", "manifest.short_name", note="-> manifest.json short_name"),
@@ -337,6 +373,24 @@ SALES_NOTES = Tab(
 )
 
 
+# ── Tab: Promotions ──────────────────────────────────────────────────────────
+# OPTIONAL tab. Carries the retailer promotions block (scenario-aware) as the
+# canonical promotions JSON, chunked one fragment per row in column order and
+# concatenated by the converter (build_promotions). The nested, bilingual,
+# variable-shape scenario data does not decompose into flat columns without
+# present-vs-absent ambiguity that breaks exact round-trip, so it is stored as an
+# explicit STATIC payload (not a formula / live copy). Editable source is the
+# build input incoming/wgr_promotions.json. Deployments without this tab (e.g.
+# Bel) simply emit no `promotions` key — fully backward compatible.
+PROMOTIONS = Tab(
+    name="Promotions",
+    note="Optional. Canonical promotions JSON, chunked -> store-config.json promotions",
+    columns=(
+        col("Promotions JSON", "promotionsJson", note="one JSON fragment per row, concatenated in order"),
+    ),
+)
+
+
 # ── Registry + helpers ───────────────────────────────────────────────────────
 # Ordered tuple defines the canonical tab order in the generated workbook.
 
@@ -346,6 +400,7 @@ TABS: Tuple[Tab, ...] = (
     MATTRESSES,
     ACCESSORIES,
     SALES_NOTES,
+    PROMOTIONS,
 )
 
 _TABS_BY_NAME: Dict[str, Tab] = {t.name: t for t in TABS}

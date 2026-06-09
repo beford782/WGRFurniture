@@ -175,7 +175,29 @@ function doPost(e) {
           category: _safeText(a && a.category, 100),
           imageUrl: _safeImageUrl(a && a.imageUrl)
         };
-      })
+      }),
+      // Website-derived WG&R promotions, pre-localized by the client to data.lang.
+      promotions: _safeArray(data.emailPromotions).slice(0, 12).map(function(p) {
+        return {
+          badge: _safeText(p && p.badge, 80),
+          headline: _safeText(p && p.headline, 200),
+          detail: _safeText(p && p.detail, 400),
+          disclosure: _safeText(p && p.disclosure, 400),
+          // Optional per-promotion evidence/provenance line (e.g. reconstructed-
+          // historical scenarios). Absent in current/website-verified payloads, so
+          // it renders only when the client supplies it — existing behavior intact.
+          provenance: _safeText(p && p.provenance, 400),
+          expiration: _safeText(p && p.expiration, 80),
+          sourceUrl: _safeImageUrl(p && p.sourceUrl)
+        };
+      }),
+      promoSpanishDraft: _safeText(data.promoSpanishDraft, 200),
+      // Scenario-level fields (pre-localized by the client). A non-empty
+      // promoDisclosure marks a disclosed scenario (e.g. the historical demo):
+      // the promo header drops any "current offer" claim and the disclosure is
+      // surfaced. Both empty for genuine current scenarios -> behavior unchanged.
+      promoScenario: _safeText(data.promoScenario, 80),
+      promoDisclosure: _safeText(data.promoDisclosure, 400)
     };
 
     try {
@@ -198,6 +220,27 @@ function doPost(e) {
       var accessoryLines = safeData.accessories.map(function(a, i) {
         return (i + 1) + '. ' + a.name + (a.category ? ' - ' + a.category : '');
       }).join('\n');
+      var promoLines = (safeData.promotions || []).map(function(p) {
+        return '- ' + p.badge + ': ' + p.headline
+          + (p.detail ? '\n  ' + p.detail : '')
+          + (p.disclosure ? '\n  ' + p.disclosure : '')
+          + (p.provenance ? '\n  ' + p.provenance : '')
+          + (p.expiration ? '\n  ' + p.expiration : '')
+          + (p.sourceUrl ? '\n  ' + p.sourceUrl : '');
+      }).join('\n');
+      // Scenario-aware plain-text promo header: a disclosed scenario (e.g. the
+      // historical demo) drops the "current offer" claim and prepends the
+      // disclosure line. Empty disclosure -> existing "Current WG&R Offers" header.
+      var plainPromoDisclosure = (safeData.promoDisclosure || '').toString();
+      var plainPromoHeader = plainPromoDisclosure
+        ? (isEs ? 'Ofertas de WG&R' : 'WG&R Offers')
+        : (isEs ? 'Ofertas Actuales de WG&R' : 'Current WG&R Offers');
+      var promoBlock = promoLines
+        ? ('\n\n' + plainPromoHeader + ':\n'
+            + (plainPromoDisclosure ? plainPromoDisclosure + '\n' : '')
+            + (safeData.promoSpanishDraft && isEs ? safeData.promoSpanishDraft + '\n' : '')
+            + promoLines)
+        : '';
       var comparisonLabel = isEs ? 'Opción adicional para comparar' : 'Additional comparison option';
       var topMatchDetail = meetsMatchThreshold
         ? matchPct + (isEs ? '% compatibilidad' : '% match')
@@ -218,6 +261,7 @@ function doPost(e) {
                 : comparisonLabel);
             }).join('\n')
           + (accessoryLines ? '\n\nTu Sistema de Sueño guardado:\n' + accessoryLines : '')
+          + promoBlock
           + '\n\n----------\n'
           + 'Recibiste este correo porque guardaste tu Resumen de Sueño en ' + storeName + '.\n'
           + POSTAL_ADDRESS + '\n'
@@ -238,6 +282,7 @@ function doPost(e) {
                 : comparisonLabel);
             }).join('\n')
           + (accessoryLines ? '\n\nYour saved Sleep System:\n' + accessoryLines : '')
+          + promoBlock
           + '\n\n----------\n'
           + 'You received this email because you saved your Sleep Brief at ' + storeName + '.\n'
           + POSTAL_ADDRESS + '\n'
@@ -409,6 +454,35 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
       + '</td></tr>'
     : '';
 
+  // Website-derived WG&R offers (conservative; pre-localized by the client).
+  var promos = Array.isArray(data.promotions) ? data.promotions : [];
+  // A non-empty scenario disclosure marks a disclosed scenario (e.g. the
+  // historical demo): the header must NOT claim "current" offers, and the
+  // disclosure is surfaced above the items. Empty -> genuine current scenario.
+  var promoDisclosure = (data.promoDisclosure || '').toString();
+  var promoHeader = promoDisclosure
+    ? (isEs ? 'Ofertas de WG&amp;R' : 'WG&amp;R Offers')
+    : (isEs ? 'Ofertas Actuales de WG&amp;R' : 'Current WG&amp;R Offers');
+  var promoSection = promos.length > 0
+    ? '<tr><td style="padding:8px 32px 24px;">'
+      + '<div style="font-family:' + sans + ';font-size:10px;letter-spacing:2.5px;color:' + c.accent + ';text-transform:uppercase;font-weight:600;margin-bottom:6px;">'
+      + promoHeader + '</div>'
+      + (promoDisclosure ? '<div style="font-family:' + sans + ';font-size:10px;font-weight:600;color:' + c.accent + ';background:rgba(184,147,93,0.08);border:1px solid ' + c.border + ';border-radius:2px;padding:8px 10px;margin-bottom:10px;line-height:1.45;">' + _escapeHtml(promoDisclosure) + '</div>' : '')
+      + (data.promoSpanishDraft ? '<div style="font-family:' + sans + ';font-size:10px;font-style:italic;color:' + c.textSubtle + ';margin-bottom:10px;">' + _escapeHtml(data.promoSpanishDraft) + '</div>' : '')
+      + promos.map(function(p) {
+          return '<div style="border-top:1px solid ' + c.border + ';padding:10px 0;">'
+            + '<div style="font-family:' + sans + ';font-size:11px;font-weight:700;color:' + c.accent + ';letter-spacing:0.5px;">' + _escapeHtml(p.badge) + '</div>'
+            + '<div style="font-family:' + sans + ';font-size:13px;color:' + c.text + ';margin-top:3px;line-height:1.4;">' + _escapeHtml(p.headline) + '</div>'
+            + (p.detail ? '<div style="font-family:' + sans + ';font-size:11px;color:' + c.textMuted + ';margin-top:3px;line-height:1.5;">' + _escapeHtml(p.detail) + '</div>' : '')
+            + (p.disclosure ? '<div style="font-family:' + sans + ';font-size:10px;color:' + c.textSubtle + ';margin-top:3px;line-height:1.45;">' + _escapeHtml(p.disclosure) + '</div>' : '')
+            + (p.provenance ? '<div style="font-family:' + sans + ';font-size:10px;color:' + c.textSubtle + ';margin-top:3px;line-height:1.45;">' + _escapeHtml(p.provenance) + '</div>' : '')
+            + (p.expiration ? '<div style="font-family:' + sans + ';font-size:10px;color:' + c.textSubtle + ';margin-top:3px;">' + _escapeHtml(p.expiration) + '</div>' : '')
+            + (p.sourceUrl ? '<div style="font-family:' + sans + ';font-size:10px;margin-top:3px;"><a href="' + _escapeHtml(p.sourceUrl) + '" style="color:' + c.accent + ';">' + (isEs ? 'Ver en el sitio de WG&amp;R' : "View on WG&amp;R's site") + '</a></div>' : '')
+            + '</div>';
+        }).join('')
+      + '</td></tr>'
+    : '';
+
   return ''
     + '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">'
     + '<html xmlns="http://www.w3.org/1999/xhtml">'
@@ -458,6 +532,9 @@ function buildSimpleHtml(data, firstName, isEs, storeName) {
 
     // Accessories (conditional)
     + accSection
+
+    // Website-derived WG&R offers (conditional)
+    + promoSection
 
     // Footer
     + '<tr><td style="padding:24px 32px 36px;text-align:center;border-top:1px solid ' + c.border + ';">'
