@@ -15,7 +15,7 @@
     "storePrimaryGlow": "rgba(177,45,21,0.15)",
     "accent": "#B8935D"
   },
-  "gasUrl": "",
+  "gasUrl": "https://script.google.com/macros/s/AKfycbyMCorge2G7YVjktKDDWCrcFG8LKUsSy7okIDgE2fH2elaCcYv11mHEs_XLQ5HV2HU/exec",
   "publicAssetRoot": "https://beford782.github.io/WGRFurniture/",
   "allowedHosts": [
     "beford782.github.io"
