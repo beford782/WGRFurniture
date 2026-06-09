@@ -11425,8 +11425,16 @@
 
     function promotionOfferTabHtml(promotion) {
       if (!promotion) return '';
+      // Red attention tab on tier result cards. Scenario-aware: a disclosed
+      // scenario (e.g. the historical demo) must NOT imply a current offer, so
+      // the tab reads "Historical Promo" instead of "OFFER" — mirrors the
+      // drawer-kicker / cue disclosure logic. Current scenarios keep "OFFER".
+      var es = currentLang === 'es';
+      var label = getScenarioDisclosure()
+        ? (es ? 'Promo histórica' : 'Historical Promo')
+        : (es ? 'OFERTA' : 'OFFER');
       return '<div class="mattress-offer-tab" aria-hidden="true">'
-        + (currentLang === 'es' ? 'OFERTA' : 'OFFER')
+        + label
         + '</div>';
     }
 
